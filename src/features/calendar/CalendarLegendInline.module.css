@@ -1,0 +1,41 @@
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-secondary);
+  font-size: var(--font-size-body-sm);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.dotLogged {
+  background-color: var(--color-tertiary);
+}
+
+.dotPredicted {
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-hairline);
+}
+
+.dotFertile {
+  background-color: var(--color-lavender);
+}
+
+.dotOvulation {
+  background-color: var(--color-butter);
+}
+
+.dotLow {
+  background-color: var(--color-mint);
+}

@@ -1,0 +1,20 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.input {
+  height: 52px;
+  padding: 0 var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hairline);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  font-family: var(--font-family-body-md);
+  font-size: var(--font-size-body-md);
+}
+
+.input::placeholder {
+  color: var(--color-secondary);
+}

@@ -1,0 +1,53 @@
+.screen {
+  min-height: 100%;
+  padding: var(--space-xxl) var(--space-lg) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each AnimatePresence step is wrapped in a motion.div for the slide
+   transition; this gives that wrapper the flex layout the old flat
+   .screen > .content/.footer structure relied on, so content and footer
+   stay a full step apart instead of the wrapper collapsing them together. */
+.stepInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.chipGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.languageRow {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.skipLink {
+  background: none;
+  border: none;
+  color: var(--color-secondary);
+  text-align: center;
+  text-decoration: underline;
+}
+
+.disclaimer {
+  color: var(--color-secondary);
+}

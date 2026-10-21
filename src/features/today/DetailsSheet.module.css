@@ -1,0 +1,26 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-hairline);
+}
+
+.disclosureRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--color-hairline);
+  padding: var(--space-md) 0;
+  color: var(--color-tertiary);
+  font-family: var(--font-family-body-md);
+  font-size: var(--font-size-body-md);
+  text-align: left;
+}
+
+.chevronOpen {
+  transform: rotate(90deg);
+}

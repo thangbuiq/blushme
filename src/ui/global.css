@@ -1,0 +1,123 @@
+@import './fonts.css';
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 108%; /* a touch bigger overall, per feedback that defaults felt small */
+}
+
+body {
+  background-color: var(--color-neutral);
+  color: var(--color-primary);
+  font-family: var(--font-family-body-md);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-body-md);
+  line-height: var(--line-height-body-md);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 200ms ease, color 200ms ease;
+  display: flex;
+  justify-content: center;
+  /* Centers the app frame vertically only once there's room to spare (desktop);
+     on short/mobile viewports it just stacks from the top, never clipping content. */
+  align-items: safe center;
+  min-height: 100vh;
+}
+
+/* The app's own bounded "frame" — every fixed-feeling UI (bottom nav, sheets,
+   modals) anchors to THIS box (position: absolute) instead of the raw
+   viewport, so they stay visually attached to the frame once it's centered
+   on larger screens instead of the frame floating free of them. */
+#root {
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-family-h1);
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-h1);
+  line-height: var(--line-height-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: var(--line-height-h2);
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-tertiary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.label-caps {
+  font-family: var(--font-family-label-caps);
+  font-size: var(--font-size-label-caps);
+  font-weight: var(--font-weight-label-caps);
+  line-height: var(--line-height-label-caps);
+  letter-spacing: var(--letter-spacing-label-caps);
+  text-transform: uppercase;
+}
+
+.numeral {
+  font-family: var(--font-family-numeral);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.hairline {
+  border: none;
+  border-top: 1px solid var(--color-hairline);
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

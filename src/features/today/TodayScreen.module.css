@@ -1,0 +1,97 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.hero {
+  padding: var(--space-lg) var(--space-lg) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.dateCard,
+.phaseCard,
+.suggestionCard {
+  width: 100%;
+  background-color: var(--color-blush-tint);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.dateCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  text-align: left;
+  background: none;
+  color: var(--color-primary);
+}
+
+.dayNumeral {
+  font-family: var(--font-family-h1);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-h1);
+}
+
+.statusLine {
+  color: var(--color-secondary);
+  font-family: var(--font-family-body-sm);
+  font-size: var(--font-size-body-sm);
+}
+
+.phaseCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+}
+
+.phaseIcon {
+  flex-shrink: 0;
+}
+
+.phaseName {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-family-h2);
+  font-size: clamp(0.8rem, 4.5vw, var(--font-size-h2));
+  font-weight: var(--font-weight-display);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestionCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.suggestionText {
+  margin: 0;
+  color: var(--color-primary);
+  font-family: var(--font-family-body-md);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-md);
+}
+
+.learnLink {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-tertiary);
+  font-family: var(--font-family-body-sm);
+  font-size: var(--font-size-body-sm);
+  text-decoration: underline;
+  text-decoration-color: var(--color-hairline);
+  text-underline-offset: 4px;
+}
+
+.actions {
+  width: 100%;
+}

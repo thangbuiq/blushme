@@ -1,0 +1,249 @@
+{
+  "common": {
+    "gotIt": "Got it",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip",
+    "yes": "Yes",
+    "areYouSure": "Are you sure?",
+    "no": "No",
+    "notSure": "I'm not sure"
+  },
+  "nav": {
+    "today": "Today",
+    "calendar": "Calendar",
+    "insights": "Insights",
+    "settings": "Settings"
+  },
+  "onboarding": {
+    "step1": {
+      "title": "Welcome to Blush",
+      "languageLabel": "Language",
+      "goalLabel": "What brings you here?",
+      "goalTrack": "Track my cycle",
+      "goalTtc": "Trying to conceive",
+      "goalAvoiding": "Avoiding pregnancy"
+    },
+    "step2": {
+      "title": "When did your last period start?",
+      "helper": "This gives us a starting point. You can edit it any time."
+    },
+    "step3": {
+      "title": "Tell us your usual rhythm",
+      "cycleLengthLabel": "Typical cycle length (days)",
+      "periodLengthLabel": "Typical period length (days)"
+    },
+    "disclaimer": "These are gentle estimates, not medical advice.",
+    "lockOffer": {
+      "title": "Keep this private?",
+      "body": "You can lock Blush with a PIN. You can turn this on later in Settings too.",
+      "enable": "Set a PIN",
+      "notNow": "Not now"
+    }
+  },
+  "today": {
+    "dayLabel": "Day {{day}}",
+    "logButton": "+ Log today",
+    "statusNext": "Next period in about {{days}} days",
+    "statusNextOne": "Next period in about 1 day",
+    "statusToday": "Your period starts today",
+    "statusLate": "Running a little late. That happens.",
+    "statusPaused": "Predictions are paused",
+    "phase": {
+      "menstrual": "Menstrual",
+      "follicular": "Follicular",
+      "ovulation": "Ovulation",
+      "luteal": "Luteal"
+    },
+    "phaseStatus": {
+      "menstrual": "You're on your period",
+      "follicular": "You're in your follicular phase",
+      "ovulation": "You're ovulating",
+      "luteal": "You're in your luteal phase"
+    },
+    "phaseDescription": {
+      "menstrual": "Hormones are at their lowest, so cramps and tiredness are common. Keep your belly warm and rest a little more.",
+      "follicular": "Estrogen is rising and energy usually follows — a good stretch for exercise or getting things done.",
+      "ovulation": "LH surges to release an egg, so you might feel a brief twinge on one side — this is also your most fertile day.",
+      "luteal": "Progesterone is rising, which can bring tender breasts or a shorter temper. Be gentle with yourself."
+    },
+    "learnLink": "Learn about your cycle",
+    "details": {
+      "title": "The details",
+      "rangeLabel": "Expected range",
+      "rangeValue": "{{start}} to {{end}}",
+      "confidenceLabel": "Confidence",
+      "confidence": {
+        "low": "Still learning your rhythm",
+        "medium": "Fairly steady",
+        "high": "Well established"
+      },
+      "howCalculated": "How is this calculated?"
+    }
+  },
+  "learn": {
+    "title": "Understanding your cycle",
+    "intro": "The menstrual cycle is the body's repeating monthly process that prepares for a possible pregnancy. A cycle runs from the first day of bleeding to the first day of the next period.",
+    "howCounted": {
+      "title": "How long is normal?",
+      "body": "Most cycles last 24 to 38 days, averaging around 28."
+    },
+    "phasesTitle": "The four phases",
+    "phase": {
+      "menstrual": "The egg from last cycle wasn't fertilized, so the uterine lining breaks down and sheds — this is your period, usually lasting 3 to 7 days.",
+      "follicular": "Starting alongside your period, the pituitary gland prompts your ovaries to grow follicles while rising estrogen thickens the uterine lining again.",
+      "ovulation": "Around the middle of the cycle (day 14 in a 28-day cycle), a surge of LH causes a mature follicle to burst and release an egg.",
+      "luteal": "After ovulation, the burst follicle becomes the corpus luteum and releases progesterone to keep the lining thick. Without fertilization, it breaks down, hormones drop, and the next period begins."
+    },
+    "doctor": {
+      "title": "When to see a doctor",
+      "intro": "Check in with a doctor if you notice:",
+      "item1": "A cycle shorter than 24 days or longer than 38 days",
+      "item2": "No period for 3 months or more",
+      "item3": "Bleeding that lasts more than 8 days, or unusually heavy flow",
+      "item4": "Severe pain with nausea during your period"
+    }
+  },
+  "calendar": {
+    "title": "Calendar",
+    "legend": {
+      "period": "Logged period",
+      "predicted": "Predicted period",
+      "fertile": "Higher chance of conception",
+      "ovulation": "Estimated ovulation",
+      "low": "Lower chance of conception"
+    },
+    "fertilityDisclaimer": "Calendar estimates aren't reliable birth control.",
+    "periodSummary": {
+      "estimated": "This month's period: {{start}} to about {{end}}*",
+      "estimatedNote": "* Estimated, based on your past cycles",
+      "confirmed": "This month's period: {{start}} to {{end}}"
+    },
+    "rangeSelect": {
+      "start": "Log a past period",
+      "promptStart": "Tap the first day of that period",
+      "promptEnd": "Now tap the last day",
+      "save": "Save period ({{days}} days)",
+      "cancel": "Cancel"
+    }
+  },
+  "log": {
+    "todayTitle": "Today",
+    "cycleContext": "Day {{day}} · {{phase}}",
+    "onPeriod": "On my period",
+    "periodDayLabel": "Day {{day}} of your period",
+    "flowLabel": "Flow",
+    "flow": {
+      "light": "Light",
+      "medium": "Medium",
+      "heavy": "Heavy"
+    },
+    "addMore": "Add more",
+    "symptomsLabel": "Symptoms",
+    "symptoms": {
+      "cramps": "Cramps",
+      "headache": "Headache",
+      "bloating": "Bloating",
+      "fatigue": "Fatigue",
+      "backache": "Backache",
+      "tenderness": "Tenderness",
+      "acne": "Acne",
+      "nausea": "Nausea",
+      "cravings": "Cravings",
+      "insomnia": "Trouble sleeping",
+      "constipation": "Constipation",
+      "diarrhea": "Upset stomach",
+      "more": "More"
+    },
+    "moodLabel": "Mood",
+    "moods": {
+      "calm": "Calm",
+      "happy": "Happy",
+      "irritable": "Irritable",
+      "sad": "Sad",
+      "anxious": "Anxious",
+      "energetic": "Energetic"
+    },
+    "noteLabel": "Note",
+    "notePlaceholder": "Anything you'd like to remember",
+    "save": "Save",
+    "earlyPeriodConfirm": "That's earlier than usual since your last period. Save it anyway?",
+    "advanced": {
+      "title": "Advanced tracking",
+      "bbtLabel": "Basal body temperature (°C)",
+      "cervicalMucusLabel": "Cervical mucus",
+      "cervicalMucus": {
+        "dry": "Dry",
+        "sticky": "Sticky",
+        "creamy": "Creamy",
+        "eggWhite": "Egg white"
+      },
+      "lhLabel": "LH test",
+      "lhPositive": "Positive",
+      "intimacyLabel": "Intimacy"
+    }
+  },
+  "insights": {
+    "emptyTitle": "Still gathering your rhythm",
+    "emptyBody": "Log two cycles and we'll start showing gentle patterns here."
+  },
+  "settings": {
+    "language": "Language",
+    "privacyLock": "Privacy & lock",
+    "reminders": "Reminders",
+    "data": "Data",
+    "export": "Export data",
+    "import": "Import data",
+    "deleteAll": "Delete all data",
+    "deleteAllConfirm": "This permanently deletes every log and setting on this device. This can't be undone.",
+    "more": "More",
+    "weekStart": "Week starts on",
+    "units": "Units",
+    "goal": "Goal",
+    "advancedTracking": "Advanced tracking",
+    "pausePredictions": "Pause predictions",
+    "fertilityWindow": "Show fertility window",
+    "about": "About",
+    "aboutBody": "Blush keeps everything on this device. There are no accounts, ads or analytics.",
+    "loadDemoData": "Load demo data",
+    "removeDemoData": "Remove demo data"
+  },
+  "engine": {
+    "formula": {
+      "sentence": "We look at your recent cycles, weigh the newest ones more, and use that to predict your next one.",
+      "showMath": "Show the math",
+      "withYourNumbers": "With your numbers",
+      "meanLabel": "Weighted average cycle length",
+      "stdDevLabel": "How much your cycles vary",
+      "excludedLabel": "Cycles we set aside",
+      "excludedReason": {
+        "range": "outside the usual 21 to 45 day range",
+        "outlier": "unusually different from the rest"
+      },
+      "learnMore": {
+        "title": "Learn more",
+        "lutealPhase": "We assume a 14-day luteal phase unless your temperature readings tell us otherwise.",
+        "fertileWindowStart": "The fertile window starts 5 days before estimated ovulation because sperm can live that long.",
+        "limits": "Calendar-based estimates are a guide, not a guarantee."
+      },
+      "legend": {
+        "title": "What the letters mean",
+        "cycleLength": "C = length of one past cycle, in days",
+        "periodStart": "P = the date a period started",
+        "weight": "w = how much a cycle counts; newer cycles count more",
+        "predictedDate": "P-hat = your predicted next period start",
+        "ovulationDate": "O = estimated ovulation date",
+        "lutealLength": "L = luteal phase length, in days"
+      },
+      "yourNumbers": {
+        "cycleLengthsTitle": "Your recent cycle lengths",
+        "cycleLengthWithWeight": "{{length}} days (weight {{weight}})",
+        "rangeValue": "{{days}} days, give or take {{range}}"
+      }
+    }
+  }
+}

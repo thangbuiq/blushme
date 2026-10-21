@@ -1,0 +1,44 @@
+.screen {
+  padding: var(--space-xl) var(--space-lg) calc(var(--space-xxl) + 64px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.moreGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-hairline);
+}
+
+.chipGroup {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.moreToggle {
+  background: none;
+  border: none;
+  color: var(--color-tertiary);
+  font-family: var(--font-family-label-caps);
+  font-size: var(--font-size-label-caps);
+  letter-spacing: var(--letter-spacing-label-caps);
+  text-transform: uppercase;
+  text-align: left;
+  padding: var(--space-sm) 0;
+}
