@@ -25,6 +25,18 @@
 | **Privacy** | Per-user row level security, no ads, no analytics |
 | **Try it** | "Sử dụng tài khoản demo" on the sign-in page, no sign-up needed |
 
+## Install the app on your device
+
+Blushme is a progressive web app (PWA), so there is nothing to download from an app store. Open the site in your browser and add it to your device.
+
+| | Device | Browser | Steps |
+| --- | --- | --- | --- |
+| 🍎 | **iPhone / iPad** | 🧭 Safari | Tap **Share** ⬆️, then **Add to Home Screen** ➕, then **Add** |
+| 🤖 | **Android** | 🌐 Chrome | Tap the **⋮** menu, then **Install app** 📲 (or **Add to Home screen**) |
+| 🖥️ | **Windows / macOS / Linux** | 🌐 Chrome or Edge | Click the **install icon** ⬇️ at the right of the address bar, then **Install** |
+
+✅ After installing, Blushme opens in its own window like a native app.
+
 ## Screenshots
 
 <table>
@@ -72,18 +84,6 @@ The ring on the Today screen colours each day by phase. Phase names inside the a
 | Follicular | Năng lượng dâng / Rising energy | Until ovulation | Green |
 | Ovulation | Rạng rỡ / Glowing | About 3 days | Yellow |
 | Luteal | Dịu lại / Winding down | About 14 days | Lavender |
-
-## Install the app on your device
-
-Blushme is a progressive web app (PWA), so there is nothing to download from an app store. Open the site in your browser and add it to your device.
-
-| Device | Browser | Steps |
-| --- | --- | --- |
-| iPhone / iPad | Safari | Tap **Share**, then **Add to Home Screen**, then **Add** |
-| Android | Chrome | Tap the **⋮** menu, then **Install app** (or **Add to Home screen**) |
-| Windows / macOS / Linux | Chrome or Edge | Click the **install icon** at the right of the address bar, then **Install** |
-
-After installing, Blushme opens in its own window like a native app.
 
 ## Run it locally
 
