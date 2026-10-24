@@ -76,3 +76,57 @@
   font-size: 0.8125rem;
   font-weight: 600;
 }
+
+/* Desktop: the bottom bar becomes a left rail. */
+@media (min-width: 1024px) {
+  .wrap {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    width: var(--rail-width);
+    padding: var(--space-xl) var(--space-md);
+    border-right: 1px solid var(--color-hairline);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+  }
+
+  .wrap::before {
+    display: none;
+  }
+
+  .nav {
+    flex-direction: column;
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    gap: 8px;
+  }
+
+  .item {
+    flex: none;
+    justify-content: flex-start;
+    padding: 0 var(--space-md);
+  }
+
+  .active {
+    flex-grow: 0;
+  }
+}
+
+.railLabel {
+  display: none;
+  font-family: var(--font-family-label-caps);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  .railLabel {
+    display: inline;
+  }
+}
