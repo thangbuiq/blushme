@@ -91,4 +91,5 @@
   text-underline-offset: 3px;
   white-space: nowrap;
   cursor: pointer;
+  pointer-events: auto;
 }

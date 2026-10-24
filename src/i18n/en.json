@@ -15,7 +15,8 @@
     "close": "Close",
     "days": "days",
     "increase": "Increase",
-    "decrease": "Decrease"
+    "decrease": "Decrease",
+    "moreInfo": "Show explanation"
   },
   "nav": {
     "today": "Today",
@@ -170,13 +171,6 @@
       "estimatedNote": "* Estimated, based on your past cycles",
       "confirmed": "This month's period: {{start}} to {{end}}"
     },
-    "rangeSelect": {
-      "start": "Log a past period",
-      "promptStart": "Tap the first day of that period",
-      "promptEnd": "Now tap the last day",
-      "save": "Save period ({{days}} days)",
-      "cancel": "Cancel"
-    },
     "weekdays": {
       "Mon": "Mon",
       "Tue": "Tue",
@@ -185,20 +179,22 @@
       "Fri": "Fri",
       "Sat": "Sat",
       "Sun": "Sun"
+    },
+    "dayActions": {
+      "title": "This day has a log",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Delete everything logged for this day? This can't be undone."
     }
   },
   "log": {
     "todayTitle": "Today",
-    "cycleContext": "Day {{day}} · {{phase}}",
-    "onPeriod": "On my period",
-    "periodDayLabel": "Day {{day}} of your period",
-    "flowLabel": "Flow",
+    "cycleContext": "Day {{day}}",
     "flow": {
       "light": "Light",
       "medium": "Medium",
       "heavy": "Heavy"
     },
-    "addMore": "Add more",
     "symptomsLabel": "Symptoms",
     "symptoms": {
       "cramps": "Cramps",
@@ -241,7 +237,11 @@
       "lhLabel": "LH test",
       "lhPositive": "Positive",
       "intimacyLabel": "Intimacy"
-    }
+    },
+    "markPeriodStart": "Period started this day",
+    "periodStartedHere": "Period started on this day",
+    "deleteEntry": "Delete this day's log",
+    "moodHint": "You can pick more than one"
   },
   "insights": {
     "emptyTitle": "Still getting to know you",
@@ -270,7 +270,32 @@
     "symptoms": "Most common symptoms",
     "moods": "Most common moods",
     "noMoodTitle": "Add a little more",
-    "noMoodBody": "Log symptoms and moods to see what repeats through your cycle."
+    "noMoodBody": "Log symptoms and moods to see what repeats through your cycle.",
+    "advanced": {
+      "title": "Deeper analysis",
+      "teaserTitle": "Want deeper charts?",
+      "teaserBody": "Turn on advanced tracking to see cycle trends, temperature, fertile signs and patterns by cycle week.",
+      "teaserAction": "Open settings",
+      "trendTitle": "Cycle length trend",
+      "trendLegend": "Dots are cycles, the shaded band is the usual range around your average of {{avg}} days.",
+      "bbtTitle": "Basal temperature",
+      "bbtLegend": "Latest {{count}} readings. A lasting rise usually follows ovulation.",
+      "bbtEmpty": "Log your morning temperature to see the curve here.",
+      "mucusTitle": "Cervical mucus",
+      "mucusEmpty": "Log cervical mucus to see how it changes.",
+      "heatSymptoms": "Symptoms by cycle week",
+      "heatMoods": "Moods by cycle week",
+      "heatEmpty": "Log a few more days to see patterns by cycle week.",
+      "week1": "Days 1-7",
+      "week2": "Days 8-14",
+      "week3": "Days 15-21",
+      "week4": "Day 22+",
+      "totalsTitle": "Tracking totals",
+      "lhPositives": "Positive LH tests",
+      "intimacyDays": "Intimacy days",
+      "bbtReadings": "Temperature readings",
+      "mucusEntries": "Mucus entries"
+    }
   },
   "settings": {
     "language": "Language",
@@ -281,10 +306,7 @@
     "deleteAllConfirm": "This permanently deletes every log and setting in your account. This can't be undone.",
     "weekStart": "Week starts on",
     "units": "Units",
-    "goal": "Goal",
     "advancedTracking": "Advanced tracking",
-    "pausePredictions": "Pause predictions",
-    "fertilityWindow": "Show fertility window",
     "aboutBody": "Blushme syncs your data to your private account. No ads, no tracking.",
     "title": "Settings",
     "synced": "Synced to your account",
@@ -297,7 +319,6 @@
       "metric": "Metric",
       "imperial": "Imperial"
     },
-    "advancedHint": "Temperature, cervical mucus, LH tests",
     "account": "Account",
     "signOut": "Sign out",
     "deleteAccount": "Delete account",
@@ -305,7 +326,10 @@
     "imported": "Data imported",
     "importFailed": "Couldn't read that file",
     "demoNote": "Demo mode: nothing is saved",
-    "exitDemo": "Exit demo"
+    "exitDemo": "Exit demo",
+    "advancedTip": "Adds body temperature, cervical mucus, LH tests and intimacy to the log, and unlocks extra charts and analysis under Insights. Optional, and you can switch it off any time.",
+    "unitsTip": "Only changes how body temperature is shown (°C or °F).",
+    "weekStartTip": "The day shown in the first column of the calendar."
   },
   "engine": {
     "formula": {

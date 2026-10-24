@@ -211,3 +211,9 @@
   text-underline-offset: 3px;
   cursor: pointer;
 }
+
+.phaseTermIcon {
+  display: inline-flex;
+  margin-right: 4px;
+  vertical-align: -2px;
+}

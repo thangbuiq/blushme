@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { formatISO } from 'date-fns'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Trans, useTranslation } from 'react-i18next'
@@ -9,14 +10,15 @@ import { Chip } from '@/ui/Chip'
 import { useConfirm } from '@/ui/ConfirmDialog'
 import { REVEAL } from '@/ui/motion'
 import { formatShortDate, formatWeekdayDay } from '@/ui/dateFormat'
+import type { Phase } from '@/engine/types'
 import { useCycleState } from '@/store/cycleStore'
 import { useLogStore } from '@/store/logStore'
 import { useSettingsStore } from '@/store/settingsStore'
 import { useUiStore } from '@/store/uiStore'
 import { CalendarSection } from '@/features/calendar/CalendarSection'
-import { MOODS } from '@/features/log/moods'
+import { MOODS, moodsOf, toggleMood } from '@/features/log/moods'
 import { isSuspiciouslyEarly } from '@/features/log/periodValidation'
-import { PHASE_TONE, cycleGeometry } from './phaseColors'
+import { PHASE_COLOR, PHASE_ICON, PHASE_TONE, cycleGeometry } from './phaseColors'
 import { statusLineText } from './statusLine'
 import { CycleRing } from './CycleRing'
 import { PhaseTimeline } from './PhaseTimeline'
@@ -30,6 +32,26 @@ function greetingKey(): string {
   if (hour < 14) return 'today.greeting.noon'
   if (hour < 18) return 'today.greeting.afternoon'
   return 'today.greeting.evening'
+}
+
+function PhaseTerm({
+  phase,
+  onClick,
+  children,
+}: {
+  phase: Phase
+  onClick: () => void
+  children?: ReactNode
+}) {
+  const Icon = PHASE_ICON[phase]
+  return (
+    <button type="button" className={styles.phaseTerm} onClick={onClick}>
+      <span className={styles.phaseTermIcon} style={{ color: PHASE_COLOR[phase] }}>
+        <Icon size={16} />
+      </span>
+      {children}
+    </button>
+  )
 }
 
 export function TodayScreen() {
@@ -47,11 +69,12 @@ export function TodayScreen() {
 
   const today = todayISO()
   const todayLog = logs.find((l) => l.date === today)
-  const onPeriodToday = Boolean(todayLog?.periodStart || (todayLog?.flow ?? 0) > 0)
+  const onPeriodToday = Boolean(todayLog?.periodStart)
+  const todayMoods = todayLog ? moodsOf(todayLog) : []
 
   async function startPeriodToday() {
     if (isSuspiciouslyEarly(today, logs) && !(await confirm(t('log.earlyPeriodConfirm')))) return
-    await upsertLog({ date: today, periodStart: true, flow: todayLog?.flow || 2 })
+    await upsertLog({ date: today, periodStart: true })
     showToast('today.periodStarted')
   }
 
@@ -108,11 +131,7 @@ export function TodayScreen() {
                 i18nKey={`today.phaseStatus.${state.phase}`}
                 components={{
                   term: (
-                    <button
-                      type="button"
-                      className={styles.phaseTerm}
-                      onClick={() => openPhaseSheet(state.phase)}
-                    />
+                    <PhaseTerm phase={state.phase} onClick={() => openPhaseSheet(state.phase)} />
                   ),
                 }}
               />
@@ -145,9 +164,13 @@ export function TodayScreen() {
           {MOODS.map((mood) => (
             <Chip
               key={mood}
-              selected={todayLog?.mood === mood}
+              selected={todayMoods.includes(mood)}
               onClick={() =>
-                void upsertLog({ date: today, mood: todayLog?.mood === mood ? undefined : mood })
+                void upsertLog({
+                  date: today,
+                  moods: toggleMood(todayMoods, mood),
+                  mood: undefined,
+                })
               }
             >
               {t(`log.moods.${mood}`)}

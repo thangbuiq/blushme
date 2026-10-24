@@ -12,6 +12,7 @@ import { InsightsScreen } from '@/features/insights/InsightsScreen'
 import { SettingsScreen } from '@/features/settings/SettingsScreen'
 import { LogSheet } from '@/features/log/LogSheet'
 import { TodaySheets } from '@/features/today/TodaySheets'
+import { DayActionsSheet } from '@/features/calendar/DayActionsSheet'
 import { BottomNav } from '@/ui/BottomNav'
 import { Toast } from '@/ui/Toast'
 import { Splash } from '@/ui/Splash'
@@ -77,6 +78,7 @@ export function App() {
           </motion.div>
         </AnimatePresence>
         <LogSheet />
+        <DayActionsSheet />
         <TodaySheets />
         <BottomNav />
       </>

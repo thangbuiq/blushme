@@ -11,9 +11,7 @@ export interface SettingsRecord {
   statedPeriodLength: number
   statedConfidenceLow: boolean
   lutealPhaseLength: number | null
-  predictionsPaused: boolean
   advancedTracking: boolean
-  fertilityLayerEnabled: boolean
   fertilityDisclaimerShown: boolean
   units: Units
   weekStart: WeekStart
@@ -35,9 +33,7 @@ export const DEFAULT_SETTINGS: SettingsRecord = {
   statedPeriodLength: 5,
   statedConfidenceLow: false,
   lutealPhaseLength: null,
-  predictionsPaused: false,
   advancedTracking: false,
-  fertilityLayerEnabled: false,
   fertilityDisclaimerShown: false,
   units: 'metric',
   weekStart: 'monday',

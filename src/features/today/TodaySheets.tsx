@@ -3,6 +3,7 @@ import { useCycleState } from '@/store/cycleStore'
 import { useUiStore } from '@/store/uiStore'
 import { Sheet } from '@/ui/Sheet'
 import { DetailsSheet } from './DetailsSheet'
+import { PhaseTag } from './PhaseTag'
 import styles from './TodaySheets.module.css'
 
 // Mounted at the app root, outside the scrolling screen container, so the
@@ -15,8 +16,19 @@ export function TodaySheets() {
   return (
     <>
       <DetailsSheet state={state} />
-      <Sheet open={phase !== null} onClose={close} title={phase ? t(`today.phase.${phase}`) : ''}>
-        {phase && <p className={styles.phaseBody}>{t(`learn.phase.${phase}`)}</p>}
+      <Sheet
+        open={phase !== null}
+        onClose={close}
+        title={phase ? <PhaseTag phase={phase} size={20} /> : ''}
+      >
+        {phase && (
+          <>
+            {t(`today.phase.${phase}`) !== t(`today.phaseBadge.${phase}`) && (
+              <p className={styles.phaseClinical}>{t(`today.phase.${phase}`)}</p>
+            )}
+            <p className={styles.phaseBody}>{t(`learn.phase.${phase}`)}</p>
+          </>
+        )}
       </Sheet>
     </>
   )

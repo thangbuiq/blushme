@@ -14,6 +14,21 @@ describe('insightsData', () => {
     expect(averagePeriodLength(logs)).toBe(2.5)
   })
 
+  it('skips periods recorded as a start date only', () => {
+    expect(averagePeriodLength([{ date: '2026-01-01', periodStart: true }])).toBeNull()
+  })
+
+  it('counts every selected mood, including the legacy single mood', () => {
+    const logs: DailyLog[] = [
+      { date: '2026-01-01', moods: ['calm', 'happy'] },
+      { date: '2026-01-02', mood: 'calm' },
+    ]
+    expect(tallyMoods(logs)).toEqual([
+      { key: 'calm', count: 2 },
+      { key: 'happy', count: 1 },
+    ])
+  })
+
   it('returns null when no period was logged', () => {
     expect(averagePeriodLength([{ date: '2026-01-01', mood: 'calm' }])).toBeNull()
   })

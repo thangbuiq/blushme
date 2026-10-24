@@ -15,7 +15,8 @@
     "close": "Đóng",
     "days": "ngày",
     "increase": "Tăng",
-    "decrease": "Giảm"
+    "decrease": "Giảm",
+    "moreInfo": "Xem giải thích"
   },
   "nav": {
     "today": "Hôm nay",
@@ -170,13 +171,6 @@
       "estimatedNote": "* Ước tính, dựa trên các chu kỳ trước",
       "confirmed": "Kỳ kinh gần nhất: từ {{start}} đến {{end}}"
     },
-    "rangeSelect": {
-      "start": "Ghi lại kỳ kinh đã qua",
-      "promptStart": "Chạm vào ngày đầu của kỳ kinh đó",
-      "promptEnd": "Giờ chạm vào ngày cuối",
-      "save": "Lưu kỳ kinh ({{days}} ngày)",
-      "cancel": "Hủy"
-    },
     "weekdays": {
       "Mon": "T2",
       "Tue": "T3",
@@ -185,20 +179,22 @@
       "Fri": "T6",
       "Sat": "T7",
       "Sun": "CN"
+    },
+    "dayActions": {
+      "title": "Ngày này đã có ghi chép",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "deleteConfirm": "Xóa toàn bộ ghi chép của ngày này? Không thể hoàn tác."
     }
   },
   "log": {
     "todayTitle": "Hôm nay",
-    "cycleContext": "Ngày {{day}} · {{phase}}",
-    "onPeriod": "Đang trong kỳ kinh",
-    "periodDayLabel": "Ngày {{day}} trong kỳ kinh",
-    "flowLabel": "Lượng kinh",
+    "cycleContext": "Ngày {{day}}",
     "flow": {
       "light": "Ít",
       "medium": "Vừa",
       "heavy": "Nhiều"
     },
-    "addMore": "Thêm chi tiết",
     "symptomsLabel": "Triệu chứng",
     "symptoms": {
       "cramps": "Đau bụng",
@@ -241,7 +237,11 @@
       "lhLabel": "Kiểm tra LH",
       "lhPositive": "Dương tính",
       "intimacyLabel": "Quan hệ"
-    }
+    },
+    "markPeriodStart": "Kỳ kinh tới ngày này",
+    "periodStartedHere": "Kỳ kinh bắt đầu ngày này",
+    "deleteEntry": "Xóa nhật ký ngày này",
+    "moodHint": "Chọn được nhiều cảm xúc"
   },
   "insights": {
     "emptyTitle": "Blushme vẫn đang làm quen với em",
@@ -270,7 +270,32 @@
     "symptoms": "Triệu chứng hay gặp",
     "moods": "Cảm xúc hay gặp",
     "noMoodTitle": "Ghi thêm một chút",
-    "noMoodBody": "Hãy ghi lại triệu chứng và cảm xúc để thấy điều gì lặp lại trong chu kỳ."
+    "noMoodBody": "Hãy ghi lại triệu chứng và cảm xúc để thấy điều gì lặp lại trong chu kỳ.",
+    "advanced": {
+      "title": "Phân tích chuyên sâu",
+      "teaserTitle": "Muốn xem biểu đồ chi tiết hơn?",
+      "teaserBody": "Bật theo dõi chuyên sâu để xem xu hướng chu kỳ, nhiệt độ, dấu hiệu rụng trứng và quy luật theo từng tuần của chu kỳ.",
+      "teaserAction": "Mở cài đặt",
+      "trendTitle": "Xu hướng độ dài chu kỳ",
+      "trendLegend": "Mỗi chấm là một chu kỳ, vùng tô nhạt là khoảng thường gặp quanh mức trung bình {{avg}} ngày.",
+      "bbtTitle": "Nhiệt độ cơ thể buổi sáng",
+      "bbtLegend": "{{count}} lần đo gần nhất. Nhiệt độ tăng và giữ ổn định thường xuất hiện sau khi rụng trứng.",
+      "bbtEmpty": "Ghi nhiệt độ mỗi sáng để thấy đường biểu diễn ở đây.",
+      "mucusTitle": "Dịch nhầy cổ tử cung",
+      "mucusEmpty": "Ghi lại dịch nhầy để thấy nó thay đổi thế nào.",
+      "heatSymptoms": "Triệu chứng theo tuần của chu kỳ",
+      "heatMoods": "Cảm xúc theo tuần của chu kỳ",
+      "heatEmpty": "Ghi thêm vài ngày để thấy quy luật theo tuần của chu kỳ.",
+      "week1": "Ngày 1-7",
+      "week2": "Ngày 8-14",
+      "week3": "Ngày 15-21",
+      "week4": "Từ ngày 22",
+      "totalsTitle": "Tổng quan theo dõi",
+      "lhPositives": "Lần thử LH dương tính",
+      "intimacyDays": "Ngày gần gũi",
+      "bbtReadings": "Lần đo nhiệt độ",
+      "mucusEntries": "Lần ghi dịch nhầy"
+    }
   },
   "settings": {
     "language": "Ngôn ngữ",
@@ -281,10 +306,7 @@
     "deleteAllConfirm": "Thao tác này sẽ xóa vĩnh viễn mọi nhật ký và cài đặt trong tài khoản. Không thể hoàn tác.",
     "weekStart": "Tuần bắt đầu từ",
     "units": "Đơn vị",
-    "goal": "Mục tiêu",
     "advancedTracking": "Theo dõi chuyên sâu",
-    "pausePredictions": "Tạm dừng dự đoán",
-    "fertilityWindow": "Hiện cửa sổ dễ thụ thai",
     "aboutBody": "Blushme đồng bộ dữ liệu vào tài khoản riêng. Không quảng cáo, không theo dõi.",
     "title": "Cài đặt",
     "synced": "Đã đồng bộ với tài khoản",
@@ -297,7 +319,6 @@
       "metric": "Hệ mét",
       "imperial": "Hệ Anh"
     },
-    "advancedHint": "Nhiệt độ, dịch nhầy, que thử LH",
     "account": "Tài khoản",
     "signOut": "Đăng xuất",
     "deleteAccount": "Xóa tài khoản",
@@ -305,7 +326,10 @@
     "imported": "Đã nhập dữ liệu",
     "importFailed": "Không đọc được tệp này",
     "demoNote": "Chế độ demo, dữ liệu không được lưu",
-    "exitDemo": "Thoát chế độ demo"
+    "exitDemo": "Thoát chế độ demo",
+    "advancedTip": "Bật để ghi thêm nhiệt độ cơ thể, dịch nhầy, que thử LH và ngày gần gũi. Phần Nhịp chu kỳ sẽ có thêm biểu đồ và phân tích chi tiết. Không bắt buộc, có thể tắt bất cứ lúc nào.",
+    "unitsTip": "Chỉ dùng để hiển thị nhiệt độ cơ thể (°C hoặc °F).",
+    "weekStartTip": "Ngày được đặt ở cột đầu tiên của lịch."
   },
   "engine": {
     "formula": {

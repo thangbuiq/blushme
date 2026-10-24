@@ -102,8 +102,10 @@ App gate order in `App.tsx`: `Splash` while auth/data load, then `AuthScreen`, t
 - `src/ui/` holds primitives: `Button` (variants primary/secondary/ghost/danger, `loading`), `Chip`, `Field`/`FieldAction`, `Sheet` (bottom sheet, drag-to-dismiss via the handle), `ConfirmDialog`, `ToggleSwitch`, `DatePicker`, `Toast`, `BottomNav`, `Splash`, `Collapse`, `Icon`.
 
 Gotchas:
-- **Sheets and nav are positioned relative to `#root`, not the viewport.** `#root` is a `position: relative` app frame (`100dvh`, centered and bordered on wide screens); `Sheet`'s backdrop, `BottomNav` and `Toast` use `position: absolute` against it. Do not change them to `position: fixed`.
+- **Sheets and nav are positioned relative to `#root`, not the viewport.** `#root` is a `position: relative` app frame (`100dvh`, full width: the layout is the same single column at every width and just stretches on desktop); `Sheet`'s backdrop, `BottomNav` and `Toast` use `position: absolute` against it. Do not change them to `position: fixed`.
 - **Mount sheets outside the scrolling screen container** (as `LogSheet` and `TodaySheets` are in `App.tsx`). A sheet rendered inside the scrolling `motion.div` anchors to that scrolled box and opens at the wrong place.
+- **Periods are recorded as a start date only** (`periodStart`, via "Kỳ kinh tới" on Today or in the log sheet). There is no per-day flow or on/off toggle; days after the start are shown for `statedPeriodLength`. Tapping a calendar day that already has a log opens `DayActionsSheet` (edit or delete). Moods are multi-select (`moods: string[]`; read legacy `mood` through `moodsOf()`). The fertile window is always on and predictions can't be paused.
+- Phases are shown with `PhaseTag` (the timeline symbol plus the gentle name). Explanations in settings use `InfoTip`.
 - Confirmations use `useConfirm()` (`ui/ConfirmDialog.tsx`), not `window.confirm()`.
 - `DatePicker` renders a native `<input type="date">` on touch devices and a custom popover otherwise.
 - User-facing dates go through `src/ui/dateFormat.ts` (`formatShortDate`, `formatMonthYear`, `formatLongDate`, `formatWeekdayDay`), which special-case Vietnamese ("Tháng 10, 2026"). Never call `date-fns` `format` or `toLocaleDateString` directly for display.

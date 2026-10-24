@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Chip } from '@/ui/Chip'
 import { Button } from '@/ui/Button'
 import { ToggleSwitch } from '@/ui/ToggleSwitch'
+import { InfoTip } from '@/ui/InfoTip'
 import { useConfirm } from '@/ui/ConfirmDialog'
 import { Bloom } from '@/ui/art/Botanical'
 import { LogoutIcon } from '@/ui/Icon'
@@ -15,31 +16,25 @@ import { useLogStore } from '@/store/logStore'
 import { useUiStore } from '@/store/uiStore'
 import { exportToJson, importFromJson, deleteAllData } from '@/data/exportImport'
 import { deleteAccount } from '@/data/repo'
-import type { Goal, Units, WeekStart } from '@/data/settings'
+import type { Units, WeekStart } from '@/data/settings'
 import styles from './SettingsScreen.module.css'
-
-const GOALS: { goal: Goal; key: string }[] = [
-  { goal: 'track', key: 'Track' },
-  { goal: 'ttc', key: 'Ttc' },
-  { goal: 'avoiding', key: 'Avoiding' },
-]
 
 function ToggleRow({
   label,
-  hint,
+  tip,
   checked,
   onChange,
 }: {
   label: string
-  hint?: string
+  tip?: string
   checked: boolean
   onChange: (value: boolean) => void
 }) {
   return (
     <div className={styles.row}>
       <span className={styles.rowText}>
-        <span>{label}</span>
-        {hint && <span className={styles.rowHint}>{hint}</span>}
+        {label}
+        {tip && <InfoTip>{tip}</InfoTip>}
       </span>
       <ToggleSwitch checked={checked} onChange={onChange} ariaLabel={label} />
     </div>
@@ -161,17 +156,10 @@ export function SettingsScreen() {
       <motion.section className={styles.group} {...reveal(3)}>
         <h2 className={styles.groupTitle}>{t('settings.tracking')}</h2>
         <div className={styles.stack}>
-          <span className={styles.rowHint}>{t('settings.goal')}</span>
-          <div className={styles.chipGroup}>
-            {GOALS.map(({ goal, key }) => (
-              <Chip key={goal} selected={settings.goal === goal} onClick={() => update({ goal })}>
-                {t(`onboarding.step1.goal${key}`)}
-              </Chip>
-            ))}
-          </div>
-        </div>
-        <div className={styles.stack}>
-          <span className={styles.rowHint}>{t('settings.weekStart')}</span>
+          <span className={styles.rowHint}>
+            {t('settings.weekStart')}
+            <InfoTip>{t('settings.weekStartTip')}</InfoTip>
+          </span>
           <div className={styles.chipGroup}>
             {(['monday', 'sunday'] as WeekStart[]).map((option) => (
               <Chip
@@ -185,19 +173,17 @@ export function SettingsScreen() {
           </div>
         </div>
         <ToggleRow
-          label={t('settings.fertilityWindow')}
-          checked={settings.fertilityLayerEnabled}
-          onChange={(fertilityLayerEnabled) => update({ fertilityLayerEnabled })}
-        />
-        <ToggleRow
           label={t('settings.advancedTracking')}
-          hint={t('settings.advancedHint')}
+          tip={t('settings.advancedTip')}
           checked={settings.advancedTracking}
           onChange={(advancedTracking) => update({ advancedTracking })}
         />
         {settings.advancedTracking && (
           <div className={styles.stack}>
-            <span className={styles.rowHint}>{t('settings.units')}</span>
+            <span className={styles.rowHint}>
+              {t('settings.units')}
+              <InfoTip>{t('settings.unitsTip')}</InfoTip>
+            </span>
             <div className={styles.chipGroup}>
               {(['metric', 'imperial'] as Units[]).map((option) => (
                 <Chip
@@ -211,11 +197,6 @@ export function SettingsScreen() {
             </div>
           </div>
         )}
-        <ToggleRow
-          label={t('settings.pausePredictions')}
-          checked={settings.predictionsPaused}
-          onChange={(predictionsPaused) => update({ predictionsPaused })}
-        />
       </motion.section>
 
       {!demo && (

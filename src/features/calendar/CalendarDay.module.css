@@ -86,15 +86,3 @@
 }
 
 /* Transient states while picking a past period's start/end. */
-.rangeInside,
-.rangeInside:hover {
-  background-color: var(--color-blush-tint);
-  color: var(--color-primary);
-}
-
-.rangeBoundary,
-.rangeBoundary:hover {
-  background-color: var(--color-blush);
-  color: var(--color-primary);
-  box-shadow: inset 0 0 0 2px var(--color-tertiary);
-}

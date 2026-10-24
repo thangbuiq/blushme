@@ -132,7 +132,6 @@ export function OnboardingFlow() {
       statedCycleLength: notSure ? 28 : cycleLength,
       statedPeriodLength: notSure ? 5 : periodLength,
       statedConfidenceLow: notSure,
-      fertilityLayerEnabled: goal === 'ttc' || goal === 'avoiding',
       onboardingComplete: true,
     })
     setSaving(false)

@@ -67,3 +67,10 @@
   color: var(--color-secondary);
   font-size: var(--font-size-body-sm);
 }
+
+/* On wide screens keep bottom sheets a readable width instead of full-bleed. */
+@media (min-width: 640px) {
+  .sheet {
+    max-width: 560px;
+  }
+}
