@@ -211,3 +211,12 @@
   text-underline-offset: 3px;
   cursor: pointer;
 }
+
+@media (min-width: 1024px) {
+  .screen {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding-bottom: var(--space-xl);
+  }
+}

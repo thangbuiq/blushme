@@ -1,0 +1,150 @@
+.sectionHead {
+  grid-column: 1 / -1;
+  font-size: 1.25rem;
+  padding: var(--space-sm) var(--space-sm) 0;
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.title {
+  font-size: 1.125rem;
+}
+
+.legend {
+  color: var(--color-secondary);
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.grid {
+  stroke: var(--color-hairline);
+  stroke-width: 1;
+}
+
+.tick {
+  font-size: 9px;
+  fill: var(--color-secondary);
+}
+
+.band {
+  fill: var(--color-blush-tint);
+}
+
+.meanLine {
+  stroke: var(--color-blush-deep);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.line {
+  fill: none;
+  stroke: var(--color-tertiary);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dot {
+  fill: var(--color-surface);
+  stroke: var(--color-tertiary);
+  stroke-width: 2;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 110px 1fr 28px;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-body-sm);
+}
+
+.track {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-blush-tint);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-blush-deep), var(--color-tertiary));
+}
+
+.count {
+  text-align: right;
+  color: var(--color-secondary);
+}
+
+.totals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.totalValue {
+  font-family: var(--font-family-display);
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+.heat {
+  display: grid;
+  gap: 4px;
+  align-items: center;
+  font-size: var(--font-size-body-sm);
+}
+
+.heatHead {
+  color: var(--color-secondary);
+  font-size: 0.6875rem;
+  text-align: center;
+}
+
+.heatLabel {
+  padding-right: var(--space-sm);
+}
+
+.heatCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  color: var(--color-rose-deep);
+  background-color: color-mix(in srgb, var(--color-blush-deep) calc(var(--heat) * 70%), var(--color-blush-tint));
+}

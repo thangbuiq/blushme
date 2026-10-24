@@ -67,3 +67,12 @@
   color: var(--color-secondary);
   font-size: var(--font-size-body-sm);
 }
+
+/* Desktop: keep bottom sheets a readable width instead of spanning the frame. */
+@media (min-width: 1024px) {
+  .sheet {
+    max-width: 560px;
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-xl);
+  }
+}

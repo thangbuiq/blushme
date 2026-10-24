@@ -7,7 +7,9 @@ import { formatShortDate } from '@/ui/dateFormat'
 import { EASE, REVEAL } from '@/ui/motion'
 import { useCycleState } from '@/store/cycleStore'
 import { useLogStore } from '@/store/logStore'
+import { useSettingsStore } from '@/store/settingsStore'
 import { useUiStore } from '@/store/uiStore'
+import { AdvancedInsights } from './AdvancedInsights'
 import {
   averagePeriodLength,
   regularityOf,
@@ -56,6 +58,8 @@ export function InsightsScreen() {
   const logs = useLogStore((s) => s.logs)
   const setScreen = useUiStore((s) => s.setScreen)
   const openLogSheet = useUiStore((s) => s.openLogSheet)
+  const advanced = useSettingsStore((s) => s.settings.advancedTracking)
+  const imperial = useSettingsStore((s) => s.settings.units === 'imperial')
 
   const { math } = state
   const valid = math.validCycleLengths.length
@@ -108,12 +112,12 @@ export function InsightsScreen() {
 
   return (
     <div className={styles.screen}>
-      <motion.header className={styles.head} {...reveal(0)}>
+      <motion.header className={`${styles.head} ${styles.full}`} {...reveal(0)}>
         <h1>{t('insights.title')}</h1>
         <p className={styles.sub}>{t('insights.subtitle', { count: valid })}</p>
       </motion.header>
 
-      <motion.div className={styles.grid} {...reveal(1)}>
+      <motion.div className={`${styles.grid} ${styles.full}`} {...reveal(1)}>
         <div className={`${styles.stat} ${styles.statWide}`}>
           <span className={styles.statLabel}>{t('insights.nextPeriod')}</span>
           <span className={styles.statValue}>
@@ -139,7 +143,7 @@ export function InsightsScreen() {
           </span>
         </div>
         {regularity && (
-          <div className={`${styles.stat} ${styles.statWide}`}>
+          <div className={`${styles.stat} ${styles.statWide} ${styles.statFull}`}>
             <span className={styles.statLabel}>{t('insights.regularity')}</span>
             <span className={styles.statValue} style={{ fontSize: '1.5rem' }}>
               {t(`insights.regularityValue.${regularity}`)}
@@ -194,6 +198,18 @@ export function InsightsScreen() {
             onClick={() => openLogSheet(formatISO(new Date(), { representation: 'date' }))}
           >
             {t('today.logButton')}
+          </Button>
+        </motion.section>
+      )}
+
+      {advanced ? (
+        <AdvancedInsights math={math} logs={logs} fahrenheit={imperial} reveal={reveal} />
+      ) : (
+        <motion.section className={`${styles.card} ${styles.full}`} {...reveal(5)}>
+          <h2 className={styles.cardTitle}>{t('insights.advanced.teaserTitle')}</h2>
+          <p className={styles.sub}>{t('insights.advanced.teaserBody')}</p>
+          <Button variant="secondary" onClick={() => setScreen('settings')}>
+            {t('insights.advanced.teaserAction')}
           </Button>
         </motion.section>
       )}

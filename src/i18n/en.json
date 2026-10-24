@@ -270,7 +270,32 @@
     "symptoms": "Most common symptoms",
     "moods": "Most common moods",
     "noMoodTitle": "Add a little more",
-    "noMoodBody": "Log symptoms and moods to see what repeats through your cycle."
+    "noMoodBody": "Log symptoms and moods to see what repeats through your cycle.",
+    "advanced": {
+      "title": "Deeper analysis",
+      "teaserTitle": "Want deeper charts?",
+      "teaserBody": "Turn on advanced tracking to see cycle trends, temperature, fertile signs and patterns by cycle week.",
+      "teaserAction": "Open settings",
+      "trendTitle": "Cycle length trend",
+      "trendLegend": "Dots are cycles, the shaded band is the usual range around your average of {{avg}} days.",
+      "bbtTitle": "Basal temperature",
+      "bbtLegend": "Latest {{count}} readings. A lasting rise usually follows ovulation.",
+      "bbtEmpty": "Log your morning temperature to see the curve here.",
+      "mucusTitle": "Cervical mucus",
+      "mucusEmpty": "Log cervical mucus to see how it changes.",
+      "heatSymptoms": "Symptoms by cycle week",
+      "heatMoods": "Moods by cycle week",
+      "heatEmpty": "Log a few more days to see patterns by cycle week.",
+      "week1": "Days 1-7",
+      "week2": "Days 8-14",
+      "week3": "Days 15-21",
+      "week4": "Day 22+",
+      "totalsTitle": "Tracking totals",
+      "lhPositives": "Positive LH tests",
+      "intimacyDays": "Intimacy days",
+      "bbtReadings": "Temperature readings",
+      "mucusEntries": "Mucus entries"
+    }
   },
   "settings": {
     "language": "Language",

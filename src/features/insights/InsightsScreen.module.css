@@ -192,3 +192,39 @@
   align-items: center;
   gap: var(--space-md);
 }
+
+.full {
+  grid-column: 1 / -1;
+}
+
+/* Desktop: the single column becomes a two-column dashboard grid. Items that
+   should span (header, stats, wide charts) opt in with .full / .wide. */
+@media (min-width: 1024px) {
+  .screen {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--space-lg);
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-xl) var(--space-xl);
+  }
+
+  .empty {
+    grid-column: 1 / -1;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .statWide {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .statFull {
+    grid-column: 1 / -1;
+  }
+}

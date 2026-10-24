@@ -270,7 +270,32 @@
     "symptoms": "Triệu chứng hay gặp",
     "moods": "Cảm xúc hay gặp",
     "noMoodTitle": "Ghi thêm một chút",
-    "noMoodBody": "Hãy ghi lại triệu chứng và cảm xúc để thấy điều gì lặp lại trong chu kỳ."
+    "noMoodBody": "Hãy ghi lại triệu chứng và cảm xúc để thấy điều gì lặp lại trong chu kỳ.",
+    "advanced": {
+      "title": "Phân tích chuyên sâu",
+      "teaserTitle": "Muốn xem biểu đồ chi tiết hơn?",
+      "teaserBody": "Bật theo dõi chuyên sâu để xem xu hướng chu kỳ, nhiệt độ, dấu hiệu rụng trứng và quy luật theo từng tuần của chu kỳ.",
+      "teaserAction": "Mở cài đặt",
+      "trendTitle": "Xu hướng độ dài chu kỳ",
+      "trendLegend": "Mỗi chấm là một chu kỳ, vùng tô nhạt là khoảng thường gặp quanh mức trung bình {{avg}} ngày.",
+      "bbtTitle": "Nhiệt độ cơ thể buổi sáng",
+      "bbtLegend": "{{count}} lần đo gần nhất. Nhiệt độ tăng và giữ ổn định thường xuất hiện sau khi rụng trứng.",
+      "bbtEmpty": "Ghi nhiệt độ mỗi sáng để thấy đường biểu diễn ở đây.",
+      "mucusTitle": "Dịch nhầy cổ tử cung",
+      "mucusEmpty": "Ghi lại dịch nhầy để thấy nó thay đổi thế nào.",
+      "heatSymptoms": "Triệu chứng theo tuần của chu kỳ",
+      "heatMoods": "Cảm xúc theo tuần của chu kỳ",
+      "heatEmpty": "Ghi thêm vài ngày để thấy quy luật theo tuần của chu kỳ.",
+      "week1": "Ngày 1-7",
+      "week2": "Ngày 8-14",
+      "week3": "Ngày 15-21",
+      "week4": "Từ ngày 22",
+      "totalsTitle": "Tổng quan theo dõi",
+      "lhPositives": "Lần thử LH dương tính",
+      "intimacyDays": "Ngày gần gũi",
+      "bbtReadings": "Lần đo nhiệt độ",
+      "mucusEntries": "Lần ghi dịch nhầy"
+    }
   },
   "settings": {
     "language": "Ngôn ngữ",
