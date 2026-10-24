@@ -158,6 +158,7 @@ a {
 }
 
 .scroll {
+  overflow-x: hidden;
   scrollbar-width: none;
 }
 .scroll::-webkit-scrollbar {

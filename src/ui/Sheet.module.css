@@ -21,6 +21,7 @@
   padding: var(--space-sm) var(--space-lg) calc(var(--space-lg) + env(safe-area-inset-bottom));
   box-shadow: var(--shadow-sheet);
   z-index: 41;
+  overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
   outline: none;
