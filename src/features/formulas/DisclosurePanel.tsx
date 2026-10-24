@@ -41,7 +41,8 @@ export function DisclosurePanel({ state }: DisclosurePanelProps) {
   const { t } = useTranslation()
   const [open, setOpen] = useState<OpenSection>(null)
 
-  const toggle = (section: OpenSection) => setOpen((current) => (current === section ? null : section))
+  const toggle = (section: OpenSection) =>
+    setOpen((current) => (current === section ? null : section))
 
   return (
     <div className={styles.panel}>
@@ -55,7 +56,11 @@ export function DisclosurePanel({ state }: DisclosurePanelProps) {
           onClick={() => toggle('math')}
         >
           {t('engine.formula.showMath')}
-          <ChevronIcon className={[styles.chevron, open === 'math' && styles.chevronOpen].filter(Boolean).join(' ')} />
+          <ChevronIcon
+            className={[styles.chevron, open === 'math' && styles.chevronOpen]
+              .filter(Boolean)
+              .join(' ')}
+          />
         </button>
         <Collapse open={open === 'math'}>
           <div className={styles.content}>
@@ -95,7 +100,11 @@ export function DisclosurePanel({ state }: DisclosurePanelProps) {
           onClick={() => toggle('numbers')}
         >
           {t('engine.formula.withYourNumbers')}
-          <ChevronIcon className={[styles.chevron, open === 'numbers' && styles.chevronOpen].filter(Boolean).join(' ')} />
+          <ChevronIcon
+            className={[styles.chevron, open === 'numbers' && styles.chevronOpen]
+              .filter(Boolean)
+              .join(' ')}
+          />
         </button>
         <Collapse open={open === 'numbers'}>
           <div className={styles.content}>
@@ -113,11 +122,6 @@ export function DisclosurePanel({ state }: DisclosurePanelProps) {
             {state.math.weightedMean !== null && (
               <p className="numeral">
                 {t('engine.formula.meanLabel')}: {state.math.weightedMean.toFixed(1)}
-              </p>
-            )}
-            {state.math.weightedStdDev !== null && (
-              <p className="numeral">
-                {t('engine.formula.stdDevLabel')}: {state.math.weightedStdDev.toFixed(1)}
               </p>
             )}
             {state.math.excludedCycles.length > 0 && (

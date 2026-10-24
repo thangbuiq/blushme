@@ -11,43 +11,47 @@
     "yes": "Yes",
     "areYouSure": "Are you sure?",
     "no": "No",
-    "notSure": "I'm not sure"
+    "notSure": "I'm not sure",
+    "close": "Close",
+    "days": "days",
+    "increase": "Increase",
+    "decrease": "Decrease"
   },
   "nav": {
     "today": "Today",
-    "calendar": "Calendar",
     "insights": "Insights",
-    "settings": "Settings"
+    "settings": "Settings",
+    "label": "Main navigation"
   },
   "onboarding": {
     "step1": {
-      "title": "Welcome to Blush",
+      "title": "Welcome to Blushme",
       "languageLabel": "Language",
       "goalLabel": "What brings you here?",
       "goalTrack": "Track my cycle",
       "goalTtc": "Trying to conceive",
-      "goalAvoiding": "Avoiding pregnancy"
+      "goalAvoiding": "Avoiding pregnancy",
+      "goalTrackHint": "Understand your body day by day",
+      "goalTtcHint": "See your fertile window",
+      "goalAvoidingHint": "Know your higher and lower chance days"
     },
     "step2": {
       "title": "When did your last period start?",
-      "helper": "This gives us a starting point. You can edit it any time."
+      "helper": "This gives us a starting point. You can edit it any time.",
+      "label": "First day of your last period"
     },
     "step3": {
       "title": "Tell us your usual rhythm",
-      "cycleLengthLabel": "Typical cycle length (days)",
-      "periodLengthLabel": "Typical period length (days)"
+      "cycleLengthLabel": "Typical cycle length",
+      "periodLengthLabel": "Typical period length"
     },
     "disclaimer": "These are gentle estimates, not medical advice.",
-    "lockOffer": {
-      "title": "Keep this private?",
-      "body": "You can lock Blush with a PIN. You can turn this on later in Settings too.",
-      "enable": "Set a PIN",
-      "notNow": "Not now"
-    }
+    "disclaimerTitle": "A gentle note",
+    "start": "Start with Blushme"
   },
   "today": {
     "dayLabel": "Day {{day}}",
-    "logButton": "+ Log today",
+    "logButton": "Log today",
     "statusNext": "Next period in about {{days}} days",
     "statusNextOne": "Next period in about 1 day",
     "statusToday": "Your period starts today",
@@ -61,9 +65,9 @@
     },
     "phaseStatus": {
       "menstrual": "You're on your period",
-      "follicular": "You're in your follicular phase",
-      "ovulation": "You're ovulating",
-      "luteal": "You're in your luteal phase"
+      "follicular": "Your energy is rising",
+      "ovulation": "You're at your glowing peak",
+      "luteal": "Your body is winding down"
     },
     "phaseDescription": {
       "menstrual": "Hormones are at their lowest, so cramps and tiredness are common. Keep your belly warm and rest a little more.",
@@ -73,7 +77,7 @@
     },
     "learnLink": "Learn about your cycle",
     "details": {
-      "title": "The details",
+      "title": "Your prediction",
       "rangeLabel": "Expected range",
       "rangeValue": "{{start}} to {{end}}",
       "confidenceLabel": "Confidence",
@@ -82,8 +86,51 @@
         "medium": "Fairly steady",
         "high": "Well established"
       },
-      "howCalculated": "How is this calculated?"
-    }
+      "howCalculated": "How is this calculated?",
+      "variabilityValue": "±{{days}} days · {{label}}"
+    },
+    "greeting": {
+      "morning": "Good morning",
+      "noon": "Good day",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening"
+    },
+    "dayWord": "Day",
+    "ringLabel": "Day {{day}} of a {{total}}-day cycle",
+    "expected": "Expected {{date}}",
+    "howAreYou": "How are you today?",
+    "startPeriod": "My period started today",
+    "periodStarted": "Period logged. Take good care of yourself.",
+    "focusKicker": "What to pay attention to",
+    "tips": {
+      "menstrual": {
+        "tip1": "Keep your belly warm with a heat pack or a warm drink.",
+        "tip2": "Favour iron-rich foods like spinach, beans or lean meat.",
+        "tip3": "Rest more and keep movement gentle: a walk or a stretch."
+      },
+      "follicular": {
+        "tip1": "A great time for a workout or trying something new.",
+        "tip2": "Plan important tasks while your energy is rising.",
+        "tip3": "Drink plenty of water and enjoy fresh, colourful food."
+      },
+      "ovulation": {
+        "tip1": "Energy and mood often peak now. Enjoy it.",
+        "tip2": "A mild one-sided twinge is normal. Stay hydrated.",
+        "tip3": "This is your most fertile time. Keep your goal in mind."
+      },
+      "luteal": {
+        "tip1": "Reach for magnesium-rich snacks like nuts or dark chocolate.",
+        "tip2": "Wind down earlier and protect your sleep.",
+        "tip3": "Be patient with mood swings. A calm walk or journaling helps."
+      }
+    },
+    "phaseBadge": {
+      "menstrual": "Period",
+      "follicular": "Rising energy",
+      "ovulation": "Glowing",
+      "luteal": "Winding down"
+    },
+    "insightButton": "Understand this prediction"
   },
   "learn": {
     "title": "Understanding your cycle",
@@ -129,6 +176,15 @@
       "promptEnd": "Now tap the last day",
       "save": "Save period ({{days}} days)",
       "cancel": "Cancel"
+    },
+    "weekdays": {
+      "Mon": "Mon",
+      "Tue": "Tue",
+      "Wed": "Wed",
+      "Thu": "Thu",
+      "Fri": "Fri",
+      "Sat": "Sat",
+      "Sun": "Sun"
     }
   },
   "log": {
@@ -188,29 +244,68 @@
     }
   },
   "insights": {
-    "emptyTitle": "Still gathering your rhythm",
-    "emptyBody": "Log two cycles and we'll start showing gentle patterns here."
+    "emptyTitle": "Still getting to know you",
+    "emptyBody": "Log two full cycles and gentle patterns will bloom here.",
+    "title": "Your patterns",
+    "subtitle": "Based on {{count}} cycles",
+    "progress": "{{done}} of {{total}} cycles logged",
+    "backToToday": "Back to today",
+    "nextPeriod": "Next period",
+    "within": "give or take {{days}} days",
+    "avgCycle": "Average cycle",
+    "avgPeriod": "Average period",
+    "regularity": "Regularity",
+    "regularityValue": {
+      "steady": "Very steady",
+      "fairlySteady": "Fairly steady",
+      "variable": "Varies a lot"
+    },
+    "regularityHint": {
+      "steady": "Your cycles land within a couple of days of each other.",
+      "fairlySteady": "A few days of natural variation, which is common.",
+      "variable": "Your cycles differ quite a bit. If it worries you, a doctor can help."
+    },
+    "history": "Recent cycles",
+    "historyLegend": "Length in days. Your average is {{avg}} days. Striped bars are set aside as unusual.",
+    "symptoms": "Most common symptoms",
+    "moods": "Most common moods",
+    "noMoodTitle": "Add a little more",
+    "noMoodBody": "Log symptoms and moods to see what repeats through your cycle."
   },
   "settings": {
     "language": "Language",
-    "privacyLock": "Privacy & lock",
-    "reminders": "Reminders",
     "data": "Data",
     "export": "Export data",
     "import": "Import data",
     "deleteAll": "Delete all data",
-    "deleteAllConfirm": "This permanently deletes every log and setting on this device. This can't be undone.",
-    "more": "More",
+    "deleteAllConfirm": "This permanently deletes every log and setting in your account. This can't be undone.",
     "weekStart": "Week starts on",
     "units": "Units",
     "goal": "Goal",
     "advancedTracking": "Advanced tracking",
     "pausePredictions": "Pause predictions",
     "fertilityWindow": "Show fertility window",
-    "about": "About",
-    "aboutBody": "Blush keeps everything on this device. There are no accounts, ads or analytics.",
-    "loadDemoData": "Load demo data",
-    "removeDemoData": "Remove demo data"
+    "aboutBody": "Blushme syncs your data to your private account. No ads, no tracking.",
+    "title": "Settings",
+    "synced": "Synced to your account",
+    "tracking": "Tracking",
+    "weekStartOptions": {
+      "monday": "Monday",
+      "sunday": "Sunday"
+    },
+    "unitsOptions": {
+      "metric": "Metric",
+      "imperial": "Imperial"
+    },
+    "advancedHint": "Temperature, cervical mucus, LH tests",
+    "account": "Account",
+    "signOut": "Sign out",
+    "deleteAccount": "Delete account",
+    "deleteAccountConfirm": "This permanently deletes your account and all of your data. This can't be undone.",
+    "imported": "Data imported",
+    "importFailed": "Couldn't read that file",
+    "demoNote": "Demo mode: nothing is saved",
+    "exitDemo": "Exit demo"
   },
   "engine": {
     "formula": {
@@ -245,5 +340,48 @@
         "rangeValue": "{{days}} days, give or take {{range}}"
       }
     }
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signInCta": "Sign in",
+    "createAccount": "Create my account",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 6 characters",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "noAccount": "New to Blushme?",
+    "haveAccount": "Already have an account?",
+    "heroTitle": "Know your cycle, gently.",
+    "heroLead": "A private journal that keeps you company every day.",
+    "privacy": "Your data is stored securely and only you can see it.",
+    "sentTitle": "Check your email",
+    "sentBody": "We sent a confirmation link to {{email}}. Open it, then come back to sign in.",
+    "backToSignIn": "Back to sign in",
+    "errors": {
+      "invalidCredentials": "Incorrect email or password.",
+      "emailNotConfirmed": "Please confirm your email first. Check your inbox.",
+      "userExists": "This email already has an account. Try signing in.",
+      "weakPassword": "Your password needs at least 6 characters.",
+      "invalidEmail": "Please enter a valid email address.",
+      "rateLimited": "Too many attempts. Please wait a moment and try again.",
+      "network": "No connection. Check your internet and try again.",
+      "unknown": "Something went wrong. Please try again."
+    },
+    "useDemo": "Use the demo account"
+  },
+  "errors": {
+    "saveFailed": "Couldn't save. Check your connection and try again.",
+    "loadFailed": "Couldn't load your data. Check your connection."
+  },
+  "timeline": {
+    "label": "Cycle timeline",
+    "today": "Today",
+    "start": "Day 1",
+    "end": "Day {{day}}, then a new cycle",
+    "todayDay": "Today, day {{day}}",
+    "hint": "One cycle, start to finish. After the last day a new cycle begins. Tap a phase to read more.",
+    "note": "* These are days of your cycle, not days of the month."
   }
 }

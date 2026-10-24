@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next'
 import { ChevronIcon } from '@/ui/Icon'
 import { Button } from '@/ui/Button'
 import { SCREEN_TRANSITION } from '@/ui/motion'
-import { formatShortDate } from '@/ui/dateFormat'
+import { formatLongDate, formatMonthYear, formatShortDate } from '@/ui/dateFormat'
 import { useCycleState } from '@/store/cycleStore'
 import { useLogStore } from '@/store/logStore'
 import { useSettingsStore } from '@/store/settingsStore'
@@ -43,7 +43,7 @@ export function CalendarSection() {
   const [rangeEnd, setRangeEnd] = useState<ISODate | null>(null)
 
   const logs = useLogStore((s) => s.logs)
-  const upsertLog = useLogStore((s) => s.upsertLog)
+  const upsertLogs = useLogStore((s) => s.upsertLogs)
   const settings = useSettingsStore((s) => s.settings)
   const update = useSettingsStore((s) => s.update)
   const confirm = useConfirm()
@@ -51,12 +51,14 @@ export function CalendarSection() {
   const cycleState = useCycleState()
 
   const weekStartsOn = settings.weekStart === 'monday' ? 1 : 0
-  const weekdayLabels = settings.weekStart === 'monday' ? WEEKDAY_KEYS_MONDAY_START : WEEKDAY_KEYS_SUNDAY_START
+  const weekdayLabels =
+    settings.weekStart === 'monday' ? WEEKDAY_KEYS_MONDAY_START : WEEKDAY_KEYS_SUNDAY_START
 
   const days = useMemo(() => {
     const gridStart = startOfWeek(startOfMonth(monthAnchor), { weekStartsOn })
     const monthEnd = endOfMonth(monthAnchor)
-    const totalCells = Math.ceil((monthEnd.getTime() - gridStart.getTime()) / 86_400_000 / 7 + 1) * 7
+    const totalCells =
+      Math.ceil((monthEnd.getTime() - gridStart.getTime()) / 86_400_000 / 7 + 1) * 7
     return Array.from({ length: totalCells }, (_, i) => addDays(gridStart, i))
   }, [monthAnchor, weekStartsOn])
 
@@ -99,11 +101,15 @@ export function CalendarSection() {
     if (isSuspiciouslyEarly(rangeStart, logs)) {
       if (!(await confirm(t('log.earlyPeriodConfirm')))) return
     }
-    const spanDays = Math.round((new Date(rangeEnd).getTime() - new Date(rangeStart).getTime()) / 86_400_000) + 1
-    for (let i = 0; i < spanDays; i++) {
-      const date = formatISO(addDays(new Date(rangeStart), i), { representation: 'date' })
-      await upsertLog({ date, periodStart: i === 0, flow: 2 })
-    }
+    const spanDays =
+      Math.round((new Date(rangeEnd).getTime() - new Date(rangeStart).getTime()) / 86_400_000) + 1
+    await upsertLogs(
+      Array.from({ length: spanDays }, (_, i) => ({
+        date: formatISO(addDays(new Date(rangeStart), i), { representation: 'date' }),
+        periodStart: i === 0,
+        flow: 2 as const,
+      })),
+    )
     cancelRangeSelect()
   }
 
@@ -117,12 +123,19 @@ export function CalendarSection() {
       {summary && (
         <div className={styles.summary}>
           <p>
-            {t(summary.confirmed ? 'calendar.periodSummary.confirmed' : 'calendar.periodSummary.estimated', {
-              start: formatSummaryDate(summary.start),
-              end: formatSummaryDate(summary.end),
-            })}
+            {t(
+              summary.confirmed
+                ? 'calendar.periodSummary.confirmed'
+                : 'calendar.periodSummary.estimated',
+              {
+                start: formatSummaryDate(summary.start),
+                end: formatSummaryDate(summary.end),
+              },
+            )}
           </p>
-          {!summary.confirmed && <p className={styles.summaryNote}>{t('calendar.periodSummary.estimatedNote')}</p>}
+          {!summary.confirmed && (
+            <p className={styles.summaryNote}>{t('calendar.periodSummary.estimatedNote')}</p>
+          )}
         </div>
       )}
 
@@ -140,7 +153,7 @@ export function CalendarSection() {
           >
             <ChevronIcon size={18} className={styles.rotate180} />
           </button>
-          <span>{monthAnchor.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</span>
+          <span>{formatMonthYear(monthAnchor, i18n.language)}</span>
           <button
             type="button"
             className={styles.navButton}
@@ -181,7 +194,7 @@ export function CalendarSection() {
       <div className={styles.weekdayRow}>
         {weekdayLabels.map((key) => (
           <span key={key} className={styles.weekday}>
-            {key}
+            {t(`calendar.weekdays.${key}`)}
           </span>
         ))}
       </div>
@@ -220,7 +233,7 @@ export function CalendarSection() {
                   isToday={isSameDay(day, today)}
                   isCurrentMonth={day.getMonth() === monthAnchor.getMonth()}
                   onClick={() => handleDayClick(iso)}
-                  ariaLabel={day.toLocaleDateString(undefined, { dateStyle: 'full' })}
+                  ariaLabel={formatLongDate(day, i18n.language)}
                   rangeSelection={rangeSelection}
                 />
               )

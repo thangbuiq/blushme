@@ -12,9 +12,9 @@ interface UiState {
   detailsSheetOpen: boolean
   openDetailsSheet: () => void
   closeDetailsSheet: () => void
-  learnSheetOpen: boolean
-  openLearnSheet: () => void
-  closeLearnSheet: () => void
+  toast: { key: string; id: number } | null
+  showToast: (key: string) => void
+  hideToast: () => void
 }
 
 export const useUiStore = create<UiState>((set) => ({
@@ -27,7 +27,7 @@ export const useUiStore = create<UiState>((set) => ({
   detailsSheetOpen: false,
   openDetailsSheet: () => set({ detailsSheetOpen: true }),
   closeDetailsSheet: () => set({ detailsSheetOpen: false }),
-  learnSheetOpen: false,
-  openLearnSheet: () => set({ learnSheetOpen: true }),
-  closeLearnSheet: () => set({ learnSheetOpen: false }),
+  toast: null,
+  showToast: (key) => set({ toast: { key, id: Date.now() } }),
+  hideToast: () => set({ toast: null }),
 }))

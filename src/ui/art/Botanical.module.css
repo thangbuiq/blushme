@@ -1,0 +1,74 @@
+.petal {
+  transform-origin: 60px 60px;
+  animation: bloom 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--i) * 70ms + var(--delay, 0ms));
+}
+
+.still .petal {
+  animation: none;
+}
+
+.center {
+  transform-origin: 60px 60px;
+  animation: pop 700ms cubic-bezier(0.34, 1.56, 0.64, 1) 450ms both;
+}
+
+.spin {
+  transform-origin: 60px 60px;
+  animation: spin 90s linear infinite;
+}
+
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sway 8s ease-in-out infinite alternate;
+}
+
+.drift {
+  animation: drift var(--dur, 14s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes bloom {
+  from {
+    transform: scale(0.1) rotate(-12deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-1.8deg);
+  }
+  to {
+    transform: rotate(1.8deg);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(var(--dx, 10px), var(--dy, 16px), 0) rotate(var(--rot, 14deg));
+  }
+}

@@ -5,9 +5,11 @@ import { Sheet } from '@/ui/Sheet'
 import { ChevronIcon } from '@/ui/Icon'
 import { Collapse } from '@/ui/Collapse'
 import { formatShortDate } from '@/ui/dateFormat'
+import { regularityOf } from '@/features/insights/insightsData'
 import { DisclosurePanel } from '@/features/formulas/DisclosurePanel'
 import { useUiStore } from '@/store/uiStore'
 import type { CycleState } from '@/engine/types'
+import { LearnContent } from './LearnContent'
 import styles from './DetailsSheet.module.css'
 
 interface DetailsSheetProps {
@@ -30,6 +32,9 @@ export function DetailsSheet({ state }: DetailsSheetProps) {
     i18n.language,
   )
 
+  const stdDev = state.math.weightedStdDev
+  const regularity = regularityOf(stdDev)
+
   return (
     <Sheet open={open} onClose={close} title={t('today.details.title')}>
       <div className={styles.row}>
@@ -42,6 +47,20 @@ export function DetailsSheet({ state }: DetailsSheetProps) {
         <span className="label-caps">{t('today.details.confidenceLabel')}</span>
         <span>{t(`today.details.confidence.${state.confidence}`)}</span>
       </div>
+
+      {stdDev !== null && regularity && (
+        <div className={styles.row}>
+          <span className="label-caps">{t('engine.formula.stdDevLabel')}</span>
+          <span className="numeral">
+            {t('today.details.variabilityValue', {
+              days: stdDev.toFixed(1),
+              label: t(`insights.regularityValue.${regularity}`),
+            })}
+          </span>
+        </div>
+      )}
+
+      <LearnContent />
 
       <button
         type="button"

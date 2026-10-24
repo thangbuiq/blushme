@@ -5,7 +5,14 @@ interface DesignTokens {
   colors: Record<string, string>
   typography: Record<
     string,
-    { fontFamily: string; fontSize: string; fontWeight: number; lineHeight: number; letterSpacing?: string; fontFeature?: string }
+    {
+      fontFamily: string
+      fontSize: string
+      fontWeight: number
+      lineHeight: number
+      letterSpacing?: string
+      fontFeature?: string
+    }
   >
   rounded: Record<string, string>
   spacing: Record<string, string>
@@ -37,7 +44,8 @@ function main() {
   }
   for (const [name, type] of Object.entries(tokens.typography)) {
     const key = kebab(name)
-    lines.push(`  --font-family-${key}: '${type.fontFamily}', serif;`)
+    const family = type.fontFamily.includes(',') ? type.fontFamily : `'${type.fontFamily}', serif`
+    lines.push(`  --font-family-${key}: ${family};`)
     lines.push(`  --font-size-${key}: ${type.fontSize};`)
     lines.push(`  --font-weight-${key}: ${type.fontWeight};`)
     lines.push(`  --line-height-${key}: ${type.lineHeight};`)

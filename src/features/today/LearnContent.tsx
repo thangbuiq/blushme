@@ -1,22 +1,26 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Sheet } from '@/ui/Sheet'
 import { ChevronIcon } from '@/ui/Icon'
 import { Collapse } from '@/ui/Collapse'
-import { useUiStore } from '@/store/uiStore'
+import { useCycleState } from '@/store/cycleStore'
+import { useSettingsStore } from '@/store/settingsStore'
+import { PhaseTimeline } from './PhaseTimeline'
+import { PHASE_COLOR, PHASE_ICON, cycleGeometry } from './phaseColors'
 import type { Phase } from '@/engine/types'
-import styles from './LearnSheet.module.css'
+import styles from './LearnContent.module.css'
 
 const PHASES: Phase[] = ['menstrual', 'follicular', 'ovulation', 'luteal']
 
-export function LearnSheet() {
+/** Cycle education shown inside the prediction sheet: the four phases, a timeline and when to see a doctor. */
+export function LearnContent() {
   const { t } = useTranslation()
-  const open = useUiStore((s) => s.learnSheetOpen)
-  const close = useUiStore((s) => s.closeLearnSheet)
   const [openPhase, setOpenPhase] = useState<Phase | null>(null)
+  const state = useCycleState()
+  const periodLength = useSettingsStore((s) => s.settings.statedPeriodLength)
 
   return (
-    <Sheet open={open} onClose={close} title={t('learn.title')}>
+    <>
+      <h3 className={styles.learnTitle}>{t('learn.title')}</h3>
       <p className={styles.intro}>{t('learn.intro')}</p>
 
       <div className={styles.row}>
@@ -25,8 +29,17 @@ export function LearnSheet() {
       </div>
 
       <p className={styles.sectionTitle}>{t('learn.phasesTitle')}</p>
+      <p className={styles.timelineHint}>{t('timeline.hint')}</p>
+      <PhaseTimeline
+        geometry={cycleGeometry(state, periodLength)}
+        currentDay={state.dayOfCycle}
+        currentPhase={state.phase}
+        detailed
+        onSelect={(phase) => setOpenPhase(phase)}
+      />
       {PHASES.map((phase) => {
         const expanded = openPhase === phase
+        const PhaseIcon = PHASE_ICON[phase]
         return (
           <div key={phase}>
             <button
@@ -35,7 +48,12 @@ export function LearnSheet() {
               aria-expanded={expanded}
               onClick={() => setOpenPhase(expanded ? null : phase)}
             >
-              {t(`today.phase.${phase}`)}
+              <span className={styles.phaseName}>
+                <span style={{ color: PHASE_COLOR[phase], display: 'flex' }}>
+                  <PhaseIcon size={18} />
+                </span>
+                {t(`today.phase.${phase}`)}
+              </span>
               <ChevronIcon className={expanded ? styles.chevronOpen : undefined} />
             </button>
             <Collapse open={expanded}>
@@ -55,6 +73,6 @@ export function LearnSheet() {
           <li>{t('learn.doctor.item4')}</li>
         </ul>
       </div>
-    </Sheet>
+    </>
   )
 }

@@ -1,53 +1,182 @@
 .screen {
-  min-height: 100%;
-  padding: var(--space-xxl) var(--space-lg) var(--space-xl);
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  padding: calc(var(--space-lg) + env(safe-area-inset-top)) var(--space-lg)
+    calc(var(--space-lg) + env(safe-area-inset-bottom));
+  background:
+    radial-gradient(380px 260px at 100% 0%, #ffdce6 0%, transparent 70%),
+    radial-gradient(320px 240px at 0% 100%, #f3e8fb 0%, transparent 70%), var(--color-neutral);
 }
 
-/* Each AnimatePresence step is wrapped in a motion.div for the slide
-   transition; this gives that wrapper the flex layout the old flat
-   .screen > .content/.footer structure relied on, so content and footer
-   stay a full step apart instead of the wrapper collapsing them together. */
+.top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  min-height: 44px;
+}
+
+.back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hairline);
+  background-color: var(--color-surface);
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.backIcon {
+  transform: rotate(180deg);
+}
+
+.progress {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  flex: 1;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-hairline);
+  overflow: hidden;
+}
+
+.dotFill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-blush-deep), var(--color-tertiary));
+  border-radius: inherit;
+}
+
 .stepInner {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: var(--space-xl);
   flex: 1;
+  padding-top: var(--space-lg);
 }
 
 .content {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
+  position: relative;
+}
+
+.art {
+  align-self: flex-start;
+  margin-bottom: calc(-1 * var(--space-sm));
 }
 
 .chipGroup {
   display: flex;
   flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.goalList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.goal {
+  display: flex;
+  align-items: center;
   gap: var(--space-md);
+  text-align: left;
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hairline);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.goalSelected {
+  border-color: var(--color-tertiary);
+  background-color: var(--color-blush-tint);
+}
+
+.goalText {
+  display: flex;
+  flex-direction: column;
+}
+
+.goalHint {
+  color: var(--color-secondary);
+  font-size: var(--font-size-body-sm);
 }
 
 .languageRow {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .footer {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-sm);
 }
 
 .skipLink {
   background: none;
   border: none;
+  min-height: 44px;
   color: var(--color-secondary);
   text-align: center;
   text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .disclaimer {
   color: var(--color-secondary);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.stepperButton {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hairline);
+  background-color: var(--color-surface);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-tertiary);
+}
+
+.stepperButton:disabled {
+  opacity: 0.4;
+}
+
+.stepperValue {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-family-h1);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.stepperUnit {
+  display: block;
+  font-family: var(--font-family-body-sm);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-secondary);
+  margin-top: 4px;
 }

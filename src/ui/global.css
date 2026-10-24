@@ -1,8 +1,17 @@
 @import './fonts.css';
 @import './tokens.css';
 
+:root {
+  --shadow-soft: 0 1px 2px rgba(62, 42, 51, 0.04), 0 8px 24px rgba(184, 65, 106, 0.08);
+  --shadow-lift: 0 2px 6px rgba(62, 42, 51, 0.05), 0 18px 44px rgba(184, 65, 106, 0.14);
+  --shadow-sheet: 0 -12px 48px rgba(62, 42, 51, 0.16);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-height: 92px;
+}
+
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -12,36 +21,48 @@ body {
 }
 
 html {
-  font-size: 108%; /* a touch bigger overall, per feedback that defaults felt small */
+  font-size: 100%;
 }
 
 body {
-  background-color: var(--color-neutral);
+  background:
+    radial-gradient(900px 500px at 12% -10%, #ffe3ea 0%, transparent 60%),
+    radial-gradient(800px 500px at 100% 100%, #f1e6fb 0%, transparent 55%), var(--color-neutral);
+  background-attachment: fixed;
   color: var(--color-primary);
   font-family: var(--font-family-body-md);
   font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-body-md);
   line-height: var(--line-height-body-md);
   -webkit-font-smoothing: antialiased;
-  transition: background-color 200ms ease, color 200ms ease;
+  text-rendering: optimizeLegibility;
   display: flex;
   justify-content: center;
-  /* Centers the app frame vertically only once there's room to spare (desktop);
-     on short/mobile viewports it just stacks from the top, never clipping content. */
   align-items: safe center;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
-/* The app's own bounded "frame" — every fixed-feeling UI (bottom nav, sheets,
-   modals) anchors to THIS box (position: absolute) instead of the raw
-   viewport, so they stay visually attached to the frame once it's centered
-   on larger screens instead of the frame floating free of them. */
+/* The app's bounded frame. Fixed-feeling UI (nav, sheets, toasts) anchors to
+   THIS box with position: absolute so it stays attached to the frame once the
+   frame is centered on a wide screen. */
 #root {
   width: 100%;
   max-width: 480px;
-  height: 100vh;
+  height: 100dvh;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, #fffcfc 0%, var(--color-neutral) 100%);
+}
+
+@media (min-width: 560px) and (min-height: 760px) {
+  #root {
+    height: min(calc(100dvh - 48px), 920px);
+    margin: 24px 0;
+    border-radius: 24px;
+    box-shadow:
+      var(--shadow-lift),
+      0 0 0 1px var(--color-hairline);
+  }
 }
 
 h1,
@@ -49,12 +70,14 @@ h2,
 h3 {
   font-family: var(--font-family-h1);
   margin: 0;
+  color: var(--color-primary);
 }
 
 h1 {
   font-size: var(--font-size-h1);
   font-weight: var(--font-weight-h1);
   line-height: var(--line-height-h1);
+  letter-spacing: var(--letter-spacing-h1);
 }
 
 h2 {
@@ -63,8 +86,20 @@ h2 {
   line-height: var(--line-height-h2);
 }
 
+h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
 p {
   margin: 0;
+}
+
+em {
+  font-family: var(--font-family-h1);
+  font-style: italic;
+  color: var(--color-tertiary);
 }
 
 button,
@@ -79,10 +114,18 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: var(--color-tertiary);
+}
+
 :focus-visible {
   outline: 2px solid var(--color-tertiary);
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--color-blush);
 }
 
 .label-caps {
@@ -91,7 +134,7 @@ button {
   font-weight: var(--font-weight-label-caps);
   line-height: var(--line-height-label-caps);
   letter-spacing: var(--letter-spacing-label-caps);
-  text-transform: uppercase;
+  color: var(--color-secondary);
 }
 
 .numeral {
@@ -112,6 +155,13 @@ button {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+}
+
+.scroll {
+  scrollbar-width: none;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

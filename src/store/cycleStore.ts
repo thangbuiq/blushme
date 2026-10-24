@@ -25,8 +25,5 @@ export function useCycleState(today?: string) {
     ],
   )
 
-  return useMemo(
-    () => computeCycle(logs, cycleSettings, today),
-    [logs, cycleSettings, today],
-  )
+  return useMemo(() => computeCycle(logs, cycleSettings, today), [logs, cycleSettings, today])
 }
