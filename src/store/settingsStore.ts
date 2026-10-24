@@ -20,7 +20,7 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
     if (!user) return
     if (demo) {
       set({
-        settings: { ...DEFAULT_SETTINGS, onboardingComplete: true },
+        settings: { ...DEFAULT_SETTINGS, onboardingComplete: true, displayName: 'Thuý Vy' },
         loaded: true,
       })
       return

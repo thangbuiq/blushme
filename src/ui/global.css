@@ -146,6 +146,7 @@ a {
 
 .scroll {
   overflow-x: hidden;
+  scroll-behavior: smooth;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -155,6 +156,10 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .scroll {
+    scroll-behavior: auto;
+  }
+
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
