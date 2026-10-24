@@ -14,7 +14,7 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-md);
   padding: var(--space-lg);
   background:
@@ -24,15 +24,36 @@
   box-shadow: var(--shadow-soft);
 }
 
-.avatar {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-blush-tint);
+.profileTop {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: var(--space-md);
+}
+
+.name {
+  font-family: var(--font-family-h2);
+  font-size: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.avatarPicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.avatarOption {
+  padding: 3px;
+  background: none;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.avatarSelected {
+  border-color: var(--color-tertiary);
 }
 
 .who {

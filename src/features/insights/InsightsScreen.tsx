@@ -59,6 +59,7 @@ export function InsightsScreen() {
   const setScreen = useUiStore((s) => s.setScreen)
   const openLogSheet = useUiStore((s) => s.openLogSheet)
   const advanced = useSettingsStore((s) => s.settings.advancedTracking)
+  const statedPeriodLength = useSettingsStore((s) => s.settings.statedPeriodLength)
   const imperial = useSettingsStore((s) => s.settings.units === 'imperial')
 
   const { math } = state
@@ -106,7 +107,7 @@ export function InsightsScreen() {
   const maxLen = Math.max(...recent, 1)
   const mean = math.weightedMean ?? 0
   const regularity = regularityOf(math.weightedStdDev)
-  const periodAvg = averagePeriodLength(logs)
+  const periodAvg = averagePeriodLength(logs) ?? statedPeriodLength
   const symptoms = tallySymptoms(logs)
   const moods = tallyMoods(logs)
 
@@ -138,7 +139,7 @@ export function InsightsScreen() {
         <div className={styles.stat}>
           <span className={styles.statLabel}>{t('insights.avgPeriod')}</span>
           <span className={styles.statValue}>
-            {periodAvg ?? '-'}
+            {periodAvg}
             <span className={styles.statUnit}>{t('common.days')}</span>
           </span>
         </div>

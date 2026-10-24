@@ -32,7 +32,7 @@
 }
 
 .fertile {
-  background-color: var(--color-lavender);
+  background-color: var(--color-sky);
 }
 
 .fertileUnderline {
@@ -57,11 +57,12 @@
 }
 
 .low {
-  background-color: var(--color-mint);
+  border: 1.5px solid var(--color-sky-deep);
 }
 
 .ovulation {
-  background-color: var(--color-butter);
+  background-color: var(--color-sky-deep);
+  color: var(--color-on-tertiary);
 }
 
 .ovulationDot {
@@ -72,7 +73,7 @@
   width: 4px;
   height: 4px;
   border-radius: var(--radius-full);
-  background-color: var(--color-primary);
+  background-color: var(--color-on-tertiary);
 }
 
 .today {

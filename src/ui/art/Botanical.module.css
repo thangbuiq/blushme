@@ -15,17 +15,17 @@
 
 .spin {
   transform-origin: 60px 60px;
-  animation: spin 90s linear infinite;
+  animation: none;
 }
 
 .sway {
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: sway 8s ease-in-out infinite alternate;
+  animation: none;
 }
 
 .drift {
-  animation: drift var(--dur, 14s) ease-in-out infinite alternate;
+  animation: none;
   animation-delay: var(--delay, 0s);
 }
 

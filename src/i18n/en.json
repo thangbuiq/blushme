@@ -34,7 +34,9 @@
       "goalAvoiding": "Avoiding pregnancy",
       "goalTrackHint": "Understand your body day by day",
       "goalTtcHint": "See your fertile window",
-      "goalAvoidingHint": "Know your higher and lower chance days"
+      "goalAvoidingHint": "Know your higher and lower chance days",
+      "nameLabel": "What should Blushme call you?",
+      "namePlaceholder": "Name or nickname (optional)"
     },
     "step2": {
       "title": "When did your last period start?",
@@ -329,7 +331,13 @@
     "exitDemo": "Exit demo",
     "advancedTip": "Adds body temperature, cervical mucus, LH tests and intimacy to the log, and unlocks extra charts and analysis under Insights. Optional, and you can switch it off any time.",
     "unitsTip": "Only changes how body temperature is shown (°C or °F).",
-    "weekStartTip": "The day shown in the first column of the calendar."
+    "weekStartTip": "The day shown in the first column of the calendar.",
+    "profile": {
+      "noName": "Add your name",
+      "nameLabel": "What should Blushme call you?",
+      "namePlaceholder": "Name or nickname",
+      "avatarLabel": "Avatar"
+    }
   },
   "engine": {
     "formula": {

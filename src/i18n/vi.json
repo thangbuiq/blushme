@@ -34,7 +34,9 @@
       "goalAvoiding": "Tránh thai",
       "goalTrackHint": "Hiểu cơ thể từng ngày",
       "goalTtcHint": "Xem cửa sổ dễ thụ thai",
-      "goalAvoidingHint": "Biết ngày khả năng thụ thai cao và thấp"
+      "goalAvoidingHint": "Biết ngày khả năng thụ thai cao và thấp",
+      "nameLabel": "Blushme nên gọi em là gì?",
+      "namePlaceholder": "Tên hoặc biệt danh (không bắt buộc)"
     },
     "step2": {
       "title": "Kỳ kinh gần nhất bắt đầu khi nào?",
@@ -329,7 +331,13 @@
     "exitDemo": "Thoát chế độ demo",
     "advancedTip": "Bật để ghi thêm nhiệt độ cơ thể, dịch nhầy, que thử LH và ngày gần gũi. Phần Nhịp chu kỳ sẽ có thêm biểu đồ và phân tích chi tiết. Không bắt buộc, có thể tắt bất cứ lúc nào.",
     "unitsTip": "Chỉ dùng để hiển thị nhiệt độ cơ thể (°C hoặc °F).",
-    "weekStartTip": "Ngày được đặt ở cột đầu tiên của lịch."
+    "weekStartTip": "Ngày được đặt ở cột đầu tiên của lịch.",
+    "profile": {
+      "noName": "Thêm tên của em",
+      "nameLabel": "Blushme nên gọi em là gì?",
+      "namePlaceholder": "Tên hoặc biệt danh",
+      "avatarLabel": "Ảnh đại diện"
+    }
   },
   "engine": {
     "formula": {

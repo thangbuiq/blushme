@@ -5,7 +5,7 @@ import { Collapse } from '@/ui/Collapse'
 import { useCycleState } from '@/store/cycleStore'
 import { useSettingsStore } from '@/store/settingsStore'
 import { PhaseTimeline } from './PhaseTimeline'
-import { PHASE_COLOR, PHASE_ICON, cycleGeometry } from './phaseColors'
+import { PHASE_TEXT_COLOR, cycleGeometry } from './phaseColors'
 import type { Phase } from '@/engine/types'
 import styles from './LearnContent.module.css'
 
@@ -39,7 +39,6 @@ export function LearnContent() {
       />
       {PHASES.map((phase) => {
         const expanded = openPhase === phase
-        const PhaseIcon = PHASE_ICON[phase]
         return (
           <div key={phase}>
             <button
@@ -49,10 +48,7 @@ export function LearnContent() {
               onClick={() => setOpenPhase(expanded ? null : phase)}
             >
               <span className={styles.phaseName}>
-                <span style={{ color: PHASE_COLOR[phase], display: 'flex' }}>
-                  <PhaseIcon size={18} />
-                </span>
-                {t(`today.phase.${phase}`)}
+                <span style={{ color: PHASE_TEXT_COLOR[phase] }}>{t(`today.phase.${phase}`)}</span>
               </span>
               <ChevronIcon className={expanded ? styles.chevronOpen : undefined} />
             </button>

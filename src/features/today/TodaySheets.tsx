@@ -16,11 +16,7 @@ export function TodaySheets() {
   return (
     <>
       <DetailsSheet state={state} />
-      <Sheet
-        open={phase !== null}
-        onClose={close}
-        title={phase ? <PhaseTag phase={phase} size={20} /> : ''}
-      >
+      <Sheet open={phase !== null} onClose={close} title={phase ? <PhaseTag phase={phase} /> : ''}>
         {phase && (
           <>
             {t(`today.phase.${phase}`) !== t(`today.phaseBadge.${phase}`) && (

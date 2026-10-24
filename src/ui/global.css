@@ -18,6 +18,9 @@ html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 html {
@@ -33,10 +36,9 @@ body {
   line-height: var(--line-height-body-md);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  position: fixed;
+  inset: 0;
   display: flex;
-  justify-content: center;
-  align-items: safe center;
-  min-height: 100dvh;
 }
 
 /* The app frame. It stretches to the whole viewport at any width; the layout
@@ -44,7 +46,7 @@ body {
    toasts) anchors to THIS box with position: absolute. */
 #root {
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   position: relative;
   overflow: hidden;
   background: #fff;
@@ -144,6 +146,8 @@ a {
 
 .scroll {
   overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 .scroll::-webkit-scrollbar {

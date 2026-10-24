@@ -11,6 +11,14 @@ export const PHASE_COLOR: Record<Phase, string> = {
   luteal: '#B39BE0',
 }
 
+/** Darker shades of the phase colours, readable as text on white. */
+export const PHASE_TEXT_COLOR: Record<Phase, string> = {
+  menstrual: '#B8416A',
+  follicular: '#4B8765',
+  ovulation: '#A06F08',
+  luteal: '#7656C2',
+}
+
 export const PHASE_TONE: Record<Phase, Tone> = {
   menstrual: 'rose',
   follicular: 'mint',

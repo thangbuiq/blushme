@@ -2,11 +2,13 @@ import { useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Chip } from '@/ui/Chip'
+import { Avatar } from '@/ui/Avatar'
+import { AVATARS } from '@/ui/avatars'
+import { Field } from '@/ui/Input'
 import { Button } from '@/ui/Button'
 import { ToggleSwitch } from '@/ui/ToggleSwitch'
 import { InfoTip } from '@/ui/InfoTip'
 import { useConfirm } from '@/ui/ConfirmDialog'
-import { Bloom } from '@/ui/art/Botanical'
 import { LogoutIcon } from '@/ui/Icon'
 import { REVEAL } from '@/ui/motion'
 import { setStoredLanguage } from '@/i18n'
@@ -16,7 +18,7 @@ import { useLogStore } from '@/store/logStore'
 import { useUiStore } from '@/store/uiStore'
 import { exportToJson, importFromJson, deleteAllData } from '@/data/exportImport'
 import { deleteAccount } from '@/data/repo'
-import type { Units, WeekStart } from '@/data/settings'
+import { NAME_MAX, type Units, type WeekStart } from '@/data/settings'
 import styles from './SettingsScreen.module.css'
 
 function ToggleRow({
@@ -54,6 +56,7 @@ export function SettingsScreen() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const confirm = useConfirm()
   const [busy, setBusy] = useState<string | null>(null)
+  const [name, setName] = useState(settings.displayName)
 
   const reveal = (i: number) => ({
     variants: REVEAL,
@@ -121,15 +124,55 @@ export function SettingsScreen() {
       </motion.header>
 
       <motion.section className={styles.profile} {...reveal(1)}>
-        <span className={styles.avatar} aria-hidden="true">
-          <Bloom size={56} petals={5} still />
-        </span>
-        <span className={styles.who}>
-          <span className={styles.email} title={user?.email ?? undefined}>
-            {user?.email}
+        <div className={styles.profileTop}>
+          <Avatar id={settings.avatar} size={64} />
+          <span className={styles.who}>
+            <span className={styles.name}>
+              {settings.displayName.trim() || t('settings.profile.noName')}
+            </span>
+            <span className={styles.email} title={user?.email ?? undefined}>
+              {user?.email}
+            </span>
+            <span className={styles.sub}>{t(demo ? 'settings.demoNote' : 'settings.synced')}</span>
           </span>
-          <span className={styles.sub}>{t(demo ? 'settings.demoNote' : 'settings.synced')}</span>
-        </span>
+        </div>
+        <Field
+          id="settings-name"
+          label={t('settings.profile.nameLabel')}
+          placeholder={t('settings.profile.namePlaceholder')}
+          maxLength={NAME_MAX}
+          autoComplete="given-name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onBlur={() => {
+            const trimmed = name.trim()
+            if (trimmed !== settings.displayName) void update({ displayName: trimmed })
+          }}
+        />
+        <div
+          className={styles.avatarPicker}
+          role="radiogroup"
+          aria-label={t('settings.profile.avatarLabel')}
+        >
+          {AVATARS.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              role="radio"
+              aria-checked={settings.avatar === option.id}
+              aria-label={option.id}
+              className={[
+                styles.avatarOption,
+                settings.avatar === option.id && styles.avatarSelected,
+              ]
+                .filter(Boolean)
+                .join(' ')}
+              onClick={() => void update({ avatar: option.id })}
+            >
+              <Avatar id={option.id} size={44} />
+            </button>
+          ))}
+        </div>
       </motion.section>
 
       <motion.section className={styles.group} {...reveal(2)}>

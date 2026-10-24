@@ -1,3 +1,5 @@
+export const NAME_MAX = 24
+
 export type Goal = 'track' | 'ttc' | 'avoiding'
 export type Units = 'metric' | 'imperial'
 export type WeekStart = 'sunday' | 'monday'
@@ -7,6 +9,8 @@ export interface SettingsRecord {
   onboardingComplete: boolean
   language: 'en' | 'vi' | null // null = Vietnamese (the default)
   goal: Goal
+  displayName: string
+  avatar: string
   statedCycleLength: number
   statedPeriodLength: number
   statedConfidenceLow: boolean
@@ -29,6 +33,8 @@ export const DEFAULT_SETTINGS: SettingsRecord = {
   onboardingComplete: false,
   language: null,
   goal: 'track',
+  displayName: '',
+  avatar: 'rose-6',
   statedCycleLength: 28,
   statedPeriodLength: 5,
   statedConfidenceLow: false,

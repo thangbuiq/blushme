@@ -29,13 +29,13 @@
 }
 
 .dotFertile {
-  background-color: var(--color-lavender);
+  background-color: var(--color-sky);
 }
 
 .dotOvulation {
-  background-color: var(--color-butter);
+  background-color: var(--color-sky-deep);
 }
 
 .dotLow {
-  background-color: var(--color-mint);
+  border: 1.5px solid var(--color-sky-deep);
 }

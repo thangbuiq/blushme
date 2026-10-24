@@ -70,7 +70,7 @@ export function App() {
             initial={reduceMotion ? undefined : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.28, ease: SCREEN_TRANSITION.ease }}
+            transition={{ duration: reduceMotion ? 0 : 0.2, ease: SCREEN_TRANSITION.ease }}
           >
             {screen === 'today' && <TodayScreen />}
             {screen === 'insights' && <InsightsScreen />}

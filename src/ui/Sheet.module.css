@@ -1,9 +1,7 @@
 .backdrop {
   position: absolute;
   inset: 0;
-  background-color: rgba(62, 42, 51, 0.38);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(62, 42, 51, 0.42);
   z-index: 40;
   display: flex;
   align-items: flex-end;

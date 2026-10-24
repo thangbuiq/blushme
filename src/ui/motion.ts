@@ -12,6 +12,6 @@ export const REVEAL = {
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: EASE, delay: 0.06 * i },
+    transition: { duration: 0.35, ease: EASE, delay: 0.04 * Math.min(i, 5) },
   }),
 }

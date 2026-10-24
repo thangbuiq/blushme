@@ -29,8 +29,16 @@
   margin-top: 2px;
 }
 
-.headerArt {
-  margin: -8px -4px -12px 0;
+.name {
+  color: var(--color-tertiary);
+}
+
+.avatarButton {
+  flex-shrink: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .card {
@@ -210,10 +218,4 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
-}
-
-.phaseTermIcon {
-  display: inline-flex;
-  margin-right: 4px;
-  vertical-align: -2px;
 }

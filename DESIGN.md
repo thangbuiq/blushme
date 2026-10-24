@@ -3,22 +3,24 @@ version: alpha
 name: Blushme
 description: A premium, Vietnamese-first cycle journal. Airy white and blush pink, delicate botanical illustration, refined serif headlines over a clean humanist sans, restrained, crisp corners.
 colors:
-  primary: "#3E2A33"
-  secondary: "#7A6671"
-  tertiary: "#B8416A"
-  on-tertiary: "#FFFFFF"
-  neutral: "#FFFFFF"
-  surface: "#FFFFFF"
-  blush: "#F8C9D5"
-  blush-tint: "#FFF0F3"
-  blush-deep: "#F2A7BB"
-  hairline: "#F3DEE4"
-  rose-deep: "#8F2D50"
-  lavender: "#DCCDF2"
-  butter: "#F8E2A6"
-  mint: "#C6E9D6"
-  leaf: "#A9CBB3"
-  leaf-deep: "#6E9B7F"
+  primary: '#3E2A33'
+  secondary: '#7A6671'
+  tertiary: '#B8416A'
+  on-tertiary: '#FFFFFF'
+  neutral: '#FFFFFF'
+  surface: '#FFFFFF'
+  blush: '#F8C9D5'
+  blush-tint: '#FFF0F3'
+  blush-deep: '#F2A7BB'
+  hairline: '#F3DEE4'
+  rose-deep: '#8F2D50'
+  lavender: '#DCCDF2'
+  butter: '#F8E2A6'
+  mint: '#C6E9D6'
+  leaf: '#A9CBB3'
+  leaf-deep: '#6E9B7F'
+  sky: '#D4E8F7'
+  sky-deep: '#4F93C4'
 typography:
   display:
     fontFamily: Fraunces
