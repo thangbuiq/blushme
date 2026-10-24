@@ -199,3 +199,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.phaseTerm {
+  display: inline;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-tertiary);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}

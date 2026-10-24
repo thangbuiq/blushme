@@ -81,8 +81,14 @@
   gap: 6px;
   margin-top: 4px;
   padding: 2px 0;
-  color: var(--color-rose-deep);
-  font-size: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--color-tertiary);
+  font-family: inherit;
+  font-size: 0.8125rem;
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   white-space: nowrap;
+  cursor: pointer;
 }

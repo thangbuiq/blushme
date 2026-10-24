@@ -64,10 +64,10 @@
       "luteal": "Hoàng thể"
     },
     "phaseStatus": {
-      "menstrual": "Em đang trong kỳ kinh, hãy nghỉ ngơi và chăm sóc bản thân nhé",
-      "follicular": "Kỳ nang trứng, có thể em sẽ thấy tràn đầy năng lượng hơn",
-      "ovulation": "Kỳ rụng trứng là lúc em rạng rỡ nhất, nhưng dễ mang thai lắm đó",
-      "luteal": "Giai đoạn hoàng thể, có thể em thấy căng tức ngực hoặc dễ cáu hơn"
+      "menstrual": "Em đang trong <term>kỳ kinh</term>, hãy nghỉ ngơi và chăm sóc bản thân nhé",
+      "follicular": "<term>Kỳ nang trứng</term>, có thể em sẽ thấy tràn đầy năng lượng hơn",
+      "ovulation": "<term>Kỳ rụng trứng</term> là lúc em rạng rỡ nhất, nhưng dễ mang thai lắm đó",
+      "luteal": "Giai đoạn <term>hoàng thể</term>, có thể em thấy căng tức ngực hoặc dễ cáu hơn"
     },
     "phaseDescription": {
       "menstrual": "Cơ thể có thể hơi mỏi và đau bụng nhẹ, vì nội tiết tố đang ở mức thấp nhất trong giai đoạn hành kinh. Hãy giữ ấm bụng và nghỉ ngơi nhiều hơn nhé.",

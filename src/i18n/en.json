@@ -64,10 +64,10 @@
       "luteal": "Luteal"
     },
     "phaseStatus": {
-      "menstrual": "You're on your period",
-      "follicular": "Your energy is rising",
-      "ovulation": "You're at your glowing peak",
-      "luteal": "Your body is winding down"
+      "menstrual": "You're on your <term>period</term>",
+      "follicular": "Your energy is rising in the <term>follicular phase</term>",
+      "ovulation": "You're at your glowing peak, <term>ovulation</term>",
+      "luteal": "Your body is winding down in the <term>luteal phase</term>"
     },
     "phaseDescription": {
       "menstrual": "Hormones are at their lowest, so cramps and tiredness are common. Keep your belly warm and rest a little more.",

@@ -1,6 +1,6 @@
 import { formatISO } from 'date-fns'
 import { motion, useReducedMotion } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { CheckIcon, ChevronIcon, DropIcon, PlusIcon } from '@/ui/Icon'
 import { Bloom, Sprig } from '@/ui/art/Botanical'
 import { ButtonVine } from '@/ui/art/ButtonVine'
@@ -42,6 +42,7 @@ export function TodayScreen() {
   const periodLength = useSettingsStore((s) => s.settings.statedPeriodLength)
   const openLogSheet = useUiStore((s) => s.openLogSheet)
   const openDetailsSheet = useUiStore((s) => s.openDetailsSheet)
+  const openPhaseSheet = useUiStore((s) => s.openPhaseSheet)
   const showToast = useUiStore((s) => s.showToast)
 
   const today = todayISO()
@@ -103,7 +104,18 @@ export function TodayScreen() {
           <div>
             <p className={styles.focusKicker}>{t('today.focusKicker')}</p>
             <h2 id="focus-title" style={{ fontSize: '1.25rem' }}>
-              {t(`today.phaseStatus.${state.phase}`)}
+              <Trans
+                i18nKey={`today.phaseStatus.${state.phase}`}
+                components={{
+                  term: (
+                    <button
+                      type="button"
+                      className={styles.phaseTerm}
+                      onClick={() => openPhaseSheet(state.phase)}
+                    />
+                  ),
+                }}
+              />
             </h2>
           </div>
         </div>

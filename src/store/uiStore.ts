@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 
+import type { Phase } from '@/engine/types'
+
 export type Screen = 'today' | 'insights' | 'settings'
 
 interface UiState {
@@ -12,6 +14,9 @@ interface UiState {
   detailsSheetOpen: boolean
   openDetailsSheet: () => void
   closeDetailsSheet: () => void
+  phaseSheet: Phase | null
+  openPhaseSheet: (phase: Phase) => void
+  closePhaseSheet: () => void
   toast: { key: string; id: number } | null
   showToast: (key: string) => void
   hideToast: () => void
@@ -27,6 +32,9 @@ export const useUiStore = create<UiState>((set) => ({
   detailsSheetOpen: false,
   openDetailsSheet: () => set({ detailsSheetOpen: true }),
   closeDetailsSheet: () => set({ detailsSheetOpen: false }),
+  phaseSheet: null,
+  openPhaseSheet: (phase) => set({ phaseSheet: phase }),
+  closePhaseSheet: () => set({ phaseSheet: null }),
   toast: null,
   showToast: (key) => set({ toast: { key, id: Date.now() } }),
   hideToast: () => set({ toast: null }),
