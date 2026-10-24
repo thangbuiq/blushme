@@ -7,6 +7,7 @@
   --shadow-sheet: 0 -12px 48px rgba(62, 42, 51, 0.16);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --nav-height: 92px;
+  --rail-width: 220px;
 }
 
 * {
@@ -59,6 +60,24 @@ body {
     box-shadow:
       var(--shadow-lift),
       0 0 0 1px var(--color-hairline);
+  }
+}
+
+/* Desktop shell: the frame widens to a workspace with the nav as a left rail
+   (see BottomNav). Screens leave room for the rail and centre their content. */
+@media (min-width: 1024px) {
+  #root {
+    max-width: 1280px;
+    height: min(calc(100dvh - 48px), 960px);
+    margin: 24px 0;
+    border-radius: 24px;
+    box-shadow:
+      var(--shadow-lift),
+      0 0 0 1px var(--color-hairline);
+  }
+
+  #root .scroll {
+    left: var(--rail-width) !important;
   }
 }
 

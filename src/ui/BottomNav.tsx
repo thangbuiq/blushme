@@ -50,6 +50,7 @@ export function BottomNav() {
                   {t(labelKey)}
                 </motion.span>
               )}
+              {!active && <span className={styles.railLabel}>{t(labelKey)}</span>}
             </motion.button>
           )
         })}

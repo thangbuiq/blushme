@@ -36,6 +36,34 @@ export function buildDemoLogs(today: Date = new Date()): DailyLog[] {
       date: formatISO(addDays(cursor, 13 + (cycle % 3)), { representation: 'date' }),
       mood: MID_CYCLE_MOODS[cycle % MID_CYCLE_MOODS.length],
     })
+    // Biphasic temperature, mucus and an LH surge on the last three cycles so the
+    // advanced charts have data. Ovulation sits around day length - 14.
+    if (cycle >= CYCLE_LENGTHS.length - 3) {
+      const ovDay = length - 14
+      const lastDay = cycle === CYCLE_LENGTHS.length - 1 ? 12 : length
+      for (let day = 0; day < lastDay; day++) {
+        const date = formatISO(addDays(cursor, day), { representation: 'date' })
+        const wobble = ((day * 7 + cycle * 3) % 5) / 100
+        const bbt = Math.round((day < ovDay ? 36.3 + wobble : 36.7 + wobble) * 100) / 100
+        const existing = logs.find((l) => l.date === date)
+        const extra: Partial<DailyLog> = {
+          bbt,
+          cervicalMucus:
+            day < PERIOD_LENGTH
+              ? undefined
+              : day < ovDay - 5
+                ? 'dry'
+                : day < ovDay - 2
+                  ? 'creamy'
+                  : day <= ovDay
+                    ? 'eggWhite'
+                    : 'sticky',
+          lhPositive: day === ovDay - 1 ? true : undefined,
+        }
+        if (existing) Object.assign(existing, extra)
+        else logs.push({ date, ...extra })
+      }
+    }
     cursor = addDays(cursor, length)
   })
 
