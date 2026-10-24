@@ -10,6 +10,8 @@ export interface DailyLog {
   spotting?: boolean
   flow?: Flow
   symptoms?: string[]
+  moods?: string[]
+  /** Legacy single mood from older logs; read through moodsOf(). */
   mood?: string
   note?: string
   bbt?: number // Celsius

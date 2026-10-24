@@ -5,13 +5,14 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '@/ui/Button'
 import { Chip } from '@/ui/Chip'
 import { DatePicker } from '@/ui/DatePicker'
+import { Field } from '@/ui/Input'
 import { ChevronIcon, DropIcon, LeafIcon, SparkIcon } from '@/ui/Icon'
 import { Bloom } from '@/ui/art/Botanical'
 import { SCREEN_TRANSITION, SPRING } from '@/ui/motion'
 import { useSettingsStore } from '@/store/settingsStore'
 import { useLogStore } from '@/store/logStore'
 import { setStoredLanguage } from '@/i18n'
-import type { Goal } from '@/data/settings'
+import { NAME_MAX, type Goal } from '@/data/settings'
 import styles from './OnboardingFlow.module.css'
 
 type Step = 'step1' | 'step2' | 'step3' | 'disclaimer'
@@ -112,6 +113,7 @@ export function OnboardingFlow() {
 
   const [step, setStep] = useState<Step>('step1')
   const [goal, setGoal] = useState<Goal>('track')
+  const [name, setName] = useState('')
   const [lastPeriodDate, setLastPeriodDate] = useState(todayISO())
   const [hasLastPeriodDate, setHasLastPeriodDate] = useState(false)
   const [cycleLength, setCycleLength] = useState(28)
@@ -128,11 +130,11 @@ export function OnboardingFlow() {
     }
     await update({
       goal,
+      displayName: name.trim(),
       language: i18n.language.startsWith('en') ? 'en' : 'vi',
       statedCycleLength: notSure ? 28 : cycleLength,
       statedPeriodLength: notSure ? 5 : periodLength,
       statedConfidenceLow: notSure,
-      fertilityLayerEnabled: goal === 'ttc' || goal === 'avoiding',
       onboardingComplete: true,
     })
     setSaving(false)
@@ -199,6 +201,15 @@ export function OnboardingFlow() {
                 ))}
               </div>
             </div>
+            <Field
+              id="onboarding-name"
+              label={t('onboarding.step1.nameLabel')}
+              placeholder={t('onboarding.step1.namePlaceholder')}
+              maxLength={NAME_MAX}
+              autoComplete="given-name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
             <div className={styles.chipGroup}>
               <span className="label-caps">{t('onboarding.step1.goalLabel')}</span>
               <div className={styles.goalList}>

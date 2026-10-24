@@ -15,7 +15,8 @@
     "close": "Close",
     "days": "days",
     "increase": "Increase",
-    "decrease": "Decrease"
+    "decrease": "Decrease",
+    "moreInfo": "Show explanation"
   },
   "nav": {
     "today": "Today",
@@ -33,7 +34,9 @@
       "goalAvoiding": "Avoiding pregnancy",
       "goalTrackHint": "Understand your body day by day",
       "goalTtcHint": "See your fertile window",
-      "goalAvoidingHint": "Know your higher and lower chance days"
+      "goalAvoidingHint": "Know your higher and lower chance days",
+      "nameLabel": "What should Blushme call you?",
+      "namePlaceholder": "Name or nickname (optional)"
     },
     "step2": {
       "title": "When did your last period start?",
@@ -141,10 +144,10 @@
     },
     "phasesTitle": "The four phases",
     "phase": {
-      "menstrual": "The egg from last cycle wasn't fertilized, so the uterine lining breaks down and sheds — this is your period, usually lasting 3 to 7 days.",
-      "follicular": "Starting alongside your period, the pituitary gland prompts your ovaries to grow follicles while rising estrogen thickens the uterine lining again.",
-      "ovulation": "Around the middle of the cycle (day 14 in a 28-day cycle), a surge of LH causes a mature follicle to burst and release an egg.",
-      "luteal": "After ovulation, the burst follicle becomes the corpus luteum and releases progesterone to keep the lining thick. Without fertilization, it breaks down, hormones drop, and the next period begins."
+      "menstrual": "The egg from last cycle wasn't fertilized, so the uterine lining breaks down and sheds — this is your period, usually lasting 3 to 7 days. These are relatively safe days, but not completely safe, especially with short or irregular cycles.",
+      "follicular": "Starting alongside your period, the pituitary gland prompts your ovaries to grow follicles while rising estrogen thickens the uterine lining again. The first days are relatively safe, but the closer to ovulation the more dangerous they get, because sperm can survive in the body for up to about 5 days.",
+      "ovulation": "Around the middle of the cycle (day 14 in a 28-day cycle), a surge of LH causes a mature follicle to burst and release an egg. These are the most dangerous days: ovulation day and roughly the 5 days before it. If you're not trying to conceive, you need protection throughout this whole stretch.",
+      "luteal": "After ovulation, the burst follicle becomes the corpus luteum and releases progesterone to keep the lining thick. Without fertilization, it breaks down, hormones drop, and the next period begins. About a day after ovulation these are relatively safe days. Calendar estimates of ovulation can be off, though, so don't rely on this as dependable contraception."
     },
     "doctor": {
       "title": "When to see a doctor",
@@ -170,13 +173,6 @@
       "estimatedNote": "* Estimated, based on your past cycles",
       "confirmed": "This month's period: {{start}} to {{end}}"
     },
-    "rangeSelect": {
-      "start": "Log a past period",
-      "promptStart": "Tap the first day of that period",
-      "promptEnd": "Now tap the last day",
-      "save": "Save period ({{days}} days)",
-      "cancel": "Cancel"
-    },
     "weekdays": {
       "Mon": "Mon",
       "Tue": "Tue",
@@ -185,20 +181,22 @@
       "Fri": "Fri",
       "Sat": "Sat",
       "Sun": "Sun"
+    },
+    "dayActions": {
+      "title": "This day has a log",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Delete everything logged for this day? This can't be undone."
     }
   },
   "log": {
     "todayTitle": "Today",
-    "cycleContext": "Day {{day}} · {{phase}}",
-    "onPeriod": "On my period",
-    "periodDayLabel": "Day {{day}} of your period",
-    "flowLabel": "Flow",
+    "cycleContext": "Day {{day}}",
     "flow": {
       "light": "Light",
       "medium": "Medium",
       "heavy": "Heavy"
     },
-    "addMore": "Add more",
     "symptomsLabel": "Symptoms",
     "symptoms": {
       "cramps": "Cramps",
@@ -241,7 +239,11 @@
       "lhLabel": "LH test",
       "lhPositive": "Positive",
       "intimacyLabel": "Intimacy"
-    }
+    },
+    "markPeriodStart": "Period started this day",
+    "periodStartedHere": "Period started on this day",
+    "deleteEntry": "Delete this day's log",
+    "moodHint": "You can pick more than one"
   },
   "insights": {
     "emptyTitle": "Still getting to know you",
@@ -306,10 +308,7 @@
     "deleteAllConfirm": "This permanently deletes every log and setting in your account. This can't be undone.",
     "weekStart": "Week starts on",
     "units": "Units",
-    "goal": "Goal",
     "advancedTracking": "Advanced tracking",
-    "pausePredictions": "Pause predictions",
-    "fertilityWindow": "Show fertility window",
     "aboutBody": "Blushme syncs your data to your private account. No ads, no tracking.",
     "title": "Settings",
     "synced": "Synced to your account",
@@ -322,7 +321,6 @@
       "metric": "Metric",
       "imperial": "Imperial"
     },
-    "advancedHint": "Temperature, cervical mucus, LH tests",
     "account": "Account",
     "signOut": "Sign out",
     "deleteAccount": "Delete account",
@@ -330,7 +328,16 @@
     "imported": "Data imported",
     "importFailed": "Couldn't read that file",
     "demoNote": "Demo mode: nothing is saved",
-    "exitDemo": "Exit demo"
+    "exitDemo": "Exit demo",
+    "advancedTip": "Adds body temperature, cervical mucus, LH tests and intimacy to the log, and unlocks extra charts and analysis under Insights. Optional, and you can switch it off any time.",
+    "unitsTip": "Only changes how body temperature is shown (°C or °F).",
+    "weekStartTip": "The day shown in the first column of the calendar.",
+    "profile": {
+      "noName": "Add your name",
+      "nameLabel": "What should Blushme call you?",
+      "namePlaceholder": "Name or nickname",
+      "avatarLabel": "Avatar"
+    }
   },
   "engine": {
     "formula": {
@@ -381,9 +388,6 @@
     "heroTitle": "Know your cycle, gently.",
     "heroLead": "A private journal that keeps you company every day.",
     "privacy": "Your data is stored securely and only you can see it.",
-    "sentTitle": "Check your email",
-    "sentBody": "We sent a confirmation link to {{email}}. Open it, then come back to sign in.",
-    "backToSignIn": "Back to sign in",
     "errors": {
       "invalidCredentials": "Incorrect email or password.",
       "emailNotConfirmed": "Please confirm your email first. Check your inbox.",
@@ -394,7 +398,8 @@
       "network": "No connection. Check your internet and try again.",
       "unknown": "Something went wrong. Please try again."
     },
-    "useDemo": "Use the demo account"
+    "useDemo": "Use the demo account",
+    "signedUp": "You're signed up! You can sign in now."
   },
   "errors": {
     "saveFailed": "Couldn't save. Check your connection and try again.",

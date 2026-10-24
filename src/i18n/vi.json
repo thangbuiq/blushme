@@ -15,7 +15,8 @@
     "close": "Đóng",
     "days": "ngày",
     "increase": "Tăng",
-    "decrease": "Giảm"
+    "decrease": "Giảm",
+    "moreInfo": "Xem giải thích"
   },
   "nav": {
     "today": "Hôm nay",
@@ -33,7 +34,9 @@
       "goalAvoiding": "Tránh thai",
       "goalTrackHint": "Hiểu cơ thể từng ngày",
       "goalTtcHint": "Xem cửa sổ dễ thụ thai",
-      "goalAvoidingHint": "Biết ngày khả năng thụ thai cao và thấp"
+      "goalAvoidingHint": "Biết ngày khả năng thụ thai cao và thấp",
+      "nameLabel": "Blushme nên gọi em là gì?",
+      "namePlaceholder": "Tên hoặc biệt danh (không bắt buộc)"
     },
     "step2": {
       "title": "Kỳ kinh gần nhất bắt đầu khi nào?",
@@ -141,10 +144,10 @@
     },
     "phasesTitle": "Bốn giai đoạn của chu kỳ",
     "phase": {
-      "menstrual": "Trứng của chu kỳ trước không được thụ tinh, lớp niêm mạc tử cung bong ra và đẩy ra ngoài. Đây là kỳ hành kinh, thường kéo dài 3 đến 7 ngày.",
-      "follicular": "Diễn ra đồng thời với hành kinh, tuyến yên kích thích buồng trứng sản xuất các nang trứng, trong khi estrogen tăng dần khiến niêm mạc tử cung dày lên trở lại.",
-      "ovulation": "Vào khoảng giữa chu kỳ (ngày 14 với chu kỳ 28 ngày), lượng hormone LH tăng cao đột ngột khiến nang trứng chín vỡ và giải phóng trứng.",
-      "luteal": "Sau khi rụng trứng, nang trứng vỡ biến thành hoàng thể và tiết ra progesterone để giữ cho niêm mạc tử cung tiếp tục dày lên. Nếu không có sự thụ tinh, hoàng thể tiêu biến, hormone giảm xuống và kỳ kinh mới bắt đầu."
+      "menstrual": "Trứng của chu kỳ trước không được thụ tinh, lớp niêm mạc tử cung bong ra và đẩy ra ngoài. Đây là kỳ hành kinh, thường kéo dài 3 đến 7 ngày. Những ngày này tương đối an toàn nhưng không tuyệt đối, nhất là khi chu kỳ ngắn hoặc không đều.",
+      "follicular": "Diễn ra đồng thời với hành kinh, tuyến yên kích thích buồng trứng sản xuất các nang trứng, trong khi estrogen tăng dần khiến niêm mạc tử cung dày lên trở lại. Những ngày đầu còn tương đối an toàn, nhưng càng gần ngày rụng trứng càng nguy hiểm hơn, vì tinh trùng có thể sống trong cơ thể tới khoảng 5 ngày.",
+      "ovulation": "Vào khoảng giữa chu kỳ (ngày 14 với chu kỳ 28 ngày), lượng hormone LH tăng cao đột ngột khiến nang trứng chín vỡ và giải phóng trứng. Đây là những ngày nguy hiểm nhất, gồm ngày rụng trứng và khoảng 5 ngày trước đó. Nếu chưa muốn có thai, em cần biện pháp bảo vệ trong cả khoảng này.",
+      "luteal": "Sau khi rụng trứng, nang trứng vỡ biến thành hoàng thể và tiết ra progesterone để giữ cho niêm mạc tử cung tiếp tục dày lên. Nếu không có sự thụ tinh, hoàng thể tiêu biến, hormone giảm xuống và kỳ kinh mới bắt đầu. Khoảng một ngày sau khi rụng trứng, những ngày này tương đối an toàn. Tuy vậy ngày rụng trứng ước tính theo lịch có thể lệch, nên đừng xem đây là cách tránh thai đáng tin cậy."
     },
     "doctor": {
       "title": "Khi nào cần đi gặp bác sĩ?",
@@ -170,13 +173,6 @@
       "estimatedNote": "* Ước tính, dựa trên các chu kỳ trước",
       "confirmed": "Kỳ kinh gần nhất: từ {{start}} đến {{end}}"
     },
-    "rangeSelect": {
-      "start": "Ghi lại kỳ kinh đã qua",
-      "promptStart": "Chạm vào ngày đầu của kỳ kinh đó",
-      "promptEnd": "Giờ chạm vào ngày cuối",
-      "save": "Lưu kỳ kinh ({{days}} ngày)",
-      "cancel": "Hủy"
-    },
     "weekdays": {
       "Mon": "T2",
       "Tue": "T3",
@@ -185,20 +181,22 @@
       "Fri": "T6",
       "Sat": "T7",
       "Sun": "CN"
+    },
+    "dayActions": {
+      "title": "Ngày này đã có ghi chép",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "deleteConfirm": "Xóa toàn bộ ghi chép của ngày này? Không thể hoàn tác."
     }
   },
   "log": {
     "todayTitle": "Hôm nay",
-    "cycleContext": "Ngày {{day}} · {{phase}}",
-    "onPeriod": "Đang trong kỳ kinh",
-    "periodDayLabel": "Ngày {{day}} trong kỳ kinh",
-    "flowLabel": "Lượng kinh",
+    "cycleContext": "Ngày {{day}}",
     "flow": {
       "light": "Ít",
       "medium": "Vừa",
       "heavy": "Nhiều"
     },
-    "addMore": "Thêm chi tiết",
     "symptomsLabel": "Triệu chứng",
     "symptoms": {
       "cramps": "Đau bụng",
@@ -241,7 +239,11 @@
       "lhLabel": "Kiểm tra LH",
       "lhPositive": "Dương tính",
       "intimacyLabel": "Quan hệ"
-    }
+    },
+    "markPeriodStart": "Kỳ kinh tới ngày này",
+    "periodStartedHere": "Kỳ kinh bắt đầu ngày này",
+    "deleteEntry": "Xóa nhật ký ngày này",
+    "moodHint": "Chọn được nhiều cảm xúc"
   },
   "insights": {
     "emptyTitle": "Blushme vẫn đang làm quen với em",
@@ -306,10 +308,7 @@
     "deleteAllConfirm": "Thao tác này sẽ xóa vĩnh viễn mọi nhật ký và cài đặt trong tài khoản. Không thể hoàn tác.",
     "weekStart": "Tuần bắt đầu từ",
     "units": "Đơn vị",
-    "goal": "Mục tiêu",
     "advancedTracking": "Theo dõi chuyên sâu",
-    "pausePredictions": "Tạm dừng dự đoán",
-    "fertilityWindow": "Hiện cửa sổ dễ thụ thai",
     "aboutBody": "Blushme đồng bộ dữ liệu vào tài khoản riêng. Không quảng cáo, không theo dõi.",
     "title": "Cài đặt",
     "synced": "Đã đồng bộ với tài khoản",
@@ -322,7 +321,6 @@
       "metric": "Hệ mét",
       "imperial": "Hệ Anh"
     },
-    "advancedHint": "Nhiệt độ, dịch nhầy, que thử LH",
     "account": "Tài khoản",
     "signOut": "Đăng xuất",
     "deleteAccount": "Xóa tài khoản",
@@ -330,7 +328,16 @@
     "imported": "Đã nhập dữ liệu",
     "importFailed": "Không đọc được tệp này",
     "demoNote": "Chế độ demo, dữ liệu không được lưu",
-    "exitDemo": "Thoát chế độ demo"
+    "exitDemo": "Thoát chế độ demo",
+    "advancedTip": "Bật để ghi thêm nhiệt độ cơ thể, dịch nhầy, que thử LH và ngày gần gũi. Phần Nhịp chu kỳ sẽ có thêm biểu đồ và phân tích chi tiết. Không bắt buộc, có thể tắt bất cứ lúc nào.",
+    "unitsTip": "Chỉ dùng để hiển thị nhiệt độ cơ thể (°C hoặc °F).",
+    "weekStartTip": "Ngày được đặt ở cột đầu tiên của lịch.",
+    "profile": {
+      "noName": "Thêm tên của em",
+      "nameLabel": "Blushme nên gọi em là gì?",
+      "namePlaceholder": "Tên hoặc biệt danh",
+      "avatarLabel": "Ảnh đại diện"
+    }
   },
   "engine": {
     "formula": {
@@ -381,9 +388,6 @@
     "heroTitle": "Hiểu chu kỳ của em, để chăm sóc em.",
     "heroLead": "Theo dõi chu kỳ kinh nguyệt để hiểu cơ thể, cảm xúc và sức khỏe sinh sản của em.",
     "privacy": "Dữ liệu được lưu an toàn và chỉ riêng em xem được.",
-    "sentTitle": "Kiểm tra email nhé",
-    "sentBody": "Blushme đã gửi liên kết xác nhận tới {{email}}. Hãy mở email rồi quay lại đăng nhập.",
-    "backToSignIn": "Quay lại đăng nhập",
     "errors": {
       "invalidCredentials": "Email hoặc mật khẩu chưa đúng.",
       "emailNotConfirmed": "Hãy xác nhận email trước. Kiểm tra hộp thư nhé.",
@@ -394,7 +398,8 @@
       "network": "Không có kết nối. Hãy kiểm tra mạng và thử lại nhé.",
       "unknown": "Có lỗi xảy ra. Hãy thử lại nhé."
     },
-    "useDemo": "Sử dụng tài khoản demo"
+    "useDemo": "Sử dụng tài khoản demo",
+    "signedUp": "Đăng ký thành công! Em có thể đăng nhập ngay."
   },
   "errors": {
     "saveFailed": "Chưa lưu được. Hãy kiểm tra mạng và thử lại nhé.",

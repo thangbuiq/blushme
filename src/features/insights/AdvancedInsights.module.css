@@ -1,5 +1,4 @@
 .sectionHead {
-  grid-column: 1 / -1;
   font-size: 1.25rem;
   padding: var(--space-sm) var(--space-sm) 0;
 }
@@ -16,10 +15,6 @@
   min-width: 0;
 }
 
-.wide {
-  grid-column: 1 / -1;
-}
-
 .title {
   font-size: 1.125rem;
 }
@@ -33,6 +28,7 @@
 .svg {
   width: 100%;
   height: auto;
+  max-height: 240px;
   overflow: visible;
 }
 
@@ -146,5 +142,9 @@
   border-radius: var(--radius-sm);
   font-size: 0.75rem;
   color: var(--color-rose-deep);
-  background-color: color-mix(in srgb, var(--color-blush-deep) calc(var(--heat) * 70%), var(--color-blush-tint));
+  background-color: color-mix(
+    in srgb,
+    var(--color-blush-deep) calc(var(--heat) * 70%),
+    var(--color-blush-tint)
+  );
 }

@@ -1,9 +1,7 @@
 .backdrop {
   position: absolute;
   inset: 0;
-  background-color: rgba(62, 42, 51, 0.38);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(62, 42, 51, 0.42);
   z-index: 40;
   display: flex;
   align-items: flex-end;
@@ -68,11 +66,9 @@
   font-size: var(--font-size-body-sm);
 }
 
-/* Desktop: keep bottom sheets a readable width instead of spanning the frame. */
-@media (min-width: 1024px) {
+/* On wide screens keep bottom sheets a readable width instead of full-bleed. */
+@media (min-width: 640px) {
   .sheet {
     max-width: 560px;
-    border-radius: var(--radius-xl);
-    margin-bottom: var(--space-xl);
   }
 }

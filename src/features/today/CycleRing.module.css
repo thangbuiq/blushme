@@ -26,14 +26,13 @@
 
 .marker {
   fill: var(--color-surface);
-  stroke: var(--color-hairline);
   stroke-width: 1;
-  filter: drop-shadow(0 3px 6px rgba(62, 42, 51, 0.25));
+  stroke: rgba(62, 42, 51, 0.18);
 }
 
 .pulse {
   opacity: 0.25;
-  animation: pulse 2.6s ease-out infinite;
+  animation: pulse 2.6s ease-out 3;
   transform-box: fill-box;
   transform-origin: center;
 }
@@ -91,4 +90,5 @@
   text-underline-offset: 3px;
   white-space: nowrap;
   cursor: pointer;
+  pointer-events: auto;
 }

@@ -2,10 +2,13 @@ import { useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Chip } from '@/ui/Chip'
+import { Avatar } from '@/ui/Avatar'
+import { AVATARS } from '@/ui/avatars'
+import { Field } from '@/ui/Input'
 import { Button } from '@/ui/Button'
 import { ToggleSwitch } from '@/ui/ToggleSwitch'
+import { InfoTip } from '@/ui/InfoTip'
 import { useConfirm } from '@/ui/ConfirmDialog'
-import { Bloom } from '@/ui/art/Botanical'
 import { LogoutIcon } from '@/ui/Icon'
 import { REVEAL } from '@/ui/motion'
 import { setStoredLanguage } from '@/i18n'
@@ -15,31 +18,25 @@ import { useLogStore } from '@/store/logStore'
 import { useUiStore } from '@/store/uiStore'
 import { exportToJson, importFromJson, deleteAllData } from '@/data/exportImport'
 import { deleteAccount } from '@/data/repo'
-import type { Goal, Units, WeekStart } from '@/data/settings'
+import { NAME_MAX, type Units, type WeekStart } from '@/data/settings'
 import styles from './SettingsScreen.module.css'
-
-const GOALS: { goal: Goal; key: string }[] = [
-  { goal: 'track', key: 'Track' },
-  { goal: 'ttc', key: 'Ttc' },
-  { goal: 'avoiding', key: 'Avoiding' },
-]
 
 function ToggleRow({
   label,
-  hint,
+  tip,
   checked,
   onChange,
 }: {
   label: string
-  hint?: string
+  tip?: string
   checked: boolean
   onChange: (value: boolean) => void
 }) {
   return (
     <div className={styles.row}>
       <span className={styles.rowText}>
-        <span>{label}</span>
-        {hint && <span className={styles.rowHint}>{hint}</span>}
+        {label}
+        {tip && <InfoTip>{tip}</InfoTip>}
       </span>
       <ToggleSwitch checked={checked} onChange={onChange} ariaLabel={label} />
     </div>
@@ -59,6 +56,7 @@ export function SettingsScreen() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const confirm = useConfirm()
   const [busy, setBusy] = useState<string | null>(null)
+  const [name, setName] = useState(settings.displayName)
 
   const reveal = (i: number) => ({
     variants: REVEAL,
@@ -126,15 +124,55 @@ export function SettingsScreen() {
       </motion.header>
 
       <motion.section className={styles.profile} {...reveal(1)}>
-        <span className={styles.avatar} aria-hidden="true">
-          <Bloom size={56} petals={5} still />
-        </span>
-        <span className={styles.who}>
-          <span className={styles.email} title={user?.email ?? undefined}>
-            {user?.email}
+        <div className={styles.profileTop}>
+          <Avatar id={settings.avatar} size={64} />
+          <span className={styles.who}>
+            <span className={styles.name}>
+              {settings.displayName.trim() || t('settings.profile.noName')}
+            </span>
+            <span className={styles.email} title={user?.email ?? undefined}>
+              {user?.email}
+            </span>
+            <span className={styles.sub}>{t(demo ? 'settings.demoNote' : 'settings.synced')}</span>
           </span>
-          <span className={styles.sub}>{t(demo ? 'settings.demoNote' : 'settings.synced')}</span>
-        </span>
+        </div>
+        <Field
+          id="settings-name"
+          label={t('settings.profile.nameLabel')}
+          placeholder={t('settings.profile.namePlaceholder')}
+          maxLength={NAME_MAX}
+          autoComplete="given-name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onBlur={() => {
+            const trimmed = name.trim()
+            if (trimmed !== settings.displayName) void update({ displayName: trimmed })
+          }}
+        />
+        <div
+          className={styles.avatarPicker}
+          role="radiogroup"
+          aria-label={t('settings.profile.avatarLabel')}
+        >
+          {AVATARS.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              role="radio"
+              aria-checked={settings.avatar === option.id}
+              aria-label={option.id}
+              className={[
+                styles.avatarOption,
+                settings.avatar === option.id && styles.avatarSelected,
+              ]
+                .filter(Boolean)
+                .join(' ')}
+              onClick={() => void update({ avatar: option.id })}
+            >
+              <Avatar id={option.id} size={44} />
+            </button>
+          ))}
+        </div>
       </motion.section>
 
       <motion.section className={styles.group} {...reveal(2)}>
@@ -161,17 +199,10 @@ export function SettingsScreen() {
       <motion.section className={styles.group} {...reveal(3)}>
         <h2 className={styles.groupTitle}>{t('settings.tracking')}</h2>
         <div className={styles.stack}>
-          <span className={styles.rowHint}>{t('settings.goal')}</span>
-          <div className={styles.chipGroup}>
-            {GOALS.map(({ goal, key }) => (
-              <Chip key={goal} selected={settings.goal === goal} onClick={() => update({ goal })}>
-                {t(`onboarding.step1.goal${key}`)}
-              </Chip>
-            ))}
-          </div>
-        </div>
-        <div className={styles.stack}>
-          <span className={styles.rowHint}>{t('settings.weekStart')}</span>
+          <span className={styles.rowHint}>
+            {t('settings.weekStart')}
+            <InfoTip>{t('settings.weekStartTip')}</InfoTip>
+          </span>
           <div className={styles.chipGroup}>
             {(['monday', 'sunday'] as WeekStart[]).map((option) => (
               <Chip
@@ -185,19 +216,17 @@ export function SettingsScreen() {
           </div>
         </div>
         <ToggleRow
-          label={t('settings.fertilityWindow')}
-          checked={settings.fertilityLayerEnabled}
-          onChange={(fertilityLayerEnabled) => update({ fertilityLayerEnabled })}
-        />
-        <ToggleRow
           label={t('settings.advancedTracking')}
-          hint={t('settings.advancedHint')}
+          tip={t('settings.advancedTip')}
           checked={settings.advancedTracking}
           onChange={(advancedTracking) => update({ advancedTracking })}
         />
         {settings.advancedTracking && (
           <div className={styles.stack}>
-            <span className={styles.rowHint}>{t('settings.units')}</span>
+            <span className={styles.rowHint}>
+              {t('settings.units')}
+              <InfoTip>{t('settings.unitsTip')}</InfoTip>
+            </span>
             <div className={styles.chipGroup}>
               {(['metric', 'imperial'] as Units[]).map((option) => (
                 <Chip
@@ -211,11 +240,6 @@ export function SettingsScreen() {
             </div>
           </div>
         )}
-        <ToggleRow
-          label={t('settings.pausePredictions')}
-          checked={settings.predictionsPaused}
-          onChange={(predictionsPaused) => update({ predictionsPaused })}
-        />
       </motion.section>
 
       {!demo && (

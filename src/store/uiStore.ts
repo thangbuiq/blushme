@@ -11,6 +11,9 @@ interface UiState {
   logSheetDate: string | null
   openLogSheet: (date: string) => void
   closeLogSheet: () => void
+  dayActionsDate: string | null
+  openDayActions: (date: string) => void
+  closeDayActions: () => void
   detailsSheetOpen: boolean
   openDetailsSheet: () => void
   closeDetailsSheet: () => void
@@ -29,6 +32,9 @@ export const useUiStore = create<UiState>((set) => ({
   logSheetDate: null,
   openLogSheet: (date) => set({ logSheetOpen: true, logSheetDate: date }),
   closeLogSheet: () => set({ logSheetOpen: false }),
+  dayActionsDate: null,
+  openDayActions: (date) => set({ dayActionsDate: date }),
+  closeDayActions: () => set({ dayActionsDate: null }),
   detailsSheetOpen: false,
   openDetailsSheet: () => set({ detailsSheetOpen: true }),
   closeDetailsSheet: () => set({ detailsSheetOpen: false }),

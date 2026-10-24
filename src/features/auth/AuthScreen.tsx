@@ -7,6 +7,7 @@ import { EyeIcon, LockIcon, MailIcon } from '@/ui/Icon'
 import { Bloom, Sprig } from '@/ui/art/Botanical'
 import { EASE, SOFT_SPRING } from '@/ui/motion'
 import { useAuthStore, type AuthErrorCode } from '@/store/authStore'
+import { useUiStore } from '@/store/uiStore'
 import { setStoredLanguage } from '@/i18n'
 import styles from './AuthScreen.module.css'
 
@@ -20,6 +21,7 @@ export function AuthScreen() {
   const signIn = useAuthStore((s) => s.signIn)
   const signUp = useAuthStore((s) => s.signUp)
   const enterDemo = useAuthStore((s) => s.enterDemo)
+  const showToast = useUiStore((s) => s.showToast)
 
   const [mode, setMode] = useState<Mode>('signIn')
   const [email, setEmail] = useState('')
@@ -27,7 +29,6 @@ export function AuthScreen() {
   const [showPassword, setShowPassword] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [sentTo, setSentTo] = useState<string | null>(null)
 
   function switchMode(next: Mode) {
     setMode(next)
@@ -47,7 +48,13 @@ export function AuthScreen() {
     setBusy(false)
 
     if (!result.ok) return setError(t(`auth.errors.${result.code satisfies AuthErrorCode}`))
-    if (result.needsConfirmation) setSentTo(trimmed)
+    // Signed in already when the project skips email confirmation; otherwise just
+    // report success and let them sign in, without a separate "check your email" screen.
+    if (mode === 'signUp' && result.needsConfirmation) {
+      setMode('signIn')
+      setPassword('')
+      showToast('auth.signedUp')
+    }
   }
 
   const isSignUp = mode === 'signUp'
@@ -110,133 +117,107 @@ export function AuthScreen() {
         transition={{ ...SOFT_SPRING, delay: 0.25 }}
       >
         <AnimatePresence mode="wait" initial={false}>
-          {sentTo ? (
-            <motion.div
-              key="sent"
-              className={styles.sent}
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <Bloom size={84} tone="rose" />
-              <h2>{t('auth.sentTitle')}</h2>
-              <p className={styles.hint}>{t('auth.sentBody', { email: sentTo })}</p>
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  setSentTo(null)
-                  setMode('signIn')
-                  setPassword('')
-                }}
-              >
-                {t('auth.backToSignIn')}
-              </Button>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="form"
-              className={styles.form}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <div className={styles.tabs} role="tablist">
-                {(['signIn', 'signUp'] as const).map((m) => (
-                  <button
-                    key={m}
-                    type="button"
-                    role="tab"
-                    aria-selected={mode === m}
-                    className={[styles.tab, mode === m && styles.tabActive]
-                      .filter(Boolean)
-                      .join(' ')}
-                    onClick={() => switchMode(m)}
-                  >
-                    {mode === m && (
-                      <motion.span
-                        layoutId="auth-tab"
-                        className={styles.tabPill}
-                        transition={
-                          reduceMotion
-                            ? { duration: 0 }
-                            : { type: 'spring', stiffness: 420, damping: 32 }
-                        }
-                      />
-                    )}
-                    {t(`auth.${m}`)}
-                  </button>
-                ))}
-              </div>
-
-              <form className={styles.form} onSubmit={onSubmit} noValidate>
-                <Field
-                  id="auth-email"
-                  type="email"
-                  label={t('auth.email')}
-                  placeholder="ten@email.com"
-                  autoComplete="email"
-                  inputMode="email"
-                  icon={<MailIcon size={18} />}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Field
-                  id="auth-password"
-                  type={showPassword ? 'text' : 'password'}
-                  label={t('auth.password')}
-                  placeholder={isSignUp ? t('auth.passwordHint') : '••••••••'}
-                  autoComplete={isSignUp ? 'new-password' : 'current-password'}
-                  icon={<LockIcon size={18} />}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  action={
-                    <FieldAction
-                      onClick={() => setShowPassword((v) => !v)}
-                      aria-label={t(showPassword ? 'auth.hidePassword' : 'auth.showPassword')}
-                    >
-                      <EyeIcon size={20} off={showPassword} />
-                    </FieldAction>
-                  }
-                />
-
-                <AnimatePresence initial={false}>
-                  {error && (
-                    <motion.p
-                      key={error}
-                      role="alert"
-                      className={styles.error}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                    >
-                      {error}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-
-                <Button type="submit" loading={busy}>
-                  {t(isSignUp ? 'auth.createAccount' : 'auth.signInCta')}
-                </Button>
-              </form>
-
-              <p className={styles.switchRow}>
-                {t(isSignUp ? 'auth.haveAccount' : 'auth.noAccount')}{' '}
+          <motion.div
+            key="form"
+            className={styles.form}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className={styles.tabs} role="tablist">
+              {(['signIn', 'signUp'] as const).map((m) => (
                 <button
+                  key={m}
                   type="button"
-                  className={styles.linkButton}
-                  onClick={() => switchMode(isSignUp ? 'signIn' : 'signUp')}
+                  role="tab"
+                  aria-selected={mode === m}
+                  className={[styles.tab, mode === m && styles.tabActive].filter(Boolean).join(' ')}
+                  onClick={() => switchMode(m)}
                 >
-                  {t(isSignUp ? 'auth.signIn' : 'auth.signUp')}
+                  {mode === m && (
+                    <motion.span
+                      layoutId="auth-tab"
+                      className={styles.tabPill}
+                      transition={
+                        reduceMotion
+                          ? { duration: 0 }
+                          : { type: 'spring', stiffness: 420, damping: 32 }
+                      }
+                    />
+                  )}
+                  {t(`auth.${m}`)}
                 </button>
-              </p>
-              <p className={styles.hint} style={{ textAlign: 'center' }}>
-                {t('auth.privacy')}
-              </p>
-              <button type="button" className={styles.demoLink} onClick={enterDemo} disabled={busy}>
-                {t('auth.useDemo')}
+              ))}
+            </div>
+
+            <form className={styles.form} onSubmit={onSubmit} noValidate>
+              <Field
+                id="auth-email"
+                type="email"
+                label={t('auth.email')}
+                placeholder="ten@email.com"
+                autoComplete="email"
+                inputMode="email"
+                icon={<MailIcon size={18} />}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Field
+                id="auth-password"
+                type={showPassword ? 'text' : 'password'}
+                label={t('auth.password')}
+                placeholder={isSignUp ? t('auth.passwordHint') : '••••••••'}
+                autoComplete={isSignUp ? 'new-password' : 'current-password'}
+                icon={<LockIcon size={18} />}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                action={
+                  <FieldAction
+                    onClick={() => setShowPassword((v) => !v)}
+                    aria-label={t(showPassword ? 'auth.hidePassword' : 'auth.showPassword')}
+                  >
+                    <EyeIcon size={20} off={showPassword} />
+                  </FieldAction>
+                }
+              />
+
+              <AnimatePresence initial={false}>
+                {error && (
+                  <motion.p
+                    key={error}
+                    role="alert"
+                    className={styles.error}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                  >
+                    {error}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+
+              <Button type="submit" loading={busy}>
+                {t(isSignUp ? 'auth.createAccount' : 'auth.signInCta')}
+              </Button>
+            </form>
+
+            <p className={styles.switchRow}>
+              {t(isSignUp ? 'auth.haveAccount' : 'auth.noAccount')}{' '}
+              <button
+                type="button"
+                className={styles.linkButton}
+                onClick={() => switchMode(isSignUp ? 'signIn' : 'signUp')}
+              >
+                {t(isSignUp ? 'auth.signIn' : 'auth.signUp')}
               </button>
-            </motion.div>
-          )}
+            </p>
+            <p className={styles.hint} style={{ textAlign: 'center' }}>
+              {t('auth.privacy')}
+            </p>
+            <button type="button" className={styles.demoLink} onClick={enterDemo} disabled={busy}>
+              {t('auth.useDemo')}
+            </button>
+          </motion.div>
         </AnimatePresence>
       </motion.main>
     </div>

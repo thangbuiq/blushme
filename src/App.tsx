@@ -12,6 +12,7 @@ import { InsightsScreen } from '@/features/insights/InsightsScreen'
 import { SettingsScreen } from '@/features/settings/SettingsScreen'
 import { LogSheet } from '@/features/log/LogSheet'
 import { TodaySheets } from '@/features/today/TodaySheets'
+import { DayActionsSheet } from '@/features/calendar/DayActionsSheet'
 import { BottomNav } from '@/ui/BottomNav'
 import { Toast } from '@/ui/Toast'
 import { Splash } from '@/ui/Splash'
@@ -69,7 +70,7 @@ export function App() {
             initial={reduceMotion ? undefined : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.28, ease: SCREEN_TRANSITION.ease }}
+            transition={{ duration: reduceMotion ? 0 : 0.2, ease: SCREEN_TRANSITION.ease }}
           >
             {screen === 'today' && <TodayScreen />}
             {screen === 'insights' && <InsightsScreen />}
@@ -77,6 +78,7 @@ export function App() {
           </motion.div>
         </AnimatePresence>
         <LogSheet />
+        <DayActionsSheet />
         <TodaySheets />
         <BottomNav />
       </>

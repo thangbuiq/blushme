@@ -7,7 +7,6 @@
   --shadow-sheet: 0 -12px 48px rgba(62, 42, 51, 0.16);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --nav-height: 92px;
-  --rail-width: 220px;
 }
 
 * {
@@ -19,6 +18,9 @@ html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 html {
@@ -34,51 +36,20 @@ body {
   line-height: var(--line-height-body-md);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  position: fixed;
+  inset: 0;
   display: flex;
-  justify-content: center;
-  align-items: safe center;
-  min-height: 100dvh;
 }
 
-/* The app's bounded frame. Fixed-feeling UI (nav, sheets, toasts) anchors to
-   THIS box with position: absolute so it stays attached to the frame once the
-   frame is centered on a wide screen. */
+/* The app frame. It stretches to the whole viewport at any width; the layout
+   is the same single column as on a phone. Fixed-feeling UI (nav, sheets,
+   toasts) anchors to THIS box with position: absolute. */
 #root {
   width: 100%;
-  max-width: 480px;
-  height: 100dvh;
+  height: 100%;
   position: relative;
   overflow: hidden;
   background: #fff;
-}
-
-@media (min-width: 560px) and (min-height: 760px) {
-  #root {
-    height: min(calc(100dvh - 48px), 920px);
-    margin: 24px 0;
-    border-radius: 24px;
-    box-shadow:
-      var(--shadow-lift),
-      0 0 0 1px var(--color-hairline);
-  }
-}
-
-/* Desktop shell: the frame widens to a workspace with the nav as a left rail
-   (see BottomNav). Screens leave room for the rail and centre their content. */
-@media (min-width: 1024px) {
-  #root {
-    max-width: 1280px;
-    height: min(calc(100dvh - 48px), 960px);
-    margin: 24px 0;
-    border-radius: 24px;
-    box-shadow:
-      var(--shadow-lift),
-      0 0 0 1px var(--color-hairline);
-  }
-
-  #root .scroll {
-    left: var(--rail-width) !important;
-  }
 }
 
 h1,
@@ -175,6 +146,9 @@ a {
 
 .scroll {
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 .scroll::-webkit-scrollbar {
@@ -182,6 +156,10 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .scroll {
+    scroll-behavior: auto;
+  }
+
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

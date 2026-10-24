@@ -36,7 +36,12 @@ function TrendChart({ math }: { math: CycleMath }) {
   const ticks = [Math.ceil(lo), Math.round((lo + hi) / 2), Math.floor(hi)]
   return (
     <>
-      <svg viewBox={`0 0 ${W} ${H}`} className={styles.svg} role="img" aria-label={t('insights.advanced.trendTitle')}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        className={styles.svg}
+        role="img"
+        aria-label={t('insights.advanced.trendTitle')}
+      >
         {ticks.map((tick) => (
           <g key={tick}>
             <line x1={PAD.l} x2={W - PAD.r} y1={y(tick)} y2={y(tick)} className={styles.grid} />
@@ -60,7 +65,9 @@ function TrendChart({ math }: { math: CycleMath }) {
           </circle>
         ))}
       </svg>
-      <p className={styles.legend}>{t('insights.advanced.trendLegend', { avg: Math.round(mean) })}</p>
+      <p className={styles.legend}>
+        {t('insights.advanced.trendLegend', { avg: Math.round(mean) })}
+      </p>
     </>
   )
 }
@@ -80,7 +87,12 @@ function BbtChart({ logs, fahrenheit }: { logs: DailyLog[]; fahrenheit: boolean 
   const ticks = [lo + pad, (lo + hi) / 2, hi - pad]
   return (
     <>
-      <svg viewBox={`0 0 ${W} ${H}`} className={styles.svg} role="img" aria-label={t('insights.advanced.bbtTitle')}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        className={styles.svg}
+        role="img"
+        aria-label={t('insights.advanced.bbtTitle')}
+      >
         {ticks.map((tick) => (
           <g key={tick}>
             <line x1={PAD.l} x2={W - PAD.r} y1={y(tick)} y2={y(tick)} className={styles.grid} />
@@ -127,12 +139,23 @@ function MucusBars({ logs }: { logs: DailyLog[] }) {
   )
 }
 
-function Heatmap({ rows, namespace }: { rows: HeatRow[]; namespace: 'log.symptoms' | 'log.moods' }) {
+function Heatmap({
+  rows,
+  namespace,
+}: {
+  rows: HeatRow[]
+  namespace: 'log.symptoms' | 'log.moods'
+}) {
   const { t } = useTranslation()
   if (rows.length === 0) return <p className={styles.legend}>{t('insights.advanced.heatEmpty')}</p>
   const max = Math.max(...rows.flatMap((r) => r.counts), 1)
   return (
-    <div className={styles.heat} style={{ gridTemplateColumns: `minmax(80px, 1.4fr) repeat(${CYCLE_DAY_BUCKETS.length}, 1fr)` }}>
+    <div
+      className={styles.heat}
+      style={{
+        gridTemplateColumns: `minmax(80px, 1.4fr) repeat(${CYCLE_DAY_BUCKETS.length}, 1fr)`,
+      }}
+    >
       <span />
       {CYCLE_DAY_BUCKETS.map((b) => (
         <span key={b.key} className={styles.heatHead}>
@@ -150,7 +173,9 @@ function HeatLine({ row, namespace, max }: { row: HeatRow; namespace: string; ma
   const { t } = useTranslation()
   return (
     <>
-      <span className={styles.heatLabel}>{t(`${namespace}.${row.key}`, { defaultValue: row.key })}</span>
+      <span className={styles.heatLabel}>
+        {t(`${namespace}.${row.key}`, { defaultValue: row.key })}
+      </span>
       {row.counts.map((count, i) => (
         <span
           key={i}
@@ -212,11 +237,11 @@ export function AdvancedInsights({
           ))}
         </div>
       </motion.section>
-      <motion.section className={`${styles.card} ${styles.wide}`} {...reveal(10)}>
+      <motion.section className={`${styles.card}`} {...reveal(10)}>
         <h3 className={styles.title}>{t('insights.advanced.heatSymptoms')}</h3>
         <Heatmap rows={symptomHeat(logs)} namespace="log.symptoms" />
       </motion.section>
-      <motion.section className={`${styles.card} ${styles.wide}`} {...reveal(11)}>
+      <motion.section className={`${styles.card}`} {...reveal(11)}>
         <h3 className={styles.title}>{t('insights.advanced.heatMoods')}</h3>
         <Heatmap rows={moodHeat(logs)} namespace="log.moods" />
       </motion.section>

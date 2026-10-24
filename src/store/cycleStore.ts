@@ -14,14 +14,13 @@ export function useCycleState(today?: string) {
       statedPeriodLength: settings.statedPeriodLength,
       statedConfidenceLow: settings.statedConfidenceLow,
       lutealPhaseLength: settings.lutealPhaseLength ?? undefined,
-      predictionsPaused: settings.predictionsPaused,
+      predictionsPaused: false,
     }),
     [
       settings.statedCycleLength,
       settings.statedPeriodLength,
       settings.statedConfidenceLow,
       settings.lutealPhaseLength,
-      settings.predictionsPaused,
     ],
   )
 

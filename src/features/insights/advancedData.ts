@@ -1,5 +1,6 @@
 import { differenceInCalendarDays, parseISO } from 'date-fns'
 import type { CervicalMucus, DailyLog } from '@/engine/types'
+import { moodsOf } from '@/features/log/moods'
 
 export interface BbtPoint {
   date: string
@@ -52,7 +53,8 @@ export function cycleDayOfLogs(logs: DailyLog[]): { log: DailyLog; day: number }
       if (s <= log.date) start = s
       else break
     }
-    if (start) result.push({ log, day: differenceInCalendarDays(parseISO(log.date), parseISO(start)) + 1 })
+    if (start)
+      result.push({ log, day: differenceInCalendarDays(parseISO(log.date), parseISO(start)) + 1 })
   }
   return result
 }
@@ -67,11 +69,7 @@ function bucketIndex(day: number): number {
   return CYCLE_DAY_BUCKETS.findIndex((b) => day >= b.from && day <= b.to)
 }
 
-function heat(
-  logs: DailyLog[],
-  pick: (log: DailyLog) => string[],
-  limit: number,
-): HeatRow[] {
+function heat(logs: DailyLog[], pick: (log: DailyLog) => string[], limit: number): HeatRow[] {
   const rows = new Map<string, number[]>()
   for (const { log, day } of cycleDayOfLogs(logs)) {
     const idx = bucketIndex(day)
@@ -95,7 +93,7 @@ export function symptomHeat(logs: DailyLog[], limit = 5): HeatRow[] {
 
 /** How often each mood is logged in each week of the cycle. */
 export function moodHeat(logs: DailyLog[], limit = 4): HeatRow[] {
-  return heat(logs, (l) => (l.mood ? [l.mood] : []), limit)
+  return heat(logs, moodsOf, limit)
 }
 
 export interface AdvancedTotals {

@@ -59,6 +59,7 @@ export function InsightsScreen() {
   const setScreen = useUiStore((s) => s.setScreen)
   const openLogSheet = useUiStore((s) => s.openLogSheet)
   const advanced = useSettingsStore((s) => s.settings.advancedTracking)
+  const statedPeriodLength = useSettingsStore((s) => s.settings.statedPeriodLength)
   const imperial = useSettingsStore((s) => s.settings.units === 'imperial')
 
   const { math } = state
@@ -106,18 +107,18 @@ export function InsightsScreen() {
   const maxLen = Math.max(...recent, 1)
   const mean = math.weightedMean ?? 0
   const regularity = regularityOf(math.weightedStdDev)
-  const periodAvg = averagePeriodLength(logs)
+  const periodAvg = averagePeriodLength(logs) ?? statedPeriodLength
   const symptoms = tallySymptoms(logs)
   const moods = tallyMoods(logs)
 
   return (
     <div className={styles.screen}>
-      <motion.header className={`${styles.head} ${styles.full}`} {...reveal(0)}>
+      <motion.header className={styles.head} {...reveal(0)}>
         <h1>{t('insights.title')}</h1>
         <p className={styles.sub}>{t('insights.subtitle', { count: valid })}</p>
       </motion.header>
 
-      <motion.div className={`${styles.grid} ${styles.full}`} {...reveal(1)}>
+      <motion.div className={styles.grid} {...reveal(1)}>
         <div className={`${styles.stat} ${styles.statWide}`}>
           <span className={styles.statLabel}>{t('insights.nextPeriod')}</span>
           <span className={styles.statValue}>
@@ -138,12 +139,12 @@ export function InsightsScreen() {
         <div className={styles.stat}>
           <span className={styles.statLabel}>{t('insights.avgPeriod')}</span>
           <span className={styles.statValue}>
-            {periodAvg ?? '-'}
+            {periodAvg}
             <span className={styles.statUnit}>{t('common.days')}</span>
           </span>
         </div>
         {regularity && (
-          <div className={`${styles.stat} ${styles.statWide} ${styles.statFull}`}>
+          <div className={`${styles.stat} ${styles.statWide}`}>
             <span className={styles.statLabel}>{t('insights.regularity')}</span>
             <span className={styles.statValue} style={{ fontSize: '1.5rem' }}>
               {t(`insights.regularityValue.${regularity}`)}
@@ -205,7 +206,7 @@ export function InsightsScreen() {
       {advanced ? (
         <AdvancedInsights math={math} logs={logs} fahrenheit={imperial} reveal={reveal} />
       ) : (
-        <motion.section className={`${styles.card} ${styles.full}`} {...reveal(5)}>
+        <motion.section className={styles.card} {...reveal(5)}>
           <h2 className={styles.cardTitle}>{t('insights.advanced.teaserTitle')}</h2>
           <p className={styles.sub}>{t('insights.advanced.teaserBody')}</p>
           <Button variant="secondary" onClick={() => setScreen('settings')}>

@@ -3,8 +3,6 @@ import { TAP_SCALE, TAP_TRANSITION } from '@/ui/motion'
 import type { DayState } from './dayState'
 import styles from './CalendarDay.module.css'
 
-export type RangeSelectionState = 'boundary' | 'inside' | null
-
 interface CalendarDayProps {
   dayOfMonth: number
   state: DayState
@@ -12,7 +10,6 @@ interface CalendarDayProps {
   isCurrentMonth: boolean
   onClick: () => void
   ariaLabel: string
-  rangeSelection?: RangeSelectionState
 }
 
 export function CalendarDay({
@@ -22,7 +19,6 @@ export function CalendarDay({
   isCurrentMonth,
   onClick,
   ariaLabel,
-  rangeSelection = null,
 }: CalendarDayProps) {
   const reduceMotion = useReducedMotion()
   const classNames = [
@@ -34,8 +30,6 @@ export function CalendarDay({
     !state.logged && state.fertile === 'ovulation' && styles.ovulation,
     isToday && styles.today,
     !isCurrentMonth && styles.outside,
-    rangeSelection === 'inside' && styles.rangeInside,
-    rangeSelection === 'boundary' && styles.rangeBoundary,
   ]
     .filter(Boolean)
     .join(' ')

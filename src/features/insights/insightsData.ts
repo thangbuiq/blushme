@@ -1,5 +1,6 @@
 import { addDays, formatISO, parseISO } from 'date-fns'
 import type { DailyLog } from '@/engine/types'
+import { moodsOf } from '@/features/log/moods'
 
 export interface Tally {
   key: string
@@ -8,7 +9,10 @@ export interface Tally {
 
 export type Regularity = 'steady' | 'fairlySteady' | 'variable'
 
-/** Average number of consecutive bleeding days per logged period, or null with no periods. */
+/**
+ * Average number of consecutive bleeding days per logged period. Periods recorded
+ * as just a start date carry no length, so they are skipped; null when none do.
+ */
 export function averagePeriodLength(logs: DailyLog[]): number | null {
   const bleeding = new Set(
     logs.filter((l) => l.periodStart || (l.flow ?? 0) > 0).map((l) => l.date),
@@ -25,8 +29,9 @@ export function averagePeriodLength(logs: DailyLog[]): number | null {
       }
       return days
     })
-  if (lengths.length === 0) return null
-  return Math.round((lengths.reduce((a, b) => a + b, 0) / lengths.length) * 10) / 10
+  const measured = lengths.filter((n) => n > 1)
+  if (measured.length === 0) return null
+  return Math.round((measured.reduce((a, b) => a + b, 0) / measured.length) * 10) / 10
 }
 
 /** Counts of symptoms or moods across all logs, most frequent first. */
@@ -39,7 +44,7 @@ export function tallySymptoms(logs: DailyLog[], limit = 4): Tally[] {
 
 export function tallyMoods(logs: DailyLog[], limit = 3): Tally[] {
   const counts = new Map<string, number>()
-  for (const log of logs) if (log.mood) counts.set(log.mood, (counts.get(log.mood) ?? 0) + 1)
+  for (const log of logs) for (const m of moodsOf(log)) counts.set(m, (counts.get(m) ?? 0) + 1)
   return rank(counts, limit)
 }
 

@@ -32,7 +32,7 @@
 }
 
 .fertile {
-  background-color: var(--color-lavender);
+  background-color: var(--color-sky);
 }
 
 .fertileUnderline {
@@ -57,11 +57,12 @@
 }
 
 .low {
-  background-color: var(--color-mint);
+  border: 1.5px solid var(--color-sky-deep);
 }
 
 .ovulation {
-  background-color: var(--color-butter);
+  background-color: var(--color-sky-deep);
+  color: var(--color-on-tertiary);
 }
 
 .ovulationDot {
@@ -72,7 +73,7 @@
   width: 4px;
   height: 4px;
   border-radius: var(--radius-full);
-  background-color: var(--color-primary);
+  background-color: var(--color-on-tertiary);
 }
 
 .today {
@@ -86,15 +87,3 @@
 }
 
 /* Transient states while picking a past period's start/end. */
-.rangeInside,
-.rangeInside:hover {
-  background-color: var(--color-blush-tint);
-  color: var(--color-primary);
-}
-
-.rangeBoundary,
-.rangeBoundary:hover {
-  background-color: var(--color-blush);
-  color: var(--color-primary);
-  box-shadow: inset 0 0 0 2px var(--color-tertiary);
-}

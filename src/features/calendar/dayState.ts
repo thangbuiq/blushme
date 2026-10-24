@@ -37,21 +37,31 @@ function isWithinAnyProjectedPeriod(
   return false
 }
 
+// A period is recorded as its start date only, so the days after it count as
+// period days for the stated length (older logs may also carry per-day flow).
+function isWithinLoggedPeriod(date: string, logs: DailyLog[], periodLength: number): boolean {
+  return logs.some((l) => {
+    if (!l.periodStart || l.date > date) return false
+    return differenceInCalendarDays(parseISO(date), parseISO(l.date)) < periodLength
+  })
+}
+
 export function computeDayState(
   date: string,
   logs: DailyLog[],
   cycleState: CycleState,
   periodLength: number,
-  fertilityLayerEnabled: boolean,
 ): DayState {
   const log = logs.find((l) => l.date === date)
-  const logged = Boolean(log?.periodStart || (log?.flow ?? 0) > 0)
+  const logged =
+    Boolean(log?.periodStart || (log?.flow ?? 0) > 0) ||
+    isWithinLoggedPeriod(date, logs, periodLength)
 
   const predicted =
     !logged && !cycleState.paused && isWithinAnyProjectedPeriod(date, cycleState, periodLength)
 
   let fertile: FertileLevel = null
-  if (fertilityLayerEnabled && !cycleState.paused) {
+  if (!cycleState.paused) {
     const { start, end, peakStart, peakEnd } = cycleState.fertileWindow
     if (date === cycleState.ovulation.date) {
       fertile = 'ovulation'
