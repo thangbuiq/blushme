@@ -15,7 +15,7 @@
   position: relative;
   width: 100%;
   max-height: 90%;
-  background: linear-gradient(180deg, #fff 0%, var(--color-neutral) 100%);
+  background: #fff;
   color: var(--color-primary);
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   padding: var(--space-sm) var(--space-lg) calc(var(--space-lg) + env(safe-area-inset-bottom));

@@ -6,7 +6,7 @@
   padding: 0 var(--space-lg) calc(var(--space-md) + env(safe-area-inset-bottom));
   z-index: 20;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255, 248, 248, 0) 0%, rgba(255, 248, 248, 0.92) 55%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.92) 55%);
   padding-top: var(--space-xl);
 }
 

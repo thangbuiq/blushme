@@ -1,20 +1,20 @@
 :root {
-  --color-primary: #3e2a33;
-  --color-secondary: #7a6671;
-  --color-tertiary: #b8416a;
-  --color-on-tertiary: #ffffff;
-  --color-neutral: #fff8f8;
-  --color-surface: #ffffff;
-  --color-blush: #f8c9d5;
-  --color-blush-tint: #fff0f3;
-  --color-blush-deep: #f2a7bb;
-  --color-hairline: #f3dee4;
-  --color-rose-deep: #8f2d50;
-  --color-lavender: #dccdf2;
-  --color-butter: #f8e2a6;
-  --color-mint: #c6e9d6;
-  --color-leaf: #a9cbb3;
-  --color-leaf-deep: #6e9b7f;
+  --color-primary: #3E2A33;
+  --color-secondary: #7A6671;
+  --color-tertiary: #B8416A;
+  --color-on-tertiary: #FFFFFF;
+  --color-neutral: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-blush: #F8C9D5;
+  --color-blush-tint: #FFF0F3;
+  --color-blush-deep: #F2A7BB;
+  --color-hairline: #F3DEE4;
+  --color-rose-deep: #8F2D50;
+  --color-lavender: #DCCDF2;
+  --color-butter: #F8E2A6;
+  --color-mint: #C6E9D6;
+  --color-leaf: #A9CBB3;
+  --color-leaf-deep: #6E9B7F;
   --radius-none: 0px;
   --radius-sm: 6px;
   --radius-md: 8px;
@@ -41,18 +41,15 @@
   --font-size-h2: 1.5rem;
   --font-weight-h2: 500;
   --line-height-h2: 1.2;
-  --font-family-body-md:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-body-md: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-size-body-md: 1rem;
   --font-weight-body-md: 400;
   --line-height-body-md: 1.6;
-  --font-family-body-sm:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-body-sm: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-size-body-sm: 0.875rem;
   --font-weight-body-sm: 400;
   --line-height-body-sm: 1.55;
-  --font-family-label-caps:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-label-caps: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-size-label-caps: 0.8125rem;
   --font-weight-label-caps: 600;
   --line-height-label-caps: 1.3;

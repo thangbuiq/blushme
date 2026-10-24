@@ -7,9 +7,7 @@
   flex-direction: column;
   padding: calc(var(--space-lg) + env(safe-area-inset-top)) var(--space-lg)
     calc(var(--space-lg) + env(safe-area-inset-bottom));
-  background:
-    radial-gradient(380px 260px at 100% 0%, #ffdce6 0%, transparent 70%),
-    radial-gradient(320px 240px at 0% 100%, #f3e8fb 0%, transparent 70%), var(--color-neutral);
+  background: #fff;
 }
 
 .top {

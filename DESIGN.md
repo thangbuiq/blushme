@@ -7,7 +7,7 @@ colors:
   secondary: "#7A6671"
   tertiary: "#B8416A"
   on-tertiary: "#FFFFFF"
-  neutral: "#FFF8F8"
+  neutral: "#FFFFFF"
   surface: "#FFFFFF"
   blush: "#F8C9D5"
   blush-tint: "#FFF0F3"
@@ -86,7 +86,7 @@ White-and-pink, warm rather than sugary. Pure black and saturated colors are nev
 
 - **Primary (#3E2A33):** warm plum ink for text. **Secondary (#7A6671):** softened ink for captions (AA on white).
 - **Tertiary (#B8416A):** deep rose, the single interaction color: primary buttons, logged period, focus rings, links. White text on it passes AA. **Rose deep (#8F2D50)** for text on blush fills.
-- **Neutral (#FFF8F8)** page, **Surface (#FFFFFF)** cards and inputs.
+- **Neutral (#FFFFFF)** page, **Surface (#FFFFFF)** cards and inputs.
 - **Blush (#F8C9D5), Blush deep (#F2A7BB), Blush tint (#FFF0F3):** petals, selected states, quiet fills.
 - **Hairline (#F3DEE4):** borders and dividers.
 - **Lavender, Butter, Mint:** fertility layer and phase accents. **Leaf / Leaf deep:** foliage in illustrations.

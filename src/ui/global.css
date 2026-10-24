@@ -25,10 +25,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(900px 500px at 12% -10%, #ffe3ea 0%, transparent 60%),
-    radial-gradient(800px 500px at 100% 100%, #f1e6fb 0%, transparent 55%), var(--color-neutral);
-  background-attachment: fixed;
+  background: #fff;
   color: var(--color-primary);
   font-family: var(--font-family-body-md);
   font-size: var(--font-size-body-md);
@@ -51,7 +48,7 @@ body {
   height: 100dvh;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #fffcfc 0%, var(--color-neutral) 100%);
+  background: #fff;
 }
 
 @media (min-width: 560px) and (min-height: 760px) {

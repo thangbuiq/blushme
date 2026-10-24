@@ -74,7 +74,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: { emailRedirectTo: window.location.origin },
+        options: {
+          emailRedirectTo:
+            (import.meta.env.VITE_SITE_URL as string | undefined) || window.location.origin,
+        },
       })
       if (error) return { ok: false, code: mapError(error) }
       // An existing confirmed email returns a user with no identities (anti-enumeration).
