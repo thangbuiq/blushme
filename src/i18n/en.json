@@ -144,10 +144,10 @@
     },
     "phasesTitle": "The four phases",
     "phase": {
-      "menstrual": "The egg from last cycle wasn't fertilized, so the uterine lining breaks down and sheds — this is your period, usually lasting 3 to 7 days. The chance of pregnancy on these days is low but not zero, especially with short or irregular cycles.",
-      "follicular": "Starting alongside your period, the pituitary gland prompts your ovaries to grow follicles while rising estrogen thickens the uterine lining again. The chance of pregnancy rises as ovulation gets closer, because sperm can survive in the body for up to about 5 days.",
-      "ovulation": "Around the middle of the cycle (day 14 in a 28-day cycle), a surge of LH causes a mature follicle to burst and release an egg. This is when the chance of pregnancy is highest: ovulation day and roughly the 5 days before it. If you're not trying to conceive, you need protection throughout this whole stretch.",
-      "luteal": "After ovulation, the burst follicle becomes the corpus luteum and releases progesterone to keep the lining thick. Without fertilization, it breaks down, hormones drop, and the next period begins. About a day after ovulation the chance of pregnancy drops sharply. Calendar estimates of ovulation can be off, though, so don't rely on this as dependable contraception."
+      "menstrual": "The egg from last cycle wasn't fertilized, so the uterine lining breaks down and sheds — this is your period, usually lasting 3 to 7 days. These are relatively safe days, but not completely safe, especially with short or irregular cycles.",
+      "follicular": "Starting alongside your period, the pituitary gland prompts your ovaries to grow follicles while rising estrogen thickens the uterine lining again. The first days are relatively safe, but the closer to ovulation the more dangerous they get, because sperm can survive in the body for up to about 5 days.",
+      "ovulation": "Around the middle of the cycle (day 14 in a 28-day cycle), a surge of LH causes a mature follicle to burst and release an egg. These are the most dangerous days: ovulation day and roughly the 5 days before it. If you're not trying to conceive, you need protection throughout this whole stretch.",
+      "luteal": "After ovulation, the burst follicle becomes the corpus luteum and releases progesterone to keep the lining thick. Without fertilization, it breaks down, hormones drop, and the next period begins. About a day after ovulation these are relatively safe days. Calendar estimates of ovulation can be off, though, so don't rely on this as dependable contraception."
     },
     "doctor": {
       "title": "When to see a doctor",
