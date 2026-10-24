@@ -74,15 +74,15 @@ export function AuthScreen() {
       </div>
 
       <header className={styles.hero}>
-        <Sprig width={190} className={styles.sprig} />
-        <Sprig width={150} mirror className={styles.sprigLeft} still />
+        <Sprig width={130} className={styles.sprig} />
+        <Sprig width={100} mirror className={styles.sprigLeft} still />
         <motion.div
           className={styles.brand}
           initial={reduceMotion ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE }}
         >
-          <Bloom size={34} petals={5} />
+          <Bloom size={28} petals={5} />
           Blushme
         </motion.div>
         <motion.h1

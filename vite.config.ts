@@ -14,8 +14,8 @@ export default defineConfig({
         lang: 'vi',
         short_name: 'Blushme',
         description: 'Nhật ký chu kỳ riêng tư, song ngữ Việt - Anh.',
-        theme_color: '#FFF8F8',
-        background_color: '#FFF8F8',
+        theme_color: '#FFFFFF',
+        background_color: '#FFFFFF',
         display: 'standalone',
         icons: [
           { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
