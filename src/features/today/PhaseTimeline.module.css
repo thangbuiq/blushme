@@ -87,7 +87,7 @@
 }
 
 .note {
-  margin: 0;
+  margin: var(--space-md) 0 0;
   color: var(--color-secondary);
   opacity: 0.75;
   font-size: 0.6875rem;

@@ -193,3 +193,11 @@ export function LoopIcon({ size = 16, className }: IconProps) {
     </svg>
   )
 }
+
+export function SigmaIcon({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path {...common} stroke="currentColor" d="M18 5H6l6 7-6 7h12" />
+    </svg>
+  )
+}

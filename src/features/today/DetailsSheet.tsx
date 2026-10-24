@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { addDays, formatISO, parseISO } from 'date-fns'
 import { useTranslation } from 'react-i18next'
 import { Sheet } from '@/ui/Sheet'
-import { ChevronIcon } from '@/ui/Icon'
+import { ChevronIcon, SigmaIcon } from '@/ui/Icon'
 import { Collapse } from '@/ui/Collapse'
 import { formatShortDate } from '@/ui/dateFormat'
 import { regularityOf } from '@/features/insights/insightsData'
@@ -11,6 +11,8 @@ import { useUiStore } from '@/store/uiStore'
 import type { CycleState } from '@/engine/types'
 import { LearnContent } from './LearnContent'
 import styles from './DetailsSheet.module.css'
+
+const CONFIDENCE_PERCENT = { low: 35, medium: 65, high: 90 } as const
 
 interface DetailsSheetProps {
   state: CycleState
@@ -34,6 +36,7 @@ export function DetailsSheet({ state }: DetailsSheetProps) {
 
   const stdDev = state.math.weightedStdDev
   const regularity = regularityOf(stdDev)
+  const confidencePercent = CONFIDENCE_PERCENT[state.confidence]
 
   return (
     <Sheet open={open} onClose={close} title={t('today.details.title')}>
@@ -45,7 +48,17 @@ export function DetailsSheet({ state }: DetailsSheetProps) {
       </div>
       <div className={styles.row}>
         <span className="label-caps">{t('today.details.confidenceLabel')}</span>
-        <span>{t(`today.details.confidence.${state.confidence}`)}</span>
+        <span className={styles.confidence} title={t(`today.details.confidence.${state.confidence}`)}>
+          <span
+            className={styles.miniRing}
+            style={{ '--pct': `${confidencePercent}%` } as React.CSSProperties}
+            aria-hidden="true"
+          />
+          <span className="numeral">{confidencePercent}%</span>
+          <span className={styles.confidenceText}>
+            {t(`today.details.confidence.${state.confidence}`)}
+          </span>
+        </span>
       </div>
 
       {stdDev !== null && regularity && (
@@ -68,7 +81,10 @@ export function DetailsSheet({ state }: DetailsSheetProps) {
         aria-expanded={formulaOpen}
         onClick={() => setFormulaOpen((v) => !v)}
       >
-        {t('today.details.howCalculated')}
+        <span className={styles.disclosureLabel}>
+          <SigmaIcon />
+          {t('today.details.howCalculated')}
+        </span>
         <ChevronIcon className={formulaOpen ? styles.chevronOpen : undefined} />
       </button>
 
