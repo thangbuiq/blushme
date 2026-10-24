@@ -30,9 +30,7 @@ export function detectBbtShift(readings: BbtReading[]): ISODate | null {
     const baseline = sorted.slice(i - BBT_BASELINE_WINDOW, i)
     const baselineMean = baseline.reduce((sum, r) => sum + r.bbt, 0) / baseline.length
     const risingDays = sorted.slice(i, i + BBT_SHIFT_CONFIRM_DAYS)
-    const allAboveThreshold = risingDays.every(
-      (r) => r.bbt - baselineMean >= BBT_SHIFT_MIN_DELTA,
-    )
+    const allAboveThreshold = risingDays.every((r) => r.bbt - baselineMean >= BBT_SHIFT_MIN_DELTA)
     if (allAboveThreshold) {
       return sorted[i].date
     }
@@ -43,8 +41,16 @@ export function detectBbtShift(readings: BbtReading[]): ISODate | null {
 // BBT/LH confirm the ovulation *date* directly for the current cycle; the
 // luteal-phase length they carry is whatever was already in effect (true L,
 // next-period-minus-ovulation, can only be known once that period arrives).
-export function ovulationFromBbt(shiftDate: ISODate, currentLutealPhaseLength: number): OvulationEstimate {
-  return { date: shiftDate, confirmed: true, method: 'bbt', lutealPhaseLength: currentLutealPhaseLength }
+export function ovulationFromBbt(
+  shiftDate: ISODate,
+  currentLutealPhaseLength: number,
+): OvulationEstimate {
+  return {
+    date: shiftDate,
+    confirmed: true,
+    method: 'bbt',
+    lutealPhaseLength: currentLutealPhaseLength,
+  }
 }
 
 export function ovulationFromLh(
@@ -60,6 +66,9 @@ export function ovulationFromLh(
 
 // Once a cycle completes, its confirmed ovulation date plus the period start
 // that followed gives a true L to personalize future calendar predictions.
-export function personalizeLutealPhaseLength(ovulationDate: ISODate, nextPeriodStart: ISODate): number {
+export function personalizeLutealPhaseLength(
+  ovulationDate: ISODate,
+  nextPeriodStart: ISODate,
+): number {
   return differenceInCalendarDays(parseISO(nextPeriodStart), parseISO(ovulationDate))
 }

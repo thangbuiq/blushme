@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 // Phones/tablets (coarse pointer) get the OS's own date picker; everything
-// else (mouse/trackpad) gets Blush's own calendar popover.
+// else (mouse/trackpad) gets Blushme's own calendar popover.
 export function useIsTouchDevice(): boolean {
   const [isTouch, setIsTouch] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,

@@ -10,7 +10,10 @@ export interface ColdStartResult {
 
 // Ĉ = (n·mean_obs + (3-n)·stated) / 3, blending early observations with the
 // cycle length the user stated during onboarding.
-export function coldStartEstimate(validLengths: number[], statedCycleLength: number): ColdStartResult {
+export function coldStartEstimate(
+  validLengths: number[],
+  statedCycleLength: number,
+): ColdStartResult {
   const n = validLengths.length
   const meanObs = n > 0 ? validLengths.reduce((sum, l) => sum + l, 0) / n : 0
   const mean = (n * meanObs + (COLD_START_TARGET_N - n) * statedCycleLength) / COLD_START_TARGET_N

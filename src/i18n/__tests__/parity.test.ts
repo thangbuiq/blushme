@@ -24,14 +24,15 @@ describe('i18n key parity', () => {
   })
 
   it('has no empty translation values', () => {
-    for (const [locale, tree] of [['en', en], ['vi', vi]] as const) {
+    for (const [locale, tree] of [
+      ['en', en],
+      ['vi', vi],
+    ] as const) {
       for (const path of collectKeyPaths(tree as Tree)) {
         const value = path.split('.').reduce<unknown>((node, key) => {
           return (node as Tree)[key]
         }, tree)
-        expect(typeof value === 'string' && value.trim().length > 0, `${locale}.${path}`).toBe(
-          true,
-        )
+        expect(typeof value === 'string' && value.trim().length > 0, `${locale}.${path}`).toBe(true)
       }
     }
   })

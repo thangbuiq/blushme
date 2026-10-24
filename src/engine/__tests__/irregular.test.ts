@@ -22,11 +22,9 @@ describe('irregular cycle', () => {
     const lengths = [21, 35, 22, 38] // chronological, most recent last
     const weights = [0.8 ** 3, 0.8 ** 2, 0.8 ** 1, 0.8 ** 0]
     const totalWeight = weights.reduce((a, b) => a + b, 0)
-    const expectedMean =
-      lengths.reduce((sum, len, i) => sum + len * weights[i], 0) / totalWeight
+    const expectedMean = lengths.reduce((sum, len, i) => sum + len * weights[i], 0) / totalWeight
     const expectedVariance =
-      lengths.reduce((sum, len, i) => sum + weights[i] * (len - expectedMean) ** 2, 0) /
-      totalWeight
+      lengths.reduce((sum, len, i) => sum + weights[i] * (len - expectedMean) ** 2, 0) / totalWeight
     const expectedStdDev = Math.sqrt(expectedVariance)
 
     expect(state.math.coldStart).toBe(false)

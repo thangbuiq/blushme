@@ -17,7 +17,7 @@ const ConfirmContext = createContext<ConfirmContextValue | null>(null)
 
 // A styled, in-app replacement for window.confirm(): every "are you sure?"
 // moment (delete all data, an unusually early period) should look like part
-// of Blush, not a browser-chrome popup.
+// of Blushme, not a browser-chrome popup.
 export function ConfirmDialogProvider({ children }: { children: ReactNode }) {
   const { t } = useTranslation()
   const [pending, setPending] = useState<PendingConfirm | null>(null)

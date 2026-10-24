@@ -1,43 +1,58 @@
 .backdrop {
   position: absolute;
   inset: 0;
-  background-color: rgba(74, 53, 64, 0.35);
+  background-color: rgba(62, 42, 51, 0.38);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   z-index: 40;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: var(--space-lg);
   overscroll-behavior: contain;
 }
 
 .sheet {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  max-height: calc(100% - var(--space-xl));
-  background-color: var(--color-surface);
+  max-height: 90%;
+  background: linear-gradient(180deg, #fff 0%, var(--color-neutral) 100%);
   color: var(--color-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: 0 24px 56px rgba(74, 53, 64, 0.16);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  padding: var(--space-sm) var(--space-lg) calc(var(--space-lg) + env(safe-area-inset-bottom));
+  box-shadow: var(--shadow-sheet);
   z-index: 41;
   overflow-y: auto;
   overscroll-behavior: contain;
+  outline: none;
+}
+
+.handle {
+  width: 44px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-hairline);
+  margin: 0 auto var(--space-md);
+  cursor: grab;
 }
 
 .closeButton {
   position: absolute;
   top: var(--space-md);
   right: var(--space-md);
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
+  background-color: var(--color-blush-tint);
   border: none;
   color: var(--color-secondary);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
+  transition: background-color 150ms ease;
+}
+
+.closeButton:hover {
+  background-color: var(--color-blush);
 }
 
 .title {
@@ -46,9 +61,8 @@
 }
 
 .subtitle {
-  margin-top: calc(-1 * var(--space-xs));
+  margin-top: calc(-1 * var(--space-sm));
+  margin-bottom: var(--space-md);
   color: var(--color-secondary);
-  font-family: var(--font-family-label-caps);
-  font-size: var(--font-size-label-caps);
-  letter-spacing: var(--letter-spacing-label-caps);
+  font-size: var(--font-size-body-sm);
 }

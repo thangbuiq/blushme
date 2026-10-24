@@ -53,11 +53,21 @@ export function computeCycle(
   const predictedNextPeriod = predictNextPeriod(lastPeriodStart, mean)
   predictedNextPeriod.rangeDays = predictionRange(stdDev)
 
-  const ovulation = resolveOvulation(logs, lastPeriodStart, predictedNextPeriod.date, lutealPhaseLength)
+  const ovulation = resolveOvulation(
+    logs,
+    lastPeriodStart,
+    predictedNextPeriod.date,
+    lutealPhaseLength,
+  )
   const window = fertileWindow(ovulation.date)
 
   const periodLength = settings.statedPeriodLength
-  const phase = currentPhase({ today, lastPeriodStart, periodLength, ovulationDate: ovulation.date })
+  const phase = currentPhase({
+    today,
+    lastPeriodStart,
+    periodLength,
+    ovulationDate: ovulation.date,
+  })
   const daysUntilNextPeriod = daysUntil(today, predictedNextPeriod.date)
   const isLate = daysUntilNextPeriod < -predictedNextPeriod.rangeDays
 
@@ -116,7 +126,11 @@ function resolveOvulation(
   return calendarOvulation(predictedNextPeriod, lutealPhaseLength)
 }
 
-function pausedState(today: ISODate, lastPeriodStart: ISODate, settings: CycleSettings): CycleState {
+function pausedState(
+  today: ISODate,
+  lastPeriodStart: ISODate,
+  settings: CycleSettings,
+): CycleState {
   const lutealPhaseLength = settings.lutealPhaseLength ?? DEFAULT_LUTEAL_PHASE_LENGTH
   const ovulation = calendarOvulation(lastPeriodStart, lutealPhaseLength)
   return {

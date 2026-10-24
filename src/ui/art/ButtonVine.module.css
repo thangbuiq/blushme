@@ -1,0 +1,77 @@
+.vine {
+  position: absolute;
+  bottom: 0;
+  width: 64px;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sway 6s ease-in-out infinite alternate;
+}
+
+.stem {
+  stroke-dasharray: 90;
+  stroke-dashoffset: 90;
+  animation: grow 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+.leaf {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: unfurl 0.7s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  animation-delay: var(--d, 0s);
+}
+
+.flower {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes grow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes unfurl {
+  from {
+    transform: scale(0) rotate(-30deg);
+  }
+  to {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0) rotate(-40deg);
+  }
+  to {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-2.5deg);
+  }
+  to {
+    transform: rotate(2.5deg);
+  }
+}

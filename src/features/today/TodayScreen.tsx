@@ -1,86 +1,164 @@
 import { formatISO } from 'date-fns'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { DropIcon, PetalIcon, FlowerIcon, MoonIcon } from '@/ui/Icon'
+import { CheckIcon, ChevronIcon, DropIcon, PlusIcon } from '@/ui/Icon'
+import { Bloom, Sprig } from '@/ui/art/Botanical'
+import { ButtonVine } from '@/ui/art/ButtonVine'
 import { Button } from '@/ui/Button'
-import { formatShortDate } from '@/ui/dateFormat'
+import { Chip } from '@/ui/Chip'
+import { useConfirm } from '@/ui/ConfirmDialog'
+import { REVEAL } from '@/ui/motion'
+import { formatShortDate, formatWeekdayDay } from '@/ui/dateFormat'
 import { useCycleState } from '@/store/cycleStore'
+import { useLogStore } from '@/store/logStore'
+import { useSettingsStore } from '@/store/settingsStore'
 import { useUiStore } from '@/store/uiStore'
 import { CalendarSection } from '@/features/calendar/CalendarSection'
-import type { Phase } from '@/engine/types'
+import { MOODS } from '@/features/log/moods'
+import { isSuspiciouslyEarly } from '@/features/log/periodValidation'
+import { PHASE_TONE, cycleGeometry } from './phaseColors'
 import { statusLineText } from './statusLine'
-import { DetailsSheet } from './DetailsSheet'
-import { LearnSheet } from './LearnSheet'
+import { CycleRing } from './CycleRing'
+import { PhaseTimeline } from './PhaseTimeline'
 import styles from './TodayScreen.module.css'
 
 const todayISO = () => formatISO(new Date(), { representation: 'date' })
 
-const PHASE_ICON: Record<Phase, typeof DropIcon> = {
-  menstrual: DropIcon,
-  follicular: PetalIcon,
-  ovulation: FlowerIcon,
-  luteal: MoonIcon,
-}
-
-const PHASE_ACCENT: Record<Phase, string> = {
-  menstrual: 'var(--color-tertiary)',
-  follicular: 'var(--color-mint)',
-  ovulation: 'var(--color-butter)',
-  luteal: 'var(--color-lavender)',
-}
-
-// Tertiary is the one accent dark enough to need white text for AA contrast
-// (DESIGN.md: "White text on it passes AA"); the three pastels keep plum ink.
-const PHASE_TEXT: Record<Phase, string> = {
-  menstrual: 'var(--color-on-tertiary)',
-  follicular: 'var(--color-primary)',
-  ovulation: 'var(--color-primary)',
-  luteal: 'var(--color-primary)',
+function greetingKey(): string {
+  const hour = new Date().getHours()
+  if (hour < 11) return 'today.greeting.morning'
+  if (hour < 14) return 'today.greeting.noon'
+  if (hour < 18) return 'today.greeting.afternoon'
+  return 'today.greeting.evening'
 }
 
 export function TodayScreen() {
   const { t, i18n } = useTranslation()
+  const reduceMotion = useReducedMotion()
+  const confirm = useConfirm()
   const state = useCycleState()
+  const logs = useLogStore((s) => s.logs)
+  const upsertLog = useLogStore((s) => s.upsertLog)
+  const periodLength = useSettingsStore((s) => s.settings.statedPeriodLength)
   const openLogSheet = useUiStore((s) => s.openLogSheet)
   const openDetailsSheet = useUiStore((s) => s.openDetailsSheet)
-  const openLearnSheet = useUiStore((s) => s.openLearnSheet)
+  const showToast = useUiStore((s) => s.showToast)
 
-  const PhaseIcon = PHASE_ICON[state.phase]
+  const today = todayISO()
+  const todayLog = logs.find((l) => l.date === today)
+  const onPeriodToday = Boolean(todayLog?.periodStart || (todayLog?.flow ?? 0) > 0)
+
+  async function startPeriodToday() {
+    if (isSuspiciouslyEarly(today, logs) && !(await confirm(t('log.earlyPeriodConfirm')))) return
+    await upsertLog({ date: today, periodStart: true, flow: todayLog?.flow || 2 })
+    showToast('today.periodStarted')
+  }
+
+  const reveal = (i: number) => ({
+    variants: REVEAL,
+    initial: reduceMotion ? 'show' : 'hidden',
+    animate: 'show',
+    custom: i,
+  })
 
   return (
     <div className={styles.screen}>
-      <div className={styles.hero}>
-        <button type="button" className={styles.dateCard} onClick={openDetailsSheet}>
-          <span className="label-caps">{formatShortDate(todayISO(), i18n.language)}</span>
-          <span className={styles.dayNumeral}>{t('today.dayLabel', { day: state.dayOfCycle })}</span>
-          <span className={styles.statusLine}>{statusLineText(t, state)}</span>
-        </button>
-
-        <div
-          className={styles.phaseCard}
-          style={{ backgroundColor: PHASE_ACCENT[state.phase], color: PHASE_TEXT[state.phase] }}
-        >
-          <PhaseIcon size={24} className={styles.phaseIcon} />
-          <span className={styles.phaseName}>{t(`today.phaseStatus.${state.phase}`)}</span>
+      <motion.header className={styles.header} {...reveal(0)}>
+        <div>
+          <h1 className={styles.greeting}>{t(greetingKey())}</h1>
+          <p className={styles.date}>{formatWeekdayDay(new Date(), i18n.language)}</p>
         </div>
+        <Bloom size={64} tone={PHASE_TONE[state.phase]} petals={6} className={styles.headerArt} />
+      </motion.header>
 
-        <div className={styles.suggestionCard}>
-          <p className={styles.suggestionText}>{t(`today.phaseDescription.${state.phase}`)}</p>
-          <button type="button" className={styles.learnLink} onClick={openLearnSheet}>
-            {t('today.learnLink')}
+      <motion.section className={`${styles.card} ${styles.hero}`} {...reveal(1)}>
+        <Sprig width={150} className={styles.heroSprig} still />
+        <Sprig width={120} mirror className={styles.heroSprigLeft} still />
+        <CycleRing state={state} periodLength={periodLength} />
+        <div className={styles.status}>
+          <h2 className={styles.statusTitle}>{statusLineText(t, state)}</h2>
+          <p className={styles.statusSub}>
+            {t('today.expected', {
+              date: formatShortDate(state.predictedNextPeriod.date, i18n.language),
+            })}
+          </p>
+          <button type="button" className={styles.detailsButton} onClick={openDetailsSheet}>
+            <ButtonVine side="left" />
+            <ButtonVine side="right" />
+            <span className={styles.detailsLabel}>
+              {t('today.insightButton')}
+              <ChevronIcon size={14} />
+            </span>
           </button>
         </div>
+      </motion.section>
 
+      <motion.section
+        className={`${styles.card} ${styles.focus}`}
+        {...reveal(2)}
+        aria-labelledby="focus-title"
+      >
+        <div className={styles.focusHead}>
+          <Bloom size={56} tone={PHASE_TONE[state.phase]} petals={5} still />
+          <div>
+            <p className={styles.focusKicker}>{t('today.focusKicker')}</p>
+            <h2 id="focus-title" style={{ fontSize: '1.25rem' }}>
+              {t(`today.phaseStatus.${state.phase}`)}
+            </h2>
+          </div>
+        </div>
+        <p className={styles.focusBody}>{t(`today.phaseDescription.${state.phase}`)}</p>
+        <ul className={styles.tips}>
+          {[1, 2, 3].map((n) => (
+            <li key={n} className={styles.tip}>
+              <span className={styles.tipIcon}>
+                <CheckIcon size={13} />
+              </span>
+              {t(`today.tips.${state.phase}.tip${n}`)}
+            </li>
+          ))}
+        </ul>
+      </motion.section>
+
+      <motion.section className={styles.card} {...reveal(3)} aria-labelledby="quick-log">
+        <PhaseTimeline
+          geometry={cycleGeometry(state, periodLength)}
+          currentDay={state.dayOfCycle}
+          currentPhase={state.phase}
+        />
+        <h2 id="quick-log" className={styles.sectionTitle}>
+          {t('today.howAreYou')}
+        </h2>
+        <div className={styles.moods}>
+          {MOODS.map((mood) => (
+            <Chip
+              key={mood}
+              selected={todayLog?.mood === mood}
+              onClick={() =>
+                void upsertLog({ date: today, mood: todayLog?.mood === mood ? undefined : mood })
+              }
+            >
+              {t(`log.moods.${mood}`)}
+            </Chip>
+          ))}
+        </div>
         <div className={styles.actions}>
-          <Button variant="primary" onClick={() => openLogSheet(todayISO())}>
+          <Button onClick={() => openLogSheet(today)}>
+            <PlusIcon size={18} />
             {t('today.logButton')}
           </Button>
+          {state.phase !== 'menstrual' && !onPeriodToday ? (
+            <Button variant="secondary" onClick={() => void startPeriodToday()}>
+              <DropIcon size={18} />
+              {t('today.startPeriod')}
+            </Button>
+          ) : null}
         </div>
-      </div>
+      </motion.section>
 
-      <CalendarSection />
-
-      <DetailsSheet state={state} />
-      <LearnSheet />
+      <motion.div {...reveal(4)}>
+        <CalendarSection />
+      </motion.div>
     </div>
   )
 }

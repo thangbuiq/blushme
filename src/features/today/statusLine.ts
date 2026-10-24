@@ -1,7 +1,10 @@
 import type { TFunction } from 'i18next'
 import type { CycleState } from '@/engine/types'
 
-export function statusLineKey(state: CycleState): { key: string; options?: Record<string, unknown> } {
+export function statusLineKey(state: CycleState): {
+  key: string
+  options?: Record<string, unknown>
+} {
   if (state.paused) return { key: 'today.statusPaused' }
   if (state.isLate) return { key: 'today.statusLate' }
   if (state.daysUntilNextPeriod <= 0) return { key: 'today.statusToday' }

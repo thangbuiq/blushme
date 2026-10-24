@@ -14,10 +14,17 @@ const PROJECTED_CYCLES_AHEAD = 12 // about a year, so flipping forward never sho
 // Every date gets a predicted-period placeholder, not just the very next
 // one: we repeat the current estimated cycle length forward so any future
 // month still shows where a period is expected.
-function isWithinAnyProjectedPeriod(date: string, cycleState: CycleState, periodLength: number): boolean {
+function isWithinAnyProjectedPeriod(
+  date: string,
+  cycleState: CycleState,
+  periodLength: number,
+): boolean {
   const cycleLength = Math.max(
     21,
-    differenceInCalendarDays(parseISO(cycleState.predictedNextPeriod.date), parseISO(cycleState.lastPeriodStart)),
+    differenceInCalendarDays(
+      parseISO(cycleState.predictedNextPeriod.date),
+      parseISO(cycleState.lastPeriodStart),
+    ),
   )
 
   for (let cycle = 0; cycle <= PROJECTED_CYCLES_AHEAD; cycle++) {
@@ -40,7 +47,8 @@ export function computeDayState(
   const log = logs.find((l) => l.date === date)
   const logged = Boolean(log?.periodStart || (log?.flow ?? 0) > 0)
 
-  const predicted = !logged && !cycleState.paused && isWithinAnyProjectedPeriod(date, cycleState, periodLength)
+  const predicted =
+    !logged && !cycleState.paused && isWithinAnyProjectedPeriod(date, cycleState, periodLength)
 
   let fertile: FertileLevel = null
   if (fertilityLayerEnabled && !cycleState.paused) {

@@ -1,7 +1,10 @@
 import { addDays, differenceInCalendarDays, formatISO, parseISO } from 'date-fns'
 import type { ISODate, PredictedPeriod } from './types'
 
-export function predictNextPeriod(lastPeriodStart: ISODate, meanCycleLength: number): PredictedPeriod {
+export function predictNextPeriod(
+  lastPeriodStart: ISODate,
+  meanCycleLength: number,
+): PredictedPeriod {
   const date = formatISO(addDays(parseISO(lastPeriodStart), Math.round(meanCycleLength)), {
     representation: 'date',
   })

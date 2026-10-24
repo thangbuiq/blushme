@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import styles from './ToggleSwitch.module.css'
-import { TAP_SCALE, TAP_TRANSITION } from './motion'
+import { TAP_SCALE, SPRING } from './motion'
 
 interface ToggleSwitchProps {
   checked: boolean
@@ -21,9 +21,9 @@ export function ToggleSwitch({ checked, onChange, ariaLabel }: ToggleSwitchProps
     >
       <motion.span
         className={styles.toggleKnob}
-        animate={{ x: checked ? 22 : 0 }}
+        animate={{ x: checked ? 20 : 0 }}
         whileTap={reduceMotion ? undefined : { scale: TAP_SCALE }}
-        transition={TAP_TRANSITION}
+        transition={SPRING}
       />
     </button>
   )

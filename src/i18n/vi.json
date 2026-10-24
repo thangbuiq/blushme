@@ -11,47 +11,51 @@
     "yes": "Có",
     "areYouSure": "Em có chắc không?",
     "no": "Không",
-    "notSure": "Mình chưa chắc"
+    "notSure": "Em chưa chắc",
+    "close": "Đóng",
+    "days": "ngày",
+    "increase": "Tăng",
+    "decrease": "Giảm"
   },
   "nav": {
     "today": "Hôm nay",
-    "calendar": "Lịch",
     "insights": "Thông tin",
-    "settings": "Cài đặt"
+    "settings": "Cài đặt",
+    "label": "Điều hướng chính"
   },
   "onboarding": {
     "step1": {
-      "title": "Theo dõi kỳ kinh",
+      "title": "Chào mừng đến với Blushme",
       "languageLabel": "Ngôn ngữ",
       "goalLabel": "Em đến đây vì điều gì?",
       "goalTrack": "Theo dõi chu kỳ",
       "goalTtc": "Đang mong có con",
-      "goalAvoiding": "Tránh thai"
+      "goalAvoiding": "Tránh thai",
+      "goalTrackHint": "Hiểu cơ thể từng ngày",
+      "goalTtcHint": "Xem cửa sổ dễ thụ thai",
+      "goalAvoidingHint": "Biết ngày khả năng thụ thai cao và thấp"
     },
     "step2": {
-      "title": "Kỳ kinh gần nhất của em bắt đầu khi nào?",
-      "helper": "Đây là điểm khởi đầu. Em có thể sửa lại bất cứ lúc nào."
+      "title": "Kỳ kinh gần nhất bắt đầu khi nào?",
+      "helper": "Đây chỉ là điểm khởi đầu, có thể sửa lại bất cứ lúc nào.",
+      "label": "Ngày đầu của kỳ kinh gần nhất"
     },
     "step3": {
-      "title": "Cho mình biết nhịp điệu thường ngày của em",
-      "cycleLengthLabel": "Độ dài chu kỳ thường thấy (ngày)",
-      "periodLengthLabel": "Độ dài kỳ kinh thường thấy (ngày)"
+      "title": "Nhịp điệu thường ngày của em",
+      "cycleLengthLabel": "Độ dài chu kỳ thường thấy",
+      "periodLengthLabel": "Độ dài kỳ kinh thường thấy"
     },
-    "disclaimer": "Blush có chứa thông tin dự đoán về sức khỏe sinh sản dựa trên nghiên cứu khoa học về y tế. Tuy nhiên, Blush không phải là một công cụ y tế và không thể thay thế cho lời khuyên của bác sĩ. Nếu em có bất kỳ lo lắng nào về sức khỏe sinh sản, hãy tham khảo ý kiến bác sĩ hoặc chuyên gia y tế.",
-    "lockOffer": {
-      "title": "Giữ riêng tư cho ứng dụng này?",
-      "body": "Em có thể khóa Blush bằng mã PIN. Em cũng có thể bật tính năng này sau trong Cài đặt.",
-      "enable": "Đặt mã PIN",
-      "notNow": "Chưa cần"
-    }
+    "disclaimer": "Blushme có chứa thông tin dự đoán về sức khỏe sinh sản dựa trên nghiên cứu khoa học về y tế. Tuy nhiên, Blushme không phải là một công cụ y tế và không thể thay thế cho lời khuyên của bác sĩ. Nếu có bất kỳ lo lắng nào về sức khỏe sinh sản, em hãy tham khảo ý kiến bác sĩ hoặc chuyên gia y tế.",
+    "disclaimerTitle": "Một lời nhắn nhẹ nhàng",
+    "start": "Bắt đầu cùng Blushme"
   },
   "today": {
     "dayLabel": "Ngày {{day}}",
-    "logButton": "+ Ghi lại hôm nay",
+    "logButton": "Ghi lại hôm nay",
     "statusNext": "Kỳ kinh tiếp theo trong khoảng {{days}} ngày",
     "statusNextOne": "Kỳ kinh tiếp theo trong khoảng 1 ngày",
-    "statusToday": "Kỳ kinh của em bắt đầu hôm nay",
-    "statusLate": "Đang trễ một chút. Hãy theo dõi cơ thể mình",
+    "statusToday": "Kỳ kinh bắt đầu hôm nay",
+    "statusLate": "Đang trễ một chút. Hãy lắng nghe cơ thể nhé",
     "statusPaused": "Dự đoán đang tạm dừng",
     "phase": {
       "menstrual": "Kỳ kinh",
@@ -60,33 +64,76 @@
       "luteal": "Hoàng thể"
     },
     "phaseStatus": {
-      "menstrual": "Em đang bị hành kinh",
-      "follicular": "Giai đoạn nang trứng",
-      "ovulation": "Em đang rụng trứng",
-      "luteal": "Giai đoạn hoàng thể"
+      "menstrual": "Em đang trong kỳ kinh, hãy nghỉ ngơi và chăm sóc bản thân nhé",
+      "follicular": "Kỳ nang trứng, có thể em sẽ thấy tràn đầy năng lượng hơn",
+      "ovulation": "Kỳ rụng trứng là lúc em rạng rỡ nhất, nhưng dễ mang thai lắm đó",
+      "luteal": "Giai đoạn hoàng thể, có thể em thấy căng tức ngực hoặc dễ cáu hơn"
     },
     "phaseDescription": {
-      "menstrual": "Cơ thể có thể hơi mỏi và đau bụng nhẹ, vì nội tiết tố đang ở mức thấp nhất trong giai đoạn hành kinh của em. Hãy giữ ấm bụng và nghỉ ngơi nhiều hơn nhé.",
-      "follicular": "Cơ thể thường tràn năng lượng hơn, vì estrogen đang tăng dần trong giai đoạn nang trứng của em. Đây là lúc tốt để vận động nhiều hơn.",
-      "ovulation": "Em có thể thấy tràn đầy sức sống hoặc hơi đau nhẹ một bên bụng, vì nội tiết LH tăng vọt để giải phóng trứng — đây cũng là ngày dễ thụ thai nhất.",
-      "luteal": "Em có thể thấy căng tức ngực hoặc dễ cáu hơn, vì progesterone đang tăng trong giai đoạn hoàng thể của em. Hãy nhẹ nhàng với bản thân nhé."
+      "menstrual": "Cơ thể có thể hơi mỏi và đau bụng nhẹ, vì nội tiết tố đang ở mức thấp nhất trong giai đoạn hành kinh. Hãy giữ ấm bụng và nghỉ ngơi nhiều hơn nhé.",
+      "follicular": "Cơ thể thường tràn năng lượng hơn, vì estrogen đang tăng dần trong giai đoạn nang trứng. Đây là lúc tốt để vận động nhiều hơn.",
+      "ovulation": "Có thể thấy tràn đầy sức sống hoặc hơi đau nhẹ một bên bụng, vì nội tiết LH tăng vọt để giải phóng trứng. Đây cũng là ngày dễ thụ thai nhất.",
+      "luteal": "Có thể thấy căng tức ngực hoặc dễ cáu hơn, vì progesterone đang tăng trong giai đoạn hoàng thể. Hãy nhẹ nhàng với bản thân nhé."
     },
-    "learnLink": "Tìm hiểu về chu kỳ của em",
+    "learnLink": "Tìm hiểu về chu kỳ",
     "details": {
-      "title": "Chi tiết",
+      "title": "Dự đoán của em",
       "rangeLabel": "Khoảng dự kiến",
       "rangeValue": "{{start}} đến {{end}}",
       "confidenceLabel": "Độ tin cậy",
       "confidence": {
-        "low": "Đang tìm hiểu nhịp điệu của em",
+        "low": "Đang tìm hiểu nhịp điệu",
         "medium": "Khá ổn định",
         "high": "Đã khá rõ ràng"
       },
-      "howCalculated": "Cách tính này như thế nào?"
-    }
+      "howCalculated": "Cách tính này như thế nào?",
+      "variabilityValue": "±{{days}} ngày · {{label}}"
+    },
+    "greeting": {
+      "morning": "Chào buổi sáng",
+      "noon": "Chào buổi trưa",
+      "afternoon": "Chào buổi chiều",
+      "evening": "Chào buổi tối"
+    },
+    "dayWord": "Ngày",
+    "ringLabel": "Ngày {{day}} của chu kỳ {{total}} ngày",
+    "expected": "Dự kiến {{date}}",
+    "howAreYou": "Hôm nay em thế nào?",
+    "startPeriod": "Kỳ kinh bắt đầu hôm nay",
+    "periodStarted": "Đã ghi kỳ kinh. Hãy chăm sóc bản thân thật tốt nhé.",
+    "focusKicker": "Điều nên chú ý",
+    "tips": {
+      "menstrual": {
+        "tip1": "Giữ ấm bụng bằng túi chườm hoặc đồ uống ấm.",
+        "tip2": "Ưu tiên thực phẩm giàu sắt: rau bó xôi, các loại đậu, thịt nạc.",
+        "tip3": "Nghỉ ngơi nhiều hơn, vận động nhẹ như đi bộ hoặc giãn cơ."
+      },
+      "follicular": {
+        "tip1": "Thời điểm tốt để tập luyện hoặc thử điều mới.",
+        "tip2": "Lên kế hoạch cho việc quan trọng khi năng lượng đang tăng.",
+        "tip3": "Uống đủ nước và ăn nhiều rau củ tươi nhiều màu sắc."
+      },
+      "ovulation": {
+        "tip1": "Năng lượng và tâm trạng thường lên cao lúc này. Hãy tận hưởng nhé.",
+        "tip2": "Hơi nhói một bên bụng là bình thường. Nhớ uống đủ nước.",
+        "tip3": "Đây là lúc dễ thụ thai nhất. Hãy lưu ý theo mục tiêu của em."
+      },
+      "luteal": {
+        "tip1": "Chọn đồ ăn nhẹ giàu magie như các loại hạt hoặc sô cô la đen.",
+        "tip2": "Đi ngủ sớm hơn và giữ giấc ngủ thật ngon.",
+        "tip3": "Kiên nhẫn với cảm xúc thất thường. Đi dạo hoặc viết nhật ký sẽ giúp ích."
+      }
+    },
+    "phaseBadge": {
+      "menstrual": "Kỳ kinh",
+      "follicular": "Nang trứng",
+      "ovulation": "Rạng rỡ",
+      "luteal": "Dịu lại"
+    },
+    "insightButton": "Hiểu rõ dự đoán này"
   },
   "learn": {
-    "title": "Hiểu về chu kỳ của em",
+    "title": "Hiểu về chu kỳ",
     "intro": "Chu kỳ kinh nguyệt là quá trình thay đổi sinh lý lặp đi lặp lại hàng tháng, nhằm chuẩn bị cho quá trình mang thai. Một chu kỳ được tính từ ngày đầu tiên có máu kinh cho đến ngày đầu tiên có máu kinh của tháng tiếp theo.",
     "howCounted": {
       "title": "Độ dài bao nhiêu là bình thường?",
@@ -94,14 +141,14 @@
     },
     "phasesTitle": "Bốn giai đoạn của chu kỳ",
     "phase": {
-      "menstrual": "Trứng của chu kỳ trước không được thụ tinh, lớp niêm mạc tử cung bong ra và đẩy ra ngoài — đây là kỳ hành kinh của em, thường kéo dài 3 đến 7 ngày.",
+      "menstrual": "Trứng của chu kỳ trước không được thụ tinh, lớp niêm mạc tử cung bong ra và đẩy ra ngoài. Đây là kỳ hành kinh, thường kéo dài 3 đến 7 ngày.",
       "follicular": "Diễn ra đồng thời với hành kinh, tuyến yên kích thích buồng trứng sản xuất các nang trứng, trong khi estrogen tăng dần khiến niêm mạc tử cung dày lên trở lại.",
       "ovulation": "Vào khoảng giữa chu kỳ (ngày 14 với chu kỳ 28 ngày), lượng hormone LH tăng cao đột ngột khiến nang trứng chín vỡ và giải phóng trứng.",
       "luteal": "Sau khi rụng trứng, nang trứng vỡ biến thành hoàng thể và tiết ra progesterone để giữ cho niêm mạc tử cung tiếp tục dày lên. Nếu không có sự thụ tinh, hoàng thể tiêu biến, hormone giảm xuống và kỳ kinh mới bắt đầu."
     },
     "doctor": {
       "title": "Khi nào cần đi gặp bác sĩ?",
-      "intro": "Em nên tham khảo ý kiến bác sĩ nếu gặp phải:",
+      "intro": "Nên tham khảo ý kiến bác sĩ nếu gặp phải:",
       "item1": "Vòng kinh quá ngắn (dưới 24 ngày) hoặc quá dài (trên 38 ngày)",
       "item2": "Mất kinh từ 3 tháng trở lên",
       "item3": "Rong kinh (kéo dài trên 8 ngày) hoặc lượng máu ra quá nhiều",
@@ -115,12 +162,12 @@
       "predicted": "Kỳ kinh dự kiến",
       "fertile": "Dễ mang thai",
       "ovulation": "Ngày rụng trứng",
-      "low": "Ngày an toàn"
+      "low": "Khả năng thụ thai thấp"
     },
     "fertilityDisclaimer": "Ước tính theo lịch không phải là biện pháp tránh thai đáng tin cậy.",
     "periodSummary": {
       "estimated": "Kỳ kinh gần nhất: từ {{start}} đến khoảng {{end}}*",
-      "estimatedNote": "* Ước tính, dựa trên các chu kỳ trước của em",
+      "estimatedNote": "* Ước tính, dựa trên các chu kỳ trước",
       "confirmed": "Kỳ kinh gần nhất: từ {{start}} đến {{end}}"
     },
     "rangeSelect": {
@@ -129,13 +176,22 @@
       "promptEnd": "Giờ chạm vào ngày cuối",
       "save": "Lưu kỳ kinh ({{days}} ngày)",
       "cancel": "Hủy"
+    },
+    "weekdays": {
+      "Mon": "T2",
+      "Tue": "T3",
+      "Wed": "T4",
+      "Thu": "T5",
+      "Fri": "T6",
+      "Sat": "T7",
+      "Sun": "CN"
     }
   },
   "log": {
     "todayTitle": "Hôm nay",
     "cycleContext": "Ngày {{day}} · {{phase}}",
     "onPeriod": "Đang trong kỳ kinh",
-    "periodDayLabel": "Ngày {{day}} trong kỳ kinh của em",
+    "periodDayLabel": "Ngày {{day}} trong kỳ kinh",
     "flowLabel": "Lượng kinh",
     "flow": {
       "light": "Ít",
@@ -169,7 +225,7 @@
       "energetic": "Tràn năng lượng"
     },
     "noteLabel": "Ghi chú",
-    "notePlaceholder": "Điều gì đó em muốn nhớ lại",
+    "notePlaceholder": "Điều gì đó muốn nhớ lại",
     "save": "Lưu",
     "earlyPeriodConfirm": "Thời điểm này sớm hơn bình thường so với kỳ kinh trước. Em vẫn muốn lưu?",
     "advanced": {
@@ -188,45 +244,84 @@
     }
   },
   "insights": {
-    "emptyTitle": "Vẫn đang tìm hiểu về em",
-    "emptyBody": "Hãy ghi lại hai chu kỳ trở lên..."
+    "emptyTitle": "Blushme vẫn đang làm quen với em",
+    "emptyBody": "Hãy ghi lại hai chu kỳ đầy đủ, những quy luật dịu dàng sẽ nở ra ở đây.",
+    "title": "Nhịp chu kỳ",
+    "subtitle": "Dựa trên {{count}} chu kỳ",
+    "progress": "Đã ghi {{done}}/{{total}} chu kỳ",
+    "backToToday": "Về hôm nay",
+    "nextPeriod": "Kỳ kinh tiếp theo",
+    "within": "xê xích khoảng {{days}} ngày",
+    "avgCycle": "Chu kỳ trung bình",
+    "avgPeriod": "Kỳ kinh trung bình",
+    "regularity": "Độ đều đặn",
+    "regularityValue": {
+      "steady": "Rất đều đặn",
+      "fairlySteady": "Khá đều",
+      "variable": "Dao động nhiều"
+    },
+    "regularityHint": {
+      "steady": "Các chu kỳ chỉ lệch nhau vài ngày.",
+      "fairlySteady": "Có chênh lệch vài ngày, điều này khá phổ biến.",
+      "variable": "Các chu kỳ chênh lệch khá nhiều. Nếu lo lắng, em hãy hỏi bác sĩ nhé."
+    },
+    "history": "Các chu kỳ gần đây",
+    "historyLegend": "Độ dài theo ngày. Trung bình {{avg}} ngày. Cột sọc vằn được bỏ qua vì bất thường.",
+    "symptoms": "Triệu chứng hay gặp",
+    "moods": "Cảm xúc hay gặp",
+    "noMoodTitle": "Ghi thêm một chút",
+    "noMoodBody": "Hãy ghi lại triệu chứng và cảm xúc để thấy điều gì lặp lại trong chu kỳ."
   },
   "settings": {
     "language": "Ngôn ngữ",
-    "privacyLock": "Riêng tư & khóa",
-    "reminders": "Nhắc nhở",
     "data": "Dữ liệu",
     "export": "Xuất dữ liệu",
     "import": "Nhập dữ liệu",
     "deleteAll": "Xóa toàn bộ dữ liệu",
-    "deleteAllConfirm": "Thao tác này sẽ xóa vĩnh viễn mọi dữ liệu và cài đặt trên thiết bị này. Không thể hoàn tác.",
-    "more": "Thêm",
+    "deleteAllConfirm": "Thao tác này sẽ xóa vĩnh viễn mọi nhật ký và cài đặt trong tài khoản. Không thể hoàn tác.",
     "weekStart": "Tuần bắt đầu từ",
     "units": "Đơn vị",
     "goal": "Mục tiêu",
     "advancedTracking": "Theo dõi chuyên sâu",
     "pausePredictions": "Tạm dừng dự đoán",
     "fertilityWindow": "Hiện cửa sổ dễ thụ thai",
-    "about": "Giới thiệu",
-    "aboutBody": "Blush lưu mọi thứ ngay trên thiết bị này. Không có tài khoản, quảng cáo hay theo dõi dữ liệu.",
-    "loadDemoData": "Tải dữ liệu mẫu",
-    "removeDemoData": "Xóa dữ liệu mẫu"
+    "aboutBody": "Blushme đồng bộ dữ liệu vào tài khoản riêng. Không quảng cáo, không theo dõi.",
+    "title": "Cài đặt",
+    "synced": "Đã đồng bộ với tài khoản",
+    "tracking": "Theo dõi",
+    "weekStartOptions": {
+      "monday": "Thứ Hai",
+      "sunday": "Chủ nhật"
+    },
+    "unitsOptions": {
+      "metric": "Hệ mét",
+      "imperial": "Hệ Anh"
+    },
+    "advancedHint": "Nhiệt độ, dịch nhầy, que thử LH",
+    "account": "Tài khoản",
+    "signOut": "Đăng xuất",
+    "deleteAccount": "Xóa tài khoản",
+    "deleteAccountConfirm": "Thao tác này sẽ xóa vĩnh viễn tài khoản và toàn bộ dữ liệu. Không thể hoàn tác.",
+    "imported": "Đã nhập dữ liệu",
+    "importFailed": "Không đọc được tệp này",
+    "demoNote": "Chế độ demo, dữ liệu không được lưu",
+    "exitDemo": "Thoát chế độ demo"
   },
   "engine": {
     "formula": {
-      "sentence": "Mình xem các chu kỳ gần đây của em, ưu tiên những chu kỳ mới hơn, rồi dùng đó để dự đoán chu kỳ tiếp theo.",
+      "sentence": "Blushme xem các chu kỳ gần đây, ưu tiên những chu kỳ mới hơn, rồi dùng đó để dự đoán chu kỳ tiếp theo.",
       "showMath": "Xem công thức",
       "withYourNumbers": "Với số liệu của em",
       "meanLabel": "Độ dài chu kỳ trung bình có trọng số",
       "stdDevLabel": "Mức độ dao động của chu kỳ",
-      "excludedLabel": "Các chu kỳ mình đã bỏ qua",
+      "excludedLabel": "Các chu kỳ đã bỏ qua",
       "excludedReason": {
         "range": "nằm ngoài khoảng 21 đến 45 ngày thường thấy",
         "outlier": "khác biệt bất thường so với các chu kỳ khác"
       },
       "learnMore": {
         "title": "Tìm hiểu thêm",
-        "lutealPhase": "Mình giả định hoàng thể dài 14 ngày, trừ khi số liệu nhiệt độ của em cho thấy khác.",
+        "lutealPhase": "Blushme giả định hoàng thể dài 14 ngày, trừ khi số liệu nhiệt độ cho thấy khác.",
         "fertileWindowStart": "Cửa sổ dễ thụ thai bắt đầu 5 ngày trước ngày rụng trứng dự kiến vì tinh trùng có thể sống lâu như vậy.",
         "limits": "Ước tính theo lịch chỉ là một gợi ý, không phải điều chắc chắn."
       },
@@ -235,15 +330,58 @@
         "cycleLength": "C = độ dài một chu kỳ trong quá khứ, tính theo ngày",
         "periodStart": "P = ngày một kỳ kinh bắt đầu",
         "weight": "w = mức độ tính của một chu kỳ; chu kỳ gần đây được tính nhiều hơn",
-        "predictedDate": "P-hat = ngày bắt đầu kỳ kinh tiếp theo dự kiến của em",
+        "predictedDate": "P-hat = ngày bắt đầu kỳ kinh tiếp theo dự kiến",
         "ovulationDate": "O = ngày rụng trứng dự kiến",
         "lutealLength": "L = độ dài hoàng thể, tính theo ngày"
       },
       "yourNumbers": {
-        "cycleLengthsTitle": "Các chu kỳ gần đây của em",
+        "cycleLengthsTitle": "Các chu kỳ gần đây",
         "cycleLengthWithWeight": "{{length}} ngày (trọng số {{weight}})",
         "rangeValue": "{{days}} ngày, xê xích {{range}}"
       }
     }
+  },
+  "auth": {
+    "signIn": "Đăng nhập",
+    "signUp": "Đăng ký",
+    "signInCta": "Đăng nhập",
+    "createAccount": "Tạo tài khoản",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "passwordHint": "Ít nhất 6 ký tự",
+    "showPassword": "Hiện mật khẩu",
+    "hidePassword": "Ẩn mật khẩu",
+    "noAccount": "Chưa có tài khoản?",
+    "haveAccount": "Đã có tài khoản?",
+    "heroTitle": "Hiểu chu kỳ của em, để chăm sóc em.",
+    "heroLead": "Theo dõi chu kỳ kinh nguyệt để hiểu cơ thể, cảm xúc và sức khỏe sinh sản của em.",
+    "privacy": "Dữ liệu được lưu an toàn và chỉ riêng em xem được.",
+    "sentTitle": "Kiểm tra email nhé",
+    "sentBody": "Blushme đã gửi liên kết xác nhận tới {{email}}. Hãy mở email rồi quay lại đăng nhập.",
+    "backToSignIn": "Quay lại đăng nhập",
+    "errors": {
+      "invalidCredentials": "Email hoặc mật khẩu chưa đúng.",
+      "emailNotConfirmed": "Hãy xác nhận email trước. Kiểm tra hộp thư nhé.",
+      "userExists": "Email này đã có tài khoản. Hãy thử đăng nhập.",
+      "weakPassword": "Mật khẩu cần có ít nhất 6 ký tự.",
+      "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
+      "rateLimited": "Thử quá nhiều lần rồi. Hãy chờ một lát rồi thử lại.",
+      "network": "Không có kết nối. Hãy kiểm tra mạng và thử lại nhé.",
+      "unknown": "Có lỗi xảy ra. Hãy thử lại nhé."
+    },
+    "useDemo": "Sử dụng tài khoản demo"
+  },
+  "errors": {
+    "saveFailed": "Chưa lưu được. Hãy kiểm tra mạng và thử lại nhé.",
+    "loadFailed": "Chưa tải được dữ liệu. Hãy kiểm tra kết nối nhé."
+  },
+  "timeline": {
+    "label": "Dòng thời gian chu kỳ",
+    "today": "Hôm nay",
+    "start": "Ngày 1",
+    "end": "Ngày {{day}}, rồi vòng mới",
+    "todayDay": "Hôm nay, ngày {{day}}",
+    "hint": "Một chu kỳ từ đầu đến cuối. Hết ngày cuối, chu kỳ mới lại bắt đầu. Chạm vào từng giai đoạn để xem thêm.",
+    "note": "* Đây là ngày của chu kỳ, không phải ngày trong tháng."
   }
 }

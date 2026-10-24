@@ -1,6 +1,7 @@
 .day {
-  width: 48px;
-  height: 48px;
+  width: 100%;
+  max-width: 46px;
+  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,17 +10,25 @@
   border: 1px solid transparent;
   color: var(--color-primary);
   position: relative;
+  font-size: 0.9375rem;
+  transition: background-color 180ms ease;
 }
 
-.logged {
-  background-color: var(--color-tertiary);
+.day:hover {
+  background-color: var(--color-blush-tint);
+}
+
+.logged,
+.logged:hover {
+  background: linear-gradient(160deg, #c9507a, var(--color-tertiary));
   color: var(--color-on-tertiary);
+  box-shadow: 0 4px 10px rgba(184, 65, 106, 0.3);
 }
 
 .predicted {
   background-color: var(--color-surface);
-  color: var(--color-secondary);
-  border: 1px dashed var(--color-hairline);
+  color: var(--color-rose-deep);
+  border: 1.5px dashed var(--color-blush-deep);
 }
 
 .fertile {
@@ -28,16 +37,17 @@
 
 .fertileUnderline {
   position: absolute;
-  bottom: 4px;
-  left: 10px;
-  right: 10px;
-  height: 1px;
+  bottom: 6px;
+  left: 30%;
+  right: 30%;
+  height: 1.5px;
+  border-radius: 1px;
   background-color: var(--color-primary);
 }
 
 .fertileDot {
   position: absolute;
-  top: 6px;
+  top: 5px;
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
@@ -56,7 +66,7 @@
 
 .ovulationDot {
   position: absolute;
-  bottom: 5px;
+  bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
@@ -66,24 +76,25 @@
 }
 
 .today {
-  box-shadow: inset 0 0 0 1.5px var(--color-primary);
-  border-radius: var(--radius-full);
+  box-shadow:
+    0 0 0 2px var(--color-surface),
+    0 0 0 3.5px var(--color-primary);
 }
 
 .outside {
-  opacity: 0.35;
+  opacity: 0.32;
 }
 
-/* Transient states while picking a past period's start/end in range-select
-   mode; these intentionally override the normal logged/predicted/fertile
-   fills so the in-progress selection is unambiguous. */
-.rangeInside {
+/* Transient states while picking a past period's start/end. */
+.rangeInside,
+.rangeInside:hover {
   background-color: var(--color-blush-tint);
   color: var(--color-primary);
 }
 
-.rangeBoundary {
+.rangeBoundary,
+.rangeBoundary:hover {
   background-color: var(--color-blush);
   color: var(--color-primary);
-  box-shadow: inset 0 0 0 1.5px var(--color-tertiary);
+  box-shadow: inset 0 0 0 2px var(--color-tertiary);
 }

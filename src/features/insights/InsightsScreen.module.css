@@ -1,14 +1,194 @@
 .screen {
-  min-height: 100%;
-  padding: var(--space-xl) var(--space-lg) calc(var(--space-xxl) + 64px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: calc(var(--space-lg) + env(safe-area-inset-top)) var(--space-md)
+    calc(var(--nav-height) + var(--space-xl));
+}
+
+.head {
+  padding: 0 var(--space-sm);
+}
+
+.sub {
+  color: var(--color-secondary);
+  margin-top: 4px;
+}
+
+.empty {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  text-align: center;
+  gap: var(--space-md);
+  padding: var(--space-xl) var(--space-lg);
+  background:
+    radial-gradient(260px 200px at 100% 0%, #ffe6ed 0%, transparent 70%), var(--color-surface);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
 }
 
-.body {
+.progress {
+  width: 100%;
+  max-width: 220px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-hairline);
+  overflow: hidden;
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-blush-deep), var(--color-tertiary));
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.stat {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statWide {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--color-blush-tint), #fff);
+}
+
+.statValue {
+  font-family: var(--font-family-display);
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.statUnit {
+  font-family: var(--font-family-body-sm);
+  font-size: var(--font-size-body-sm);
   color: var(--color-secondary);
+  margin-left: 4px;
+}
+
+.statLabel {
+  color: var(--color-secondary);
+  font-size: var(--font-size-body-sm);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+}
+
+.bars {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  height: 150px;
+  padding-top: var(--space-md);
+}
+
+.avgLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1.5px dashed var(--color-blush-deep);
+}
+
+.barCol {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.bar {
+  width: 100%;
+  max-width: 36px;
+  border-radius: var(--radius-sm) var(--radius-sm) 6px 6px;
+  background: linear-gradient(180deg, var(--color-blush-deep), var(--color-blush));
+}
+
+.barExcluded {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-hairline),
+    var(--color-hairline) 4px,
+    #fff 4px,
+    #fff 8px
+  );
+  border: 1px dashed var(--color-blush-deep);
+}
+
+.barValue {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-rose-deep);
+}
+
+.legend {
+  color: var(--color-secondary);
+  font-size: 0.8125rem;
+}
+
+.tallyRow {
+  display: grid;
+  grid-template-columns: 110px 1fr 28px;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-body-sm);
+}
+
+.tallyTrack {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-blush-tint);
+  overflow: hidden;
+}
+
+.tallyFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-blush-deep), var(--color-tertiary));
+}
+
+.tallyCount {
+  text-align: right;
+  color: var(--color-secondary);
+}
+
+.confidence {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
 }

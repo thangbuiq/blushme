@@ -40,7 +40,6 @@
   font-family: var(--font-family-label-caps);
   font-size: var(--font-size-label-caps);
   letter-spacing: var(--letter-spacing-label-caps);
-  text-transform: uppercase;
   text-align: left;
   padding: var(--space-sm) 0;
 }
@@ -91,7 +90,7 @@
   background: none;
   border: none;
   color: var(--color-secondary);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
 }
 
 .dateNavButton:disabled {

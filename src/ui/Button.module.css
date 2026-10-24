@@ -3,25 +3,23 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  height: 54px;
+  min-height: 50px;
   padding: 0 var(--space-lg);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   border: 1px solid transparent;
   font-family: var(--font-family-label-caps);
-  font-size: var(--font-size-label-caps);
-  font-weight: var(--font-weight-label-caps);
-  letter-spacing: var(--letter-spacing-label-caps);
-  text-transform: uppercase;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
   width: 100%;
-  transition: opacity 150ms ease;
-}
-
-.button:active {
-  opacity: 0.85;
+  transition:
+    box-shadow 200ms var(--ease-out),
+    background-color 200ms ease,
+    opacity 150ms ease;
 }
 
 .button:disabled {
-  opacity: 0.5;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
@@ -30,8 +28,47 @@
   color: var(--color-on-tertiary);
 }
 
+.primary:not(:disabled):hover {
+  background-color: var(--color-rose-deep);
+}
+
 .secondary {
   background-color: var(--color-surface);
+  color: var(--color-rose-deep);
+  border-color: var(--color-hairline);
+}
+
+.secondary:not(:disabled):hover {
+  background-color: var(--color-blush-tint);
+}
+
+.ghost {
+  background: none;
+  color: var(--color-secondary);
+  min-height: 44px;
+}
+
+.ghost:not(:disabled):hover {
   color: var(--color-tertiary);
-  border-color: var(--color-tertiary);
+}
+
+.danger {
+  background-color: var(--color-surface);
+  color: #b3261e;
+  border-color: #f3cfcb;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: currentColor;
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

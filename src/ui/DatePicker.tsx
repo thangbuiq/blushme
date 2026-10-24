@@ -17,6 +17,7 @@ import { vi as viLocale } from 'date-fns/locale'
 import { useTranslation } from 'react-i18next'
 import { useIsTouchDevice } from './useIsTouchDevice'
 import { ChevronIcon } from './Icon'
+import { formatMonthYear } from './dateFormat'
 import styles from './DatePicker.module.css'
 
 interface DatePickerProps {
@@ -28,7 +29,7 @@ interface DatePickerProps {
   min?: string
 }
 
-const WEEKDAY_LABELS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+const WEEKDAY_KEYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 export function DatePicker({ id, label, value, onChange, max, min }: DatePickerProps) {
   const { t, i18n } = useTranslation()
@@ -59,7 +60,8 @@ export function DatePicker({ id, label, value, onChange, max, min }: DatePickerP
   const days = useMemo(() => {
     const gridStart = startOfWeek(startOfMonth(monthAnchor), { weekStartsOn: 1 })
     const monthEnd = endOfMonth(monthAnchor)
-    const totalCells = Math.ceil((monthEnd.getTime() - gridStart.getTime()) / 86_400_000 / 7 + 1) * 7
+    const totalCells =
+      Math.ceil((monthEnd.getTime() - gridStart.getTime()) / 86_400_000 / 7 + 1) * 7
     return Array.from({ length: totalCells }, (_, i) => addDays(gridStart, i))
   }, [monthAnchor])
 
@@ -113,7 +115,7 @@ export function DatePicker({ id, label, value, onChange, max, min }: DatePickerP
             >
               <ChevronIcon size={16} className={styles.rotate180} />
             </button>
-            <span>{format(monthAnchor, 'MMMM yyyy', { locale: dateLocale })}</span>
+            <span>{formatMonthYear(monthAnchor, i18n.language)}</span>
             <button
               type="button"
               className={styles.navButton}
@@ -125,9 +127,9 @@ export function DatePicker({ id, label, value, onChange, max, min }: DatePickerP
           </div>
 
           <div className={styles.weekdayRow}>
-            {WEEKDAY_LABELS.map((d) => (
+            {WEEKDAY_KEYS.map((d) => (
               <span key={d} className={styles.weekday}>
-                {d}
+                {t(`calendar.weekdays.${d}`)}
               </span>
             ))}
           </div>

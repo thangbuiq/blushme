@@ -1,6 +1,3 @@
-import Dexie, { type EntityTable } from 'dexie'
-import type { DailyLog } from '@/engine/types'
-
 export type Goal = 'track' | 'ttc' | 'avoiding'
 export type Units = 'metric' | 'imperial'
 export type WeekStart = 'sunday' | 'monday'
@@ -8,7 +5,7 @@ export type WeekStart = 'sunday' | 'monday'
 export interface SettingsRecord {
   id: 'settings'
   onboardingComplete: boolean
-  language: 'en' | 'vi' | null // null = follow device language
+  language: 'en' | 'vi' | null // null = Vietnamese (the default)
   goal: Goal
   statedCycleLength: number
   statedPeriodLength: number
@@ -51,26 +48,4 @@ export const DEFAULT_SETTINGS: SettingsRecord = {
   dismissedNoticeIds: [],
   demoDataLoaded: false,
   demoLogDates: [],
-}
-
-class BlushDB extends Dexie {
-  logs!: EntityTable<DailyLog, 'date'>
-  settings!: EntityTable<SettingsRecord, 'id'>
-
-  constructor() {
-    super('blush')
-    this.version(1).stores({
-      logs: 'date',
-      settings: 'id',
-    })
-  }
-}
-
-export const db = new BlushDB()
-
-export async function getSettings(): Promise<SettingsRecord> {
-  const existing = await db.settings.get('settings')
-  if (existing) return existing
-  await db.settings.put(DEFAULT_SETTINGS)
-  return DEFAULT_SETTINGS
 }

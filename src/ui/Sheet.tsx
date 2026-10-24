@@ -1,7 +1,8 @@
 import { useEffect, useRef, type ReactNode } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion, useDragControls, useReducedMotion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { CloseIcon } from './Icon'
+import { SOFT_SPRING } from './motion'
 import styles from './Sheet.module.css'
 
 interface SheetProps {
@@ -16,6 +17,7 @@ interface SheetProps {
 export function Sheet({ open, onClose, title, ariaLabel, subtitle, children }: SheetProps) {
   const sheetRef = useRef<HTMLDivElement>(null)
   const reduceMotion = useReducedMotion()
+  const dragControls = useDragControls()
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -37,22 +39,41 @@ export function Sheet({ open, onClose, title, ariaLabel, subtitle, children }: S
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.2 }}
+          transition={{ duration: reduceMotion ? 0 : 0.25 }}
         >
           <motion.div
             ref={sheetRef}
-            className={styles.sheet}
+            className={`${styles.sheet} scroll`}
             role="dialog"
             aria-modal="true"
             aria-label={ariaLabel ?? (typeof title === 'string' ? title : undefined)}
             tabIndex={-1}
             onClick={(e) => e.stopPropagation()}
-            initial={reduceMotion ? undefined : { opacity: 0, scale: 0.94, y: 12 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={reduceMotion ? undefined : { opacity: 0, scale: 0.96, y: 8 }}
-            transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.4, 0, 0.2, 1] }}
+            initial={reduceMotion ? undefined : { y: '100%' }}
+            animate={{ y: 0 }}
+            exit={reduceMotion ? undefined : { y: '100%' }}
+            transition={reduceMotion ? { duration: 0 } : SOFT_SPRING}
+            drag={reduceMotion ? false : 'y'}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.5 }}
+            dragListener={false}
+            dragControls={dragControls}
+            onDragEnd={(_, info) => {
+              if (info.offset.y > 110 || info.velocity.y > 600) onClose()
+            }}
           >
-            <button type="button" className={styles.closeButton} onClick={onClose} aria-label={t('common.cancel')}>
+            <div
+              className={styles.handle}
+              aria-hidden="true"
+              style={{ touchAction: 'none' }}
+              onPointerDown={(e) => dragControls.start(e)}
+            />
+            <button
+              type="button"
+              className={styles.closeButton}
+              onClick={onClose}
+              aria-label={t('common.close')}
+            >
               <CloseIcon size={16} />
             </button>
             <h2 className={styles.title}>{title}</h2>

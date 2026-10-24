@@ -1,17 +1,24 @@
-import { db } from './db'
-import type { SettingsRecord } from './db'
+import { supabase } from '@/lib/supabase'
+import { clearAll, fetchLogs, fetchSettings, putLogs, saveSettings } from './repo'
+import type { SettingsRecord } from './settings'
 import type { DailyLog } from '@/engine/types'
 
-export interface BlushExport {
+export interface BlushmeExport {
   version: 1
   exportedAt: string
   logs: DailyLog[]
   settings: SettingsRecord
 }
 
+async function currentUserId(): Promise<string> {
+  const { data } = await supabase.auth.getUser()
+  if (!data.user) throw new Error('Not signed in')
+  return data.user.id
+}
+
 export async function exportToJson(): Promise<string> {
-  const [logs, settings] = await Promise.all([db.logs.toArray(), db.settings.get('settings')])
-  const payload: BlushExport = {
+  const [logs, settings] = await Promise.all([fetchLogs(), fetchSettings()])
+  const payload: BlushmeExport = {
     version: 1,
     exportedAt: new Date().toISOString(),
     logs,
@@ -21,22 +28,16 @@ export async function exportToJson(): Promise<string> {
 }
 
 export async function importFromJson(json: string): Promise<void> {
-  const payload = JSON.parse(json) as BlushExport
-  if (payload.version !== 1) {
+  const payload = JSON.parse(json) as BlushmeExport
+  if (payload.version !== 1 || !Array.isArray(payload.logs)) {
     throw new Error('Unsupported export version')
   }
-  await db.transaction('rw', db.logs, db.settings, async () => {
-    await db.logs.clear()
-    await db.logs.bulkPut(payload.logs)
-    if (payload.settings) {
-      await db.settings.put(payload.settings)
-    }
-  })
+  const userId = await currentUserId()
+  await clearAll(userId)
+  await putLogs(userId, payload.logs)
+  if (payload.settings) await saveSettings(userId, payload.settings)
 }
 
 export async function deleteAllData(): Promise<void> {
-  await db.transaction('rw', db.logs, db.settings, async () => {
-    await db.logs.clear()
-    await db.settings.clear()
-  })
+  await clearAll(await currentUserId())
 }

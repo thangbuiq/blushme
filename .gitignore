@@ -7,3 +7,8 @@ coverage
 .vite
 *.tsbuildinfo
 .claude
+.env.local
+
+.env
+.env.*
+!/.env.example

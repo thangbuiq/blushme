@@ -1,5 +1,5 @@
 {
-  "name": "blush",
+  "name": "blushme",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -14,8 +14,8 @@
     "tokens": "tsx scripts/gen-tokens.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
     "date-fns": "^4.1.0",
-    "dexie": "^4.0.11",
     "framer-motion": "^11.18.2",
     "i18next": "^24.2.1",
     "katex": "^0.16.11",

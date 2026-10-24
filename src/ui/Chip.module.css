@@ -2,20 +2,30 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
-  padding: 0 var(--space-lg);
+  min-height: 44px;
+  padding: 0 var(--space-md);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-hairline);
   background-color: var(--color-surface);
   color: var(--color-secondary);
   font-family: var(--font-family-body-sm);
   font-size: var(--font-size-body-sm);
+  font-weight: 500;
   line-height: var(--line-height-body-sm);
   white-space: nowrap;
+  transition:
+    background-color 220ms var(--ease-out),
+    border-color 220ms var(--ease-out),
+    color 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--color-blush-deep);
 }
 
 .selected {
-  background-color: var(--color-blush);
-  color: var(--color-primary);
-  border-color: var(--color-blush);
+  background-color: var(--color-blush-tint);
+  color: var(--color-rose-deep);
+  border-color: var(--color-blush-deep);
 }

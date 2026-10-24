@@ -69,7 +69,10 @@ export function LogSheet() {
   const titleText = isToday ? t('log.todayTitle') : formatShortDate(date, i18n.language)
   const showCycleContext = !dateCycleState.paused && dateCycleState.dayOfCycle >= 1
   const subtitleText = showCycleContext
-    ? t('log.cycleContext', { day: dateCycleState.dayOfCycle, phase: t(`today.phase.${dateCycleState.phase}`) })
+    ? t('log.cycleContext', {
+        day: dateCycleState.dayOfCycle,
+        phase: t(`today.phaseBadge.${dateCycleState.phase}`),
+      })
     : undefined
 
   function goToDay(offset: number) {
@@ -97,7 +100,7 @@ export function LogSheet() {
       mood: mood || undefined,
       note: note || undefined,
       bbt: advancedTracking && bbt ? Number(bbt) : undefined,
-      cervicalMucus: advancedTracking ? cervicalMucus ?? undefined : undefined,
+      cervicalMucus: advancedTracking ? (cervicalMucus ?? undefined) : undefined,
       lhPositive: advancedTracking ? lhPositive : undefined,
       intimacy: advancedTracking ? intimacy : undefined,
     })
@@ -111,7 +114,12 @@ export function LogSheet() {
       ariaLabel={titleText}
       title={
         <div className={styles.dateNav}>
-          <button type="button" className={styles.dateNavButton} onClick={() => goToDay(-1)} aria-label={t('common.back')}>
+          <button
+            type="button"
+            className={styles.dateNavButton}
+            onClick={() => goToDay(-1)}
+            aria-label={t('common.back')}
+          >
             <ChevronIcon size={16} className={styles.rotate180} />
           </button>
           <span>{titleText}</span>
@@ -136,7 +144,9 @@ export function LogSheet() {
 
         <Collapse open={onPeriod}>
           <div className={styles.section}>
-            <span className="label-caps">{t('log.periodDayLabel', { day: periodDayNumber(date, logs) })}</span>
+            <span className="label-caps">
+              {t('log.periodDayLabel', { day: periodDayNumber(date, logs) })}
+            </span>
             <div className={styles.flowRow} role="radiogroup" aria-label={t('log.flowLabel')}>
               {([1, 2, 3] as Flow[]).map((level) => (
                 <button
@@ -262,7 +272,11 @@ export function LogSheet() {
 
                 <div className={styles.toggleRow}>
                   <span>{t('log.advanced.intimacyLabel')}</span>
-                  <ToggleSwitch checked={intimacy} onChange={setIntimacy} ariaLabel={t('log.advanced.intimacyLabel')} />
+                  <ToggleSwitch
+                    checked={intimacy}
+                    onChange={setIntimacy}
+                    ariaLabel={t('log.advanced.intimacyLabel')}
+                  />
                 </div>
               </>
             )}
