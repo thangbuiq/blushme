@@ -6,14 +6,14 @@ import { Button } from '@/ui/Button'
 import { formatShortDate } from '@/ui/dateFormat'
 import { useCycleState } from '@/store/cycleStore'
 import { useSettingsStore } from '@/store/settingsStore'
-import { periodReminderDays } from './periodReminder'
+import { dueReminder, type Reminder } from './periodReminder'
 import styles from './PeriodReminderDialog.module.css'
 
 const todayISO = () => formatISO(new Date(), { representation: 'date' })
 const SHOW_DELAY_MS = 1400 // let the Today screen settle before gently interrupting
 
 interface Shown {
-  days: number
+  reminder: Reminder
   date: string
 }
 
@@ -34,20 +34,21 @@ export function PeriodReminderDialog() {
   }, [])
 
   const predictedDate = state.predictedNextPeriod.date
-  const days = periodReminderDays({
+  const reminder = dueReminder({
     today: todayISO(),
     predictedDate,
     paused: state.paused,
     enabled: settings.periodReminder,
+    onPeriod: state.phase === 'menstrual',
     dismissedFor: settings.reminderDismissedFor,
     lastShown: settings.reminderLastShown,
   })
 
   useEffect(() => {
-    if (!ready || shown || days === null) return
-    setShown({ days, date: predictedDate })
+    if (!ready || shown || reminder === null) return
+    setShown({ reminder, date: predictedDate })
     void update({ reminderLastShown: todayISO() })
-  }, [ready, shown, days, predictedDate, update])
+  }, [ready, shown, reminder, predictedDate, update])
 
   useEffect(() => {
     if (!shown) return
@@ -60,10 +61,14 @@ export function PeriodReminderDialog() {
 
   if (!shown) return null
 
-  const when = shown.days === 0 ? 'today' : shown.days === 1 ? 'tomorrow' : 'soon'
+  const { reminder: current } = shown
+  const upcoming = current.kind === 'upcoming'
+  const days = upcoming ? current.days : 0
+  const when = !upcoming ? 'during' : days === 0 ? 'today' : days === 1 ? 'tomorrow' : 'soon'
   const close = () => setShown(null)
   const markReady = () => {
-    void update({ reminderDismissedFor: shown.date })
+    // Only the heads-up is silenced for good; the care note simply closes for today.
+    if (upcoming) void update({ reminderDismissedFor: shown.date })
     close()
   }
 
@@ -83,15 +88,17 @@ export function PeriodReminderDialog() {
         <p className={styles.body}>
           {t(`reminder.body.${when}`, {
             date: formatShortDate(shown.date, i18n.language),
-            count: shown.days,
+            count: days,
           })}
         </p>
-        <p className={styles.note}>{t('reminder.note')}</p>
+        <p className={styles.note}>{t(upcoming ? 'reminder.note' : 'reminder.duringNote')}</p>
         <div className={styles.actions}>
-          <Button onClick={markReady}>{t('reminder.ready')}</Button>
-          <Button variant="ghost" onClick={close}>
-            {t('reminder.later')}
-          </Button>
+          <Button onClick={markReady}>{t(upcoming ? 'reminder.ready' : 'reminder.gotIt')}</Button>
+          {upcoming && (
+            <Button variant="ghost" onClick={close}>
+              {t('reminder.later')}
+            </Button>
+          )}
         </div>
       </div>
     </div>

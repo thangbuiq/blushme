@@ -9,19 +9,24 @@ interface ReminderInput {
   predictedDate: ISODate
   paused: boolean
   enabled: boolean
+  /** True while today falls inside the period itself. */
+  onPeriod: boolean
   /** The predicted date the user already confirmed they are ready for. */
   dismissedFor: ISODate | null
   /** The last day the reminder was shown, so it appears at most once a day. */
   lastShown: ISODate | null
 }
 
+export type Reminder = { kind: 'upcoming'; days: number } | { kind: 'during' }
+
 /**
- * Days until the predicted period (0 = today) when a gentle "get your pads ready"
- * reminder is due, otherwise null.
+ * The gentle supplies reminder that is due today, if any: a heads-up in the days
+ * before the predicted period (0 = today), or a care note while on the period.
  */
-export function periodReminderDays(input: ReminderInput): number | null {
-  if (!input.enabled || input.paused) return null
-  if (input.dismissedFor === input.predictedDate || input.lastShown === input.today) return null
+export function dueReminder(input: ReminderInput): Reminder | null {
+  if (!input.enabled || input.paused || input.lastShown === input.today) return null
+  if (input.onPeriod) return { kind: 'during' }
+  if (input.dismissedFor === input.predictedDate) return null
   const days = differenceInCalendarDays(parseISO(input.predictedDate), parseISO(input.today))
-  return days >= 0 && days <= REMINDER_LEAD_DAYS ? days : null
+  return days >= 0 && days <= REMINDER_LEAD_DAYS ? { kind: 'upcoming', days } : null
 }

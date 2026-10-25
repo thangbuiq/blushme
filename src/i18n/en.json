@@ -452,10 +452,13 @@
     "body": {
       "soon": "Your period is expected around {{date}}, in {{count}} days. It might be a good moment to check you have pads or tampons at hand.",
       "tomorrow": "Your period is expected tomorrow ({{date}}). Remember to have your supplies ready.",
-      "today": "Your period is expected today. Remember to carry your supplies with you."
+      "today": "Your period is expected today. Remember to carry your supplies with you.",
+      "during": "You're on your period. Keep a spare pad or tampon with you and change it every 4 to 6 hours."
     },
     "note": "Predictions can be off by a few days, so being ready early is peace of mind.",
     "ready": "I'm ready",
-    "later": "Remind me later"
+    "later": "Remind me later",
+    "duringNote": "Drink plenty of water and rest when you need to. Your body is working hard.",
+    "gotIt": "Got it"
   }
 }

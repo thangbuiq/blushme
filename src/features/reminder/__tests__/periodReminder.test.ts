@@ -1,35 +1,81 @@
 import { describe, expect, it } from 'vitest'
-import { periodReminderDays } from '../periodReminder'
+import { computeCycle } from '@/engine'
+import { buildDemoLogs } from '@/data/demoLogs'
+import { dueReminder } from '../periodReminder'
 
 const base = {
   today: '2026-10-25',
   predictedDate: '2026-10-27',
   paused: false,
   enabled: true,
+  onPeriod: false,
   dismissedFor: null,
   lastShown: null,
 }
 
-describe('periodReminderDays', () => {
+describe('dueReminder', () => {
   it('is due inside the lead window', () => {
-    expect(periodReminderDays(base)).toBe(2)
-    expect(periodReminderDays({ ...base, predictedDate: '2026-10-25' })).toBe(0)
-    expect(periodReminderDays({ ...base, predictedDate: '2026-10-28' })).toBe(3)
+    expect(dueReminder(base)).toEqual({ kind: 'upcoming', days: 2 })
+    expect(dueReminder({ ...base, predictedDate: '2026-10-25' })).toEqual({
+      kind: 'upcoming',
+      days: 0,
+    })
+    expect(dueReminder({ ...base, predictedDate: '2026-10-28' })).toEqual({
+      kind: 'upcoming',
+      days: 3,
+    })
   })
 
   it('stays quiet outside the window', () => {
-    expect(periodReminderDays({ ...base, predictedDate: '2026-10-29' })).toBeNull()
-    expect(periodReminderDays({ ...base, predictedDate: '2026-10-24' })).toBeNull()
+    expect(dueReminder({ ...base, predictedDate: '2026-10-29' })).toBeNull()
+    expect(dueReminder({ ...base, predictedDate: '2026-10-24' })).toBeNull()
   })
 
-  it('respects the toggle, paused predictions, dismissal and once-a-day', () => {
-    expect(periodReminderDays({ ...base, enabled: false })).toBeNull()
-    expect(periodReminderDays({ ...base, paused: true })).toBeNull()
-    expect(periodReminderDays({ ...base, dismissedFor: '2026-10-27' })).toBeNull()
-    expect(periodReminderDays({ ...base, lastShown: '2026-10-25' })).toBeNull()
+  it('respects the toggle, paused predictions and once-a-day', () => {
+    expect(dueReminder({ ...base, enabled: false })).toBeNull()
+    expect(dueReminder({ ...base, paused: true })).toBeNull()
+    expect(dueReminder({ ...base, lastShown: '2026-10-25' })).toBeNull()
   })
 
-  it('reminds again for a new prediction after an old dismissal', () => {
-    expect(periodReminderDays({ ...base, dismissedFor: '2026-09-29' })).toBe(2)
+  it('stops the heads-up once confirmed, but reminds again for a new prediction', () => {
+    expect(dueReminder({ ...base, dismissedFor: '2026-10-27' })).toBeNull()
+    expect(dueReminder({ ...base, dismissedFor: '2026-09-29' })).toEqual({
+      kind: 'upcoming',
+      days: 2,
+    })
+  })
+
+  it('also reminds during the period, even after the heads-up was confirmed', () => {
+    const during = { ...base, onPeriod: true, predictedDate: '2026-11-20' }
+    expect(dueReminder(during)).toEqual({ kind: 'during' })
+    expect(dueReminder({ ...during, dismissedFor: '2026-11-20' })).toEqual({ kind: 'during' })
+    expect(dueReminder({ ...during, lastShown: '2026-10-25' })).toBeNull()
+  })
+})
+
+describe('demo data', () => {
+  it('lands inside the reminder window', () => {
+    const today = new Date()
+    const iso = (d: Date) => d.toLocaleDateString('sv-SE')
+    const state = computeCycle(
+      buildDemoLogs(today),
+      {
+        statedCycleLength: 28,
+        statedPeriodLength: 5,
+        statedConfidenceLow: false,
+        predictionsPaused: false,
+      },
+      iso(today),
+    )
+    const reminder = dueReminder({
+      today: iso(today),
+      predictedDate: state.predictedNextPeriod.date,
+      paused: state.paused,
+      enabled: true,
+      onPeriod: state.phase === 'menstrual',
+      dismissedFor: null,
+      lastShown: null,
+    })
+    expect(reminder?.kind).toBe('upcoming')
   })
 })
