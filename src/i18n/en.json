@@ -107,27 +107,55 @@
     "logPeriodDay": "Log a period day today",
     "periodStarted": "Period logged. Take good care of yourself.",
     "focusKicker": "What to pay attention to",
-    "tips": {
+    "care": {
+      "groups": {
+        "food": "Food",
+        "move": "Movement",
+        "mind": "Mind",
+        "sleep": "Sleep"
+      },
       "menstrual": {
-        "tip1": "Keep your belly warm with a heat pack or a warm drink.",
-        "tip2": "Favour iron-rich foods like spinach, beans or lean meat.",
-        "tip3": "Rest more and keep movement gentle: a walk or a stretch."
+        "food": "Warm, iron-rich meals: beans, dark greens, lean meat.",
+        "move": "A gentle walk or stretching can ease cramps.",
+        "mind": "Allow yourself to slow down and rest when needed.",
+        "sleep": "A warm compress on your belly before bed can help if it aches."
       },
       "follicular": {
-        "tip1": "A great time for a workout or trying something new.",
-        "tip2": "Plan important tasks while your energy is rising.",
-        "tip3": "Drink plenty of water and enjoy fresh, colourful food."
+        "food": "Plenty of fresh veg, lean protein and water.",
+        "move": "Energy is rising, a good time to train harder.",
+        "mind": "A good moment to start something that needs focus.",
+        "sleep": "Keep a steady bedtime to hold your energy."
       },
       "ovulation": {
-        "tip1": "Energy and mood often peak now. Enjoy it.",
-        "tip2": "A mild one-sided twinge is normal. Stay hydrated.",
-        "tip3": "This is your most fertile time. Keep your goal in mind."
+        "food": "Leafy greens, fibre and plenty of water.",
+        "move": "Moderate to strong sessions, with a proper warm-up.",
+        "mind": "Mood is often bright. A slight one-sided twinge is normal.",
+        "sleep": "A cool, airy room makes it easier to sleep."
       },
       "luteal": {
-        "tip1": "Reach for magnesium-rich snacks like nuts or dark chocolate.",
-        "tip2": "Wind down earlier and protect your sleep.",
-        "tip3": "Be patient with mood swings. A calm walk or journaling helps."
+        "food": "Nuts, bananas, dark chocolate; go easy on salt and caffeine.",
+        "move": "Yoga, walking or an easy swim helps you wind down.",
+        "mind": "You may feel more sensitive. Journaling or a walk helps.",
+        "sleep": "Head to bed a little earlier, your body needs more rest."
       }
+    },
+    "prep": {
+      "kicker": "Worth preparing",
+      "suppliesToday": "Carry pads or tampons with you today.",
+      "supplies": "Your period is expected in {{count}} days. Put some supplies in your bag.",
+      "logSymptoms": "Log today's symptoms so Blushme can get to know you better.",
+      "protect": "These are your most fertile days. If you are not planning a pregnancy, use protection.",
+      "plan": "Put what needs focus into these days.",
+      "rest": "Leave a little time to rest this week."
+    },
+    "alert": {
+      "title": "Worth a word with a doctor",
+      "more": "See when to get checked",
+      "veryLate": "Your period has been absent for over 3 months. Please see a doctor to get checked.",
+      "late": "Your period is {{count}} days later than expected. Stress or routine changes can be a reason; if it continues, please see a doctor.",
+      "longPeriod": "Your period has lasted over 8 days. If the bleeding is heavy or you feel unwell, please see a doctor.",
+      "cycleRange": "A few recent cycles were shorter than 24 or longer than 38 days. It is worth talking to a doctor for peace of mind.",
+      "variable": "Your recent cycles have been quite irregular. Regular logging sharpens predictions; if you are worried, ask a doctor."
     },
     "insightButton": "Understand this prediction"
   },
