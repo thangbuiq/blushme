@@ -7,6 +7,15 @@
   --shadow-sheet: 0 -12px 48px rgba(62, 42, 51, 0.16);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --nav-height: 92px;
+
+  /* Frosted glass: a cool white tint, a bright glossy top edge and a soft
+     sky-blue shadow. Only for small floating surfaces (nav, toast, close
+     button); blurring large areas janks on phones. */
+  --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(232, 243, 252, 0.6) 100%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.85);
+  --glass-gloss: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(79, 147, 196, 0.08);
+  --glass-shadow: 0 10px 30px rgba(79, 147, 196, 0.16), 0 2px 6px rgba(62, 42, 51, 0.04);
+  --glass-blur: blur(18px) saturate(1.4);
 }
 
 * {
