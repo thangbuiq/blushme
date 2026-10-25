@@ -50,6 +50,9 @@
   padding: var(--space-lg);
   position: relative;
   overflow: hidden;
+  /* Own compositor layer: the big soft shadow is painted once, not every frame. */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .hero {
@@ -66,8 +69,10 @@
 
 .heroSprig {
   position: absolute;
-  top: -22px;
-  right: -26px;
+  top: -6px;
+  right: -6px;
+  /* Turned half a turn so the stem's base sits in the corner and the blooms trail inwards. */
+  transform: rotate(180deg);
   opacity: 0.9;
   pointer-events: none;
 }

@@ -45,16 +45,22 @@
   position: absolute;
   inset: 0;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 226, 234, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(255, 214, 227, 0.85) 0%, rgba(244, 164, 191, 0.55) 100%);
   box-shadow:
-    inset 1.5px 1.5px 1px #fff,
-    inset -1px -1px 1px rgba(255, 255, 255, 0.5),
-    0 4px 14px rgba(184, 65, 106, 0.18);
+    inset 1.5px 1.5px 1px rgba(255, 255, 255, 0.95),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.45),
+    inset 0 0 0 1px rgba(244, 164, 191, 0.55),
+    0 4px 16px rgba(184, 65, 106, 0.28);
+  will-change: transform;
   z-index: -1;
 }
 
 .active {
   color: var(--color-rose-deep);
+}
+
+.active .label {
+  font-weight: 700;
 }
 
 .label {

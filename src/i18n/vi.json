@@ -341,7 +341,7 @@
       "showMath": "Xem công thức",
       "withYourNumbers": "Với số liệu của em",
       "meanLabel": "Độ dài chu kỳ trung bình có trọng số",
-      "stdDevLabel": "Mức độ dao động của chu kỳ",
+      "stdDevLabel": "Độ dao động",
       "excludedLabel": "Các chu kỳ đã bỏ qua",
       "excludedReason": {
         "range": "nằm ngoài khoảng 21 đến 45 ngày thường thấy",

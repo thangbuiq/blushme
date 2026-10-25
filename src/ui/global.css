@@ -157,7 +157,11 @@ a {
   white-space: nowrap;
 }
 
+/* Keep the app's moving layers on the GPU compositor so animation and scrolling
+   don't wait on main-thread repaints. */
 .scroll {
+  transform: translateZ(0);
+  will-change: scroll-position;
   overflow-x: hidden;
   scroll-behavior: smooth;
   overscroll-behavior-y: contain;

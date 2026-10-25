@@ -117,7 +117,7 @@ export function TodayScreen() {
       </motion.header>
 
       <motion.section className={`${styles.card} ${styles.hero}`} {...reveal(1)}>
-        <Sprig width={150} className={styles.heroSprig} still />
+        <Sprig width={104} className={styles.heroSprig} still />
         <Sprig width={120} mirror className={styles.heroSprigLeft} still />
         <CycleRing state={state} periodLength={periodLength} />
         <div className={styles.status}>

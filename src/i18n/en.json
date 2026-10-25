@@ -341,7 +341,7 @@
       "showMath": "Show the math",
       "withYourNumbers": "With your numbers",
       "meanLabel": "Weighted average cycle length",
-      "stdDevLabel": "How much your cycles vary",
+      "stdDevLabel": "Cycle variation",
       "excludedLabel": "Cycles we set aside",
       "excludedReason": {
         "range": "outside the usual 21 to 45 day range",
