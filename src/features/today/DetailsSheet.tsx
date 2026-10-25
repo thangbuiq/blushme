@@ -3,6 +3,7 @@ import { addDays, formatISO, parseISO } from 'date-fns'
 import { useTranslation } from 'react-i18next'
 import { Sheet } from '@/ui/Sheet'
 import { ChevronIcon, SigmaIcon } from '@/ui/Icon'
+import { TermLabel } from '@/ui/TermHint'
 import { Collapse } from '@/ui/Collapse'
 import { formatShortDate } from '@/ui/dateFormat'
 import { regularityOf } from '@/features/insights/insightsData'
@@ -47,7 +48,9 @@ export function DetailsSheet({ state }: DetailsSheetProps) {
         </span>
       </div>
       <div className={styles.row}>
-        <span className="label-caps">{t('today.details.confidenceLabel')}</span>
+        <TermLabel term="confidence">
+          <span className="label-caps">{t('today.details.confidenceLabel')}</span>
+        </TermLabel>
         <span className={styles.confidence} title={t(`today.details.confidence.${state.confidence}`)}>
           <span
             className={styles.miniRing}
@@ -63,7 +66,9 @@ export function DetailsSheet({ state }: DetailsSheetProps) {
 
       {stdDev !== null && regularity && (
         <div className={styles.row}>
-          <span className="label-caps">{t('engine.formula.stdDevLabel')}</span>
+          <TermLabel term="variation">
+            <span className="label-caps">{t('engine.formula.stdDevLabel')}</span>
+          </TermLabel>
           <span className="numeral">
             {t('today.details.variabilityValue', {
               days: stdDev.toFixed(1),

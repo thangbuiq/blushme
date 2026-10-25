@@ -18,6 +18,7 @@ import { isSuspiciouslyEarly } from './periodValidation'
 import { hasLogContent, withoutPeriod } from './periodDays'
 import { isBleeding } from '@/engine/cycleLengths'
 import { PhaseTag } from '@/features/today/PhaseTag'
+import { TermLabel } from '@/ui/TermHint'
 import { useConfirm } from '@/ui/ConfirmDialog'
 import styles from './LogSheet.module.css'
 
@@ -227,9 +228,11 @@ export function LogSheet() {
         {advancedTracking && (
           <>
             <div className={styles.section}>
-              <label className="label-caps" htmlFor="log-bbt">
-                {t('log.advanced.bbtLabel')}
-              </label>
+              <TermLabel term="bbt">
+                <label className="label-caps" htmlFor="log-bbt">
+                  {t('log.advanced.bbtLabel')}
+                </label>
+              </TermLabel>
               <input
                 id="log-bbt"
                 type="number"
@@ -243,7 +246,9 @@ export function LogSheet() {
             </div>
 
             <div className={styles.section}>
-              <span className="label-caps">{t('log.advanced.cervicalMucusLabel')}</span>
+              <TermLabel term="cervicalMucus">
+                <span className="label-caps">{t('log.advanced.cervicalMucusLabel')}</span>
+              </TermLabel>
               <div className={styles.chipGrid}>
                 {CERVICAL_MUCUS_OPTIONS.map((option) => (
                   <Chip
@@ -258,7 +263,7 @@ export function LogSheet() {
             </div>
 
             <div className={styles.toggleRow}>
-              <span>{t('log.advanced.lhLabel')}</span>
+              <TermLabel term="lh">{t('log.advanced.lhLabel')}</TermLabel>
               <Chip selected={lhPositive} onClick={() => setLhPositive((v) => !v)}>
                 {t('log.advanced.lhPositive')}
               </Chip>
