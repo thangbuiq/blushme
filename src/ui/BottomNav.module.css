@@ -9,30 +9,18 @@
   isolation: isolate;
 }
 
-/* Soft backdrop behind the bar: content blurs and fades out as it scrolls up
-   into the nav. The mask makes the blur strongest at the bottom and gone just
-   above the bar, so there is no hard edge. */
-.wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 70%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
-  mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
-}
-
 .nav {
   pointer-events: auto;
   display: flex;
   padding: 6px;
   gap: 4px;
-  border-radius: var(--radius-sm);
-  background-color: rgba(255, 255, 255, 0.96);
-  border: 1px solid var(--color-hairline);
-  box-shadow: var(--shadow-lift);
+  border-radius: var(--radius-full);
+  background: var(--lg-bg);
+  border: var(--lg-border);
+  box-shadow: var(--lg-rim), var(--lg-shadow);
+  backdrop-filter: var(--lg-blur);
+  -webkit-backdrop-filter: var(--lg-blur);
+  transform: translateZ(0);
 }
 
 .item {
@@ -45,28 +33,31 @@
   min-height: 52px;
   background: none;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   color: var(--color-secondary);
-  transition:
-    color 240ms var(--ease-out),
-    flex-grow 320ms var(--ease-out);
+  transition: color 220ms var(--ease-out);
   isolation: isolate;
   white-space: nowrap;
   overflow: hidden;
 }
 
+/* The selected tab: just a faint pink wash with a soft white rim. */
 .pill {
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-blush-tint);
-  box-shadow: inset 0 0 0 1px var(--color-blush);
+  border-radius: var(--radius-full);
+  background: rgba(248, 201, 213, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  will-change: transform;
   z-index: -1;
 }
 
 .active {
   color: var(--color-rose-deep);
-  flex-grow: 1.8;
+}
+
+.active .label {
+  font-weight: 700;
 }
 
 .label {
@@ -90,13 +81,11 @@
     pointer-events: auto;
   }
 
-  .wrap::before {
-    display: none;
-  }
-
   .nav {
     flex-direction: column;
-    background-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border: none;
@@ -105,26 +94,15 @@
     gap: 8px;
   }
 
+  .item,
+  .pill {
+    border-radius: var(--radius-sm);
+  }
+
   .item {
     flex: none;
     justify-content: flex-start;
     padding: 0 var(--space-md);
   }
 
-  .active {
-    flex-grow: 0;
-  }
-}
-
-.railLabel {
-  display: none;
-  font-family: var(--font-family-label-caps);
-  font-size: 0.8125rem;
-  font-weight: 600;
-}
-
-@media (min-width: 1024px) {
-  .railLabel {
-    display: inline;
-  }
 }

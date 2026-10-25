@@ -74,9 +74,9 @@
     },
     "phaseDescription": {
       "menstrual": "Hormones are at their lowest, so cramps and tiredness are common. Keep your belly warm and rest a little more.",
-      "follicular": "Estrogen is rising and energy usually follows — a good stretch for exercise or getting things done.",
-      "ovulation": "LH surges to release an egg, so you might feel a brief twinge on one side — this is also your most fertile day.",
-      "luteal": "Progesterone is rising, which can bring tender breasts or a shorter temper. Be gentle with yourself."
+      "follicular": "Estrogen (the main female sex hormone) is rising and energy usually follows. A good stretch for exercise or getting things done.",
+      "ovulation": "LH (the hormone that signals the ovary to release an egg) surges, so you might feel a brief twinge on one side. This is also your most fertile day.",
+      "luteal": "Progesterone (the hormone that keeps the uterine lining thick) is rising, which can bring tender breasts or a shorter temper. Be gentle with yourself."
     },
     "learnLink": "Learn about your cycle",
     "details": {
@@ -103,6 +103,7 @@
     "expected": "Expected {{date}}",
     "howAreYou": "How are you today?",
     "startPeriod": "My period started today",
+    "logPeriodDay": "Log a period day today",
     "periodStarted": "Period logged. Take good care of yourself.",
     "focusKicker": "What to pay attention to",
     "tips": {
@@ -127,12 +128,6 @@
         "tip3": "Be patient with mood swings. A calm walk or journaling helps."
       }
     },
-    "phaseBadge": {
-      "menstrual": "Period",
-      "follicular": "Rising energy",
-      "ovulation": "Glowing",
-      "luteal": "Winding down"
-    },
     "insightButton": "Understand this prediction"
   },
   "learn": {
@@ -145,9 +140,9 @@
     "phasesTitle": "The four phases",
     "phase": {
       "menstrual": "The egg from last cycle wasn't fertilized, so the uterine lining breaks down and sheds — this is your period, usually lasting 3 to 7 days. These are relatively safe days, but not completely safe, especially with short or irregular cycles.",
-      "follicular": "Starting alongside your period, the pituitary gland prompts your ovaries to grow follicles while rising estrogen thickens the uterine lining again. The first days are relatively safe, but the closer to ovulation the more dangerous they get, because sperm can survive in the body for up to about 5 days.",
-      "ovulation": "Around the middle of the cycle (day 14 in a 28-day cycle), a surge of LH causes a mature follicle to burst and release an egg. These are the most dangerous days: ovulation day and roughly the 5 days before it. If you're not trying to conceive, you need protection throughout this whole stretch.",
-      "luteal": "After ovulation, the burst follicle becomes the corpus luteum and releases progesterone to keep the lining thick. Without fertilization, it breaks down, hormones drop, and the next period begins. About a day after ovulation these are relatively safe days. Calendar estimates of ovulation can be off, though, so don't rely on this as dependable contraception."
+      "follicular": "Starting alongside your period, the pituitary gland (a small gland at the base of the brain) prompts your ovaries to grow follicles (tiny sacs, each holding an immature egg) while rising estrogen (the main female sex hormone) thickens the uterine lining again. The first days are relatively safe, but the closer to ovulation the more dangerous they get, because sperm can survive in the body for up to about 5 days.",
+      "ovulation": "Around the middle of the cycle (day 14 in a 28-day cycle), a surge of LH (luteinizing hormone, the signal that triggers ovulation) causes a mature follicle to burst and release an egg. These are the most dangerous days: ovulation day and roughly the 5 days before it. If you're not trying to conceive, you need protection throughout this whole stretch.",
+      "luteal": "After ovulation, the burst follicle becomes the corpus luteum (a small temporary structure in the ovary) and releases progesterone (a hormone that keeps the lining thick) so the lining stays thick. Without fertilization, it breaks down, hormones drop, and the next period begins. About a day after ovulation these are relatively safe days. Calendar estimates of ovulation can be off, though, so don't rely on this as dependable contraception."
     },
     "doctor": {
       "title": "When to see a doctor",
@@ -240,8 +235,9 @@
       "lhPositive": "Positive",
       "intimacyLabel": "Intimacy"
     },
-    "markPeriodStart": "Period started this day",
-    "periodStartedHere": "Period started on this day",
+    "markPeriodDay": "Log a period day",
+    "periodDayHere": "Period day",
+    "unmarkPeriodDay": "Remove period day",
     "deleteEntry": "Delete this day's log",
     "moodHint": "You can pick more than one"
   },
@@ -281,7 +277,7 @@
       "trendTitle": "Cycle length trend",
       "trendLegend": "Dots are cycles, the shaded band is the usual range around your average of {{avg}} days.",
       "bbtTitle": "Basal temperature",
-      "bbtLegend": "Latest {{count}} readings. A lasting rise usually follows ovulation.",
+      "bbtLegend": "Latest {{count}} readings. A lasting rise in basal temperature (your resting temperature, taken on waking) usually follows ovulation.",
       "bbtEmpty": "Log your morning temperature to see the curve here.",
       "mucusTitle": "Cervical mucus",
       "mucusEmpty": "Log cervical mucus to see how it changes.",
@@ -293,7 +289,7 @@
       "week3": "Days 15-21",
       "week4": "Day 22+",
       "totalsTitle": "Tracking totals",
-      "lhPositives": "Positive LH tests",
+      "lhPositives": "Positive LH tests (ovulation near)",
       "intimacyDays": "Intimacy days",
       "bbtReadings": "Temperature readings",
       "mucusEntries": "Mucus entries"
@@ -329,7 +325,7 @@
     "importFailed": "Couldn't read that file",
     "demoNote": "Demo mode: nothing is saved",
     "exitDemo": "Exit demo",
-    "advancedTip": "Adds body temperature, cervical mucus, LH tests and intimacy to the log, and unlocks extra charts and analysis under Insights. Optional, and you can switch it off any time.",
+    "advancedTip": "Adds body temperature, cervical mucus, LH tests (which detect the hormone that signals ovulation is near) and intimacy to the log, and unlocks extra charts and analysis under Insights. Optional, and you can switch it off any time.",
     "unitsTip": "Only changes how body temperature is shown (°C or °F).",
     "weekStartTip": "The day shown in the first column of the calendar.",
     "profile": {
@@ -337,7 +333,9 @@
       "nameLabel": "What should Blushme call you?",
       "namePlaceholder": "Name or nickname",
       "avatarLabel": "Avatar"
-    }
+    },
+    "periodReminder": "Remind me to get supplies ready",
+    "periodReminderTip": "A few days before the predicted date, Blushme shows a small dialog reminding you to prepare. It appears at most once a day, when you open the app."
   },
   "engine": {
     "formula": {
@@ -345,7 +343,7 @@
       "showMath": "Show the math",
       "withYourNumbers": "With your numbers",
       "meanLabel": "Weighted average cycle length",
-      "stdDevLabel": "How much your cycles vary",
+      "stdDevLabel": "Cycle variation",
       "excludedLabel": "Cycles we set aside",
       "excludedReason": {
         "range": "outside the usual 21 to 45 day range",
@@ -353,7 +351,7 @@
       },
       "learnMore": {
         "title": "Learn more",
-        "lutealPhase": "We assume a 14-day luteal phase unless your temperature readings tell us otherwise.",
+        "lutealPhase": "We assume a 14-day luteal phase (the stretch from ovulation to your next period) unless your temperature readings tell us otherwise.",
         "fertileWindowStart": "The fertile window starts 5 days before estimated ovulation because sperm can live that long.",
         "limits": "Calendar-based estimates are a guide, not a guarantee."
       },
@@ -364,7 +362,7 @@
         "weight": "w = how much a cycle counts; newer cycles count more",
         "predictedDate": "P-hat = your predicted next period start",
         "ovulationDate": "O = estimated ovulation date",
-        "lutealLength": "L = luteal phase length, in days"
+        "lutealLength": "L = luteal phase length (ovulation to your next period), in days"
       },
       "yourNumbers": {
         "cycleLengthsTitle": "Your recent cycle lengths",
@@ -413,5 +411,54 @@
     "todayDay": "Today, day {{day}}",
     "hint": "One cycle, start to finish. After the last day a new cycle begins. Tap a phase to read more.",
     "note": "* These are days of your cycle, not days of the month."
+  },
+  "glossary": {
+    "aria": "Explain: {{term}}",
+    "lh": {
+      "title": "What is LH?",
+      "body": "LH (luteinizing hormone) is made by the pituitary gland, a small gland at the base of the brain. About a day before an egg is released, LH surges, which signals the ovary to release it. An LH test (ovulation strip) measures it in urine: a dark line (positive) means ovulation is probably very close, within 12 to 36 hours."
+    },
+    "bbt": {
+      "title": "What is basal body temperature (BBT)?",
+      "body": "BBT is your body temperature at full rest, taken right after waking, before you sit up or eat or drink. After ovulation, progesterone raises it slightly, about 0.2 to 0.5°C, and it stays up until the next period, so the chart can show whether ovulation has happened. Measure at the same time every morning with a thermometer accurate to 0.01°C."
+    },
+    "cervicalMucus": {
+      "title": "What is cervical mucus?",
+      "body": "A fluid made by the cervix that changes through the cycle. It is dry or scant after your period, then creamy. Near ovulation it turns clear, slippery and stretchy like raw egg white, the most fertile sign, because it helps sperm travel. After ovulation it turns thick and sticky again."
+    },
+    "corpusLuteum": {
+      "title": "What is the corpus luteum?",
+      "body": "After the egg is released, the empty follicle turns into the corpus luteum, a small temporary structure in the ovary. It makes progesterone for about 14 days. Without a pregnancy it breaks down and the next period starts. This stretch is called the luteal phase."
+    },
+    "fertileWindow": {
+      "title": "What is the fertile window?",
+      "body": "The days when sex can lead to pregnancy: ovulation day and about 5 days before it, since sperm can live up to 5 days. It is a calendar estimate and can be off by a few days, so don't rely on it as contraception."
+    },
+    "variation": {
+      "title": "What is cycle variation?",
+      "body": "How much your cycle lengths differ from one another. For example ±2 days means cycles are usually about 2 days longer or shorter than your average. The smaller it is, the more regular your cycle and the more accurate the prediction. (Mathematically it is the weighted standard deviation.)"
+    },
+    "weightedAverage": {
+      "title": "What is a weighted average?",
+      "body": "An average cycle length where recent cycles count more than old ones, because bodies change over time. Each cycle further back counts for 80% of the one after it. That multiplier is the weight."
+    },
+    "confidence": {
+      "title": "What is confidence?",
+      "body": "How sure Blushme is about your next period prediction. The more cycles you log and the more regular they are, the higher it gets. New users stay at low confidence until at least 3 cycles are logged."
+    }
+  },
+  "reminder": {
+    "title": "A gentle reminder",
+    "body": {
+      "soon": "Your period is expected around {{date}}, in {{count}} days. It might be a good moment to check you have pads or tampons at hand.",
+      "tomorrow": "Your period is expected tomorrow ({{date}}). Remember to have your supplies ready.",
+      "today": "Your period is expected today. Remember to carry your supplies with you.",
+      "during": "You're on your period. Keep a spare pad or tampon with you and change it every 4 to 6 hours."
+    },
+    "note": "Predictions can be off by a few days, so being ready early is peace of mind.",
+    "ready": "I'm ready",
+    "later": "Remind me later",
+    "duringNote": "Drink plenty of water and rest when you need to. Your body is working hard.",
+    "gotIt": "Got it"
   }
 }

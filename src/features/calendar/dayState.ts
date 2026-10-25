@@ -1,4 +1,5 @@
 import { addDays, differenceInCalendarDays, formatISO, parseISO } from 'date-fns'
+import { isBleeding } from '@/engine/cycleLengths'
 import type { CycleState, DailyLog } from '@/engine/types'
 
 export type FertileLevel = 'low' | 'fertile' | 'ovulation' | null
@@ -37,25 +38,14 @@ function isWithinAnyProjectedPeriod(
   return false
 }
 
-// A period is recorded as its start date only, so the days after it count as
-// period days for the stated length (older logs may also carry per-day flow).
-function isWithinLoggedPeriod(date: string, logs: DailyLog[], periodLength: number): boolean {
-  return logs.some((l) => {
-    if (!l.periodStart || l.date > date) return false
-    return differenceInCalendarDays(parseISO(date), parseISO(l.date)) < periodLength
-  })
-}
-
 export function computeDayState(
   date: string,
   logs: DailyLog[],
   cycleState: CycleState,
   periodLength: number,
 ): DayState {
-  const log = logs.find((l) => l.date === date)
-  const logged =
-    Boolean(log?.periodStart || (log?.flow ?? 0) > 0) ||
-    isWithinLoggedPeriod(date, logs, periodLength)
+  // Periods are recorded day by day, so only days the user marked count as logged.
+  const logged = isBleeding(logs.find((l) => l.date === date))
 
   const predicted =
     !logged && !cycleState.paused && isWithinAnyProjectedPeriod(date, cycleState, periodLength)

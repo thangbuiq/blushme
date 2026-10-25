@@ -85,8 +85,8 @@
 .groupTitle {
   padding: var(--space-md) 0 var(--space-xs);
   color: var(--color-rose-deep);
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .row {

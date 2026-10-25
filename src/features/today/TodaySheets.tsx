@@ -19,9 +19,6 @@ export function TodaySheets() {
       <Sheet open={phase !== null} onClose={close} title={phase ? <PhaseTag phase={phase} /> : ''}>
         {phase && (
           <>
-            {t(`today.phase.${phase}`) !== t(`today.phaseBadge.${phase}`) && (
-              <p className={styles.phaseClinical}>{t(`today.phase.${phase}`)}</p>
-            )}
             <p className={styles.phaseBody}>{t(`learn.phase.${phase}`)}</p>
           </>
         )}

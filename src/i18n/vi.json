@@ -74,9 +74,9 @@
     },
     "phaseDescription": {
       "menstrual": "Cơ thể có thể hơi mỏi và đau bụng nhẹ, vì nội tiết tố đang ở mức thấp nhất trong giai đoạn hành kinh. Hãy giữ ấm bụng và nghỉ ngơi nhiều hơn nhé.",
-      "follicular": "Cơ thể thường tràn năng lượng hơn, vì estrogen đang tăng dần trong giai đoạn nang trứng. Đây là lúc tốt để vận động nhiều hơn.",
-      "ovulation": "Có thể thấy tràn đầy sức sống hoặc hơi đau nhẹ một bên bụng, vì nội tiết LH tăng vọt để giải phóng trứng. Đây cũng là ngày dễ thụ thai nhất.",
-      "luteal": "Có thể thấy căng tức ngực hoặc dễ cáu hơn, vì progesterone đang tăng trong giai đoạn hoàng thể. Hãy nhẹ nhàng với bản thân nhé."
+      "follicular": "Cơ thể thường tràn năng lượng hơn, vì estrogen (nội tiết tố nữ chính) đang tăng dần trong giai đoạn nang trứng. Đây là lúc tốt để vận động nhiều hơn.",
+      "ovulation": "Có thể thấy tràn đầy sức sống hoặc hơi đau nhẹ một bên bụng, vì hormone LH (tín hiệu báo buồng trứng rụng trứng) tăng vọt. Đây cũng là ngày dễ thụ thai nhất.",
+      "luteal": "Có thể thấy căng tức ngực hoặc dễ cáu hơn, vì progesterone (nội tiết tố giữ dày niêm mạc tử cung) đang tăng trong giai đoạn hoàng thể. Hãy nhẹ nhàng với bản thân nhé."
     },
     "learnLink": "Tìm hiểu về chu kỳ",
     "details": {
@@ -103,6 +103,7 @@
     "expected": "Dự kiến {{date}}",
     "howAreYou": "Hôm nay em thế nào?",
     "startPeriod": "Kỳ kinh bắt đầu hôm nay",
+    "logPeriodDay": "Ghi hôm nay có kinh",
     "periodStarted": "Đã ghi kỳ kinh. Hãy chăm sóc bản thân thật tốt nhé.",
     "focusKicker": "Điều nên chú ý",
     "tips": {
@@ -127,12 +128,6 @@
         "tip3": "Kiên nhẫn với cảm xúc thất thường. Đi dạo hoặc viết nhật ký sẽ giúp ích."
       }
     },
-    "phaseBadge": {
-      "menstrual": "Kỳ kinh",
-      "follicular": "Nang trứng",
-      "ovulation": "Rạng rỡ",
-      "luteal": "Dịu lại"
-    },
     "insightButton": "Hiểu rõ dự đoán này"
   },
   "learn": {
@@ -145,9 +140,9 @@
     "phasesTitle": "Bốn giai đoạn của chu kỳ",
     "phase": {
       "menstrual": "Trứng của chu kỳ trước không được thụ tinh, lớp niêm mạc tử cung bong ra và đẩy ra ngoài. Đây là kỳ hành kinh, thường kéo dài 3 đến 7 ngày. Những ngày này tương đối an toàn nhưng không tuyệt đối, nhất là khi chu kỳ ngắn hoặc không đều.",
-      "follicular": "Diễn ra đồng thời với hành kinh, tuyến yên kích thích buồng trứng sản xuất các nang trứng, trong khi estrogen tăng dần khiến niêm mạc tử cung dày lên trở lại. Những ngày đầu còn tương đối an toàn, nhưng càng gần ngày rụng trứng càng nguy hiểm hơn, vì tinh trùng có thể sống trong cơ thể tới khoảng 5 ngày.",
-      "ovulation": "Vào khoảng giữa chu kỳ (ngày 14 với chu kỳ 28 ngày), lượng hormone LH tăng cao đột ngột khiến nang trứng chín vỡ và giải phóng trứng. Đây là những ngày nguy hiểm nhất, gồm ngày rụng trứng và khoảng 5 ngày trước đó. Nếu chưa muốn có thai, em cần biện pháp bảo vệ trong cả khoảng này.",
-      "luteal": "Sau khi rụng trứng, nang trứng vỡ biến thành hoàng thể và tiết ra progesterone để giữ cho niêm mạc tử cung tiếp tục dày lên. Nếu không có sự thụ tinh, hoàng thể tiêu biến, hormone giảm xuống và kỳ kinh mới bắt đầu. Khoảng một ngày sau khi rụng trứng, những ngày này tương đối an toàn. Tuy vậy ngày rụng trứng ước tính theo lịch có thể lệch, nên đừng xem đây là cách tránh thai đáng tin cậy."
+      "follicular": "Diễn ra đồng thời với hành kinh, tuyến yên (tuyến nhỏ ở đáy não) kích thích buồng trứng sản xuất các nang trứng (túi nhỏ chứa trứng chưa chín), trong khi estrogen (nội tiết tố nữ chính) tăng dần khiến niêm mạc tử cung dày lên trở lại. Những ngày đầu còn tương đối an toàn, nhưng càng gần ngày rụng trứng càng nguy hiểm hơn, vì tinh trùng có thể sống trong cơ thể tới khoảng 5 ngày.",
+      "ovulation": "Vào khoảng giữa chu kỳ (ngày 14 với chu kỳ 28 ngày), lượng hormone LH (hormone kích thích rụng trứng) tăng cao đột ngột khiến nang trứng chín vỡ và giải phóng trứng. Đây là những ngày nguy hiểm nhất, gồm ngày rụng trứng và khoảng 5 ngày trước đó. Nếu chưa muốn có thai, em cần biện pháp bảo vệ trong cả khoảng này.",
+      "luteal": "Sau khi rụng trứng, nang trứng vỡ biến thành hoàng thể (cấu trúc nhỏ tạm thời trong buồng trứng) và tiết ra progesterone (nội tiết tố giữ dày niêm mạc) để giữ cho niêm mạc tử cung tiếp tục dày lên. Nếu không có sự thụ tinh, hoàng thể tiêu biến, hormone giảm xuống và kỳ kinh mới bắt đầu. Khoảng một ngày sau khi rụng trứng, những ngày này tương đối an toàn. Tuy vậy ngày rụng trứng ước tính theo lịch có thể lệch, nên đừng xem đây là cách tránh thai đáng tin cậy."
     },
     "doctor": {
       "title": "Khi nào cần đi gặp bác sĩ?",
@@ -240,8 +235,9 @@
       "lhPositive": "Dương tính",
       "intimacyLabel": "Quan hệ"
     },
-    "markPeriodStart": "Kỳ kinh tới ngày này",
-    "periodStartedHere": "Kỳ kinh bắt đầu ngày này",
+    "markPeriodDay": "Ghi ngày có kinh",
+    "periodDayHere": "Ngày này có kinh",
+    "unmarkPeriodDay": "Bỏ ghi ngày có kinh",
     "deleteEntry": "Xóa nhật ký ngày này",
     "moodHint": "Chọn được nhiều cảm xúc"
   },
@@ -281,7 +277,7 @@
       "trendTitle": "Xu hướng độ dài chu kỳ",
       "trendLegend": "Mỗi chấm là một chu kỳ, vùng tô nhạt là khoảng thường gặp quanh mức trung bình {{avg}} ngày.",
       "bbtTitle": "Nhiệt độ cơ thể buổi sáng",
-      "bbtLegend": "{{count}} lần đo gần nhất. Nhiệt độ tăng và giữ ổn định thường xuất hiện sau khi rụng trứng.",
+      "bbtLegend": "{{count}} lần đo gần nhất. Nhiệt độ cơ bản (nhiệt độ lúc nghỉ, đo sau khi thức dậy) tăng và giữ ổn định thường xuất hiện sau khi rụng trứng.",
       "bbtEmpty": "Ghi nhiệt độ mỗi sáng để thấy đường biểu diễn ở đây.",
       "mucusTitle": "Dịch nhầy cổ tử cung",
       "mucusEmpty": "Ghi lại dịch nhầy để thấy nó thay đổi thế nào.",
@@ -293,7 +289,7 @@
       "week3": "Ngày 15-21",
       "week4": "Từ ngày 22",
       "totalsTitle": "Tổng quan theo dõi",
-      "lhPositives": "Lần thử LH dương tính",
+      "lhPositives": "Lần thử LH dương tính (báo sắp rụng trứng)",
       "intimacyDays": "Ngày gần gũi",
       "bbtReadings": "Lần đo nhiệt độ",
       "mucusEntries": "Lần ghi dịch nhầy"
@@ -329,7 +325,7 @@
     "importFailed": "Không đọc được tệp này",
     "demoNote": "Chế độ demo, dữ liệu không được lưu",
     "exitDemo": "Thoát chế độ demo",
-    "advancedTip": "Bật để ghi thêm nhiệt độ cơ thể, dịch nhầy, que thử LH và ngày gần gũi. Phần Nhịp chu kỳ sẽ có thêm biểu đồ và phân tích chi tiết. Không bắt buộc, có thể tắt bất cứ lúc nào.",
+    "advancedTip": "Bật để ghi thêm nhiệt độ cơ thể, dịch nhầy cổ tử cung và que thử LH (đo hormone báo sắp rụng trứng), cùng ngày gần gũi. Phần Nhịp chu kỳ sẽ có thêm biểu đồ và phân tích chi tiết. Không bắt buộc, có thể tắt bất cứ lúc nào.",
     "unitsTip": "Chỉ dùng để hiển thị nhiệt độ cơ thể (°C hoặc °F).",
     "weekStartTip": "Ngày được đặt ở cột đầu tiên của lịch.",
     "profile": {
@@ -337,7 +333,9 @@
       "nameLabel": "Blushme nên gọi em là gì?",
       "namePlaceholder": "Tên hoặc biệt danh",
       "avatarLabel": "Ảnh đại diện"
-    }
+    },
+    "periodReminder": "Nhắc chuẩn bị băng vệ sinh",
+    "periodReminderTip": "Vài ngày trước ngày dự kiến, Blushme hiện một hộp thoại nhỏ nhắc em chuẩn bị. Chỉ hiện tối đa một lần mỗi ngày, khi em mở ứng dụng."
   },
   "engine": {
     "formula": {
@@ -345,7 +343,7 @@
       "showMath": "Xem công thức",
       "withYourNumbers": "Với số liệu của em",
       "meanLabel": "Độ dài chu kỳ trung bình có trọng số",
-      "stdDevLabel": "Mức độ dao động của chu kỳ",
+      "stdDevLabel": "Độ dao động",
       "excludedLabel": "Các chu kỳ đã bỏ qua",
       "excludedReason": {
         "range": "nằm ngoài khoảng 21 đến 45 ngày thường thấy",
@@ -353,7 +351,7 @@
       },
       "learnMore": {
         "title": "Tìm hiểu thêm",
-        "lutealPhase": "Blushme giả định hoàng thể dài 14 ngày, trừ khi số liệu nhiệt độ cho thấy khác.",
+        "lutealPhase": "Blushme giả định hoàng thể (giai đoạn từ lúc rụng trứng đến kỳ kinh sau) dài 14 ngày, trừ khi số liệu nhiệt độ cho thấy khác.",
         "fertileWindowStart": "Cửa sổ dễ thụ thai bắt đầu 5 ngày trước ngày rụng trứng dự kiến vì tinh trùng có thể sống lâu như vậy.",
         "limits": "Ước tính theo lịch chỉ là một gợi ý, không phải điều chắc chắn."
       },
@@ -364,7 +362,7 @@
         "weight": "w = mức độ tính của một chu kỳ; chu kỳ gần đây được tính nhiều hơn",
         "predictedDate": "P-hat = ngày bắt đầu kỳ kinh tiếp theo dự kiến",
         "ovulationDate": "O = ngày rụng trứng dự kiến",
-        "lutealLength": "L = độ dài hoàng thể, tính theo ngày"
+        "lutealLength": "L = độ dài hoàng thể (giai đoạn từ lúc rụng trứng đến kỳ kinh sau), tính theo ngày"
       },
       "yourNumbers": {
         "cycleLengthsTitle": "Các chu kỳ gần đây",
@@ -413,5 +411,54 @@
     "todayDay": "Hôm nay, ngày {{day}}",
     "hint": "Một chu kỳ từ đầu đến cuối. Hết ngày cuối, chu kỳ mới lại bắt đầu. Chạm vào từng giai đoạn để xem thêm.",
     "note": "* Đây là ngày của chu kỳ, không phải ngày trong tháng."
+  },
+  "glossary": {
+    "aria": "Giải thích: {{term}}",
+    "lh": {
+      "title": "LH là gì?",
+      "body": "LH (hormone hoàng thể hóa) là một hormone do tuyến yên, một tuyến nhỏ ở đáy não, tiết ra. Khoảng 1 ngày trước khi trứng rụng, lượng LH tăng vọt, đó là tín hiệu để buồng trứng giải phóng trứng. Que thử LH (que thử rụng trứng) đo hormone này trong nước tiểu: vạch đậm (dương tính) nghĩa là ngày rụng trứng có thể đang đến rất gần, trong vòng 12 đến 36 giờ."
+    },
+    "bbt": {
+      "title": "Nhiệt độ cơ bản (BBT) là gì?",
+      "body": "Nhiệt độ cơ bản là nhiệt độ cơ thể lúc nghỉ ngơi nhất, đo ngay sau khi thức dậy, trước khi ngồi dậy hay ăn uống. Sau khi rụng trứng, progesterone làm nhiệt độ tăng nhẹ, khoảng 0,2 đến 0,5°C, và giữ ở mức đó đến hết chu kỳ. Nhờ vậy nhìn biểu đồ có thể biết trứng đã rụng chưa. Cần đo đều đặn cùng một giờ mỗi sáng và dùng nhiệt kế đo chính xác tới 0,01°C."
+    },
+    "cervicalMucus": {
+      "title": "Dịch nhầy cổ tử cung là gì?",
+      "body": "Đây là chất dịch tiết ra từ cổ tử cung, thay đổi theo chu kỳ. Ngay sau kỳ kinh thường khô hoặc ít, rồi đặc dần như kem. Khi gần rụng trứng, dịch trong, trơn và kéo dài được như lòng trắng trứng, đây là dấu hiệu dễ thụ thai nhất vì giúp tinh trùng di chuyển. Sau khi rụng trứng, dịch lại đặc và dính."
+    },
+    "corpusLuteum": {
+      "title": "Hoàng thể là gì?",
+      "body": "Sau khi trứng rụng, nang trứng rỗng còn lại biến thành hoàng thể, một cấu trúc nhỏ tạm thời trong buồng trứng. Nó tiết progesterone trong khoảng 14 ngày. Nếu không có thai, hoàng thể tiêu đi và kỳ kinh mới bắt đầu. Giai đoạn này còn gọi là pha hoàng thể."
+    },
+    "fertileWindow": {
+      "title": "Cửa sổ dễ thụ thai là gì?",
+      "body": "Là những ngày có thể mang thai khi quan hệ, gồm ngày rụng trứng và khoảng 5 ngày trước đó, vì tinh trùng có thể sống trong cơ thể tới 5 ngày. Đây là ước tính theo lịch nên có thể lệch vài ngày, đừng xem là cách tránh thai đáng tin cậy."
+    },
+    "variation": {
+      "title": "Độ dao động là gì?",
+      "body": "Cho biết các chu kỳ của em dài ngắn chênh nhau thế nào. Ví dụ ±2 ngày nghĩa là chu kỳ thường dài hơn hoặc ngắn hơn mức trung bình khoảng 2 ngày. Con số càng nhỏ thì chu kỳ càng đều và dự đoán càng chính xác. (Về mặt toán học đây là độ lệch chuẩn có trọng số.)"
+    },
+    "weightedAverage": {
+      "title": "Trung bình có trọng số là gì?",
+      "body": "Là độ dài chu kỳ trung bình, nhưng các chu kỳ gần đây được tính nhiều hơn các chu kỳ cũ, vì cơ thể thay đổi theo thời gian. Mỗi chu kỳ lùi về trước được tính bằng 80% chu kỳ ngay sau nó. Số này gọi là trọng số."
+    },
+    "confidence": {
+      "title": "Độ tin cậy là gì?",
+      "body": "Cho biết Blushme tự tin đến đâu về dự đoán kỳ kinh tới. Càng ghi nhiều chu kỳ và các chu kỳ càng đều thì độ tin cậy càng cao. Với người mới dùng, độ tin cậy sẽ thấp cho đến khi có ít nhất 3 chu kỳ."
+    }
+  },
+  "reminder": {
+    "title": "Một lời nhắc nhỏ",
+    "body": {
+      "soon": "Kỳ kinh dự kiến đến vào khoảng {{date}}, còn {{count}} ngày nữa. Em thử xem trong túi đã có băng vệ sinh chưa nhé.",
+      "tomorrow": "Ngày mai ({{date}}) là ngày dự kiến của kỳ kinh. Em nhớ chuẩn bị sẵn băng vệ sinh nhé.",
+      "today": "Hôm nay là ngày dự kiến của kỳ kinh. Em nhớ mang theo băng vệ sinh nhé.",
+      "during": "Em đang trong kỳ kinh. Nhớ mang theo băng vệ sinh dự phòng và thay đều đặn mỗi 4 đến 6 giờ nhé."
+    },
+    "note": "Dự đoán có thể lệch vài ngày, chuẩn bị sớm một chút sẽ yên tâm hơn.",
+    "ready": "Em đã chuẩn bị xong",
+    "later": "Nhắc em sau",
+    "duringNote": "Uống đủ nước và nghỉ ngơi khi cần, cơ thể em đang làm việc rất chăm chỉ.",
+    "gotIt": "Em nhớ rồi"
   }
 }

@@ -17,7 +17,7 @@ Blushme (repo folder `blush`) is a premium, Vietnamese-first (EN available) mens
 
 ### Demo mode
 
-The login page's "Sử dụng tài khoản demo" link calls `authStore.enterDemo()`. This is a local-only session (`authStore.demo === true`): `settingsStore` and `logStore` seed in-memory data from `src/data/demoLogs.ts` (about 10 cycles, ends on day 12 of the last cycle) and skip every Supabase read and write. Visitors never share state, nothing persists, and `signOut` just clears the flag. Settings hides export/import/delete and shows "Thoát chế độ demo". There is no real demo account in Supabase.
+The login page's "Sử dụng tài khoản demo" link calls `authStore.enterDemo()`. This is a local-only session (`authStore.demo === true`): `settingsStore` and `logStore` seed in-memory data from `src/data/demoLogs.ts` (about 10 cycles, ends on day 26 of the last cycle so the period reminder dialog shows) and skip every Supabase read and write. Visitors never share state, nothing persists, and `signOut` just clears the flag. Settings hides export/import/delete and shows "Thoát chế độ demo". There is no real demo account in Supabase.
 
 ## Commands
 

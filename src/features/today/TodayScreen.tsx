@@ -11,6 +11,7 @@ import { Chip } from '@/ui/Chip'
 import { useConfirm } from '@/ui/ConfirmDialog'
 import { REVEAL } from '@/ui/motion'
 import { formatShortDate, formatWeekdayDay } from '@/ui/dateFormat'
+import { isBleeding } from '@/engine/cycleLengths'
 import type { Phase } from '@/engine/types'
 import { useCycleState } from '@/store/cycleStore'
 import { useLogStore } from '@/store/logStore'
@@ -19,7 +20,8 @@ import { useUiStore } from '@/store/uiStore'
 import { CalendarSection } from '@/features/calendar/CalendarSection'
 import { MOODS, moodsOf, toggleMood } from '@/features/log/moods'
 import { isSuspiciouslyEarly } from '@/features/log/periodValidation'
-import { PHASE_TEXT_COLOR, PHASE_TONE, cycleGeometry } from './phaseColors'
+import { PHASE_COLOR, PHASE_TEXT_COLOR, PHASE_TONE, cycleGeometry } from './phaseColors'
+import { PhaseTag } from './PhaseTag'
 import { statusLineText } from './statusLine'
 import { CycleRing } from './CycleRing'
 import { PhaseTimeline } from './PhaseTimeline'
@@ -74,12 +76,12 @@ export function TodayScreen() {
 
   const today = todayISO()
   const todayLog = logs.find((l) => l.date === today)
-  const onPeriodToday = Boolean(todayLog?.periodStart)
+  const onPeriodToday = isBleeding(todayLog)
   const todayMoods = todayLog ? moodsOf(todayLog) : []
 
   async function startPeriodToday() {
     if (isSuspiciouslyEarly(today, logs) && !(await confirm(t('log.earlyPeriodConfirm')))) return
-    await upsertLog({ date: today, periodStart: true })
+    await upsertLog({ date: today, periodDay: true })
     showToast('today.periodStarted')
   }
 
@@ -115,10 +117,18 @@ export function TodayScreen() {
       </motion.header>
 
       <motion.section className={`${styles.card} ${styles.hero}`} {...reveal(1)}>
-        <Sprig width={150} className={styles.heroSprig} still />
+        <Sprig width={104} className={styles.heroSprig} still />
         <Sprig width={120} mirror className={styles.heroSprigLeft} still />
         <CycleRing state={state} periodLength={periodLength} />
         <div className={styles.status}>
+          <button
+            type="button"
+            className={styles.phaseLine}
+            onClick={() => openPhaseSheet(state.phase)}
+          >
+            <span className={styles.phaseDot} style={{ backgroundColor: PHASE_COLOR[state.phase] }} />
+            <PhaseTag phase={state.phase} />
+          </button>
           <h2 className={styles.statusTitle}>{statusLineText(t, state)}</h2>
           <p className={styles.statusSub}>
             {t('today.expected', {
@@ -201,10 +211,10 @@ export function TodayScreen() {
             <PlusIcon size={18} />
             {t('today.logButton')}
           </Button>
-          {state.phase !== 'menstrual' && !onPeriodToday ? (
+          {!onPeriodToday ? (
             <Button variant="secondary" onClick={() => void startPeriodToday()}>
               <DropIcon size={18} />
-              {t('today.startPeriod')}
+              {t(state.phase === 'menstrual' ? 'today.logPeriodDay' : 'today.startPeriod')}
             </Button>
           ) : null}
         </div>

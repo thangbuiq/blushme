@@ -1,9 +1,9 @@
 .intro {
   margin: 0 0 var(--space-md);
-  color: var(--color-primary);
-  font-family: var(--font-family-body-md);
-  font-size: var(--font-size-body-md);
-  line-height: var(--line-height-body-md);
+  color: var(--color-secondary);
+  font-family: var(--font-family-body-sm);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
 }
 
 .row {
@@ -24,11 +24,10 @@
 
 .sectionTitle {
   margin: var(--space-md) 0 0;
-  color: var(--color-secondary);
-  font-family: var(--font-family-label-caps);
-  font-size: var(--font-size-label-caps);
-  font-weight: var(--font-weight-label-caps);
-  letter-spacing: var(--letter-spacing-label-caps);
+  color: var(--color-primary);
+  font-family: var(--font-family-h1);
+  font-size: 1.0625rem;
+  font-weight: 500;
 }
 
 .disclosureRow {
@@ -41,8 +40,9 @@
   border-top: 1px solid var(--color-hairline);
   padding: var(--space-md) 0;
   color: var(--color-primary);
-  font-family: var(--font-family-body-md);
-  font-size: var(--font-size-body-md);
+  font-family: var(--font-family-h1);
+  font-size: 1.0625rem;
+  font-weight: 500;
   text-align: left;
 }
 
@@ -65,7 +65,7 @@
 .doctorList {
   margin: var(--space-sm) 0 0;
   padding-left: var(--space-lg);
-  color: var(--color-primary);
+  color: var(--color-secondary);
   font-family: var(--font-family-body-sm);
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-body-sm);
@@ -91,6 +91,6 @@
   margin-top: var(--space-md);
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-hairline);
-  font-size: 1.25rem;
+  font-size: 1.1875rem;
   margin-bottom: var(--space-sm);
 }

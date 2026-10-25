@@ -1,4 +1,5 @@
 import { differenceInCalendarDays, parseISO } from 'date-fns'
+import { periodStartDates } from '@/engine/cycleLengths'
 import type { CervicalMucus, DailyLog } from '@/engine/types'
 import { moodsOf } from '@/features/log/moods'
 
@@ -41,10 +42,7 @@ export function mucusTally(logs: DailyLog[]): { key: CervicalMucus; count: numbe
 
 /** Day of cycle (1-based) of every log, measured from the latest period start on or before it. */
 export function cycleDayOfLogs(logs: DailyLog[]): { log: DailyLog; day: number }[] {
-  const starts = logs
-    .filter((l) => l.periodStart)
-    .map((l) => l.date)
-    .sort()
+  const starts = periodStartDates(logs)
   if (starts.length === 0) return []
   const result: { log: DailyLog; day: number }[] = []
   for (const log of logs) {

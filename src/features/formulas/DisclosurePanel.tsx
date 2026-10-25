@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import type { CycleState } from '@/engine/types'
 import { ChevronIcon } from '@/ui/Icon'
 import { Collapse } from '@/ui/Collapse'
+import { TermHint } from '@/ui/TermHint'
+import type { GlossaryKey } from '@/store/uiStore'
 import { MathBlock } from './MathBlock'
 import styles from './DisclosurePanel.module.css'
 
@@ -36,6 +38,12 @@ const LEARN_MORE_SOURCES = [
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9171018/',
   },
 ] as const
+
+// Learn-more items that use a term worth explaining.
+const LEARN_MORE_TERMS: Record<string, GlossaryKey | undefined> = {
+  lutealPhase: 'corpusLuteum',
+  fertileWindowStart: 'fertileWindow',
+}
 
 export function DisclosurePanel({ state }: DisclosurePanelProps) {
   const { t } = useTranslation()
@@ -81,7 +89,8 @@ export function DisclosurePanel({ state }: DisclosurePanelProps) {
             <ul className={styles.legend}>
               {LEARN_MORE_SOURCES.map(({ key, url }) => (
                 <li key={key}>
-                  {t(`engine.formula.learnMore.${key}`)}{' '}
+                  {t(`engine.formula.learnMore.${key}`)}
+                  {LEARN_MORE_TERMS[key] && <TermHint term={LEARN_MORE_TERMS[key]} />}{' '}
                   <a href={url} target="_blank" rel="noopener noreferrer">
                     {t('engine.formula.sourceLabel')}
                   </a>
@@ -122,6 +131,7 @@ export function DisclosurePanel({ state }: DisclosurePanelProps) {
             {state.math.weightedMean !== null && (
               <p className="numeral">
                 {t('engine.formula.meanLabel')}: {state.math.weightedMean.toFixed(1)}
+                <TermHint term="weightedAverage" />
               </p>
             )}
             {state.math.excludedCycles.length > 0 && (

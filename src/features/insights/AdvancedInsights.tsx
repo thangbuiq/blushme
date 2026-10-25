@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import type { CycleMath, DailyLog } from '@/engine/types'
 import { formatShortDate } from '@/ui/dateFormat'
+import { TermHint, TermLabel } from '@/ui/TermHint'
 import { EASE } from '@/ui/motion'
 import {
   CYCLE_DAY_BUCKETS,
@@ -219,11 +220,15 @@ export function AdvancedInsights({
         <TrendChart math={math} />
       </motion.section>
       <motion.section className={styles.card} {...reveal(7)}>
-        <h3 className={styles.title}>{t('insights.advanced.bbtTitle')}</h3>
+        <h3 className={styles.title}>
+          <TermLabel term="bbt">{t('insights.advanced.bbtTitle')}</TermLabel>
+        </h3>
         <BbtChart logs={logs} fahrenheit={fahrenheit} />
       </motion.section>
       <motion.section className={styles.card} {...reveal(8)}>
-        <h3 className={styles.title}>{t('insights.advanced.mucusTitle')}</h3>
+        <h3 className={styles.title}>
+          <TermLabel term="cervicalMucus">{t('insights.advanced.mucusTitle')}</TermLabel>
+        </h3>
         <MucusBars logs={logs} />
       </motion.section>
       <motion.section className={styles.card} {...reveal(9)}>
@@ -233,6 +238,7 @@ export function AdvancedInsights({
             <div key={key} className={styles.total}>
               <span className={styles.totalValue}>{value}</span>
               <span className={styles.legend}>{t(`insights.advanced.${key}`)}</span>
+              {key === 'lhPositives' && <TermHint term="lh" />}
             </div>
           ))}
         </div>

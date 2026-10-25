@@ -1,4 +1,5 @@
 import { addDays, formatISO, parseISO } from 'date-fns'
+import { isBleeding, periodStartDates } from '@/engine/cycleLengths'
 import type { DailyLog } from '@/engine/types'
 import { moodsOf } from '@/features/log/moods'
 
@@ -10,18 +11,14 @@ export interface Tally {
 export type Regularity = 'steady' | 'fairlySteady' | 'variable'
 
 /**
- * Average number of consecutive bleeding days per logged period. Periods recorded
- * as just a start date carry no length, so they are skipped; null when none do.
+ * Average number of consecutive bleeding days per logged period. Periods with a
+ * single logged day carry no length, so they are skipped; null when none do.
  */
 export function averagePeriodLength(logs: DailyLog[]): number | null {
-  const bleeding = new Set(
-    logs.filter((l) => l.periodStart || (l.flow ?? 0) > 0).map((l) => l.date),
-  )
-  const lengths = logs
-    .filter((l) => l.periodStart)
-    .map((start) => {
+  const bleeding = new Set(logs.filter(isBleeding).map((l) => l.date))
+  const lengths = periodStartDates(logs).map((start) => {
       let days = 1
-      let cursor = parseISO(start.date)
+      let cursor = parseISO(start)
       for (;;) {
         cursor = addDays(cursor, 1)
         if (!bleeding.has(formatISO(cursor, { representation: 'date' }))) break

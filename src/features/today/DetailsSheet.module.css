@@ -17,8 +17,9 @@
   margin-top: var(--space-lg);
   padding: var(--space-md) 0;
   color: var(--color-tertiary);
-  font-family: var(--font-family-body-md);
-  font-size: var(--font-size-body-md);
+  font-family: var(--font-family-h1);
+  font-size: 1.0625rem;
+  font-weight: 500;
   text-align: left;
 }
 

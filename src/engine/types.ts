@@ -6,7 +6,10 @@ export type CervicalMucus = 'dry' | 'sticky' | 'creamy' | 'eggWhite'
 
 export interface DailyLog {
   date: ISODate
+  /** Legacy: the first day of a period. New logs mark each bleeding day with `periodDay`. */
   periodStart?: boolean
+  /** Bleeding on this day. A period start is the first bleeding day after a gap. */
+  periodDay?: boolean
   spotting?: boolean
   flow?: Flow
   symptoms?: string[]

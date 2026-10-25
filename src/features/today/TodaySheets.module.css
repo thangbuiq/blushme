@@ -5,9 +5,3 @@
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-body-md);
 }
-
-.phaseClinical {
-  color: var(--color-secondary);
-  font-size: var(--font-size-body-sm);
-  margin: 0 0 var(--space-sm);
-}

@@ -15,7 +15,10 @@ import type { CervicalMucus } from '@/engine/types'
 import { CORE_SYMPTOMS, MORE_SYMPTOMS, type Symptom } from './symptoms'
 import { MOODS, moodsOf, toggleMood } from './moods'
 import { isSuspiciouslyEarly } from './periodValidation'
+import { hasLogContent, withoutPeriod } from './periodDays'
+import { isBleeding } from '@/engine/cycleLengths'
 import { PhaseTag } from '@/features/today/PhaseTag'
+import { TermLabel } from '@/ui/TermHint'
 import { useConfirm } from '@/ui/ConfirmDialog'
 import styles from './LogSheet.module.css'
 
@@ -79,14 +82,20 @@ export function LogSheet() {
     )
   }
 
-  // The one way to record a period: its start date. Everything else about the
-  // period (its length, its days on the calendar) follows from that.
-  async function markPeriodStart() {
+  // Periods are recorded one day at a time; the start is the first marked day
+  // after a gap, so there is no separate "start" to keep in sync.
+  async function markPeriodDay() {
     if (!date) return
     if (isSuspiciouslyEarly(date, logs) && !(await confirm(t('log.earlyPeriodConfirm')))) return
-    await upsertLog({ date, periodStart: true })
+    await upsertLog({ date, periodDay: true })
     showToast('today.periodStarted')
-    close()
+  }
+
+  async function unmarkPeriodDay() {
+    if (!date || !existing) return
+    const cleared = withoutPeriod(existing)
+    if (hasLogContent(cleared)) await upsertLog(cleared)
+    else await deleteLog(date)
   }
 
   async function handleDelete() {
@@ -143,15 +152,22 @@ export function LogSheet() {
       subtitle={subtitleText}
     >
       <div className={styles.form}>
-        {existing?.periodStart ? (
+        {isBleeding(existing) ? (
           <div className={styles.periodBadge}>
             <DropIcon size={18} />
-            {t('log.periodStartedHere')}
+            <span className={styles.periodBadgeLabel}>{t('log.periodDayHere')}</span>
+            <button
+              type="button"
+              className={styles.periodBadgeRemove}
+              onClick={() => void unmarkPeriodDay()}
+            >
+              {t('log.unmarkPeriodDay')}
+            </button>
           </div>
         ) : (
-          <Button variant="secondary" onClick={() => void markPeriodStart()}>
+          <Button variant="secondary" onClick={() => void markPeriodDay()}>
             <DropIcon size={18} />
-            {t('log.markPeriodStart')}
+            {t('log.markPeriodDay')}
           </Button>
         )}
 
@@ -212,9 +228,11 @@ export function LogSheet() {
         {advancedTracking && (
           <>
             <div className={styles.section}>
-              <label className="label-caps" htmlFor="log-bbt">
-                {t('log.advanced.bbtLabel')}
-              </label>
+              <TermLabel term="bbt">
+                <label className="label-caps" htmlFor="log-bbt">
+                  {t('log.advanced.bbtLabel')}
+                </label>
+              </TermLabel>
               <input
                 id="log-bbt"
                 type="number"
@@ -228,7 +246,9 @@ export function LogSheet() {
             </div>
 
             <div className={styles.section}>
-              <span className="label-caps">{t('log.advanced.cervicalMucusLabel')}</span>
+              <TermLabel term="cervicalMucus">
+                <span className="label-caps">{t('log.advanced.cervicalMucusLabel')}</span>
+              </TermLabel>
               <div className={styles.chipGrid}>
                 {CERVICAL_MUCUS_OPTIONS.map((option) => (
                   <Chip
@@ -243,7 +263,7 @@ export function LogSheet() {
             </div>
 
             <div className={styles.toggleRow}>
-              <span>{t('log.advanced.lhLabel')}</span>
+              <TermLabel term="lh">{t('log.advanced.lhLabel')}</TermLabel>
               <Chip selected={lhPositive} onClick={() => setLhPositive((v) => !v)}>
                 {t('log.advanced.lhPositive')}
               </Chip>
