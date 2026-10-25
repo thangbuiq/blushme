@@ -1,5 +1,7 @@
 {
   "common": {
+    "close": "Đóng hôm nay",
+    "turnOff": "Tắt nhắc nhở",
     "gotIt": "Đã hiểu",
     "cancel": "Hủy",
     "save": "Lưu",
@@ -335,7 +337,7 @@
       "avatarLabel": "Ảnh đại diện"
     },
     "periodReminder": "Nhắc chuẩn bị băng vệ sinh",
-    "periodReminderTip": "Vài ngày trước ngày dự kiến, Blushme hiện một hộp thoại nhỏ nhắc em chuẩn bị. Chỉ hiện tối đa một lần mỗi ngày, khi em mở ứng dụng."
+    "periodReminderTip": "Vài ngày trước ngày dự kiến và trong kỳ kinh, Blushme hiện một thanh nhắc nhỏ ở đầu ứng dụng. Thanh nhắc ở lại cho đến khi em đóng, và có thể tắt ngay trên thanh đó."
   },
   "engine": {
     "formula": {
@@ -455,10 +457,8 @@
       "today": "Hôm nay là ngày dự kiến của kỳ kinh. Em nhớ mang theo băng vệ sinh nhé.",
       "during": "Em đang trong kỳ kinh. Nhớ mang theo băng vệ sinh dự phòng và thay đều đặn mỗi 4 đến 6 giờ nhé."
     },
-    "note": "Dự đoán có thể lệch vài ngày, chuẩn bị sớm một chút sẽ yên tâm hơn.",
     "ready": "Em đã chuẩn bị xong",
-    "later": "Nhắc em sau",
-    "duringNote": "Uống đủ nước và nghỉ ngơi khi cần, cơ thể em đang làm việc rất chăm chỉ.",
-    "gotIt": "Em nhớ rồi"
+    "close": "Đóng hôm nay",
+    "turnOff": "Tắt nhắc nhở"
   }
 }

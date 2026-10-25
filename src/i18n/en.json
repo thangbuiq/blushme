@@ -1,5 +1,7 @@
 {
   "common": {
+    "close": "Close for today",
+    "turnOff": "Turn off reminders",
     "gotIt": "Got it",
     "cancel": "Cancel",
     "save": "Save",
@@ -335,7 +337,7 @@
       "avatarLabel": "Avatar"
     },
     "periodReminder": "Remind me to get supplies ready",
-    "periodReminderTip": "A few days before the predicted date, Blushme shows a small dialog reminding you to prepare. It appears at most once a day, when you open the app."
+    "periodReminderTip": "A few days before the predicted date, and while you're on your period, Blushme shows a small banner at the top of the app reminding you to prepare. It stays until you close it, and you can switch it off right from the banner."
   },
   "engine": {
     "formula": {
@@ -455,10 +457,8 @@
       "today": "Your period is expected today. Remember to carry your supplies with you.",
       "during": "You're on your period. Keep a spare pad or tampon with you and change it every 4 to 6 hours."
     },
-    "note": "Predictions can be off by a few days, so being ready early is peace of mind.",
     "ready": "I'm ready",
-    "later": "Remind me later",
-    "duringNote": "Drink plenty of water and rest when you need to. Your body is working hard.",
-    "gotIt": "Got it"
+    "close": "Close for today",
+    "turnOff": "Turn off reminders"
   }
 }
