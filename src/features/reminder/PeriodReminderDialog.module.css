@@ -1,67 +1,64 @@
-.backdrop {
+.banner {
   position: absolute;
-  inset: 0;
-  z-index: 45;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-lg);
-  background-color: rgba(62, 42, 51, 0.32);
-  animation: fadeIn 260ms ease-out both;
-}
-
-.dialog {
-  width: 100%;
-  max-width: 340px;
-  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  top: max(var(--space-sm), env(safe-area-inset-top));
+  left: var(--space-md);
+  right: var(--space-md);
+  z-index: 46;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
-  text-align: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
   background:
-    radial-gradient(220px 160px at 100% 0%, #ffe6ed 0%, transparent 70%), var(--color-surface);
+    radial-gradient(180px 120px at 100% 0%, #ffe6ed 0%, transparent 70%), var(--color-surface);
   border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lift);
-  animation: rise 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.bloom {
-  margin-bottom: var(--space-xs);
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
 }
 
 .title {
-  font-size: 1.25rem;
+  font-family: var(--font-display, inherit);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--color-secondary);
+  border-radius: var(--radius-sm);
 }
 
 .body {
   color: var(--color-primary);
-}
-
-.note {
-  color: var(--color-secondary);
   font-size: var(--font-size-body-sm);
 }
 
 .actions {
-  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  margin-top: var(--space-md);
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+.primary {
+  padding: 6px var(--space-sm);
+  color: #fff;
+  font-size: var(--font-size-body-sm);
+  background-color: var(--color-tertiary);
+  border-radius: var(--radius-sm);
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    translate: 0 16px;
-    scale: 0.96;
-  }
+.link {
+  color: var(--color-secondary);
+  font-size: var(--font-size-body-sm);
+  text-decoration: underline;
 }
