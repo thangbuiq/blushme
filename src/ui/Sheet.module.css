@@ -43,15 +43,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-blush-tint);
-  border: none;
+  background: var(--lg-bg), var(--color-blush-tint);
+  border: var(--lg-border);
+  box-shadow: var(--lg-rim), 0 2px 8px rgba(52, 78, 120, 0.12);
   color: var(--color-secondary);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   transition: background-color 150ms ease;
 }
 
 .closeButton:hover {
-  background-color: var(--color-blush);
+  background: var(--lg-bg), var(--color-blush);
 }
 
 .title {

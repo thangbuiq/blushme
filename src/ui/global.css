@@ -7,6 +7,19 @@
   --shadow-sheet: 0 -12px 48px rgba(62, 42, 51, 0.16);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --nav-height: 92px;
+
+  /* Liquid glass: nearly clear, strongly blurred and saturated so what is behind
+     bends colour through it, with bright specular rims on the top-left and a
+     faint counter-rim on the bottom-right, like light caught in curved glass.
+     Only for small floating surfaces (nav, toast, close button); blurring large
+     areas janks on phones. */
+  --lg-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.18) 45%, rgba(255, 255, 255, 0.32) 100%);
+  --lg-blur: blur(16px) saturate(1.8) brightness(1.04);
+  --lg-border: 1px solid rgba(255, 255, 255, 0.55);
+  --lg-rim:
+    inset 1.5px 1.5px 1px rgba(255, 255, 255, 0.9), inset -1px -1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 0 14px rgba(255, 255, 255, 0.25);
+  --lg-shadow: 0 10px 30px rgba(52, 78, 120, 0.16), 0 1px 3px rgba(52, 78, 120, 0.08);
 }
 
 * {

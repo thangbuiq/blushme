@@ -9,30 +9,17 @@
   isolation: isolate;
 }
 
-/* Soft backdrop behind the bar: content blurs and fades out as it scrolls up
-   into the nav. The mask makes the blur strongest at the bottom and gone just
-   above the bar, so there is no hard edge. */
-.wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 70%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
-  mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
-}
-
 .nav {
   pointer-events: auto;
   display: flex;
   padding: 6px;
   gap: 4px;
-  border-radius: var(--radius-sm);
-  background-color: rgba(255, 255, 255, 0.96);
-  border: 1px solid var(--color-hairline);
-  box-shadow: var(--shadow-lift);
+  border-radius: var(--radius-full);
+  background: var(--lg-bg);
+  border: var(--lg-border);
+  box-shadow: var(--lg-rim), var(--lg-shadow);
+  backdrop-filter: var(--lg-blur);
+  -webkit-backdrop-filter: var(--lg-blur);
 }
 
 .item {
@@ -45,7 +32,7 @@
   min-height: 52px;
   background: none;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   color: var(--color-secondary);
   transition:
     color 240ms var(--ease-out),
@@ -58,9 +45,12 @@
 .pill {
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-blush-tint);
-  box-shadow: inset 0 0 0 1px var(--color-blush);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 226, 234, 0.55) 100%);
+  box-shadow:
+    inset 1.5px 1.5px 1px #fff,
+    inset -1px -1px 1px rgba(255, 255, 255, 0.5),
+    0 4px 14px rgba(184, 65, 106, 0.18);
   z-index: -1;
 }
 
@@ -90,19 +80,22 @@
     pointer-events: auto;
   }
 
-  .wrap::before {
-    display: none;
-  }
-
   .nav {
     flex-direction: column;
-    background-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border: none;
     box-shadow: none;
     padding: 0;
     gap: 8px;
+  }
+
+  .item,
+  .pill {
+    border-radius: var(--radius-sm);
   }
 
   .item {
