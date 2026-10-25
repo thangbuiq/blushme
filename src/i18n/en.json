@@ -103,6 +103,7 @@
     "expected": "Expected {{date}}",
     "howAreYou": "How are you today?",
     "startPeriod": "My period started today",
+    "logPeriodDay": "Log a period day today",
     "periodStarted": "Period logged. Take good care of yourself.",
     "focusKicker": "What to pay attention to",
     "tips": {
@@ -126,12 +127,6 @@
         "tip2": "Wind down earlier and protect your sleep.",
         "tip3": "Be patient with mood swings. A calm walk or journaling helps."
       }
-    },
-    "phaseBadge": {
-      "menstrual": "Period",
-      "follicular": "Rising energy",
-      "ovulation": "Glowing",
-      "luteal": "Winding down"
     },
     "insightButton": "Understand this prediction"
   },
@@ -240,8 +235,9 @@
       "lhPositive": "Positive",
       "intimacyLabel": "Intimacy"
     },
-    "markPeriodStart": "Period started this day",
-    "periodStartedHere": "Period started on this day",
+    "markPeriodDay": "Log a period day",
+    "periodDayHere": "Period day",
+    "unmarkPeriodDay": "Remove period day",
     "deleteEntry": "Delete this day's log",
     "moodHint": "You can pick more than one"
   },

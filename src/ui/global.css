@@ -116,9 +116,9 @@ a {
 }
 
 .label-caps {
-  font-family: var(--font-family-label-caps);
-  font-size: var(--font-size-label-caps);
-  font-weight: var(--font-weight-label-caps);
+  font-family: var(--font-family-h1);
+  font-size: 0.9375rem;
+  font-weight: 500;
   line-height: var(--line-height-label-caps);
   letter-spacing: var(--letter-spacing-label-caps);
   color: var(--color-secondary);

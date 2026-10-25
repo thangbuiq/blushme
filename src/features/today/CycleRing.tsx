@@ -2,9 +2,7 @@ import { useEffect } from 'react'
 import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import type { CycleState, Phase } from '@/engine/types'
-import { useUiStore } from '@/store/uiStore'
 import { PHASE_COLOR, cycleGeometry } from './phaseColors'
-import { PhaseTag } from './PhaseTag'
 import vine from '@/ui/art/ButtonVine.module.css'
 import styles from './CycleRing.module.css'
 
@@ -107,7 +105,6 @@ interface CycleRingProps {
 
 export function CycleRing({ state, periodLength }: CycleRingProps) {
   const { t } = useTranslation()
-  const openPhaseSheet = useUiStore((s) => s.openPhaseSheet)
   const reduceMotion = useReducedMotion()
 
   const { cycleLength, segments } = cycleGeometry(state, periodLength)
@@ -208,9 +205,6 @@ export function CycleRing({ state, periodLength }: CycleRingProps) {
         >
           {state.dayOfCycle}
         </motion.span>
-        <button type="button" className={styles.phase} onClick={() => openPhaseSheet(state.phase)}>
-          <PhaseTag phase={state.phase} />
-        </button>
       </div>
     </div>
   )

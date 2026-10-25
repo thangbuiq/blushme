@@ -26,7 +26,9 @@ export function Sheet({ open, onClose, title, ariaLabel, subtitle, children }: S
       if (event.key === 'Escape') onClose()
     }
     document.addEventListener('keydown', onKeyDown)
-    sheetRef.current?.focus()
+    // preventScroll: the sheet starts off-screen (translated), and a plain focus()
+    // scrolls the app frame to reveal it, which made the page jump.
+    sheetRef.current?.focus({ preventScroll: true })
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [open, onClose])
 

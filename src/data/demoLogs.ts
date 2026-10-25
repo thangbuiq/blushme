@@ -24,7 +24,7 @@ export function buildDemoLogs(today: Date = new Date()): DailyLog[] {
     for (let day = 0; day < PERIOD_LENGTH; day++) {
       logs.push({
         date: formatISO(addDays(cursor, day), { representation: 'date' }),
-        periodStart: day === 0,
+        periodDay: true,
         symptoms: SYMPTOM_DAYS[day],
         moods: MOOD_DAYS[day],
       })

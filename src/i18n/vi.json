@@ -103,6 +103,7 @@
     "expected": "Dự kiến {{date}}",
     "howAreYou": "Hôm nay em thế nào?",
     "startPeriod": "Kỳ kinh bắt đầu hôm nay",
+    "logPeriodDay": "Ghi hôm nay có kinh",
     "periodStarted": "Đã ghi kỳ kinh. Hãy chăm sóc bản thân thật tốt nhé.",
     "focusKicker": "Điều nên chú ý",
     "tips": {
@@ -126,12 +127,6 @@
         "tip2": "Đi ngủ sớm hơn và giữ giấc ngủ thật ngon.",
         "tip3": "Kiên nhẫn với cảm xúc thất thường. Đi dạo hoặc viết nhật ký sẽ giúp ích."
       }
-    },
-    "phaseBadge": {
-      "menstrual": "Kỳ kinh",
-      "follicular": "Nang trứng",
-      "ovulation": "Rạng rỡ",
-      "luteal": "Dịu lại"
     },
     "insightButton": "Hiểu rõ dự đoán này"
   },
@@ -240,8 +235,9 @@
       "lhPositive": "Dương tính",
       "intimacyLabel": "Quan hệ"
     },
-    "markPeriodStart": "Kỳ kinh tới ngày này",
-    "periodStartedHere": "Kỳ kinh bắt đầu ngày này",
+    "markPeriodDay": "Ghi ngày có kinh",
+    "periodDayHere": "Ngày này có kinh",
+    "unmarkPeriodDay": "Bỏ ghi ngày có kinh",
     "deleteEntry": "Xóa nhật ký ngày này",
     "moodHint": "Chọn được nhiều cảm xúc"
   },

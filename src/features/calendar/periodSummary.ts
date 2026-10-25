@@ -1,4 +1,5 @@
 import { addDays, differenceInCalendarDays, formatISO, parseISO } from 'date-fns'
+import { isBleeding } from '@/engine/cycleLengths'
 import type { CycleState, DailyLog, ISODate } from '@/engine/types'
 
 export interface PeriodSummary {
@@ -9,9 +10,7 @@ export interface PeriodSummary {
 
 // The last day of a consecutive run of logged flow starting at `start`.
 function lastConsecutiveLoggedDay(start: ISODate, logs: DailyLog[]): ISODate {
-  const loggedDates = new Set(
-    logs.filter((l) => (l.flow ?? 0) > 0 || l.periodStart).map((l) => l.date),
-  )
+  const loggedDates = new Set(logs.filter(isBleeding).map((l) => l.date))
   let cursor = start
   while (loggedDates.has(formatISO(addDays(parseISO(cursor), 1), { representation: 'date' }))) {
     cursor = formatISO(addDays(parseISO(cursor), 1), { representation: 'date' })
@@ -26,10 +25,10 @@ export function currentPeriodSummary(
   periodLength: number,
 ): PeriodSummary | null {
   const start = cycleState.lastPeriodStart
-  const hasActualLog = logs.some((l) => l.date === start && (l.periodStart || (l.flow ?? 0) > 0))
+  const hasActualLog = logs.some((l) => l.date === start && isBleeding(l))
   if (!hasActualLog) return null // the engine's own "no data yet" fallback, nothing to summarize
 
-  // A period recorded as just its start date has no logged end: project it from the stated length.
+  // A period with a single logged day has no logged end yet: project it from the stated length.
   const lastLoggedDay = lastConsecutiveLoggedDay(start, logs)
   const projectedEnd = formatISO(addDays(parseISO(start), periodLength - 1), {
     representation: 'date',

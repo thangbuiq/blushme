@@ -19,7 +19,7 @@
 }
 
 .greeting {
-  font-size: 1.75rem;
+  font-size: 1.375rem;
   line-height: 1.15;
 }
 
@@ -31,7 +31,6 @@
 
 .name {
   color: var(--color-tertiary);
-  font-size: 0.72em;
 }
 
 .avatarButton {
@@ -88,6 +87,25 @@
   flex-direction: column;
   gap: 6px;
   align-items: center;
+}
+
+.phaseLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+  background: none;
+  border: none;
+  font-family: var(--font-family-h1);
+  font-size: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.phaseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
 }
 
 .statusTitle {
@@ -171,7 +189,8 @@
 }
 
 .focusKicker {
-  font-size: 0.8125rem;
+  font-family: var(--font-family-h1);
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--color-tertiary);
 }
