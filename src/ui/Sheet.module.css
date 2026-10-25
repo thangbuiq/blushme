@@ -8,10 +8,17 @@
   justify-content: center;
   overscroll-behavior: contain;
   will-change: opacity;
+  animation: backdropIn 240ms ease-out both;
+}
+
+.backdropClosing {
+  pointer-events: none;
+  animation: backdropOut 220ms ease-in both;
 }
 
 .sheet {
-  will-change: transform;
+  will-change: transform, translate;
+  animation: sheetIn 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
   position: relative;
   width: 100%;
   max-height: 90%;
@@ -25,6 +32,34 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   outline: none;
+}
+
+.sheetClosing {
+  animation: sheetOut 260ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes backdropOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes sheetIn {
+  from {
+    translate: 0 100%;
+  }
+}
+
+@keyframes sheetOut {
+  to {
+    translate: 0 100%;
+  }
 }
 
 .handle {
