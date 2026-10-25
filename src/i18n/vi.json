@@ -1,6 +1,6 @@
 {
   "common": {
-    "close": "Đóng hôm nay",
+    "close": "Đóng",
     "turnOff": "Tắt nhắc nhở",
     "gotIt": "Đã hiểu",
     "cancel": "Hủy",
@@ -14,7 +14,6 @@
     "areYouSure": "Em có chắc không?",
     "no": "Không",
     "notSure": "Em chưa chắc",
-    "close": "Đóng",
     "days": "ngày",
     "increase": "Tăng",
     "decrease": "Giảm",
@@ -108,27 +107,55 @@
     "logPeriodDay": "Ghi hôm nay có kinh",
     "periodStarted": "Đã ghi kỳ kinh. Hãy chăm sóc bản thân thật tốt nhé.",
     "focusKicker": "Điều nên chú ý",
-    "tips": {
+    "care": {
+      "groups": {
+        "food": "Ăn uống",
+        "move": "Vận động",
+        "mind": "Tinh thần",
+        "sleep": "Giấc ngủ"
+      },
       "menstrual": {
-        "tip1": "Giữ ấm bụng bằng túi chườm hoặc đồ uống ấm.",
-        "tip2": "Ưu tiên thực phẩm giàu sắt: rau bó xôi, các loại đậu, thịt nạc.",
-        "tip3": "Nghỉ ngơi nhiều hơn, vận động nhẹ như đi bộ hoặc giãn cơ."
+        "food": "Món ấm, giàu sắt như đậu, rau xanh đậm, thịt nạc.",
+        "move": "Đi bộ nhẹ hoặc giãn cơ giúp dịu cơn đau bụng.",
+        "mind": "Cho phép bản thân chậm lại và nghỉ khi cần.",
+        "sleep": "Chườm ấm bụng trước khi ngủ nếu thấy đau."
       },
       "follicular": {
-        "tip1": "Thời điểm tốt để tập luyện hoặc thử điều mới.",
-        "tip2": "Lên kế hoạch cho việc quan trọng khi năng lượng đang tăng.",
-        "tip3": "Uống đủ nước và ăn nhiều rau củ tươi nhiều màu sắc."
+        "food": "Nhiều rau củ tươi, đạm nạc và uống đủ nước.",
+        "move": "Năng lượng đang lên, hợp để tập mạnh hơn.",
+        "mind": "Lúc thuận lợi để bắt đầu việc cần tập trung.",
+        "sleep": "Giữ giờ ngủ đều để năng lượng ổn định."
       },
       "ovulation": {
-        "tip1": "Năng lượng và tâm trạng thường lên cao lúc này. Hãy tận hưởng nhé.",
-        "tip2": "Hơi nhói một bên bụng là bình thường. Nhớ uống đủ nước.",
-        "tip3": "Đây là lúc dễ thụ thai nhất. Hãy lưu ý theo mục tiêu của em."
+        "food": "Rau xanh, chất xơ và đủ nước.",
+        "move": "Tập vừa đến mạnh, nhớ khởi động kỹ.",
+        "mind": "Tâm trạng thường sáng. Nhói nhẹ một bên bụng là bình thường.",
+        "sleep": "Phòng thoáng mát sẽ giúp dễ ngủ hơn."
       },
       "luteal": {
-        "tip1": "Chọn đồ ăn nhẹ giàu magie như các loại hạt hoặc sô cô la đen.",
-        "tip2": "Đi ngủ sớm hơn và giữ giấc ngủ thật ngon.",
-        "tip3": "Kiên nhẫn với cảm xúc thất thường. Đi dạo hoặc viết nhật ký sẽ giúp ích."
+        "food": "Hạt, chuối, sô cô la đen; bớt mặn và caffeine.",
+        "move": "Yoga, đi bộ hoặc bơi nhẹ giúp cơ thể dịu lại.",
+        "mind": "Dễ nhạy cảm hơn thường lệ. Viết nhật ký hoặc đi dạo sẽ giúp ích.",
+        "sleep": "Đi ngủ sớm hơn một chút, cơ thể đang cần nghỉ nhiều hơn."
       }
+    },
+    "prep": {
+      "kicker": "Nên chuẩn bị",
+      "suppliesToday": "Mang theo băng vệ sinh hôm nay.",
+      "supplies": "Kỳ kinh dự kiến sau {{count}} ngày. Chuẩn bị băng vệ sinh trong túi nhé.",
+      "logSymptoms": "Ghi lại triệu chứng hôm nay để Blushme hiểu em hơn.",
+      "protect": "Đang là những ngày dễ thụ thai. Nếu chưa muốn có thai, hãy dùng biện pháp bảo vệ.",
+      "plan": "Xếp việc cần tập trung vào những ngày này.",
+      "rest": "Chừa chút thời gian nghỉ ngơi trong tuần này."
+    },
+    "alert": {
+      "title": "Nên trao đổi với bác sĩ",
+      "more": "Xem khi nào cần đi khám",
+      "veryLate": "Kỳ kinh đã vắng hơn 3 tháng. Em nên gặp bác sĩ để được kiểm tra nhé.",
+      "late": "Kỳ kinh chậm {{count}} ngày so với dự kiến. Căng thẳng hay thay đổi sinh hoạt có thể là lý do; nếu kéo dài, em nên gặp bác sĩ.",
+      "longPeriod": "Kỳ kinh đã kéo dài hơn 8 ngày. Nếu ra nhiều máu hoặc thấy mệt, em nên gặp bác sĩ.",
+      "cycleRange": "Vài chu kỳ gần đây ngắn hơn 24 hoặc dài hơn 38 ngày. Em nên trao đổi với bác sĩ để yên tâm.",
+      "variable": "Chu kỳ gần đây khá thất thường. Ghi chép đều giúp dự đoán chuẩn hơn; nếu lo lắng, em nên hỏi bác sĩ."
     },
     "insightButton": "Hiểu rõ dự đoán này"
   },
@@ -162,7 +189,8 @@
       "predicted": "Kỳ kinh dự kiến",
       "fertile": "Dễ mang thai",
       "ovulation": "Ngày rụng trứng",
-      "low": "Khả năng thụ thai thấp"
+      "low": "Khả năng thụ thai thấp",
+      "today": "Hôm nay"
     },
     "fertilityDisclaimer": "Ước tính theo lịch không phải là biện pháp tránh thai đáng tin cậy.",
     "periodSummary": {
@@ -386,7 +414,7 @@
     "noAccount": "Chưa có tài khoản?",
     "haveAccount": "Đã có tài khoản?",
     "heroTitle": "Hiểu chu kỳ của em, để chăm sóc em.",
-    "heroLead": "Theo dõi chu kỳ kinh nguyệt để hiểu cơ thể, cảm xúc và sức khỏe sinh sản của em.",
+    "heroLead": "Theo dõi chu kỳ kinh nguyệt để hiểu cơ thể, cảm xúc và sức khỏe của em.",
     "privacy": "Dữ liệu được lưu an toàn và chỉ riêng em xem được.",
     "errors": {
       "invalidCredentials": "Email hoặc mật khẩu chưa đúng.",
@@ -459,6 +487,16 @@
     },
     "ready": "Em đã chuẩn bị xong",
     "close": "Đóng hôm nay",
-    "turnOff": "Tắt nhắc nhở"
+    "turnOff": "Tắt nhắc nhở",
+    "heading": {
+      "upcoming": "Nhớ mang băng vệ sinh",
+      "during": "Đang trong kỳ kinh"
+    },
+    "chip": {
+      "soon": "Còn {{count}} ngày",
+      "tomorrow": "Ngày mai",
+      "today": "Hôm nay",
+      "during": "Đang diễn ra"
+    }
   }
 }

@@ -61,37 +61,20 @@ export function AuthScreen() {
 
   return (
     <div className={`${styles.screen} scroll`}>
-      <div className={styles.lang} role="group" aria-label={t('settings.language')}>
-        {(['vi', 'en'] as const).map((lang) => (
-          <button
-            key={lang}
-            type="button"
-            className={[styles.langButton, i18n.language.startsWith(lang) && styles.langActive]
-              .filter(Boolean)
-              .join(' ')}
-            aria-pressed={i18n.language.startsWith(lang)}
-            onClick={() => {
-              setStoredLanguage(lang)
-              void i18n.changeLanguage(lang)
-            }}
-          >
-            {lang.toUpperCase()}
-          </button>
-        ))}
-      </div>
-
+      <Sprig width={104} className={styles.sprigTop} />
+      <Sprig width={150} className={styles.sprigBottom} still />
       <header className={styles.hero}>
-        <Sprig width={130} className={styles.sprig} />
-        <Sprig width={100} mirror className={styles.sprigLeft} still />
-        <motion.div
-          className={styles.brand}
-          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE }}
-        >
-          <Bloom size={28} petals={5} />
-          Blushme
-        </motion.div>
+        <div className={styles.topRow}>
+          <motion.div
+            className={styles.brand}
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE }}
+          >
+            <Bloom size={28} petals={5} />
+            Blushme
+          </motion.div>
+        </div>
         <motion.h1
           className={styles.title}
           initial={reduceMotion ? false : { opacity: 0, y: 14 }}
@@ -196,7 +179,7 @@ export function AuthScreen() {
                 )}
               </AnimatePresence>
 
-              <Button type="submit" loading={busy}>
+              <Button type="submit" loading={busy} className={styles.submit}>
                 {t(isSignUp ? 'auth.createAccount' : 'auth.signInCta')}
               </Button>
             </form>
@@ -217,6 +200,27 @@ export function AuthScreen() {
             <button type="button" className={styles.demoLink} onClick={enterDemo} disabled={busy}>
               {t('auth.useDemo')}
             </button>
+            <div className={styles.lang} role="group" aria-label={t('settings.language')}>
+              {(['vi', 'en'] as const).map((lang) => (
+                <button
+                  key={lang}
+                  type="button"
+                  className={[
+                    styles.langButton,
+                    i18n.language.startsWith(lang) && styles.langActive,
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  aria-pressed={i18n.language.startsWith(lang)}
+                  onClick={() => {
+                    setStoredLanguage(lang)
+                    void i18n.changeLanguage(lang)
+                  }}
+                >
+                  {lang.toUpperCase()}
+                </button>
+              ))}
+            </div>
           </motion.div>
         </AnimatePresence>
       </motion.main>

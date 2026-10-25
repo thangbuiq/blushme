@@ -58,6 +58,15 @@
   border-color: #f3cfcb;
 }
 
+.dangerSolid {
+  background-color: #b3261e;
+  color: #fff;
+}
+
+.dangerSolid:not(:disabled):hover {
+  background-color: #8f1e18;
+}
+
 .spinner {
   width: 18px;
   height: 18px;

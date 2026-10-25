@@ -2,7 +2,15 @@ import type { ReactNode } from 'react'
 import { formatISO } from 'date-fns'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Trans, useTranslation } from 'react-i18next'
-import { CheckIcon, ChevronIcon, DropIcon, PlusIcon } from '@/ui/Icon'
+import {
+  ChevronIcon,
+  DropIcon,
+  FlowerIcon,
+  LeafIcon,
+  MoonIcon,
+  PlusIcon,
+  SparkIcon,
+} from '@/ui/Icon'
 import { Bloom, Sprig } from '@/ui/art/Botanical'
 import { ButtonVine } from '@/ui/art/ButtonVine'
 import { Button } from '@/ui/Button'
@@ -22,10 +30,18 @@ import { MOODS, moodsOf, toggleMood } from '@/features/log/moods'
 import { isSuspiciouslyEarly } from '@/features/log/periodValidation'
 import { PHASE_COLOR, PHASE_TEXT_COLOR, PHASE_TONE, cycleGeometry } from './phaseColors'
 import { PhaseTag } from './PhaseTag'
+import { focusAlert, focusPrep } from './focus'
 import { statusLineText } from './statusLine'
 import { CycleRing } from './CycleRing'
 import { PhaseTimeline } from './PhaseTimeline'
 import styles from './TodayScreen.module.css'
+
+const CARE_GROUPS = [
+  { key: 'food', Icon: LeafIcon },
+  { key: 'move', Icon: SparkIcon },
+  { key: 'mind', Icon: FlowerIcon },
+  { key: 'sleep', Icon: MoonIcon },
+] as const
 
 const todayISO = () => formatISO(new Date(), { representation: 'date' })
 
@@ -75,6 +91,8 @@ export function TodayScreen() {
   const showToast = useUiStore((s) => s.showToast)
 
   const today = todayISO()
+  const prep = focusPrep(state)
+  const alert = focusAlert(state, logs)
   const todayLog = logs.find((l) => l.date === today)
   const onPeriodToday = isBleeding(todayLog)
   const todayMoods = todayLog ? moodsOf(todayLog) : []
@@ -126,7 +144,10 @@ export function TodayScreen() {
             className={styles.phaseLine}
             onClick={() => openPhaseSheet(state.phase)}
           >
-            <span className={styles.phaseDot} style={{ backgroundColor: PHASE_COLOR[state.phase] }} />
+            <span
+              className={styles.phaseDot}
+              style={{ backgroundColor: PHASE_COLOR[state.phase] }}
+            />
             <PhaseTag phase={state.phase} />
           </button>
           <h2 className={styles.statusTitle}>{statusLineText(t, state)}</h2>
@@ -168,16 +189,40 @@ export function TodayScreen() {
           </div>
         </div>
         <p className={styles.focusBody}>{t(`today.phaseDescription.${state.phase}`)}</p>
-        <ul className={styles.tips}>
-          {[1, 2, 3].map((n) => (
-            <li key={n} className={styles.tip}>
-              <span className={styles.tipIcon}>
-                <CheckIcon size={13} />
+        <ul className={styles.care}>
+          {CARE_GROUPS.map(({ key, Icon }) => (
+            <li key={key} className={styles.careItem}>
+              <span className={styles.careIcon} aria-hidden="true">
+                <Icon size={15} />
               </span>
-              {t(`today.tips.${state.phase}.tip${n}`)}
+              <p className={styles.careText}>
+                <strong>{t(`today.care.groups.${key}`)}</strong>
+                {t(`today.care.${state.phase}.${key}`)}
+              </p>
             </li>
           ))}
         </ul>
+        <div className={styles.prep}>
+          <span className={styles.prepKicker}>{t('today.prep.kicker')}</span>
+          <p>
+            {t(
+              prep.key === 'supplies' && prep.count === 0
+                ? 'today.prep.suppliesToday'
+                : `today.prep.${prep.key}`,
+              { count: prep.count },
+            )}
+          </p>
+        </div>
+        {alert && (
+          <div className={styles.alert} role="note">
+            <p className={styles.alertTitle}>{t('today.alert.title')}</p>
+            <p>{t(`today.alert.${alert.code}`, { count: alert.count })}</p>
+            <button type="button" className={styles.alertLink} onClick={openDetailsSheet}>
+              {t('today.alert.more')}
+              <ChevronIcon size={14} />
+            </button>
+          </div>
+        )}
       </motion.section>
 
       <motion.section className={styles.card} {...reveal(3)} aria-labelledby="quick-log">
