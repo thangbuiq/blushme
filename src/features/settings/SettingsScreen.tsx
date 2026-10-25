@@ -216,6 +216,12 @@ export function SettingsScreen() {
           </div>
         </div>
         <ToggleRow
+          label={t('settings.periodReminder')}
+          tip={t('settings.periodReminderTip')}
+          checked={settings.periodReminder}
+          onChange={(periodReminder) => update({ periodReminder })}
+        />
+        <ToggleRow
           label={t('settings.advancedTracking')}
           tip={t('settings.advancedTip')}
           checked={settings.advancedTracking}

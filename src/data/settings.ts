@@ -23,6 +23,10 @@ export interface SettingsRecord {
   pinHash: string | null
   lockOfferedAfterFirstLog: boolean
   remindersEnabled: boolean
+  /** Gentle in-app reminder to prepare pads a few days before the predicted period. */
+  periodReminder: boolean
+  reminderDismissedFor: string | null
+  reminderLastShown: string | null
   dismissedNoticeIds: string[]
   demoDataLoaded: boolean
   demoLogDates: string[]
@@ -47,6 +51,9 @@ export const DEFAULT_SETTINGS: SettingsRecord = {
   pinHash: null,
   lockOfferedAfterFirstLog: false,
   remindersEnabled: false,
+  periodReminder: true,
+  reminderDismissedFor: null,
+  reminderLastShown: null,
   dismissedNoticeIds: [],
   demoDataLoaded: false,
   demoLogDates: [],

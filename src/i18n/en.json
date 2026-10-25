@@ -333,7 +333,9 @@
       "nameLabel": "What should Blushme call you?",
       "namePlaceholder": "Name or nickname",
       "avatarLabel": "Avatar"
-    }
+    },
+    "periodReminder": "Remind me to get supplies ready",
+    "periodReminderTip": "A few days before the predicted date, Blushme shows a small dialog reminding you to prepare. It appears at most once a day, when you open the app."
   },
   "engine": {
     "formula": {
@@ -444,5 +446,16 @@
       "title": "What is confidence?",
       "body": "How sure Blushme is about your next period prediction. The more cycles you log and the more regular they are, the higher it gets. New users stay at low confidence until at least 3 cycles are logged."
     }
+  },
+  "reminder": {
+    "title": "A gentle reminder",
+    "body": {
+      "soon": "Your period is expected around {{date}}, in {{count}} days. It might be a good moment to check you have pads or tampons at hand.",
+      "tomorrow": "Your period is expected tomorrow ({{date}}). Remember to have your supplies ready.",
+      "today": "Your period is expected today. Remember to carry your supplies with you."
+    },
+    "note": "Predictions can be off by a few days, so being ready early is peace of mind.",
+    "ready": "I'm ready",
+    "later": "Remind me later"
   }
 }

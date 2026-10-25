@@ -333,7 +333,9 @@
       "nameLabel": "Blushme nên gọi em là gì?",
       "namePlaceholder": "Tên hoặc biệt danh",
       "avatarLabel": "Ảnh đại diện"
-    }
+    },
+    "periodReminder": "Nhắc chuẩn bị băng vệ sinh",
+    "periodReminderTip": "Vài ngày trước ngày dự kiến, Blushme hiện một hộp thoại nhỏ nhắc em chuẩn bị. Chỉ hiện tối đa một lần mỗi ngày, khi em mở ứng dụng."
   },
   "engine": {
     "formula": {
@@ -444,5 +446,16 @@
       "title": "Độ tin cậy là gì?",
       "body": "Cho biết Blushme tự tin đến đâu về dự đoán kỳ kinh tới. Càng ghi nhiều chu kỳ và các chu kỳ càng đều thì độ tin cậy càng cao. Với người mới dùng, độ tin cậy sẽ thấp cho đến khi có ít nhất 3 chu kỳ."
     }
+  },
+  "reminder": {
+    "title": "Một lời nhắc nhỏ",
+    "body": {
+      "soon": "Kỳ kinh dự kiến đến vào khoảng {{date}}, còn {{count}} ngày nữa. Em thử xem trong túi đã có băng vệ sinh chưa nhé.",
+      "tomorrow": "Ngày mai ({{date}}) là ngày dự kiến của kỳ kinh. Em nhớ chuẩn bị sẵn băng vệ sinh nhé.",
+      "today": "Hôm nay là ngày dự kiến của kỳ kinh. Em nhớ mang theo băng vệ sinh nhé."
+    },
+    "note": "Dự đoán có thể lệch vài ngày, chuẩn bị sớm một chút sẽ yên tâm hơn.",
+    "ready": "Em đã chuẩn bị xong",
+    "later": "Nhắc em sau"
   }
 }

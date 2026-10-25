@@ -11,6 +11,7 @@ import { TodayScreen } from '@/features/today/TodayScreen'
 import { InsightsScreen } from '@/features/insights/InsightsScreen'
 import { SettingsScreen } from '@/features/settings/SettingsScreen'
 import { LogSheet } from '@/features/log/LogSheet'
+import { PeriodReminderDialog } from '@/features/reminder/PeriodReminderDialog'
 import { GlossarySheet } from '@/ui/GlossarySheet'
 import { TodaySheets } from '@/features/today/TodaySheets'
 import { DayActionsSheet } from '@/features/calendar/DayActionsSheet'
@@ -82,6 +83,7 @@ export function App() {
         <DayActionsSheet />
         <TodaySheets />
         <GlossarySheet />
+        <PeriodReminderDialog />
         <BottomNav />
       </>
     )
