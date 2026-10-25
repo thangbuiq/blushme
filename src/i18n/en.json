@@ -33,9 +33,6 @@
       "goalTrack": "Track my cycle",
       "goalTtc": "Trying to conceive",
       "goalAvoiding": "Avoiding pregnancy",
-      "goalTrackHint": "Understand your body day by day",
-      "goalTtcHint": "See your fertile window",
-      "goalAvoidingHint": "Know your higher and lower chance days",
       "nameLabel": "What should Blushme call you?",
       "namePlaceholder": "Name or nickname (optional)"
     },
@@ -49,7 +46,7 @@
       "cycleLengthLabel": "Typical cycle length",
       "periodLengthLabel": "Typical period length"
     },
-    "disclaimer": "These are gentle estimates, not medical advice.",
+    "disclaimer": "Blushme gives research-based estimates only. It is not a medical tool and does not replace a doctor's advice. If you have concerns about your reproductive health, please see a doctor.",
     "disclaimerTitle": "A gentle note",
     "start": "Start with Blushme"
   },

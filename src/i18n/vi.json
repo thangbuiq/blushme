@@ -33,9 +33,6 @@
       "goalTrack": "Theo dõi chu kỳ",
       "goalTtc": "Đang mong có con",
       "goalAvoiding": "Tránh thai",
-      "goalTrackHint": "Hiểu cơ thể từng ngày",
-      "goalTtcHint": "Xem cửa sổ dễ thụ thai",
-      "goalAvoidingHint": "Biết ngày khả năng thụ thai cao và thấp",
       "nameLabel": "Blushme nên gọi em là gì?",
       "namePlaceholder": "Tên hoặc biệt danh (không bắt buộc)"
     },
@@ -49,7 +46,7 @@
       "cycleLengthLabel": "Độ dài chu kỳ thường thấy",
       "periodLengthLabel": "Độ dài kỳ kinh thường thấy"
     },
-    "disclaimer": "Blushme có chứa thông tin dự đoán về sức khỏe sinh sản dựa trên nghiên cứu khoa học về y tế. Tuy nhiên, Blushme không phải là một công cụ y tế và không thể thay thế cho lời khuyên của bác sĩ. Nếu có bất kỳ lo lắng nào về sức khỏe sinh sản, em hãy tham khảo ý kiến bác sĩ hoặc chuyên gia y tế.",
+    "disclaimer": "Blushme chỉ đưa ra dự đoán tham khảo dựa trên nghiên cứu y khoa, không phải công cụ y tế và không thay thế lời khuyên của bác sĩ. Nếu lo lắng về sức khỏe sinh sản, em hãy hỏi ý kiến bác sĩ nhé.",
     "disclaimerTitle": "Một lời nhắn nhẹ nhàng",
     "start": "Bắt đầu cùng Blushme"
   },
