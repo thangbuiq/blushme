@@ -25,6 +25,7 @@ export function PeriodReminderDialog() {
   const reminder = dueReminder({
     today: todayISO(),
     predictedDate,
+    rangeDays: state.predictedNextPeriod.rangeDays,
     paused: state.paused,
     enabled: settings.periodReminder,
     onPeriod: state.phase === 'menstrual',
@@ -32,9 +33,18 @@ export function PeriodReminderDialog() {
     lastShown: settings.reminderLastShown,
   })
 
-  const upcoming = reminder?.kind === 'upcoming'
+  const upcoming = reminder?.kind === 'upcoming' || reminder?.kind === 'inRange'
   const days = reminder?.kind === 'upcoming' ? reminder.days : 0
-  const when = !upcoming ? 'during' : days === 0 ? 'today' : days === 1 ? 'tomorrow' : 'soon'
+  const when =
+    reminder?.kind === 'inRange'
+      ? 'inRange'
+      : !upcoming
+        ? 'during'
+        : days === 0
+          ? 'today'
+          : days === 1
+            ? 'tomorrow'
+            : 'soon'
 
   // "Shown" doubles as "closed for today", so it comes back tomorrow.
   const closeForToday = () => void update({ reminderLastShown: todayISO() })

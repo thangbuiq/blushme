@@ -6,6 +6,7 @@ import { dueReminder } from '../periodReminder'
 const base = {
   today: '2026-10-25',
   predictedDate: '2026-10-27',
+  rangeDays: 2,
   paused: false,
   enabled: true,
   onPeriod: false,
@@ -28,7 +29,12 @@ describe('dueReminder', () => {
 
   it('stays quiet outside the window', () => {
     expect(dueReminder({ ...base, predictedDate: '2026-10-29' })).toBeNull()
-    expect(dueReminder({ ...base, predictedDate: '2026-10-24' })).toBeNull()
+    expect(dueReminder({ ...base, predictedDate: '2026-10-22' })).toBeNull()
+  })
+
+  it('reminds inside the predicted range when no period is logged yet', () => {
+    expect(dueReminder({ ...base, predictedDate: '2026-10-24' })).toEqual({ kind: 'inRange' })
+    expect(dueReminder({ ...base, predictedDate: '2026-10-23' })).toEqual({ kind: 'inRange' })
   })
 
   it('respects the toggle, paused predictions and once-a-day', () => {
@@ -70,6 +76,7 @@ describe('demo data', () => {
     const reminder = dueReminder({
       today: iso(today),
       predictedDate: state.predictedNextPeriod.date,
+      rangeDays: state.predictedNextPeriod.rangeDays,
       paused: state.paused,
       enabled: true,
       onPeriod: state.phase === 'menstrual',
