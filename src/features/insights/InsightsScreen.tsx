@@ -19,7 +19,9 @@ import {
 } from './insightsData'
 import styles from './InsightsScreen.module.css'
 
-const MIN_CYCLES = 2
+const MIN_CYCLES = 1
+
+const meanOf = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0)
 
 function TallyList({
   items,
@@ -105,7 +107,7 @@ export function InsightsScreen() {
   const excludedLengths = new Set(math.excludedCycles.map((c) => c.index))
   const offset = math.allCycleLengths.length - recent.length
   const maxLen = Math.max(...recent, 1)
-  const mean = math.weightedMean ?? 0
+  const mean = math.weightedMean ?? meanOf(math.validCycleLengths)
   const regularity = regularityOf(math.weightedStdDev)
   const periodAvg = averagePeriodLength(logs) ?? statedPeriodLength
   const symptoms = tallySymptoms(logs)

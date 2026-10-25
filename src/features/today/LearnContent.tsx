@@ -5,7 +5,8 @@ import { Collapse } from '@/ui/Collapse'
 import { useCycleState } from '@/store/cycleStore'
 import { useSettingsStore } from '@/store/settingsStore'
 import { PhaseTimeline } from './PhaseTimeline'
-import { PHASE_TEXT_COLOR, cycleGeometry } from './phaseColors'
+import { PhaseIllustration } from './PhaseIllustration'
+import { PHASE_COLOR, PHASE_TEXT_COLOR, cycleGeometry } from './phaseColors'
 import type { Phase } from '@/engine/types'
 import styles from './LearnContent.module.css'
 
@@ -53,6 +54,12 @@ export function LearnContent() {
               <ChevronIcon className={expanded ? styles.chevronOpen : undefined} />
             </button>
             <Collapse open={expanded}>
+              <div
+                className={styles.phaseArt}
+                style={{ backgroundColor: `${PHASE_COLOR[phase]}22` }}
+              >
+                <PhaseIllustration phase={phase} />
+              </div>
               <p className={styles.phaseBody}>{t(`learn.phase.${phase}`)}</p>
             </Collapse>
           </div>

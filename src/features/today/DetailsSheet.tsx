@@ -11,9 +11,9 @@ import { DisclosurePanel } from '@/features/formulas/DisclosurePanel'
 import { useUiStore } from '@/store/uiStore'
 import type { CycleState } from '@/engine/types'
 import { LearnContent } from './LearnContent'
+import { CONFIDENCE_PERCENT } from './confidence'
 import styles from './DetailsSheet.module.css'
 
-const CONFIDENCE_PERCENT = { low: 35, medium: 65, high: 90 } as const
 
 interface DetailsSheetProps {
   state: CycleState

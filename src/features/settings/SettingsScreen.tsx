@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Chip } from '@/ui/Chip'
@@ -16,7 +16,7 @@ import { useAuthStore } from '@/store/authStore'
 import { useSettingsStore } from '@/store/settingsStore'
 import { useLogStore } from '@/store/logStore'
 import { useUiStore } from '@/store/uiStore'
-import { exportToJson, importFromJson, deleteAllData } from '@/data/exportImport'
+import { deleteAllData } from '@/data/exportImport'
 import { deleteAccount } from '@/data/repo'
 import { NAME_MAX, type Units, type WeekStart } from '@/data/settings'
 import styles from './SettingsScreen.module.css'
@@ -53,7 +53,6 @@ export function SettingsScreen() {
   const update = useSettingsStore((s) => s.update)
   const loadLogs = useLogStore((s) => s.load)
   const showToast = useUiStore((s) => s.showToast)
-  const fileInputRef = useRef<HTMLInputElement>(null)
   const confirm = useConfirm()
   const [busy, setBusy] = useState<string | null>(null)
   const [name, setName] = useState(settings.displayName)
@@ -78,28 +77,6 @@ export function SettingsScreen() {
   async function reloadAll() {
     await Promise.all([loadLogs(), useSettingsStore.getState().load()])
   }
-
-  const handleExport = () =>
-    run('export', async () => {
-      const json = await exportToJson()
-      const url = URL.createObjectURL(new Blob([json], { type: 'application/json' }))
-      const anchor = document.createElement('a')
-      anchor.href = url
-      anchor.download = `blushme-export-${new Date().toISOString().slice(0, 10)}.json`
-      anchor.click()
-      URL.revokeObjectURL(url)
-    })
-
-  const handleImportFile = (file: File) =>
-    run(
-      'import',
-      async () => {
-        await importFromJson(await file.text())
-        await reloadAll()
-        showToast('settings.imported')
-      },
-      'settings.importFailed',
-    )
 
   async function handleDeleteAll() {
     if (!(await confirm(t('settings.deleteAllConfirm'), t('settings.deleteAll'), { danger: true })))
@@ -254,48 +231,7 @@ export function SettingsScreen() {
         )}
       </motion.section>
 
-      {!demo && (
-        <motion.section className={styles.group} {...reveal(4)}>
-          <h2 className={styles.groupTitle}>{t('settings.data')}</h2>
-          <div className={styles.buttons}>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="application/json"
-              className="visually-hidden"
-              tabIndex={-1}
-              onChange={(e) => {
-                const file = e.target.files?.[0]
-                e.target.value = ''
-                if (file) void handleImportFile(file)
-              }}
-            />
-            <Button
-              variant="secondary"
-              loading={busy === 'export'}
-              onClick={() => void handleExport()}
-            >
-              {t('settings.export')}
-            </Button>
-            <Button
-              variant="secondary"
-              loading={busy === 'import'}
-              onClick={() => fileInputRef.current?.click()}
-            >
-              {t('settings.import')}
-            </Button>
-            <Button
-              variant="danger"
-              loading={busy === 'delete'}
-              onClick={() => void handleDeleteAll()}
-            >
-              {t('settings.deleteAll')}
-            </Button>
-          </div>
-        </motion.section>
-      )}
-
-      <motion.section className={styles.group} {...reveal(5)}>
+      <motion.section className={styles.group} {...reveal(4)}>
         <h2 className={styles.groupTitle}>{t('settings.account')}</h2>
         <div className={styles.buttons}>
           <Button variant="secondary" onClick={() => void signOut()}>
@@ -303,18 +239,27 @@ export function SettingsScreen() {
             {t(demo ? 'settings.exitDemo' : 'settings.signOut')}
           </Button>
           {!demo && (
-            <Button
-              variant="danger"
-              loading={busy === 'account'}
-              onClick={() => void handleDeleteAccount()}
-            >
-              {t('settings.deleteAccount')}
-            </Button>
+            <>
+              <Button
+                variant="danger"
+                loading={busy === 'delete'}
+                onClick={() => void handleDeleteAll()}
+              >
+                {t('settings.deleteAll')}
+              </Button>
+              <Button
+                variant="danger"
+                loading={busy === 'account'}
+                onClick={() => void handleDeleteAccount()}
+              >
+                {t('settings.deleteAccount')}
+              </Button>
+            </>
           )}
         </div>
       </motion.section>
 
-      <motion.p className={styles.about} {...reveal(6)}>
+      <motion.p className={styles.about} {...reveal(5)}>
         {t('settings.aboutBody')}
       </motion.p>
     </div>

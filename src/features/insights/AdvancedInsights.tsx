@@ -27,7 +27,11 @@ function scale(min: number, max: number, a: number, b: number) {
 function TrendChart({ math }: { math: CycleMath }) {
   const { t } = useTranslation()
   const lengths = math.allCycleLengths.slice(-12)
-  const mean = math.weightedMean ?? 0
+  const mean =
+    math.weightedMean ??
+    (math.validCycleLengths.length
+      ? math.validCycleLengths.reduce((a, b) => a + b, 0) / math.validCycleLengths.length
+      : 0)
   const sd = math.weightedStdDev ?? 0
   const lo = Math.min(...lengths, mean - sd) - 2
   const hi = Math.max(...lengths, mean + sd) + 2

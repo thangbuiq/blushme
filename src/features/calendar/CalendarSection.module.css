@@ -100,3 +100,54 @@
   gap: var(--space-sm);
   font-size: var(--font-size-body-sm);
 }
+
+.confidence {
+  --tone: var(--color-blush-deep);
+  --tone-text: #b5607f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  font-size: var(--font-size-body-sm);
+}
+
+.low {
+  --tone: var(--color-blush-deep);
+  --tone-text: #b5607f;
+}
+
+.medium {
+  --tone: var(--color-tertiary);
+  --tone-text: var(--color-tertiary);
+}
+
+.high {
+  --tone: var(--color-leaf-deep);
+  --tone-text: #4b8765;
+}
+
+.confidenceLabel {
+  color: var(--color-secondary);
+}
+
+.meter {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.meterSeg {
+  width: 20px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-hairline);
+}
+
+.meterOn {
+  background: var(--tone);
+}
+
+.confidenceValue {
+  color: var(--tone-text);
+  font-weight: 600;
+}

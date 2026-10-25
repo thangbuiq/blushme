@@ -1,0 +1,79 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xs);
+}
+
+.tab {
+  min-height: 36px;
+  padding: 0 var(--space-xs);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hairline);
+  background: var(--color-surface);
+  color: var(--color-secondary);
+  font-family: var(--font-family-label-caps);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tabOn {
+  background: var(--color-blush-tint);
+}
+
+.art {
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm);
+  transition: background-color 220ms var(--ease-out);
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.heading h3 {
+  margin: 0;
+  font-family: var(--font-family-display);
+}
+
+.now {
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-sm);
+  background: var(--color-blush-tint);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-rose-deep);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.caption {
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: var(--font-size-body-sm);
+}
+
+.text {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-md);
+}
+
+.texts {
+  display: grid;
+}
+
+.textCell {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
