@@ -76,14 +76,14 @@ Blushme is a progressive web app (PWA), so there is nothing to download from an 
 
 ## Your cycle, explained
 
-The ring on the Today screen colours each day by phase. Phase names inside the app are kept gentle; the clinical names live in the Learn sheet.
+The ring on the Today screen colours each day by phase. The same names are used everywhere in the app (ring, timeline, focus card and the Learn sheet).
 
-| Phase | In the app | Typical length | Ring colour |
+| Phase | In the app (vi / en) | Typical length | Ring colour |
 | --- | --- | --- | --- |
-| Menstrual | Kỳ kinh / Period | 3 to 7 days | Rose |
-| Follicular | Năng lượng dâng / Rising energy | Until ovulation | Green |
-| Ovulation | Rạng rỡ / Glowing | About 3 days | Yellow |
-| Luteal | Dịu lại / Winding down | About 14 days | Lavender |
+| Menstrual | Kỳ kinh / Menstrual | 3 to 7 days | Rose |
+| Follicular | Nang trứng / Follicular | Until ovulation | Green |
+| Ovulation | Rụng trứng / Ovulation | About 3 days | Yellow |
+| Luteal | Hoàng thể / Luteal | About 14 days | Lavender |
 
 ## Run it locally
 

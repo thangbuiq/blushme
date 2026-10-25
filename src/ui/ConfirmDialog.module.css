@@ -1,0 +1,60 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  background: rgba(62, 42, 51, 0.46);
+  overscroll-behavior: contain;
+}
+
+.dialog {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  padding: calc(var(--space-lg) + 18px) var(--space-lg) var(--space-md);
+  text-align: center;
+  background:
+    radial-gradient(220px 140px at 50% 0%, var(--color-blush-tint) 0%, transparent 75%), #fff;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 64px rgba(62, 42, 51, 0.28);
+  outline: none;
+}
+
+.danger {
+  background: radial-gradient(220px 140px at 50% 0%, #fff4e0 0%, transparent 75%), #fff;
+}
+
+.badge {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 20px rgba(184, 65, 106, 0.18);
+}
+
+.title {
+  margin: 0 0 var(--space-xs);
+}
+
+.body {
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: var(--font-size-body-sm);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+}

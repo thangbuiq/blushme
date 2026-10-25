@@ -1,6 +1,6 @@
 {
   "common": {
-    "close": "Đóng hôm nay",
+    "close": "Đóng",
     "turnOff": "Tắt nhắc nhở",
     "gotIt": "Đã hiểu",
     "cancel": "Hủy",
@@ -14,7 +14,6 @@
     "areYouSure": "Em có chắc không?",
     "no": "Không",
     "notSure": "Em chưa chắc",
-    "close": "Đóng",
     "days": "ngày",
     "increase": "Tăng",
     "decrease": "Giảm",
@@ -162,7 +161,8 @@
       "predicted": "Kỳ kinh dự kiến",
       "fertile": "Dễ mang thai",
       "ovulation": "Ngày rụng trứng",
-      "low": "Khả năng thụ thai thấp"
+      "low": "Khả năng thụ thai thấp",
+      "today": "Hôm nay"
     },
     "fertilityDisclaimer": "Ước tính theo lịch không phải là biện pháp tránh thai đáng tin cậy.",
     "periodSummary": {
@@ -386,7 +386,7 @@
     "noAccount": "Chưa có tài khoản?",
     "haveAccount": "Đã có tài khoản?",
     "heroTitle": "Hiểu chu kỳ của em, để chăm sóc em.",
-    "heroLead": "Theo dõi chu kỳ kinh nguyệt để hiểu cơ thể, cảm xúc và sức khỏe sinh sản của em.",
+    "heroLead": "Theo dõi chu kỳ kinh nguyệt để hiểu cơ thể, cảm xúc và sức khỏe của em.",
     "privacy": "Dữ liệu được lưu an toàn và chỉ riêng em xem được.",
     "errors": {
       "invalidCredentials": "Email hoặc mật khẩu chưa đúng.",
@@ -459,6 +459,16 @@
     },
     "ready": "Em đã chuẩn bị xong",
     "close": "Đóng hôm nay",
-    "turnOff": "Tắt nhắc nhở"
+    "turnOff": "Tắt nhắc nhở",
+    "heading": {
+      "upcoming": "Nhớ mang băng vệ sinh",
+      "during": "Đang trong kỳ kinh"
+    },
+    "chip": {
+      "soon": "Còn {{count}} ngày",
+      "tomorrow": "Ngày mai",
+      "today": "Hôm nay",
+      "during": "Đang diễn ra"
+    }
   }
 }

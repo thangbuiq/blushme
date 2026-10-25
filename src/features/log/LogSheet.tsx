@@ -100,7 +100,11 @@ export function LogSheet() {
 
   async function handleDelete() {
     if (!date) return
-    if (!(await confirm(t('calendar.dayActions.deleteConfirm'), t('calendar.dayActions.delete'))))
+    if (
+      !(await confirm(t('calendar.dayActions.deleteConfirm'), t('calendar.dayActions.delete'), {
+        danger: true,
+      }))
+    )
       return
     close()
     await deleteLog(date)

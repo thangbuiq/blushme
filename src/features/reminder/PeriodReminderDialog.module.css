@@ -5,19 +5,45 @@
   right: var(--space-md);
   z-index: 46;
   display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-md);
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 520px;
+  margin: 0 auto;
+  padding: var(--space-md);
   background:
-    radial-gradient(200px 120px at 100% 0%, rgba(248, 201, 213, 0.55) 0%, transparent 70%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.22));
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: var(--radius-lg);
+    radial-gradient(220px 140px at 0% 0%, rgba(248, 201, 213, 0.7) 0%, transparent 70%),
+    linear-gradient(160deg, #fff 0%, var(--color-blush-tint) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-xl);
   box-shadow:
-    0 12px 32px rgba(184, 65, 106, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(18px) saturate(1.8);
-  -webkit-backdrop-filter: blur(18px) saturate(1.8);
+    0 16px 40px rgba(184, 65, 106, 0.22),
+    0 2px 6px rgba(62, 42, 51, 0.06);
+  touch-action: pan-x;
+}
+
+.during {
+  background:
+    radial-gradient(220px 140px at 0% 0%, rgba(220, 205, 242, 0.75) 0%, transparent 70%),
+    linear-gradient(160deg, #fff 0%, #f8f4fd 100%);
+}
+
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: #fff;
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 16px rgba(184, 65, 106, 0.16);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .head {
@@ -25,22 +51,29 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-sm);
+  margin: -4px -4px 0 0;
 }
 
-.title {
-  font-family: var(--font-display, inherit);
+.chip {
+  padding: 3px 10px;
+  font-size: var(--font-size-body-sm);
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-rose-deep);
+  background-color: rgba(184, 65, 106, 0.1);
+  border-radius: var(--radius-full);
 }
 
 .close {
+  border: 0;
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   color: var(--color-secondary);
-  border-radius: var(--radius-sm);
-  transition: background-color 160ms ease, transform 160ms ease;
+  border-radius: var(--radius-full);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
 }
 
 .close:hover {
@@ -48,28 +81,48 @@
 }
 
 .close:active {
-  transform: scale(0.92);
+  transform: scale(0.9);
+}
+
+.title {
+  margin: var(--space-xs) 0 0;
+  font-family: var(--font-display, inherit);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-primary);
 }
 
 .body {
-  color: var(--color-primary);
+  margin: 0;
+  color: var(--color-secondary);
   font-size: var(--font-size-body-sm);
+  line-height: 1.45;
 }
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-md);
-  margin-top: var(--space-xs);
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
 }
 
 .primary,
 .link {
-  padding: 7px var(--space-md);
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 var(--space-md);
   font-size: var(--font-size-body-sm);
   font-weight: 600;
   border-radius: var(--radius-md);
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
 }
 
 .primary:active,
@@ -80,14 +133,20 @@
 .primary {
   color: var(--color-on-tertiary);
   background-color: var(--color-tertiary);
-  box-shadow: 0 4px 12px rgba(184, 65, 106, 0.22);
+  box-shadow: 0 4px 12px rgba(184, 65, 106, 0.24);
+}
+
+.primary:hover {
+  background-color: var(--color-rose-deep);
 }
 
 .link {
-  color: var(--color-rose-deep);
-  background-color: rgba(184, 65, 106, 0.08);
+  background: none;
+  padding: 0 var(--space-sm);
+  color: var(--color-secondary);
+  font-weight: 500;
 }
 
 .link:hover {
-  background-color: rgba(184, 65, 106, 0.14);
+  color: var(--color-rose-deep);
 }

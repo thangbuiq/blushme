@@ -26,6 +26,10 @@ export function CalendarLegendInline() {
         <span className={[styles.dot, styles.dotLow].join(' ')} aria-hidden="true" />
         {t('calendar.legend.low')}
       </span>
+      <span className={styles.item}>
+        <span className={[styles.dot, styles.dotToday].join(' ')} aria-hidden="true" />
+        {t('calendar.legend.today')}
+      </span>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 {
   "common": {
-    "close": "Close for today",
+    "close": "Close",
     "turnOff": "Turn off reminders",
     "gotIt": "Got it",
     "cancel": "Cancel",
@@ -14,7 +14,6 @@
     "areYouSure": "Are you sure?",
     "no": "No",
     "notSure": "I'm not sure",
-    "close": "Close",
     "days": "days",
     "increase": "Increase",
     "decrease": "Decrease",
@@ -162,7 +161,8 @@
       "predicted": "Predicted period",
       "fertile": "Higher chance of conception",
       "ovulation": "Estimated ovulation",
-      "low": "Lower chance of conception"
+      "low": "Lower chance of conception",
+      "today": "Today"
     },
     "fertilityDisclaimer": "Calendar estimates aren't reliable birth control.",
     "periodSummary": {
@@ -459,6 +459,16 @@
     },
     "ready": "I'm ready",
     "close": "Close for today",
-    "turnOff": "Turn off reminders"
+    "turnOff": "Turn off reminders",
+    "heading": {
+      "upcoming": "Pack your pads or tampons",
+      "during": "You're on your period"
+    },
+    "chip": {
+      "soon": "In {{count}} days",
+      "tomorrow": "Tomorrow",
+      "today": "Today",
+      "during": "Now"
+    }
   }
 }

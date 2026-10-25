@@ -102,7 +102,8 @@ export function SettingsScreen() {
     )
 
   async function handleDeleteAll() {
-    if (!(await confirm(t('settings.deleteAllConfirm'), t('settings.deleteAll')))) return
+    if (!(await confirm(t('settings.deleteAllConfirm'), t('settings.deleteAll'), { danger: true })))
+      return
     await run('delete', async () => {
       await deleteAllData()
       await reloadAll()
@@ -110,7 +111,12 @@ export function SettingsScreen() {
   }
 
   async function handleDeleteAccount() {
-    if (!(await confirm(t('settings.deleteAccountConfirm'), t('settings.deleteAccount')))) return
+    if (
+      !(await confirm(t('settings.deleteAccountConfirm'), t('settings.deleteAccount'), {
+        danger: true,
+      }))
+    )
+      return
     await run('account', async () => {
       await deleteAccount()
       await signOut()

@@ -76,9 +76,7 @@ export function Sheet({ open, onClose, title, ariaLabel, subtitle, children }: S
         className={`${styles.sheet} ${closing ? styles.sheetClosing : ''} scroll`}
         role="dialog"
         aria-modal="true"
-        aria-label={
-          shown.ariaLabel ?? (typeof shown.title === 'string' ? shown.title : undefined)
-        }
+        aria-label={shown.ariaLabel ?? (typeof shown.title === 'string' ? shown.title : undefined)}
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
         style={{ y: dragY }}
@@ -91,21 +89,26 @@ export function Sheet({ open, onClose, title, ariaLabel, subtitle, children }: S
           if (info.offset.y > 110 || info.velocity.y > 600) onClose()
         }}
       >
-        <div
-          className={styles.handle}
-          aria-hidden="true"
-          style={{ touchAction: 'none' }}
-          onPointerDown={(e) => dragControls.start(e)}
-        />
-        <button
-          type="button"
-          className={styles.closeButton}
-          onClick={onClose}
-          aria-label={t('common.close')}
-        >
-          <CloseIcon size={16} />
-        </button>
-        <h2 className={styles.title}>{shown.title}</h2>
+        <div className={styles.header}>
+          <div
+            className={styles.handleZone}
+            style={{ touchAction: 'none' }}
+            onPointerDown={(e) => dragControls.start(e)}
+          >
+            <div className={styles.handle} aria-hidden="true" />
+          </div>
+          <div className={styles.titleRow}>
+            <h2 className={styles.title}>{shown.title}</h2>
+            <button
+              type="button"
+              className={styles.closeButton}
+              onClick={onClose}
+              aria-label={t('common.close')}
+            >
+              <CloseIcon size={16} />
+            </button>
+          </div>
+        </div>
         {shown.subtitle && <p className={styles.subtitle}>{shown.subtitle}</p>}
         {shown.children}
       </motion.div>

@@ -13,7 +13,12 @@
      faint counter-rim on the bottom-right, like light caught in curved glass.
      Only for small floating surfaces (nav, toast, close button); blurring large
      areas janks on phones. */
-  --lg-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.05) 45%, rgba(255, 255, 255, 0.18) 100%);
+  --lg-bg: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
   --lg-blur: blur(12px) saturate(1.9) brightness(1.06);
   --lg-border: 1px solid rgba(255, 255, 255, 0.5);
   --lg-rim:
@@ -54,8 +59,7 @@ body {
   display: flex;
 }
 
-/* The app frame. It stretches to the whole viewport at any width; the layout
-   is the same single column as on a phone. Fixed-feeling UI (nav, sheets,
+/* The app frame: the whole viewport on a phone. Fixed-feeling UI (nav, sheets,
    toasts) anchors to THIS box with position: absolute. */
 #root {
   width: 100%;
@@ -63,6 +67,31 @@ body {
   position: relative;
   overflow: hidden;
   background: #fff;
+}
+
+/* Desktop: the same phone layout, shown as a device-sized card centred on a
+   soft blush gradient. Nothing inside changes. */
+@media (min-width: 700px) and (min-height: 560px) {
+  body {
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(900px 600px at 15% 10%, rgba(248, 201, 213, 0.9) 0%, transparent 60%),
+      radial-gradient(800px 600px at 90% 90%, rgba(220, 205, 242, 0.85) 0%, transparent 60%),
+      linear-gradient(135deg, #fff3f6 0%, #f6eefb 100%);
+  }
+
+  #root {
+    width: 430px;
+    height: min(calc(100dvh - 48px), 900px);
+    border-radius: 36px;
+    box-shadow:
+      0 0 0 8px rgba(255, 255, 255, 0.7),
+      0 40px 90px rgba(143, 45, 80, 0.22),
+      0 8px 24px rgba(62, 42, 51, 0.1);
+    /* Makes the frame the containing block for any fixed descendants. */
+    transform: translateZ(0);
+  }
 }
 
 h1,

@@ -5,7 +5,7 @@ import { TAP_SCALE, TAP_TRANSITION } from './motion'
 
 interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
   children?: ReactNode
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'dangerSolid'
   loading?: boolean
 }
 

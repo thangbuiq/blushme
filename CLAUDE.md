@@ -38,7 +38,7 @@ Before declaring work done run `bunx tsc -b`, `bun run lint`, `bun run test` and
 
 After editing `DESIGN.md`'s frontmatter, always run `bun run tokens` and, if available, `bunx @google/design.md lint DESIGN.md` to validate it.
 
-Fraunces (`public/fonts/*.woff2`, referenced from `src/ui/fonts.css`) is committed/self-hosted; don't fetch it from Google Fonts at build or run time. Body text uses the system sans stack, so nothing else is downloaded.
+Fraunces (`public/fonts/*.woff2`, referenced from `src/ui/fonts.css`) is committed/self-hosted; don't fetch it from Google Fonts at build or run time. Body text uses Bricolage Grotesque (self-hosted variable font in `public/fonts`, also never fetched from Google Fonts).
 
 ## Design system rules
 
@@ -48,9 +48,9 @@ Decisions made while designing, worth keeping:
 
 - **Corners are restrained.** Radius scale is `sm 6 / md 8 / lg 12 / xl 16`. Buttons, inputs, chips, the nav bar, tabs and badges are rectangles with `sm`/`md` radius, not pills. `radius-full` is only for dots, toggles, progress tracks and calendar day cells. Do not reintroduce pill buttons or large radii.
 - **Buttons are flat.** Primary is solid `--color-tertiary` with white text and a soft shadow; no gradients or glows. The one decorative exception is the "Hiểu rõ dự đoán này" button, which has `ButtonVine` sprigs growing inside it (clipped by `overflow: hidden`).
-- **Typography:** Fraunces for display/headings/big numerals, system sans for everything else. `.label-caps` is sentence case (never uppercase Vietnamese).
+- **Typography:** Fraunces for display/headings/big numerals, Bricolage Grotesque for everything else. `.label-caps` is sentence case (never uppercase Vietnamese).
 - **Decoration is botanical SVG,** not emoji and not icon fonts: `src/ui/art/Botanical.tsx` (`Bloom`, `Sprig`, `PetalDrift`) and `src/ui/art/ButtonVine.tsx`. Animation is CSS-driven (`Botanical.module.css`, `ButtonVine.module.css`) so it respects `prefers-reduced-motion` through the global rule.
-- **Copy voice (Vietnamese):** address the reader as "em", sparingly; prefer dropping the pronoun. Avoid "bạn" and "mình" (reads robotic). The app speaks as "Blushme". Gentle phase names are used in the UI (`today.phaseBadge.*`: Kỳ kinh / Năng lượng dâng / Rạng rỡ / Dịu lại) while clinical names stay in `today.phase.*` and the learn content. Days may be called "an toàn" / "nguy hiểm" (safe / dangerous) in explanations, but always as "relatively safe" and never as dependable contraception: calendar estimates can be off, so keep the caveat next to it.
+- **Copy voice (Vietnamese):** address the reader as "em", sparingly; prefer dropping the pronoun. Avoid "bạn" and "mình" (reads robotic). The app speaks as "Blushme". Phase names are the same everywhere in the UI (`today.phase.*`: Kỳ kinh / Nang trứng / Rụng trứng / Hoàng thể; en Menstrual / Follicular / Ovulation / Luteal); there is no separate gentle naming set. Days may be called "an toàn" / "nguy hiểm" (safe / dangerous) in explanations, but always as "relatively safe" and never as dependable contraception: calendar estimates can be off, so keep the caveat next to it.
 - **No em dashes** in code, comments, docs or copy.
 - **Light theme only.**
 
@@ -104,7 +104,7 @@ App gate order in `App.tsx`: `Splash` while auth/data load, then `AuthScreen`, t
 
 Gotchas:
 
-- **Sheets and nav are positioned relative to `#root`, not the viewport.** `#root` is a `position: relative` app frame (`100dvh`, full width: the layout is the same single column at every width and just stretches on desktop); `Sheet`'s backdrop, `BottomNav` and `Toast` use `position: absolute` against it. Do not change them to `position: fixed`.
+- **Sheets and nav are positioned relative to `#root`, not the viewport.** `#root` is a `position: relative` app frame (`100dvh`, full width: the layout is the same single column everywhere; on desktop (min-width 700px) `#root` becomes a 430px phone-sized card centred on a blush gradient); `Sheet`'s backdrop, `BottomNav` and `Toast` use `position: absolute` against it. Do not change them to `position: fixed`.
 - **Mount sheets outside the scrolling screen container** (as `LogSheet` and `TodaySheets` are in `App.tsx`). A sheet rendered inside the scrolling `motion.div` anchors to that scrolled box and opens at the wrong place.
 - **Periods are recorded as a start date only** (`periodStart`, via "Kỳ kinh tới" on Today or in the log sheet). There is no per-day flow or on/off toggle; days after the start are shown for `statedPeriodLength`. Tapping a calendar day that already has a log opens `DayActionsSheet` (edit or delete). Moods are multi-select (`moods: string[]`; read legacy `mood` through `moodsOf()`). The fertile window is always on and predictions can't be paused.
 - The page itself never scrolls: `html`/`body` are `overflow: hidden` and `position: fixed`, only `.scroll` containers scroll (keeps the nav still on touch overscroll). Avoid infinite SVG animations and `backdrop-filter` on large areas, they cause jank on phones.

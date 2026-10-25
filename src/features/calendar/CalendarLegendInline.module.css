@@ -39,3 +39,7 @@
 .dotLow {
   border: 1.5px solid var(--color-sky-deep);
 }
+
+.dotToday {
+  border: 2px solid var(--color-primary);
+}
