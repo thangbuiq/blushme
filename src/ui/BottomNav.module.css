@@ -20,6 +20,7 @@
   box-shadow: var(--lg-rim), var(--lg-shadow);
   backdrop-filter: var(--lg-blur);
   -webkit-backdrop-filter: var(--lg-blur);
+  transform: translateZ(0);
 }
 
 .item {
@@ -34,9 +35,7 @@
   border: none;
   border-radius: var(--radius-full);
   color: var(--color-secondary);
-  transition:
-    color 240ms var(--ease-out),
-    flex-grow 320ms var(--ease-out);
+  transition: color 220ms var(--ease-out);
   isolation: isolate;
   white-space: nowrap;
   overflow: hidden;
@@ -46,7 +45,7 @@
   position: absolute;
   inset: 0;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 226, 234, 0.55) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 226, 234, 0.3) 100%);
   box-shadow:
     inset 1.5px 1.5px 1px #fff,
     inset -1px -1px 1px rgba(255, 255, 255, 0.5),
@@ -56,7 +55,6 @@
 
 .active {
   color: var(--color-rose-deep);
-  flex-grow: 1.8;
 }
 
 .label {
@@ -104,20 +102,4 @@
     padding: 0 var(--space-md);
   }
 
-  .active {
-    flex-grow: 0;
-  }
-}
-
-.railLabel {
-  display: none;
-  font-family: var(--font-family-label-caps);
-  font-size: 0.8125rem;
-  font-weight: 600;
-}
-
-@media (min-width: 1024px) {
-  .railLabel {
-    display: inline;
-  }
 }
