@@ -216,14 +216,13 @@
 .careItem {
   display: flex;
   gap: 12px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .careIcon {
   flex-shrink: 0;
-  margin-top: 1px;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-sm);
   background-color: var(--color-blush);
   color: var(--color-rose-deep);
@@ -302,4 +301,29 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
+}
+
+.focusArt {
+  flex-shrink: 0;
+  width: 84px;
+  height: 84px;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  line-height: 0;
+}
+
+.focusArt svg {
+  display: block;
+}
+
+/* A softer rose than the global primary, so the day's main action is inviting, not heavy. */
+.actions > .logButton {
+  background-color: #cf6385;
+}
+
+.actions > .logButton:not(:disabled):hover {
+  background-color: var(--color-tertiary);
 }

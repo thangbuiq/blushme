@@ -11,7 +11,7 @@ import {
   PlusIcon,
   SparkIcon,
 } from '@/ui/Icon'
-import { Bloom, Sprig } from '@/ui/art/Botanical'
+import { Sprig } from '@/ui/art/Botanical'
 import { ButtonVine } from '@/ui/art/ButtonVine'
 import { Button } from '@/ui/Button'
 import { Avatar } from '@/ui/Avatar'
@@ -28,7 +28,8 @@ import { useUiStore } from '@/store/uiStore'
 import { CalendarSection } from '@/features/calendar/CalendarSection'
 import { MOODS, moodsOf, toggleMood } from '@/features/log/moods'
 import { isSuspiciouslyEarly } from '@/features/log/periodValidation'
-import { PHASE_COLOR, PHASE_TEXT_COLOR, PHASE_TONE, cycleGeometry } from './phaseColors'
+import { PhaseIllustration } from './PhaseIllustration'
+import { PHASE_COLOR, PHASE_TEXT_COLOR, cycleGeometry } from './phaseColors'
 import { PhaseTag } from './PhaseTag'
 import { focusAlert, focusPrep } from './focus'
 import { statusLineText } from './statusLine'
@@ -173,7 +174,15 @@ export function TodayScreen() {
         aria-labelledby="focus-title"
       >
         <div className={styles.focusHead}>
-          <Bloom size={56} tone={PHASE_TONE[state.phase]} petals={5} still />
+          <button
+            type="button"
+            className={styles.focusArt}
+            style={{ backgroundColor: `${PHASE_COLOR[state.phase]}22` }}
+            aria-label={t(`today.phase.${state.phase}`)}
+            onClick={() => openPhaseSheet(state.phase)}
+          >
+            <PhaseIllustration phase={state.phase} compact />
+          </button>
           <div>
             <p className={styles.focusKicker}>{t('today.focusKicker')}</p>
             <h2 id="focus-title" style={{ fontSize: '1.25rem' }}>
@@ -187,6 +196,17 @@ export function TodayScreen() {
               />
             </h2>
           </div>
+        </div>
+        <div className={styles.prep}>
+          <span className={styles.prepKicker}>{t('today.prep.kicker')}</span>
+          <p>
+            {t(
+              prep.key === 'supplies' && prep.count === 0
+                ? 'today.prep.suppliesToday'
+                : `today.prep.${prep.key}`,
+              { count: prep.count },
+            )}
+          </p>
         </div>
         <p className={styles.focusBody}>{t(`today.phaseDescription.${state.phase}`)}</p>
         <ul className={styles.care}>
@@ -202,17 +222,6 @@ export function TodayScreen() {
             </li>
           ))}
         </ul>
-        <div className={styles.prep}>
-          <span className={styles.prepKicker}>{t('today.prep.kicker')}</span>
-          <p>
-            {t(
-              prep.key === 'supplies' && prep.count === 0
-                ? 'today.prep.suppliesToday'
-                : `today.prep.${prep.key}`,
-              { count: prep.count },
-            )}
-          </p>
-        </div>
         {alert && (
           <div className={styles.alert} role="note">
             <p className={styles.alertTitle}>{t('today.alert.title')}</p>
@@ -252,7 +261,7 @@ export function TodayScreen() {
           ))}
         </div>
         <div className={styles.actions}>
-          <Button onClick={() => openLogSheet(today)}>
+          <Button className={styles.logButton} onClick={() => openLogSheet(today)}>
             <PlusIcon size={18} />
             {t('today.logButton')}
           </Button>

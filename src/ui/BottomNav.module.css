@@ -3,7 +3,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: var(--space-xl) var(--space-lg) calc(var(--space-md) + env(safe-area-inset-bottom));
+  /* In the installed PWA the home-indicator inset is ~34px; use only part of it
+     so the bar sits close to the bottom like it does in the browser. */
+  padding: var(--space-xl) var(--space-lg)
+    max(var(--space-md), calc(env(safe-area-inset-bottom) * 0.5));
   z-index: 20;
   pointer-events: none;
   isolation: isolate;

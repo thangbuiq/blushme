@@ -42,12 +42,12 @@
       "label": "Ngày đầu của kỳ kinh gần nhất"
     },
     "step3": {
-      "title": "Nhịp điệu thường ngày của em",
+      "title": "Chu kỳ của em thường như thế nào?",
       "cycleLengthLabel": "Độ dài chu kỳ thường thấy",
       "periodLengthLabel": "Độ dài kỳ kinh thường thấy"
     },
     "disclaimer": "Blushme chỉ đưa ra dự đoán tham khảo dựa trên nghiên cứu y khoa, không phải công cụ y tế và không thay thế lời khuyên của bác sĩ. Nếu lo lắng về sức khỏe sinh sản, em hãy hỏi ý kiến bác sĩ nhé.",
-    "disclaimerTitle": "Một lời nhắn nhẹ nhàng",
+    "disclaimerTitle": "Lưu ý nhỏ",
     "start": "Bắt đầu cùng Blushme"
   },
   "today": {
@@ -56,7 +56,7 @@
     "statusNext": "Kỳ kinh tiếp theo trong khoảng {{days}} ngày",
     "statusNextOne": "Kỳ kinh tiếp theo trong khoảng 1 ngày",
     "statusToday": "Kỳ kinh bắt đầu hôm nay",
-    "statusLate": "Đang trễ một chút. Hãy lắng nghe cơ thể nhé",
+    "statusLate": "Kỳ kinh đang trễ. Hãy lắng nghe cơ thể nhé",
     "statusPaused": "Dự đoán đang tạm dừng",
     "phase": {
       "menstrual": "Kỳ kinh",
@@ -66,14 +66,14 @@
     },
     "phaseStatus": {
       "menstrual": "Em đang trong <term>kỳ kinh</term>, hãy nghỉ ngơi và chăm sóc bản thân nhé",
-      "follicular": "<term>Kỳ nang trứng</term>, có thể em sẽ thấy tràn đầy năng lượng hơn",
-      "ovulation": "<term>Kỳ rụng trứng</term> là lúc em rạng rỡ nhất, nhưng dễ mang thai lắm đó",
+      "follicular": "Giai đoạn <term>nang trứng</term>, em có thể thấy nhiều năng lượng hơn",
+      "ovulation": "Giai đoạn <term>rụng trứng</term>, em có thể thấy rạng rỡ hơn và cũng dễ mang thai nhất",
       "luteal": "Giai đoạn <term>hoàng thể</term>, có thể em thấy căng tức ngực hoặc dễ cáu hơn"
     },
     "phaseDescription": {
       "menstrual": "Cơ thể có thể hơi mỏi và đau bụng nhẹ, vì nội tiết tố đang ở mức thấp nhất trong giai đoạn hành kinh. Hãy giữ ấm bụng và nghỉ ngơi nhiều hơn nhé.",
-      "follicular": "Cơ thể thường tràn năng lượng hơn, vì estrogen (nội tiết tố nữ chính) đang tăng dần trong giai đoạn nang trứng. Đây là lúc tốt để vận động nhiều hơn.",
-      "ovulation": "Có thể thấy tràn đầy sức sống hoặc hơi đau nhẹ một bên bụng, vì hormone LH (tín hiệu báo buồng trứng rụng trứng) tăng vọt. Đây cũng là ngày dễ thụ thai nhất.",
+      "follicular": "Cơ thể thường có nhiều năng lượng hơn, vì estrogen (nội tiết tố nữ chính) đang tăng dần trong giai đoạn nang trứng. Đây là lúc tốt để vận động nhiều hơn.",
+      "ovulation": "Có thể thấy khỏe khoắn hoặc hơi đau nhẹ một bên bụng, vì hormone LH (tín hiệu để buồng trứng giải phóng trứng) tăng vọt. Đây cũng là ngày dễ thụ thai nhất.",
       "luteal": "Có thể thấy căng tức ngực hoặc dễ cáu hơn, vì progesterone (nội tiết tố giữ dày niêm mạc tử cung) đang tăng trong giai đoạn hoàng thể. Hãy nhẹ nhàng với bản thân nhé."
     },
     "learnLink": "Tìm hiểu về chu kỳ",
@@ -83,11 +83,11 @@
       "rangeValue": "{{start}} đến {{end}}",
       "confidenceLabel": "Độ tin cậy",
       "confidence": {
-        "low": "Đang tìm hiểu nhịp điệu",
-        "medium": "Khá ổn định",
-        "high": "Đã khá rõ ràng"
+        "low": "Thấp, cần thêm chu kỳ",
+        "medium": "Trung bình",
+        "high": "Cao"
       },
-      "howCalculated": "Cách tính này như thế nào?",
+      "howCalculated": "Cách tính dự đoán",
       "variabilityValue": "±{{days}} ngày · {{label}}"
     },
     "greeting": {
@@ -112,28 +112,28 @@
         "sleep": "Giấc ngủ"
       },
       "menstrual": {
-        "food": "Món ấm, giàu sắt như đậu, rau xanh đậm, thịt nạc.",
-        "move": "Đi bộ nhẹ hoặc giãn cơ giúp dịu cơn đau bụng.",
-        "mind": "Cho phép bản thân chậm lại và nghỉ khi cần.",
-        "sleep": "Chườm ấm bụng trước khi ngủ nếu thấy đau."
+        "food": "Ăn món ấm, bổ sung sắt (thịt nạc, đậu, rau xanh) và uống đủ nước.",
+        "move": "Vận động nhẹ nếu thấy khỏe, đau nhiều thì cứ nghỉ.",
+        "mind": "Bớt việc không cần thiết, mệt thì nghỉ.",
+        "sleep": "Chườm ấm bụng nếu đau để dễ ngủ hơn."
       },
       "follicular": {
-        "food": "Nhiều rau củ tươi, đạm nạc và uống đủ nước.",
-        "move": "Năng lượng đang lên, hợp để tập mạnh hơn.",
-        "mind": "Lúc thuận lợi để bắt đầu việc cần tập trung.",
-        "sleep": "Giữ giờ ngủ đều để năng lượng ổn định."
+        "food": "Ăn đủ bữa, đủ đạm và rau, uống đủ nước.",
+        "move": "Năng lượng đang tăng, có thể tập nặng hơn bình thường.",
+        "mind": "Hợp để bắt đầu những việc cần tập trung.",
+        "sleep": "Giữ giờ ngủ đều để giữ sức."
       },
       "ovulation": {
-        "food": "Rau xanh, chất xơ và đủ nước.",
-        "move": "Tập vừa đến mạnh, nhớ khởi động kỹ.",
-        "mind": "Tâm trạng thường sáng. Nhói nhẹ một bên bụng là bình thường.",
-        "sleep": "Phòng thoáng mát sẽ giúp dễ ngủ hơn."
+        "food": "Ăn nhiều rau, chất xơ và uống đủ nước.",
+        "move": "Tập như bình thường, nhớ khởi động kỹ.",
+        "mind": "Tâm trạng thường tốt. Có thể nhói nhẹ một bên bụng, thường không đáng lo.",
+        "sleep": "Giữ phòng thoáng mát để dễ ngủ."
       },
       "luteal": {
-        "food": "Hạt, chuối, sô cô la đen; bớt mặn và caffeine.",
-        "move": "Yoga, đi bộ hoặc bơi nhẹ giúp cơ thể dịu lại.",
-        "mind": "Dễ nhạy cảm hơn thường lệ. Viết nhật ký hoặc đi dạo sẽ giúp ích.",
-        "sleep": "Đi ngủ sớm hơn một chút, cơ thể đang cần nghỉ nhiều hơn."
+        "food": "Bớt đồ mặn và caffeine để đỡ căng tức, đầy bụng.",
+        "move": "Tập vừa sức, thấy mệt thì giảm bớt.",
+        "mind": "Dễ cáu hoặc nhạy cảm hơn là bình thường, hãy chừa thời gian cho bản thân.",
+        "sleep": "Đi ngủ sớm hơn một chút vì cơ thể cần nghỉ nhiều hơn."
       }
     },
     "prep": {
@@ -166,10 +166,10 @@
     },
     "phasesTitle": "Bốn giai đoạn của chu kỳ",
     "phase": {
-      "menstrual": "Trứng của chu kỳ trước không được thụ tinh, lớp niêm mạc tử cung bong ra và đẩy ra ngoài. Đây là kỳ hành kinh, thường kéo dài 3 đến 7 ngày. Những ngày này tương đối an toàn nhưng không tuyệt đối, nhất là khi chu kỳ ngắn hoặc không đều.",
+      "menstrual": "Trứng của chu kỳ trước không được thụ tinh, lớp niêm mạc tử cung bong ra và đẩy ra ngoài. Đây là giai đoạn hành kinh, thường kéo dài 3 đến 7 ngày. Những ngày này tương đối an toàn nhưng không tuyệt đối, nhất là khi chu kỳ ngắn hoặc không đều.",
       "follicular": "Diễn ra đồng thời với hành kinh, tuyến yên (tuyến nhỏ ở đáy não) kích thích buồng trứng sản xuất các nang trứng (túi nhỏ chứa trứng chưa chín), trong khi estrogen (nội tiết tố nữ chính) tăng dần khiến niêm mạc tử cung dày lên trở lại. Những ngày đầu còn tương đối an toàn, nhưng càng gần ngày rụng trứng càng nguy hiểm hơn, vì tinh trùng có thể sống trong cơ thể tới khoảng 5 ngày.",
       "ovulation": "Vào khoảng giữa chu kỳ (ngày 14 với chu kỳ 28 ngày), lượng hormone LH (hormone kích thích rụng trứng) tăng cao đột ngột khiến nang trứng chín vỡ và giải phóng trứng. Đây là những ngày nguy hiểm nhất, gồm ngày rụng trứng và khoảng 5 ngày trước đó. Nếu chưa muốn có thai, em cần biện pháp bảo vệ trong cả khoảng này.",
-      "luteal": "Sau khi rụng trứng, nang trứng vỡ biến thành hoàng thể (cấu trúc nhỏ tạm thời trong buồng trứng) và tiết ra progesterone (nội tiết tố giữ dày niêm mạc) để giữ cho niêm mạc tử cung tiếp tục dày lên. Nếu không có sự thụ tinh, hoàng thể tiêu biến, hormone giảm xuống và kỳ kinh mới bắt đầu. Khoảng một ngày sau khi rụng trứng, những ngày này tương đối an toàn. Tuy vậy ngày rụng trứng ước tính theo lịch có thể lệch, nên đừng xem đây là cách tránh thai đáng tin cậy."
+      "luteal": "Sau khi rụng trứng, nang trứng vỡ biến thành hoàng thể (cấu trúc nhỏ tạm thời trong buồng trứng) và tiết ra progesterone (nội tiết tố giữ dày niêm mạc) để giữ cho niêm mạc tử cung tiếp tục dày lên. Nếu không có sự thụ tinh, hoàng thể tiêu biến, hormone giảm xuống và kỳ kinh mới bắt đầu. Từ khoảng một ngày sau khi rụng trứng, những ngày này tương đối an toàn. Tuy vậy ngày rụng trứng ước tính theo lịch có thể lệch, nên đừng xem đây là cách tránh thai đáng tin cậy."
     },
     "doctor": {
       "title": "Khi nào cần đi gặp bác sĩ?",
@@ -178,6 +178,27 @@
       "item2": "Mất kinh từ 3 tháng trở lên",
       "item3": "Rong kinh (kéo dài trên 8 ngày) hoặc lượng máu ra quá nhiều",
       "item4": "Đau bụng dữ dội kèm buồn nôn trong kỳ kinh"
+    },
+    "current": "Hiện tại",
+    "phaseCaption": {
+      "menstrual": "Lớp niêm mạc tử cung bong ra",
+      "follicular": "Nang trứng lớn dần, niêm mạc dày lên",
+      "ovulation": "Trứng chín được giải phóng khỏi buồng trứng",
+      "luteal": "Hoàng thể tiết progesterone, niêm mạc dày nhất"
+    },
+    "art": {
+      "lining": {
+        "menstrual": "Niêm mạc bong ra",
+        "follicular": "Niêm mạc dần dày lên",
+        "ovulation": "Niêm mạc đã dày",
+        "luteal": "Niêm mạc dày nhất"
+      },
+      "event": {
+        "menstrual": "Nang trứng nhỏ",
+        "follicular": "Nang trứng đang lớn",
+        "ovulation": "Trứng được giải phóng",
+        "luteal": "Hoàng thể"
+      }
     }
   },
   "calendar": {
@@ -210,7 +231,8 @@
       "edit": "Sửa",
       "delete": "Xóa",
       "deleteConfirm": "Xóa toàn bộ ghi chép của ngày này? Không thể hoàn tác."
-    }
+    },
+    "confidence": "Độ tin cậy dự đoán"
   },
   "log": {
     "todayTitle": "Hôm nay",
@@ -233,20 +255,20 @@
       "cravings": "Thèm ăn",
       "insomnia": "Khó ngủ",
       "constipation": "Táo bón",
-      "diarrhea": "Khó chịu bụng",
+      "diarrhea": "Tiêu chảy",
       "more": "Thêm"
     },
     "moodLabel": "Cảm xúc",
     "moods": {
-      "calm": "Bình thản",
+      "calm": "Bình yên",
       "happy": "Vui vẻ",
       "irritable": "Dễ cáu",
       "sad": "Buồn",
       "anxious": "Lo âu",
-      "energetic": "Tràn năng lượng"
+      "energetic": "Nhiều năng lượng"
     },
     "noteLabel": "Ghi chú",
-    "notePlaceholder": "Điều gì đó muốn nhớ lại",
+    "notePlaceholder": "Điều em muốn nhớ lại",
     "save": "Lưu",
     "earlyPeriodConfirm": "Thời điểm này sớm hơn bình thường so với kỳ kinh trước. Em vẫn muốn lưu?",
     "advanced": {
@@ -256,7 +278,7 @@
       "cervicalMucus": {
         "dry": "Khô",
         "sticky": "Dính",
-        "creamy": "Đặc như kem",
+        "creamy": "Đục như kem",
         "eggWhite": "Trong như lòng trắng trứng"
       },
       "lhLabel": "Kiểm tra LH",
@@ -270,14 +292,14 @@
     "moodHint": "Chọn được nhiều cảm xúc"
   },
   "insights": {
-    "emptyTitle": "Blushme vẫn đang làm quen với em",
-    "emptyBody": "Hãy ghi lại hai chu kỳ đầy đủ, những quy luật dịu dàng sẽ nở ra ở đây.",
+    "emptyTitle": "Chưa đủ dữ liệu để phân tích",
+    "emptyBody": "Ghi lại một chu kỳ đầy đủ để xem các quy luật của em ở đây.",
     "title": "Nhịp chu kỳ",
     "subtitle": "Dựa trên {{count}} chu kỳ",
     "progress": "Đã ghi {{done}}/{{total}} chu kỳ",
     "backToToday": "Về hôm nay",
     "nextPeriod": "Kỳ kinh tiếp theo",
-    "within": "xê xích khoảng {{days}} ngày",
+    "within": "có thể lệch khoảng {{days}} ngày",
     "avgCycle": "Chu kỳ trung bình",
     "avgPeriod": "Kỳ kinh trung bình",
     "regularity": "Độ đều đặn",
@@ -292,7 +314,7 @@
       "variable": "Các chu kỳ chênh lệch khá nhiều. Nếu lo lắng, em hãy hỏi bác sĩ nhé."
     },
     "history": "Các chu kỳ gần đây",
-    "historyLegend": "Độ dài theo ngày. Trung bình {{avg}} ngày. Cột sọc vằn được bỏ qua vì bất thường.",
+    "historyLegend": "Độ dài theo ngày. Trung bình {{avg}} ngày. Cột sọc là chu kỳ bất thường, không dùng để tính.",
     "symptoms": "Triệu chứng hay gặp",
     "moods": "Cảm xúc hay gặp",
     "noMoodTitle": "Ghi thêm một chút",
@@ -325,10 +347,7 @@
   },
   "settings": {
     "language": "Ngôn ngữ",
-    "data": "Dữ liệu",
-    "export": "Xuất dữ liệu",
-    "import": "Nhập dữ liệu",
-    "deleteAll": "Xóa toàn bộ dữ liệu",
+    "deleteAll": "Đặt lại dữ liệu",
     "deleteAllConfirm": "Thao tác này sẽ xóa vĩnh viễn mọi nhật ký và cài đặt trong tài khoản. Không thể hoàn tác.",
     "weekStart": "Tuần bắt đầu từ",
     "units": "Đơn vị",
@@ -345,12 +364,10 @@
       "metric": "Hệ mét",
       "imperial": "Hệ Anh"
     },
-    "account": "Tài khoản",
+    "account": "Quản lý tài khoản",
     "signOut": "Đăng xuất",
     "deleteAccount": "Xóa tài khoản",
     "deleteAccountConfirm": "Thao tác này sẽ xóa vĩnh viễn tài khoản và toàn bộ dữ liệu. Không thể hoàn tác.",
-    "imported": "Đã nhập dữ liệu",
-    "importFailed": "Không đọc được tệp này",
     "demoNote": "Chế độ demo, dữ liệu không được lưu",
     "exitDemo": "Thoát chế độ demo",
     "advancedTip": "Bật để ghi thêm nhiệt độ cơ thể, dịch nhầy cổ tử cung và que thử LH (đo hormone báo sắp rụng trứng), cùng ngày gần gũi. Phần Nhịp chu kỳ sẽ có thêm biểu đồ và phân tích chi tiết. Không bắt buộc, có thể tắt bất cứ lúc nào.",
@@ -395,7 +412,7 @@
       "yourNumbers": {
         "cycleLengthsTitle": "Các chu kỳ gần đây",
         "cycleLengthWithWeight": "{{length}} ngày (trọng số {{weight}})",
-        "rangeValue": "{{days}} ngày, xê xích {{range}}"
+        "rangeValue": "{{days}} ngày, có thể lệch {{range}}"
       }
     }
   },
@@ -495,8 +512,8 @@
       "soon": "Còn {{count}} ngày",
       "tomorrow": "Ngày mai",
       "today": "Hôm nay",
-      "inRange": "Có thể đến sớm",
-      "during": "Đang diễn ra"
+      "inRange": "Sắp đến",
+      "during": "Đang có kinh"
     }
   }
 }

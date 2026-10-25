@@ -23,6 +23,7 @@ import type { ISODate } from '@/engine/types'
 import { computeDayState } from './dayState'
 import { currentPeriodSummary } from './periodSummary'
 import { CalendarDay } from './CalendarDay'
+import { CONFIDENCE_PERCENT } from '@/features/today/confidence'
 import { CalendarLegendInline } from './CalendarLegendInline'
 import styles from './CalendarSection.module.css'
 
@@ -164,6 +165,27 @@ export function CalendarSection() {
       </div>
 
       <CalendarLegendInline />
+
+      <div className={`${styles.confidence} ${styles[cycleState.confidence]}`}>
+        <span className={styles.confidenceLabel}>{t('calendar.confidence')}</span>
+        <span className={styles.meter} aria-hidden="true">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className={[
+                styles.meterSeg,
+                i <= ['low', 'medium', 'high'].indexOf(cycleState.confidence) && styles.meterOn,
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            />
+          ))}
+        </span>
+        <span className={styles.confidenceValue}>
+          {CONFIDENCE_PERCENT[cycleState.confidence]}% ·{' '}
+          {t(`today.details.confidence.${cycleState.confidence}`)}
+        </span>
+      </div>
     </div>
   )
 }

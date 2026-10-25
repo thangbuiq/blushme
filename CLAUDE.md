@@ -17,7 +17,7 @@ Blushme (repo folder `blush`) is a premium, Vietnamese-first (EN available) mens
 
 ### Demo mode
 
-The login page's "Sử dụng tài khoản demo" link calls `authStore.enterDemo()`. This is a local-only session (`authStore.demo === true`): `settingsStore` and `logStore` seed in-memory data from `src/data/demoLogs.ts` (about 10 cycles, ends on day 26 of the last cycle so the period reminder dialog shows) and skip every Supabase read and write. Visitors never share state, nothing persists, and `signOut` just clears the flag. Settings hides export/import/delete and shows "Thoát chế độ demo". There is no real demo account in Supabase.
+The login page's "Sử dụng tài khoản demo" link calls `authStore.enterDemo()`. This is a local-only session (`authStore.demo === true`): `settingsStore` and `logStore` seed in-memory data from `src/data/demoLogs.ts` (about 10 cycles, ends on day 26 of the last cycle so the period reminder dialog shows) and skip every Supabase read and write. Visitors never share state, nothing persists, and `signOut` just clears the flag. Settings hides reset/delete account and shows "Thoát chế độ demo". There is no real demo account in Supabase.
 
 ## Commands
 
@@ -82,7 +82,7 @@ Engine tests in `src/engine/__tests__/` cover one scenario each; expected values
 
 ### `src/data/`: persistence
 
-`repo.ts` is the only code that talks to Supabase tables: `cycle_settings` (one jsonb row per user) and `daily_logs` (one jsonb row per user per date). RLS (`auth.uid() = user_id`) isolates users. `settings.ts` holds `SettingsRecord` and `DEFAULT_SETTINGS`. `exportImport.ts` handles JSON export/import/delete-all (`BlushmeExport`, files named `blushme-export-*.json`). `demoLogs.ts` builds the deterministic sample history. `crypto.ts` is an unused AES-GCM/PBKDF2 helper (no PIN lock exists; the old lock/reminder toggles were removed because they did nothing).
+`repo.ts` is the only code that talks to Supabase tables: `cycle_settings` (one jsonb row per user) and `daily_logs` (one jsonb row per user per date). RLS (`auth.uid() = user_id`) isolates users. `settings.ts` holds `SettingsRecord` and `DEFAULT_SETTINGS`. `exportImport.ts` only exposes `deleteAllData` (the "reset data" action; export/import were removed). `demoLogs.ts` builds the deterministic sample history. `crypto.ts` is an unused AES-GCM/PBKDF2 helper (no PIN lock exists; the old lock/reminder toggles were removed because they did nothing).
 
 ### `src/store/`: Zustand state
 
@@ -98,8 +98,8 @@ App gate order in `App.tsx`: `Splash` while auth/data load, then `AuthScreen`, t
   - `CycleRing`: SVG "petal dial": one petal per cycle day coloured by phase (past solid, future faint, today larger), thin phase arcs, a flower marker that animates to today, and two inner `RingGarland` sprigs. No filled background behind the centre text. Geometry comes from `cycleGeometry()` in `phaseColors.ts`, shared with the timeline.
   - `PhaseTimeline`: thin linear timeline (symbol above, coloured line, optional day ranges, footer "Ngày 1 ... Ngày N, rồi vòng mới ↻") with an italic footnote saying the numbers are days of the cycle, not of the month (`timeline.note`). `detailed` adds ranges and makes segments tappable.
   - `DetailsSheet` ("Dự đoán của em") is the single info sheet, mounted by `TodaySheets` at the app root: range, confidence, cycle variability (std dev), then `LearnContent` (intro, typical length, timeline and four-phase accordion, when to see a doctor), and last the "how is this calculated" formula disclosure. Keep the formula section at the bottom.
-- **Insights**: computed from `state.math` plus `insightsData.ts` (average period length, regularity, symptom/mood tallies; unit tested). Needs at least 2 valid cycles, otherwise shows an empty state with progress.
-- **Settings**: account card, language, tracking options, data (export/import/delete), account (sign out, delete account via RPC). Data and delete-account sections are hidden in demo mode.
+- **Insights**: computed from `state.math` plus `insightsData.ts` (average period length, regularity, symptom/mood tallies; unit tested). Needs at least 1 valid cycle, otherwise shows an empty state with progress.
+- **Settings**: account card, language, tracking options, account management (sign out, reset data, delete account via RPC). Reset and delete are hidden in demo mode.
 - `src/ui/` holds primitives: `Button` (variants primary/secondary/ghost/danger, `loading`), `Chip`, `Field`/`FieldAction`, `Sheet` (bottom sheet, drag-to-dismiss via the handle), `ConfirmDialog`, `ToggleSwitch`, `DatePicker`, `Toast`, `BottomNav`, `Splash`, `Collapse`, `Icon`.
 
 Gotchas:

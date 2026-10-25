@@ -57,7 +57,7 @@ Blushme is a progressive web app (PWA), so there is nothing to download from an 
   </tr>
   <tr>
     <td align="center"><img src="docs/screenshots/10-settings.png" width="250" alt="Settings" /><br /><sub><b>Settings</b><br />Language, goal and tracking options</sub></td>
-    <td align="center"><img src="docs/screenshots/11-settings-more.png" width="250" alt="Data and account" /><br /><sub><b>Data and account</b><br />Export, import, delete, sign out</sub></td>
+    <td align="center"><img src="docs/screenshots/11-settings-more.png" width="250" alt="Data and account" /><br /><sub><b>Data and account</b><br />Reset data, delete account, sign out</sub></td>
     <td align="center"><sub>On wide screens the app sits in a centered phone-width frame:</sub><br /><br /><img src="docs/screenshots/12-desktop.png" width="250" alt="Desktop layout" /></td>
   </tr>
 </table>
@@ -71,7 +71,7 @@ Blushme is a progressive web app (PWA), so there is nothing to download from an 
 | **Calendar** | Logged and predicted periods, optional fertile-window layer, range selection for past periods |
 | **Insights** | Average cycle and period length, regularity, last six cycles, most common symptoms and moods |
 | **Predictions** | Weighted, outlier-aware estimates with a confidence level and a "show the maths" view using your own numbers |
-| **Accounts** | Sign up, sign in, sign out, export or delete your data, delete your account |
+| **Accounts** | Sign up, sign in, sign out, reset your data, delete your account |
 | **Design** | White and blush palette, botanical illustrations, calm motion that respects reduced-motion settings |
 
 ## Your cycle, explained
@@ -215,5 +215,5 @@ Build with `bun run build` and host the `dist/` folder on any static host.
 | Data isolation | Row level security restricts every table to the signed-in user |
 | Network | The app only talks to your Supabase project |
 | Tracking | No analytics or third-party trackers |
-| Control | Export, delete data or delete your account from Settings |
+| Control | Reset data or delete your account from Settings |
 | Demo mode | Sample data stays in memory in your browser and is never saved |

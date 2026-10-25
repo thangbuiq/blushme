@@ -83,9 +83,9 @@
       "rangeValue": "{{start}} to {{end}}",
       "confidenceLabel": "Confidence",
       "confidence": {
-        "low": "Still learning your rhythm",
-        "medium": "Fairly steady",
-        "high": "Well established"
+        "low": "Low, needs more cycles",
+        "medium": "Medium",
+        "high": "High"
       },
       "howCalculated": "How is this calculated?",
       "variabilityValue": "±{{days}} days · {{label}}"
@@ -112,28 +112,28 @@
         "sleep": "Sleep"
       },
       "menstrual": {
-        "food": "Warm, iron-rich meals: beans, dark greens, lean meat.",
-        "move": "A gentle walk or stretching can ease cramps.",
-        "mind": "Allow yourself to slow down and rest when needed.",
-        "sleep": "A warm compress on your belly before bed can help if it aches."
+        "food": "Eat warm meals with iron (lean meat, beans, leafy greens) and drink enough water.",
+        "move": "Move gently if you feel up to it, rest if the cramps are bad.",
+        "mind": "Drop what isn't essential and rest when tired.",
+        "sleep": "A warm compress on your belly can help you sleep if it hurts."
       },
       "follicular": {
-        "food": "Plenty of fresh veg, lean protein and water.",
-        "move": "Energy is rising, a good time to train harder.",
-        "mind": "A good moment to start something that needs focus.",
-        "sleep": "Keep a steady bedtime to hold your energy."
+        "food": "Eat regular meals with enough protein and vegetables, and drink enough water.",
+        "move": "Energy is rising, so you can train harder than usual.",
+        "mind": "A good time to start things that need focus.",
+        "sleep": "Keep a steady bedtime to hold on to your energy."
       },
       "ovulation": {
-        "food": "Leafy greens, fibre and plenty of water.",
-        "move": "Moderate to strong sessions, with a proper warm-up.",
-        "mind": "Mood is often bright. A slight one-sided twinge is normal.",
-        "sleep": "A cool, airy room makes it easier to sleep."
+        "food": "Eat plenty of vegetables and fibre, and drink enough water.",
+        "move": "Exercise as usual, and warm up well.",
+        "mind": "Mood is often good. A slight twinge on one side is usually nothing to worry about.",
+        "sleep": "Keep the room cool to sleep more easily."
       },
       "luteal": {
-        "food": "Nuts, bananas, dark chocolate; go easy on salt and caffeine.",
-        "move": "Yoga, walking or an easy swim helps you wind down.",
-        "mind": "You may feel more sensitive. Journaling or a walk helps.",
-        "sleep": "Head to bed a little earlier, your body needs more rest."
+        "food": "Cut back on salt and caffeine to ease bloating and tenderness.",
+        "move": "Exercise at an easy pace and cut back if you feel tired.",
+        "mind": "Feeling irritable or sensitive is common, so leave some time for yourself.",
+        "sleep": "Go to bed a little earlier, your body needs more rest."
       }
     },
     "prep": {
@@ -178,6 +178,27 @@
       "item2": "No period for 3 months or more",
       "item3": "Bleeding that lasts more than 8 days, or unusually heavy flow",
       "item4": "Severe pain with nausea during your period"
+    },
+    "current": "Now",
+    "phaseCaption": {
+      "menstrual": "The uterine lining sheds",
+      "follicular": "Follicles grow and the lining thickens",
+      "ovulation": "A mature egg is released from the ovary",
+      "luteal": "The corpus luteum releases progesterone, the lining is at its thickest"
+    },
+    "art": {
+      "lining": {
+        "menstrual": "Lining sheds",
+        "follicular": "Lining thickens",
+        "ovulation": "Lining is thick",
+        "luteal": "Lining at its thickest"
+      },
+      "event": {
+        "menstrual": "Small follicles",
+        "follicular": "Growing follicle",
+        "ovulation": "Egg is released",
+        "luteal": "Corpus luteum"
+      }
     }
   },
   "calendar": {
@@ -210,7 +231,8 @@
       "edit": "Edit",
       "delete": "Delete",
       "deleteConfirm": "Delete everything logged for this day? This can't be undone."
-    }
+    },
+    "confidence": "Prediction confidence"
   },
   "log": {
     "todayTitle": "Today",
@@ -271,7 +293,7 @@
   },
   "insights": {
     "emptyTitle": "Still getting to know you",
-    "emptyBody": "Log two full cycles and gentle patterns will bloom here.",
+    "emptyBody": "Log one full cycle and gentle patterns will bloom here.",
     "title": "Your patterns",
     "subtitle": "Based on {{count}} cycles",
     "progress": "{{done}} of {{total}} cycles logged",
@@ -325,10 +347,7 @@
   },
   "settings": {
     "language": "Language",
-    "data": "Data",
-    "export": "Export data",
-    "import": "Import data",
-    "deleteAll": "Delete all data",
+    "deleteAll": "Reset data",
     "deleteAllConfirm": "This permanently deletes every log and setting in your account. This can't be undone.",
     "weekStart": "Week starts on",
     "units": "Units",
@@ -345,12 +364,10 @@
       "metric": "Metric",
       "imperial": "Imperial"
     },
-    "account": "Account",
+    "account": "Account management",
     "signOut": "Sign out",
     "deleteAccount": "Delete account",
     "deleteAccountConfirm": "This permanently deletes your account and all of your data. This can't be undone.",
-    "imported": "Data imported",
-    "importFailed": "Couldn't read that file",
     "demoNote": "Demo mode: nothing is saved",
     "exitDemo": "Exit demo",
     "advancedTip": "Adds body temperature, cervical mucus, LH tests (which detect the hormone that signals ovulation is near) and intimacy to the log, and unlocks extra charts and analysis under Insights. Optional, and you can switch it off any time.",
