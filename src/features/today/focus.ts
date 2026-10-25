@@ -46,7 +46,7 @@ export function focusAlert(state: CycleState, logs: DailyLog[]): FocusAlert | nu
   return null
 }
 
-export type FocusPrepKey = 'supplies' | 'logSymptoms' | 'protect' | 'plan' | 'rest'
+export type FocusPrepKey = 'supplies' | 'suppliesWindow' | 'logSymptoms' | 'protect' | 'plan' | 'rest'
 export interface FocusPrep {
   key: FocusPrepKey
   /** Days until the period, for the supplies note. */
@@ -58,6 +58,8 @@ export function focusPrep(state: CycleState): FocusPrep {
   if (state.phase === 'menstrual') return { key: 'logSymptoms' }
   const days = state.daysUntilNextPeriod
   if (!state.paused && days >= 0 && days <= 7) return { key: 'supplies', count: days }
+  // Inside the predicted range but the period isn't logged yet: it may start any day.
+  if (!state.paused && !state.isLate && days < 0) return { key: 'suppliesWindow' }
   if (state.phase === 'ovulation') return { key: 'protect' }
   if (state.phase === 'follicular') return { key: 'plan' }
   return { key: 'rest' }

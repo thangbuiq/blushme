@@ -91,6 +91,15 @@ describe('focusPrep', () => {
     expect(focusPrep(state({ phase: 'luteal', daysUntilNextPeriod: 8 }))).toEqual({ key: 'rest' })
   })
 
+  it('reminds about supplies inside the predicted range before the period is logged', () => {
+    expect(focusPrep(state({ phase: 'luteal', daysUntilNextPeriod: -1 }))).toEqual({
+      key: 'suppliesWindow',
+    })
+    expect(focusPrep(state({ phase: 'luteal', daysUntilNextPeriod: -5, isLate: true })).key).toBe(
+      'rest',
+    )
+  })
+
   it('suggests something fitting the other phases', () => {
     expect(focusPrep(state({ phase: 'ovulation', daysUntilNextPeriod: 14 })).key).toBe('protect')
     expect(focusPrep(state({ phase: 'follicular' })).key).toBe('plan')

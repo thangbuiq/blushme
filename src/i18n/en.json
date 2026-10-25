@@ -33,9 +33,6 @@
       "goalTrack": "Track my cycle",
       "goalTtc": "Trying to conceive",
       "goalAvoiding": "Avoiding pregnancy",
-      "goalTrackHint": "Understand your body day by day",
-      "goalTtcHint": "See your fertile window",
-      "goalAvoidingHint": "Know your higher and lower chance days",
       "nameLabel": "What should Blushme call you?",
       "namePlaceholder": "Name or nickname (optional)"
     },
@@ -49,7 +46,7 @@
       "cycleLengthLabel": "Typical cycle length",
       "periodLengthLabel": "Typical period length"
     },
-    "disclaimer": "These are gentle estimates, not medical advice.",
+    "disclaimer": "Blushme gives research-based estimates only. It is not a medical tool and does not replace a doctor's advice. If you have concerns about your reproductive health, please see a doctor.",
     "disclaimerTitle": "A gentle note",
     "start": "Start with Blushme"
   },
@@ -142,6 +139,7 @@
     "prep": {
       "kicker": "Worth preparing",
       "suppliesToday": "Carry pads or tampons with you today.",
+      "suppliesWindow": "You are within the predicted range and it could start any time. Carry pads or tampons with you.",
       "supplies": "Your period is expected in {{count}} days. Put some supplies in your bag.",
       "logSymptoms": "Log today's symptoms so Blushme can get to know you better.",
       "protect": "These are your most fertile days. If you are not planning a pregnancy, use protection.",
@@ -483,6 +481,7 @@
       "soon": "Your period is expected around {{date}}, in {{count}} days. It might be a good moment to check you have pads or tampons at hand.",
       "tomorrow": "Your period is expected tomorrow ({{date}}). Remember to have your supplies ready.",
       "today": "Your period is expected today. Remember to carry your supplies with you.",
+      "inRange": "Today is still within the predicted range and no period is logged yet. It could start any time, so remember to carry your supplies.",
       "during": "You're on your period. Keep a spare pad or tampon with you and change it every 4 to 6 hours."
     },
     "ready": "I'm ready",
@@ -496,6 +495,7 @@
       "soon": "In {{count}} days",
       "tomorrow": "Tomorrow",
       "today": "Today",
+      "inRange": "Any day now",
       "during": "Now"
     }
   }

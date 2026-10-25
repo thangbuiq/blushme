@@ -33,9 +33,6 @@
       "goalTrack": "Theo dõi chu kỳ",
       "goalTtc": "Đang mong có con",
       "goalAvoiding": "Tránh thai",
-      "goalTrackHint": "Hiểu cơ thể từng ngày",
-      "goalTtcHint": "Xem cửa sổ dễ thụ thai",
-      "goalAvoidingHint": "Biết ngày khả năng thụ thai cao và thấp",
       "nameLabel": "Blushme nên gọi em là gì?",
       "namePlaceholder": "Tên hoặc biệt danh (không bắt buộc)"
     },
@@ -49,7 +46,7 @@
       "cycleLengthLabel": "Độ dài chu kỳ thường thấy",
       "periodLengthLabel": "Độ dài kỳ kinh thường thấy"
     },
-    "disclaimer": "Blushme có chứa thông tin dự đoán về sức khỏe sinh sản dựa trên nghiên cứu khoa học về y tế. Tuy nhiên, Blushme không phải là một công cụ y tế và không thể thay thế cho lời khuyên của bác sĩ. Nếu có bất kỳ lo lắng nào về sức khỏe sinh sản, em hãy tham khảo ý kiến bác sĩ hoặc chuyên gia y tế.",
+    "disclaimer": "Blushme chỉ đưa ra dự đoán tham khảo dựa trên nghiên cứu y khoa, không phải công cụ y tế và không thay thế lời khuyên của bác sĩ. Nếu lo lắng về sức khỏe sinh sản, em hãy hỏi ý kiến bác sĩ nhé.",
     "disclaimerTitle": "Một lời nhắn nhẹ nhàng",
     "start": "Bắt đầu cùng Blushme"
   },
@@ -142,6 +139,7 @@
     "prep": {
       "kicker": "Nên chuẩn bị",
       "suppliesToday": "Mang theo băng vệ sinh hôm nay.",
+      "suppliesWindow": "Đang trong khoảng dự đoán kỳ kinh, có thể đến bất cứ lúc nào. Mang theo băng vệ sinh nhé.",
       "supplies": "Kỳ kinh dự kiến sau {{count}} ngày. Chuẩn bị băng vệ sinh trong túi nhé.",
       "logSymptoms": "Ghi lại triệu chứng hôm nay để Blushme hiểu em hơn.",
       "protect": "Đang là những ngày dễ thụ thai. Nếu chưa muốn có thai, hãy dùng biện pháp bảo vệ.",
@@ -483,6 +481,7 @@
       "soon": "Kỳ kinh dự kiến đến vào khoảng {{date}}, còn {{count}} ngày nữa. Em thử xem trong túi đã có băng vệ sinh chưa nhé.",
       "tomorrow": "Ngày mai ({{date}}) là ngày dự kiến của kỳ kinh. Em nhớ chuẩn bị sẵn băng vệ sinh nhé.",
       "today": "Hôm nay là ngày dự kiến của kỳ kinh. Em nhớ mang theo băng vệ sinh nhé.",
+      "inRange": "Hôm nay vẫn nằm trong khoảng dự đoán và chưa ghi kỳ kinh. Kỳ kinh có thể đến bất cứ lúc nào, em nhớ mang theo băng vệ sinh nhé.",
       "during": "Em đang trong kỳ kinh. Nhớ mang theo băng vệ sinh dự phòng và thay đều đặn mỗi 4 đến 6 giờ nhé."
     },
     "ready": "Em đã chuẩn bị xong",
@@ -496,6 +495,7 @@
       "soon": "Còn {{count}} ngày",
       "tomorrow": "Ngày mai",
       "today": "Hôm nay",
+      "inRange": "Có thể đến sớm",
       "during": "Đang diễn ra"
     }
   }

@@ -97,7 +97,7 @@ function Frame({
       className={styles.stepInner}
     >
       <div className={styles.content}>
-        <Bloom size={72} tone={art} petals={index % 2 ? 5 : 6} className={styles.art} />
+        <Bloom size={48} tone={art} petals={index % 2 ? 5 : 6} className={styles.art} />
         {children}
       </div>
       <div className={styles.footer}>{footer}</div>
@@ -224,13 +224,8 @@ export function OnboardingFlow() {
                     whileTap={reduceMotion ? undefined : { scale: 0.98 }}
                     onClick={() => setGoal(g)}
                   >
-                    <GoalIcon size={24} />
-                    <span className={styles.goalText}>
-                      <strong>{t(`onboarding.step1.goal${key}`)}</strong>
-                      <span className={styles.goalHint}>
-                        {t(`onboarding.step1.goal${key}Hint`)}
-                      </span>
-                    </span>
+                    <GoalIcon size={20} />
+                    <strong>{t(`onboarding.step1.goal${key}`)}</strong>
                   </motion.button>
                 ))}
               </div>

@@ -7,6 +7,8 @@ export const REMINDER_LEAD_DAYS = 3
 interface ReminderInput {
   today: ISODate
   predictedDate: ISODate
+  /** Half-width of the predicted range, in days. */
+  rangeDays: number
   paused: boolean
   enabled: boolean
   /** True while today falls inside the period itself. */
@@ -17,7 +19,10 @@ interface ReminderInput {
   lastShown: ISODate | null
 }
 
-export type Reminder = { kind: 'upcoming'; days: number } | { kind: 'during' }
+export type Reminder =
+  | { kind: 'upcoming'; days: number }
+  | { kind: 'inRange' }
+  | { kind: 'during' }
 
 /**
  * The gentle supplies reminder that is due today, if any: a heads-up in the days
@@ -28,5 +33,7 @@ export function dueReminder(input: ReminderInput): Reminder | null {
   if (input.onPeriod) return { kind: 'during' }
   if (input.dismissedFor === input.predictedDate) return null
   const days = differenceInCalendarDays(parseISO(input.predictedDate), parseISO(input.today))
-  return days >= 0 && days <= REMINDER_LEAD_DAYS ? { kind: 'upcoming', days } : null
+  if (days >= 0 && days <= REMINDER_LEAD_DAYS) return { kind: 'upcoming', days }
+  // Past the predicted date but still inside the range, with no period logged yet.
+  return days < 0 && days >= -input.rangeDays ? { kind: 'inRange' } : null
 }
