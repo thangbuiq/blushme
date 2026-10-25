@@ -38,15 +38,12 @@ export function Toast() {
             exit={{ opacity: 0, y: -12 }}
             transition={SPRING}
             style={{
-              background: 'var(--glass-bg)',
-              border: 'var(--glass-border)',
-              backdropFilter: 'var(--glass-blur)',
-              WebkitBackdropFilter: 'var(--glass-blur)',
-              color: 'var(--color-primary)',
+              background: 'var(--color-primary)',
+              color: '#fff',
               padding: '12px 20px',
-              borderRadius: 'var(--radius-lg)',
+              borderRadius: 'var(--radius-md)',
               fontSize: 'var(--font-size-body-sm)',
-              boxShadow: 'var(--glass-gloss), var(--glass-shadow)',
+              boxShadow: 'var(--shadow-lift)',
               width: 'fit-content',
               maxWidth: '100%',
               margin: '0 auto',
