@@ -124,6 +124,40 @@
   font-size: var(--font-size-body-sm);
 }
 
+.detailsWrap {
+  position: relative;
+  display: inline-flex;
+  margin-top: var(--space-xs);
+  isolation: isolate;
+}
+
+/* Soft colour orbs behind the pane give the glass something to refract. */
+.detailsWrap::before,
+.detailsWrap::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 120px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  filter: blur(16px);
+  opacity: 0.35;
+  animation: glowBreathe 4.5s ease-in-out infinite;
+}
+
+.detailsWrap::before {
+  left: -14px;
+  top: -6px;
+  background: var(--color-blush);
+}
+
+.detailsWrap::after {
+  animation-delay: -2.2s;
+  right: -14px;
+  bottom: -6px;
+  background: var(--color-blush);
+}
+
 .detailsButton {
   position: relative;
   overflow: hidden;
@@ -132,27 +166,48 @@
   justify-content: center;
   min-width: 260px;
   min-height: 46px;
-  margin-top: var(--space-xs);
   padding: 0 52px;
-  border: none;
-  border-radius: var(--radius-md);
-  background-color: var(--color-tertiary);
-  color: var(--color-on-tertiary);
+  /* Same liquid glass as the bottom nav (shared --lg-* tokens). */
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-full);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(135deg, rgba(252, 222, 231, 0.6) 0%, rgba(238, 229, 250, 0.55) 100%);
+  -webkit-backdrop-filter: blur(10px) saturate(1.8);
+  backdrop-filter: blur(10px) saturate(1.8);
+  box-shadow:
+    inset 1px 1px 1px rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.15),
+    0 10px 24px rgba(184, 65, 106, 0.24),
+    0 1px 3px rgba(184, 65, 106, 0.14);
+  color: var(--color-rose-deep);
   font-family: var(--font-family-h1);
   font-size: 1.0625rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.005em;
-  box-shadow: 0 8px 20px rgba(184, 65, 106, 0.28);
   transition:
     transform 200ms var(--ease-out),
     box-shadow 200ms var(--ease-out),
     background-color 200ms ease;
 }
 
+.detailsButton:active {
+  transform: scale(0.98);
+}
+
+@keyframes glowBreathe {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
 .detailsButton:hover {
   transform: translateY(-1px);
-  background-color: #a93a61;
-  box-shadow: 0 12px 26px rgba(184, 65, 106, 0.36);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.5), 0 14px 34px rgba(52, 78, 120, 0.2), 0 1px 3px rgba(52, 78, 120, 0.1);
 }
 
 .detailsLabel {
@@ -208,24 +263,64 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
 }
 
+/* Each group has its own tint so food, movement, mind and sleep are told apart at a glance. */
 .careItem {
+  --tint: var(--color-blush);
+  --ink: var(--color-rose-deep);
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hairline);
+  border-top: 3px solid var(--ink);
+  background-color: var(--color-surface);
+}
+
+.care_food {
+  --tint: var(--color-butter);
+  --ink: #b8860b;
+}
+
+.care_move {
+  --tint: var(--color-mint);
+  --ink: var(--color-leaf-deep);
+}
+
+.care_mind {
+  --tint: var(--color-lavender);
+  --ink: #7a5bb0;
+}
+
+.care_sleep {
+  --tint: var(--color-sky);
+  --ink: var(--color-sky-deep);
+}
+
+.careHead {
+  display: flex;
   align-items: center;
+  gap: var(--space-sm);
+}
+
+.careHead strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 .careIcon {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-sm);
-  background-color: var(--color-blush);
-  color: var(--color-rose-deep);
+  background-color: var(--tint);
+  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,24 +329,32 @@
 .careText {
   font-size: var(--font-size-body-sm);
   line-height: 1.45;
-}
-
-.careText strong {
-  display: block;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-rose-deep);
+  color: var(--color-primary);
 }
 
 .prep {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  gap: var(--space-sm);
+  align-items: flex-start;
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
   background-color: var(--color-blush-tint);
   border: 1px solid var(--color-hairline);
+  border-left: 3px solid var(--color-tertiary);
   font-size: var(--font-size-body-sm);
+}
+
+.prepIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-tertiary);
+  display: flex;
+}
+
+.prepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .prepKicker {

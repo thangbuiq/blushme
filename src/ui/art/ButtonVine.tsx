@@ -10,8 +10,8 @@ function Leaf({ x, y, r, s = 1, d }: { x: number; y: number; r: number; s?: numb
         className={styles.leaf}
         style={delay(d)}
         d="M0 0C-5 -4 -5 -12 0 -17C5 -12 5 -4 0 0Z"
-        fill="#fff"
-        fillOpacity="0.5"
+        fill="#8fbf9f"
+        fillOpacity="0.85"
       />
     </g>
   )
@@ -28,8 +28,8 @@ function Mini({ x, y, s, d }: { x: number; y: number; s: number; d: number }) {
             cy="-5.2"
             rx="3.2"
             ry="5.4"
-            fill="#fff"
-            fillOpacity="0.92"
+            fill="#f2a7bb"
+            fillOpacity="1"
             transform={`rotate(${a})`}
           />
         ))}
@@ -39,12 +39,12 @@ function Mini({ x, y, s, d }: { x: number; y: number; s: number; d: number }) {
   )
 }
 
-/** A decorative vine that grows up in tiers inside a button: stem, then leaves, then blossoms. */
+/** A decorative vine inside a button: stem grows, leaves unfurl, blossoms open, then it fades and grows again. */
 export function ButtonVine({ side }: { side: 'left' | 'right' }) {
   const right = side === 'right'
   return (
     <svg
-      className={`${styles.vine} ${right ? styles.right : styles.left}`}
+      className={`${styles.vine} ${styles.loop} ${right ? styles.right : styles.left}`}
       viewBox="0 0 64 52"
       aria-hidden="true"
       preserveAspectRatio="xMinYMax meet"
@@ -54,8 +54,8 @@ export function ButtonVine({ side }: { side: 'left' | 'right' }) {
           className={styles.stem}
           style={delay(right ? 0.25 : 0)}
           d="M10 54C8 42 16 34 14 24C12 16 18 10 20 4"
-          stroke="#fff"
-          strokeOpacity="0.7"
+          stroke="#6e9b7f"
+          strokeOpacity="0.9"
           strokeWidth="1.6"
           strokeLinecap="round"
           fill="none"

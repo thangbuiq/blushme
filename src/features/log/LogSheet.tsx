@@ -4,25 +4,20 @@ import { useTranslation } from 'react-i18next'
 import { Sheet } from '@/ui/Sheet'
 import { Button } from '@/ui/Button'
 import { Chip } from '@/ui/Chip'
-import { ToggleSwitch } from '@/ui/ToggleSwitch'
 import { DropIcon, ChevronIcon } from '@/ui/Icon'
 import { formatShortDate } from '@/ui/dateFormat'
 import { useUiStore } from '@/store/uiStore'
 import { useLogStore } from '@/store/logStore'
-import { useSettingsStore } from '@/store/settingsStore'
 import { useCycleState } from '@/store/cycleStore'
-import type { CervicalMucus } from '@/engine/types'
 import { CORE_SYMPTOMS, MORE_SYMPTOMS, type Symptom } from './symptoms'
 import { MOODS, moodsOf, toggleMood } from './moods'
 import { isSuspiciouslyEarly } from './periodValidation'
 import { hasLogContent, withoutPeriod } from './periodDays'
 import { isBleeding } from '@/engine/cycleLengths'
 import { PhaseTag } from '@/features/today/PhaseTag'
-import { TermLabel } from '@/ui/TermHint'
 import { useConfirm } from '@/ui/ConfirmDialog'
 import styles from './LogSheet.module.css'
 
-const CERVICAL_MUCUS_OPTIONS: CervicalMucus[] = ['dry', 'sticky', 'creamy', 'eggWhite']
 const todayISO = () => formatISO(new Date(), { representation: 'date' })
 
 export function LogSheet() {
@@ -35,17 +30,12 @@ export function LogSheet() {
   const upsertLog = useLogStore((s) => s.upsertLog)
   const deleteLog = useLogStore((s) => s.deleteLog)
   const showToast = useUiStore((s) => s.showToast)
-  const advancedTracking = useSettingsStore((s) => s.settings.advancedTracking)
   const confirm = useConfirm()
   const dateCycleState = useCycleState(date ?? undefined)
 
   const [symptoms, setSymptoms] = useState<Symptom[]>([])
   const [moods, setMoods] = useState<string[]>([])
   const [note, setNote] = useState('')
-  const [bbt, setBbt] = useState('')
-  const [cervicalMucus, setCervicalMucus] = useState<CervicalMucus | null>(null)
-  const [lhPositive, setLhPositive] = useState(false)
-  const [intimacy, setIntimacy] = useState(false)
 
   useEffect(() => {
     if (!open || !date) return
@@ -53,10 +43,6 @@ export function LogSheet() {
     setSymptoms((existing?.symptoms as Symptom[]) ?? [])
     setMoods(existing ? moodsOf(existing) : [])
     setNote(existing?.note ?? '')
-    setBbt(existing?.bbt?.toString() ?? '')
-    setCervicalMucus(existing?.cervicalMucus ?? null)
-    setLhPositive(existing?.lhPositive ?? false)
-    setIntimacy(existing?.intimacy ?? false)
   }, [open, date, logs])
 
   if (!date) return null
@@ -118,10 +104,6 @@ export function LogSheet() {
       moods: moods.length > 0 ? moods : undefined,
       mood: undefined,
       note: note || undefined,
-      bbt: advancedTracking && bbt ? Number(bbt) : undefined,
-      cervicalMucus: advancedTracking ? (cervicalMucus ?? undefined) : undefined,
-      lhPositive: advancedTracking ? lhPositive : undefined,
-      intimacy: advancedTracking ? intimacy : undefined,
     })
     close()
   }
@@ -229,60 +211,6 @@ export function LogSheet() {
           />
         </div>
 
-        {advancedTracking && (
-          <>
-            <div className={styles.section}>
-              <TermLabel term="bbt">
-                <label className="label-caps" htmlFor="log-bbt">
-                  {t('log.advanced.bbtLabel')}
-                </label>
-              </TermLabel>
-              <input
-                id="log-bbt"
-                type="number"
-                step="0.01"
-                inputMode="decimal"
-                value={bbt}
-                onChange={(e) => setBbt(e.target.value)}
-                className={styles.textarea}
-                style={{ minHeight: 'unset', height: 48 }}
-              />
-            </div>
-
-            <div className={styles.section}>
-              <TermLabel term="cervicalMucus">
-                <span className="label-caps">{t('log.advanced.cervicalMucusLabel')}</span>
-              </TermLabel>
-              <div className={styles.chipGrid}>
-                {CERVICAL_MUCUS_OPTIONS.map((option) => (
-                  <Chip
-                    key={option}
-                    selected={cervicalMucus === option}
-                    onClick={() => setCervicalMucus(cervicalMucus === option ? null : option)}
-                  >
-                    {t(`log.advanced.cervicalMucus.${option}`)}
-                  </Chip>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.toggleRow}>
-              <TermLabel term="lh">{t('log.advanced.lhLabel')}</TermLabel>
-              <Chip selected={lhPositive} onClick={() => setLhPositive((v) => !v)}>
-                {t('log.advanced.lhPositive')}
-              </Chip>
-            </div>
-
-            <div className={styles.toggleRow}>
-              <span>{t('log.advanced.intimacyLabel')}</span>
-              <ToggleSwitch
-                checked={intimacy}
-                onChange={setIntimacy}
-                ariaLabel={t('log.advanced.intimacyLabel')}
-              />
-            </div>
-          </>
-        )}
         <Button variant="primary" onClick={handleSave}>
           {t('log.save')}
         </Button>

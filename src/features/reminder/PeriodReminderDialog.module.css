@@ -34,7 +34,7 @@
   width: 52px;
   height: 52px;
   background: #fff;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
   box-shadow: 0 6px 16px rgba(184, 65, 106, 0.16);
 }
 
@@ -60,7 +60,7 @@
   font-weight: 600;
   color: var(--color-rose-deep);
   background-color: rgba(184, 65, 106, 0.1);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
 }
 
 .close {

@@ -271,20 +271,6 @@
     "notePlaceholder": "Anything you'd like to remember",
     "save": "Save",
     "earlyPeriodConfirm": "That's earlier than usual since your last period. Save it anyway?",
-    "advanced": {
-      "title": "Advanced tracking",
-      "bbtLabel": "Basal body temperature (°C)",
-      "cervicalMucusLabel": "Cervical mucus",
-      "cervicalMucus": {
-        "dry": "Dry",
-        "sticky": "Sticky",
-        "creamy": "Creamy",
-        "eggWhite": "Egg white"
-      },
-      "lhLabel": "LH test",
-      "lhPositive": "Positive",
-      "intimacyLabel": "Intimacy"
-    },
     "markPeriodDay": "Log a period day",
     "periodDayHere": "Period day",
     "unmarkPeriodDay": "Remove period day",
@@ -313,36 +299,18 @@
       "fairlySteady": "A few days of natural variation, which is common.",
       "variable": "Your cycles differ quite a bit. If it worries you, a doctor can help."
     },
-    "history": "Recent cycles",
-    "historyLegend": "Length in days. Your average is {{avg}} days. Striped bars are set aside as unusual.",
     "symptoms": "Most common symptoms",
     "moods": "Most common moods",
     "noMoodTitle": "Add a little more",
     "noMoodBody": "Log symptoms and moods to see what repeats through your cycle.",
-    "advanced": {
-      "title": "Deeper analysis",
-      "teaserTitle": "Want deeper charts?",
-      "teaserBody": "Turn on advanced tracking to see cycle trends, temperature, fertile signs and patterns by cycle week.",
-      "teaserAction": "Open settings",
-      "trendTitle": "Cycle length trend",
-      "trendLegend": "Dots are cycles, the shaded band is the usual range around your average of {{avg}} days.",
-      "bbtTitle": "Basal temperature",
-      "bbtLegend": "Latest {{count}} readings. A lasting rise in basal temperature (your resting temperature, taken on waking) usually follows ovulation.",
-      "bbtEmpty": "Log your morning temperature to see the curve here.",
-      "mucusTitle": "Cervical mucus",
-      "mucusEmpty": "Log cervical mucus to see how it changes.",
-      "heatSymptoms": "Symptoms by cycle week",
-      "heatMoods": "Moods by cycle week",
-      "heatEmpty": "Log a few more days to see patterns by cycle week.",
-      "week1": "Days 1-7",
-      "week2": "Days 8-14",
-      "week3": "Days 15-21",
-      "week4": "Day 22+",
-      "totalsTitle": "Tracking totals",
-      "lhPositives": "Positive LH tests (ovulation near)",
-      "intimacyDays": "Intimacy days",
-      "bbtReadings": "Temperature readings",
-      "mucusEntries": "Mucus entries"
+    "forecast": {
+      "title": "Recent cycles and forecast",
+      "past": "Past cycles",
+      "next": "Forecast",
+      "aria": "The next cycle is forecast at about {{expected}} days, within {{lo}} to {{hi}} days.",
+      "legendBand": "Forecast zone: next cycle lasts {{lo}} to {{hi}} days",
+      "legendExpected": "Expected about {{expected}} days (dashed line)",
+      "legendExcluded": "Dashed outline: unusual cycle, not used in the forecast"
     }
   },
   "settings": {
@@ -350,8 +318,6 @@
     "deleteAll": "Reset data",
     "deleteAllConfirm": "This permanently deletes every log and setting in your account. This can't be undone.",
     "weekStart": "Week starts on",
-    "units": "Units",
-    "advancedTracking": "Advanced tracking",
     "aboutBody": "Blushme syncs your data to your private account. No ads, no tracking.",
     "title": "Settings",
     "synced": "Synced to your account",
@@ -360,18 +326,12 @@
       "monday": "Monday",
       "sunday": "Sunday"
     },
-    "unitsOptions": {
-      "metric": "Metric",
-      "imperial": "Imperial"
-    },
     "account": "Account management",
     "signOut": "Sign out",
     "deleteAccount": "Delete account",
     "deleteAccountConfirm": "This permanently deletes your account and all of your data. This can't be undone.",
     "demoNote": "Demo mode: nothing is saved",
     "exitDemo": "Exit demo",
-    "advancedTip": "Adds body temperature, cervical mucus, LH tests (which detect the hormone that signals ovulation is near) and intimacy to the log, and unlocks extra charts and analysis under Insights. Optional, and you can switch it off any time.",
-    "unitsTip": "Only changes how body temperature is shown (°C or °F).",
     "weekStartTip": "The day shown in the first column of the calendar.",
     "profile": {
       "noName": "Add your name",

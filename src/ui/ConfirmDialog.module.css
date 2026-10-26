@@ -37,7 +37,7 @@
   height: 64px;
   transform: translateX(-50%);
   background: #fff;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
   box-shadow: 0 8px 20px rgba(184, 65, 106, 0.18);
 }
 

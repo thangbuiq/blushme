@@ -62,10 +62,10 @@ typography:
     lineHeight: 1.2
 rounded:
   none: 0px
-  sm: 6px
-  md: 8px
-  lg: 12px
-  xl: 16px
+  sm: 3px
+  md: 5px
+  lg: 6px
+  xl: 8px
   full: 9999px
 spacing:
   xs: 4px
