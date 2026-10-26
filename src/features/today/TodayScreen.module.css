@@ -124,6 +124,38 @@
   font-size: var(--font-size-body-sm);
 }
 
+.detailsWrap {
+  position: relative;
+  display: inline-flex;
+  margin-top: var(--space-xs);
+  isolation: isolate;
+}
+
+/* Soft colour orbs behind the pane give the glass something to refract. */
+.detailsWrap::before,
+.detailsWrap::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 120px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  filter: blur(14px);
+  opacity: 0.9;
+}
+
+.detailsWrap::before {
+  left: -14px;
+  top: -6px;
+  background: var(--color-blush-deep);
+}
+
+.detailsWrap::after {
+  right: -14px;
+  bottom: -6px;
+  background: var(--color-lavender);
+}
+
 .detailsButton {
   position: relative;
   overflow: hidden;
@@ -132,15 +164,14 @@
   justify-content: center;
   min-width: 260px;
   min-height: 46px;
-  margin-top: var(--space-xs);
   padding: 0 52px;
   /* Same liquid glass as the bottom nav (shared --lg-* tokens). */
   border: var(--lg-border);
   border-radius: var(--radius-full);
-  background: var(--lg-bg);
-  -webkit-backdrop-filter: var(--lg-blur);
-  backdrop-filter: var(--lg-blur);
-  box-shadow: var(--lg-rim), var(--lg-shadow);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.3) 100%);
+  -webkit-backdrop-filter: blur(10px) saturate(1.8);
+  backdrop-filter: blur(10px) saturate(1.8);
+  box-shadow: var(--lg-rim), 0 10px 26px rgba(184, 65, 106, 0.18), 0 1px 3px rgba(184, 65, 106, 0.1);
   color: var(--color-rose-deep);
   font-family: var(--font-family-h1);
   font-size: 1.0625rem;

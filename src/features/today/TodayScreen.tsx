@@ -157,14 +157,16 @@ export function TodayScreen() {
               date: formatShortDate(state.predictedNextPeriod.date, i18n.language),
             })}
           </p>
-          <button type="button" className={styles.detailsButton} onClick={openDetailsSheet}>
-            <ButtonVine side="left" />
-            <ButtonVine side="right" />
-            <span className={styles.detailsLabel}>
-              {t('today.insightButton')}
-              <ChevronIcon size={14} />
-            </span>
-          </button>
+          <span className={styles.detailsWrap}>
+            <button type="button" className={styles.detailsButton} onClick={openDetailsSheet}>
+              <ButtonVine side="left" />
+              <ButtonVine side="right" />
+              <span className={styles.detailsLabel}>
+                {t('today.insightButton')}
+                <ChevronIcon size={14} />
+              </span>
+            </button>
+          </span>
         </div>
       </motion.section>
 
