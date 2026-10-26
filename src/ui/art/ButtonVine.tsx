@@ -39,12 +39,12 @@ function Mini({ x, y, s, d }: { x: number; y: number; s: number; d: number }) {
   )
 }
 
-/** A decorative vine that grows up in tiers inside a button: stem, then leaves, then blossoms. */
+/** A decorative vine inside a button: stem grows, leaves unfurl, blossoms open, then it fades and grows again. */
 export function ButtonVine({ side }: { side: 'left' | 'right' }) {
   const right = side === 'right'
   return (
     <svg
-      className={`${styles.vine} ${right ? styles.right : styles.left}`}
+      className={`${styles.vine} ${styles.loop} ${right ? styles.right : styles.left}`}
       viewBox="0 0 64 52"
       aria-hidden="true"
       preserveAspectRatio="xMinYMax meet"
