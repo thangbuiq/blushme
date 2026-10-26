@@ -18,7 +18,7 @@ import { useLogStore } from '@/store/logStore'
 import { useUiStore } from '@/store/uiStore'
 import { deleteAllData } from '@/data/exportImport'
 import { deleteAccount } from '@/data/repo'
-import { NAME_MAX, type Units, type WeekStart } from '@/data/settings'
+import { NAME_MAX, type WeekStart } from '@/data/settings'
 import styles from './SettingsScreen.module.css'
 
 function ToggleRow({
@@ -204,31 +204,6 @@ export function SettingsScreen() {
           checked={settings.periodReminder}
           onChange={(periodReminder) => update({ periodReminder })}
         />
-        <ToggleRow
-          label={t('settings.advancedTracking')}
-          tip={t('settings.advancedTip')}
-          checked={settings.advancedTracking}
-          onChange={(advancedTracking) => update({ advancedTracking })}
-        />
-        {settings.advancedTracking && (
-          <div className={styles.stack}>
-            <span className={styles.rowHint}>
-              {t('settings.units')}
-              <InfoTip>{t('settings.unitsTip')}</InfoTip>
-            </span>
-            <div className={styles.chipGroup}>
-              {(['metric', 'imperial'] as Units[]).map((option) => (
-                <Chip
-                  key={option}
-                  selected={settings.units === option}
-                  onClick={() => update({ units: option })}
-                >
-                  {t(`settings.unitsOptions.${option}`)}
-                </Chip>
-              ))}
-            </div>
-          </div>
-        )}
       </motion.section>
 
       <motion.section className={styles.group} {...reveal(4)}>

@@ -208,24 +208,64 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
 }
 
+/* Each group has its own tint so food, movement, mind and sleep are told apart at a glance. */
 .careItem {
+  --tint: var(--color-blush);
+  --ink: var(--color-rose-deep);
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hairline);
+  border-top: 3px solid var(--ink);
+  background-color: var(--color-surface);
+}
+
+.care_food {
+  --tint: var(--color-butter);
+  --ink: #b8860b;
+}
+
+.care_move {
+  --tint: var(--color-mint);
+  --ink: var(--color-leaf-deep);
+}
+
+.care_mind {
+  --tint: var(--color-lavender);
+  --ink: #7a5bb0;
+}
+
+.care_sleep {
+  --tint: var(--color-sky);
+  --ink: var(--color-sky-deep);
+}
+
+.careHead {
+  display: flex;
   align-items: center;
+  gap: var(--space-sm);
+}
+
+.careHead strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 .careIcon {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-sm);
-  background-color: var(--color-blush);
-  color: var(--color-rose-deep);
+  background-color: var(--tint);
+  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,24 +274,32 @@
 .careText {
   font-size: var(--font-size-body-sm);
   line-height: 1.45;
-}
-
-.careText strong {
-  display: block;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-rose-deep);
+  color: var(--color-primary);
 }
 
 .prep {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  gap: var(--space-sm);
+  align-items: flex-start;
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
   background-color: var(--color-blush-tint);
   border: 1px solid var(--color-hairline);
+  border-left: 3px solid var(--color-tertiary);
   font-size: var(--font-size-body-sm);
+}
+
+.prepIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-tertiary);
+  display: flex;
+}
+
+.prepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .prepKicker {

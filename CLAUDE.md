@@ -46,7 +46,7 @@ Fraunces (`public/fonts/*.woff2`, referenced from `src/ui/fonts.css`) is committ
 
 Decisions made while designing, worth keeping:
 
-- **Corners are restrained.** Radius scale is `sm 6 / md 8 / lg 12 / xl 16`. Buttons, inputs, chips, the nav bar, tabs and badges are rectangles with `sm`/`md` radius, not pills. `radius-full` is only for dots, toggles, progress tracks and calendar day cells. Do not reintroduce pill buttons or large radii.
+- **Corners are restrained.** Radius scale is `sm 2 / md 3 / lg 4 / xl 6`. Buttons, inputs, chips, the nav bar, tabs and badges are rectangles with `sm`/`md` radius, not pills. `radius-full` is only for dots, toggles, progress tracks and calendar day cells. Do not reintroduce pill buttons or large radii.
 - **Buttons are flat.** Primary is solid `--color-tertiary` with white text and a soft shadow; no gradients or glows. The one decorative exception is the "Hiểu rõ dự đoán này" button, which has `ButtonVine` sprigs growing inside it (clipped by `overflow: hidden`).
 - **Typography:** Fraunces for display/headings/big numerals, Bricolage Grotesque for everything else. `.label-caps` is sentence case (never uppercase Vietnamese).
 - **Decoration is botanical SVG,** not emoji and not icon fonts: `src/ui/art/Botanical.tsx` (`Bloom`, `Sprig`, `PetalDrift`) and `src/ui/art/ButtonVine.tsx`. Animation is CSS-driven (`Botanical.module.css`, `ButtonVine.module.css`) so it respects `prefers-reduced-motion` through the global rule.

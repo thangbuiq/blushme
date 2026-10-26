@@ -198,27 +198,32 @@ export function TodayScreen() {
           </div>
         </div>
         <div className={styles.prep}>
-          <span className={styles.prepKicker}>{t('today.prep.kicker')}</span>
-          <p>
-            {t(
-              prep.key === 'supplies' && prep.count === 0
-                ? 'today.prep.suppliesToday'
-                : `today.prep.${prep.key}`,
-              { count: prep.count },
-            )}
-          </p>
+          <span className={styles.prepIcon} aria-hidden="true">
+            <DropIcon size={16} />
+          </span>
+          <div className={styles.prepBody}>
+            <span className={styles.prepKicker}>{t('today.prep.kicker')}</span>
+            <p>
+              {t(
+                prep.key === 'supplies' && prep.count === 0
+                  ? 'today.prep.suppliesToday'
+                  : `today.prep.${prep.key}`,
+                { count: prep.count },
+              )}
+            </p>
+          </div>
         </div>
         <p className={styles.focusBody}>{t(`today.phaseDescription.${state.phase}`)}</p>
         <ul className={styles.care}>
           {CARE_GROUPS.map(({ key, Icon }) => (
-            <li key={key} className={styles.careItem}>
-              <span className={styles.careIcon} aria-hidden="true">
-                <Icon size={15} />
-              </span>
-              <p className={styles.careText}>
+            <li key={key} className={`${styles.careItem} ${styles[`care_${key}`]}`}>
+              <span className={styles.careHead}>
+                <span className={styles.careIcon} aria-hidden="true">
+                  <Icon size={16} />
+                </span>
                 <strong>{t(`today.care.groups.${key}`)}</strong>
-                {t(`today.care.${state.phase}.${key}`)}
-              </p>
+              </span>
+              <p className={styles.careText}>{t(`today.care.${state.phase}.${key}`)}</p>
             </li>
           ))}
         </ul>

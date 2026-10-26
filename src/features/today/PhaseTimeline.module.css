@@ -42,7 +42,7 @@
   align-self: stretch;
   height: 5px;
   margin: 0 1px;
-  border-radius: 3px;
+  border-radius: 1px;
   transition: transform 180ms var(--ease-out);
 }
 

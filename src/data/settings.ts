@@ -1,7 +1,6 @@
 export const NAME_MAX = 24
 
 export type Goal = 'track' | 'ttc' | 'avoiding'
-export type Units = 'metric' | 'imperial'
 export type WeekStart = 'sunday' | 'monday'
 
 export interface SettingsRecord {
@@ -15,9 +14,7 @@ export interface SettingsRecord {
   statedPeriodLength: number
   statedConfidenceLow: boolean
   lutealPhaseLength: number | null
-  advancedTracking: boolean
   fertilityDisclaimerShown: boolean
-  units: Units
   weekStart: WeekStart
   lockEnabled: boolean
   pinHash: string | null
@@ -43,9 +40,7 @@ export const DEFAULT_SETTINGS: SettingsRecord = {
   statedPeriodLength: 5,
   statedConfidenceLow: false,
   lutealPhaseLength: null,
-  advancedTracking: false,
   fertilityDisclaimerShown: false,
-  units: 'metric',
   weekStart: 'monday',
   lockEnabled: false,
   pinHash: null,

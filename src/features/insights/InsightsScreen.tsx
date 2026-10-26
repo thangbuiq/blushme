@@ -9,7 +9,7 @@ import { useCycleState } from '@/store/cycleStore'
 import { useLogStore } from '@/store/logStore'
 import { useSettingsStore } from '@/store/settingsStore'
 import { useUiStore } from '@/store/uiStore'
-import { AdvancedInsights } from './AdvancedInsights'
+import { ForecastChart } from './ForecastChart'
 import {
   averagePeriodLength,
   regularityOf,
@@ -60,9 +60,7 @@ export function InsightsScreen() {
   const logs = useLogStore((s) => s.logs)
   const setScreen = useUiStore((s) => s.setScreen)
   const openLogSheet = useUiStore((s) => s.openLogSheet)
-  const advanced = useSettingsStore((s) => s.settings.advancedTracking)
   const statedPeriodLength = useSettingsStore((s) => s.settings.statedPeriodLength)
-  const imperial = useSettingsStore((s) => s.settings.units === 'imperial')
 
   const { math } = state
   const valid = math.validCycleLengths.length
@@ -103,10 +101,6 @@ export function InsightsScreen() {
     )
   }
 
-  const recent = math.allCycleLengths.slice(-6)
-  const excludedLengths = new Set(math.excludedCycles.map((c) => c.index))
-  const offset = math.allCycleLengths.length - recent.length
-  const maxLen = Math.max(...recent, 1)
   const mean = math.weightedMean ?? meanOf(math.validCycleLengths)
   const regularity = regularityOf(math.weightedStdDev)
   const periodAvg = averagePeriodLength(logs) ?? statedPeriodLength
@@ -158,24 +152,9 @@ export function InsightsScreen() {
 
       <motion.section className={styles.card} {...reveal(2)} aria-labelledby="hist">
         <h2 id="hist" className={styles.cardTitle}>
-          {t('insights.history')}
+          {t('insights.forecast.title')}
         </h2>
-        <div className={styles.bars}>
-          {recent.map((len, i) => (
-            <div key={offset + i} className={styles.barCol}>
-              <span className={styles.barValue}>{len}</span>
-              <motion.span
-                className={[styles.bar, excludedLengths.has(offset + i) && styles.barExcluded]
-                  .filter(Boolean)
-                  .join(' ')}
-                initial={reduceMotion ? false : { height: 0 }}
-                animate={{ height: `${(len / maxLen) * 78}%` }}
-                transition={{ duration: 0.8, ease: EASE, delay: 0.08 * i }}
-              />
-            </div>
-          ))}
-        </div>
-        <p className={styles.legend}>{t('insights.historyLegend', { avg: Math.round(mean) })}</p>
+        <ForecastChart state={state} />
       </motion.section>
 
       {symptoms.length > 0 && (
@@ -201,18 +180,6 @@ export function InsightsScreen() {
             onClick={() => openLogSheet(formatISO(new Date(), { representation: 'date' }))}
           >
             {t('today.logButton')}
-          </Button>
-        </motion.section>
-      )}
-
-      {advanced ? (
-        <AdvancedInsights math={math} logs={logs} fahrenheit={imperial} reveal={reveal} />
-      ) : (
-        <motion.section className={styles.card} {...reveal(5)}>
-          <h2 className={styles.cardTitle}>{t('insights.advanced.teaserTitle')}</h2>
-          <p className={styles.sub}>{t('insights.advanced.teaserBody')}</p>
-          <Button variant="secondary" onClick={() => setScreen('settings')}>
-            {t('insights.advanced.teaserAction')}
           </Button>
         </motion.section>
       )}

@@ -271,20 +271,6 @@
     "notePlaceholder": "Điều em muốn nhớ lại",
     "save": "Lưu",
     "earlyPeriodConfirm": "Thời điểm này sớm hơn bình thường so với kỳ kinh trước. Em vẫn muốn lưu?",
-    "advanced": {
-      "title": "Theo dõi chuyên sâu",
-      "bbtLabel": "Nhiệt độ cơ bản (°C)",
-      "cervicalMucusLabel": "Dịch nhầy cổ tử cung",
-      "cervicalMucus": {
-        "dry": "Khô",
-        "sticky": "Dính",
-        "creamy": "Đục như kem",
-        "eggWhite": "Trong như lòng trắng trứng"
-      },
-      "lhLabel": "Kiểm tra LH",
-      "lhPositive": "Dương tính",
-      "intimacyLabel": "Quan hệ"
-    },
     "markPeriodDay": "Ghi ngày có kinh",
     "periodDayHere": "Ngày này có kinh",
     "unmarkPeriodDay": "Bỏ ghi ngày có kinh",
@@ -313,36 +299,18 @@
       "fairlySteady": "Có chênh lệch vài ngày, điều này khá phổ biến.",
       "variable": "Các chu kỳ chênh lệch khá nhiều. Nếu lo lắng, em hãy hỏi bác sĩ nhé."
     },
-    "history": "Các chu kỳ gần đây",
-    "historyLegend": "Độ dài theo ngày. Trung bình {{avg}} ngày. Cột sọc là chu kỳ bất thường, không dùng để tính.",
     "symptoms": "Triệu chứng hay gặp",
     "moods": "Cảm xúc hay gặp",
     "noMoodTitle": "Ghi thêm một chút",
     "noMoodBody": "Hãy ghi lại triệu chứng và cảm xúc để thấy điều gì lặp lại trong chu kỳ.",
-    "advanced": {
-      "title": "Phân tích chuyên sâu",
-      "teaserTitle": "Muốn xem biểu đồ chi tiết hơn?",
-      "teaserBody": "Bật theo dõi chuyên sâu để xem xu hướng chu kỳ, nhiệt độ, dấu hiệu rụng trứng và quy luật theo từng tuần của chu kỳ.",
-      "teaserAction": "Mở cài đặt",
-      "trendTitle": "Xu hướng độ dài chu kỳ",
-      "trendLegend": "Mỗi chấm là một chu kỳ, vùng tô nhạt là khoảng thường gặp quanh mức trung bình {{avg}} ngày.",
-      "bbtTitle": "Nhiệt độ cơ thể buổi sáng",
-      "bbtLegend": "{{count}} lần đo gần nhất. Nhiệt độ cơ bản (nhiệt độ lúc nghỉ, đo sau khi thức dậy) tăng và giữ ổn định thường xuất hiện sau khi rụng trứng.",
-      "bbtEmpty": "Ghi nhiệt độ mỗi sáng để thấy đường biểu diễn ở đây.",
-      "mucusTitle": "Dịch nhầy cổ tử cung",
-      "mucusEmpty": "Ghi lại dịch nhầy để thấy nó thay đổi thế nào.",
-      "heatSymptoms": "Triệu chứng theo tuần của chu kỳ",
-      "heatMoods": "Cảm xúc theo tuần của chu kỳ",
-      "heatEmpty": "Ghi thêm vài ngày để thấy quy luật theo tuần của chu kỳ.",
-      "week1": "Ngày 1-7",
-      "week2": "Ngày 8-14",
-      "week3": "Ngày 15-21",
-      "week4": "Từ ngày 22",
-      "totalsTitle": "Tổng quan theo dõi",
-      "lhPositives": "Lần thử LH dương tính (báo sắp rụng trứng)",
-      "intimacyDays": "Ngày gần gũi",
-      "bbtReadings": "Lần đo nhiệt độ",
-      "mucusEntries": "Lần ghi dịch nhầy"
+    "forecast": {
+      "title": "Chu kỳ gần đây và dự báo",
+      "past": "Các chu kỳ trước",
+      "next": "Dự báo",
+      "aria": "Dự báo chu kỳ tiếp theo dài khoảng {{expected}} ngày, trong khoảng {{lo}} đến {{hi}} ngày.",
+      "legendBand": "Vùng dự báo: chu kỳ tiếp theo dài {{lo}} đến {{hi}} ngày",
+      "legendExpected": "Dự kiến khoảng {{expected}} ngày (đường nét đứt)",
+      "legendExcluded": "Nét đứt rỗng: chu kỳ bất thường, không dùng để tính"
     }
   },
   "settings": {
@@ -350,8 +318,6 @@
     "deleteAll": "Đặt lại dữ liệu",
     "deleteAllConfirm": "Thao tác này sẽ xóa vĩnh viễn mọi nhật ký và cài đặt trong tài khoản. Không thể hoàn tác.",
     "weekStart": "Tuần bắt đầu từ",
-    "units": "Đơn vị",
-    "advancedTracking": "Theo dõi chuyên sâu",
     "aboutBody": "Blushme đồng bộ dữ liệu vào tài khoản riêng. Không quảng cáo, không theo dõi.",
     "title": "Cài đặt",
     "synced": "Đã đồng bộ với tài khoản",
@@ -360,18 +326,12 @@
       "monday": "Thứ Hai",
       "sunday": "Chủ nhật"
     },
-    "unitsOptions": {
-      "metric": "Hệ mét",
-      "imperial": "Hệ Anh"
-    },
     "account": "Quản lý tài khoản",
     "signOut": "Đăng xuất",
     "deleteAccount": "Xóa tài khoản",
     "deleteAccountConfirm": "Thao tác này sẽ xóa vĩnh viễn tài khoản và toàn bộ dữ liệu. Không thể hoàn tác.",
     "demoNote": "Chế độ demo, dữ liệu không được lưu",
     "exitDemo": "Thoát chế độ demo",
-    "advancedTip": "Bật để ghi thêm nhiệt độ cơ thể, dịch nhầy cổ tử cung và que thử LH (đo hormone báo sắp rụng trứng), cùng ngày gần gũi. Phần Nhịp chu kỳ sẽ có thêm biểu đồ và phân tích chi tiết. Không bắt buộc, có thể tắt bất cứ lúc nào.",
-    "unitsTip": "Chỉ dùng để hiển thị nhiệt độ cơ thể (°C hoặc °F).",
     "weekStartTip": "Ngày được đặt ở cột đầu tiên của lịch.",
     "profile": {
       "noName": "Thêm tên của em",

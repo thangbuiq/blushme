@@ -102,59 +102,6 @@
   font-size: 1.125rem;
 }
 
-.bars {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  height: 150px;
-  padding-top: var(--space-md);
-}
-
-.avgLine {
-  position: absolute;
-  left: 0;
-  right: 0;
-  border-top: 1.5px dashed var(--color-blush-deep);
-}
-
-.barCol {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 6px;
-  position: relative;
-  z-index: 1;
-}
-
-.bar {
-  width: 100%;
-  max-width: 36px;
-  border-radius: var(--radius-sm) var(--radius-sm) 6px 6px;
-  background: linear-gradient(180deg, var(--color-blush-deep), var(--color-blush));
-}
-
-.barExcluded {
-  background: repeating-linear-gradient(
-    45deg,
-    var(--color-hairline),
-    var(--color-hairline) 4px,
-    #fff 4px,
-    #fff 8px
-  );
-  border: 1px dashed var(--color-blush-deep);
-}
-
-.barValue {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-rose-deep);
-}
-
 .legend {
   color: var(--color-secondary);
   font-size: 0.8125rem;
