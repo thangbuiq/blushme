@@ -140,20 +140,20 @@
   width: 120px;
   height: 56px;
   border-radius: var(--radius-full);
-  filter: blur(14px);
-  opacity: 0.9;
+  filter: blur(16px);
+  opacity: 0.35;
 }
 
 .detailsWrap::before {
   left: -14px;
   top: -6px;
-  background: var(--color-blush-deep);
+  background: var(--color-blush);
 }
 
 .detailsWrap::after {
   right: -14px;
   bottom: -6px;
-  background: var(--color-lavender);
+  background: var(--color-blush);
 }
 
 .detailsButton {
