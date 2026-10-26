@@ -168,15 +168,16 @@
   min-height: 46px;
   padding: 0 52px;
   /* Same liquid glass as the bottom nav (shared --lg-* tokens). */
-  border: var(--lg-border);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: var(--radius-full);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 55%),
-    linear-gradient(135deg, rgba(255, 214, 226, 0.78) 0%, rgba(240, 228, 252, 0.7) 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(135deg, rgba(248, 201, 213, 0.7) 0%, rgba(226, 212, 246, 0.6) 100%);
   -webkit-backdrop-filter: blur(10px) saturate(1.8);
   backdrop-filter: blur(10px) saturate(1.8);
   box-shadow:
-    var(--lg-rim),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.15),
     0 10px 24px rgba(184, 65, 106, 0.24),
     0 1px 3px rgba(184, 65, 106, 0.14);
   color: var(--color-rose-deep);
@@ -194,7 +195,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65%);
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.28) 50%, transparent 65%);
   transform: translateX(-120%);
   animation: sheen 5.5s ease-in-out 1.2s infinite;
   pointer-events: none;
@@ -227,7 +228,7 @@
 
 .detailsButton:hover {
   transform: translateY(-1px);
-  box-shadow: var(--lg-rim), 0 14px 34px rgba(52, 78, 120, 0.2), 0 1px 3px rgba(52, 78, 120, 0.1);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.5), 0 14px 34px rgba(52, 78, 120, 0.2), 0 1px 3px rgba(52, 78, 120, 0.1);
 }
 
 .detailsLabel {
