@@ -142,6 +142,7 @@
   border-radius: var(--radius-full);
   filter: blur(16px);
   opacity: 0.35;
+  animation: glowBreathe 4.5s ease-in-out infinite;
 }
 
 .detailsWrap::before {
@@ -151,6 +152,7 @@
 }
 
 .detailsWrap::after {
+  animation-delay: -2.2s;
   right: -14px;
   bottom: -6px;
   background: var(--color-blush);
@@ -168,10 +170,15 @@
   /* Same liquid glass as the bottom nav (shared --lg-* tokens). */
   border: var(--lg-border);
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(135deg, rgba(255, 214, 226, 0.78) 0%, rgba(240, 228, 252, 0.7) 100%);
   -webkit-backdrop-filter: blur(10px) saturate(1.8);
   backdrop-filter: blur(10px) saturate(1.8);
-  box-shadow: var(--lg-rim), 0 10px 26px rgba(184, 65, 106, 0.18), 0 1px 3px rgba(184, 65, 106, 0.1);
+  box-shadow:
+    var(--lg-rim),
+    0 10px 24px rgba(184, 65, 106, 0.24),
+    0 1px 3px rgba(184, 65, 106, 0.14);
   color: var(--color-rose-deep);
   font-family: var(--font-family-h1);
   font-size: 1.0625rem;
@@ -181,6 +188,41 @@
     transform 200ms var(--ease-out),
     box-shadow 200ms var(--ease-out),
     background-color 200ms ease;
+}
+
+.detailsButton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: sheen 5.5s ease-in-out 1.2s infinite;
+  pointer-events: none;
+}
+
+.detailsButton:active {
+  transform: scale(0.98);
+}
+
+@keyframes sheen {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  85%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes glowBreathe {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.55;
+  }
 }
 
 .detailsButton:hover {
